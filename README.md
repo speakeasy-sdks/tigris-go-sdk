@@ -4,7 +4,7 @@
 ## SDK Installation
 
 ```bash
-go get tigris-core
+go get github.com/speakeasy-sdks/tigris-go-sdk
 ```
 <!-- End SDK Installation -->
 
