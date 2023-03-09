@@ -1,4 +1,4 @@
-package sdk
+package tigris
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 	"tigris-core/pkg/utils"
 )
 
-type authentication struct {
+type auth struct {
 	defaultClient  HTTPClient
 	securityClient HTTPClient
 	serverURL      string
@@ -19,8 +19,8 @@ type authentication struct {
 	genVersion     string
 }
 
-func newAuthentication(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *authentication {
-	return &authentication{
+func newAuth(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *auth {
+	return &auth{
 		defaultClient:  defaultClient,
 		securityClient: securityClient,
 		serverURL:      serverURL,
@@ -30,12 +30,12 @@ func newAuthentication(defaultClient, securityClient HTTPClient, serverURL, lang
 	}
 }
 
-// AuthGetAccessToken - Access Token
+// Get - Access Token
 // Endpoint for receiving access token from Tigris Server. The endpoint requires Grant Type(`grant_type`) which has
 //
 //	two possible values <i>"REFRESH_TOKEN"</i> or <i>"CLIENT_CREDENTIALS"</i> based on which either Refresh token(`refresh_token`)
 //	needs to be set or client credentials(`client_id`, `client_secret`).
-func (s *authentication) AuthGetAccessToken(ctx context.Context) (*operations.AuthGetAccessTokenResponse, error) {
+func (s *auth) Get(ctx context.Context) (*operations.AuthGetAccessTokenResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/auth/token"
 

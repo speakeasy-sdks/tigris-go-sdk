@@ -1,16 +1,15 @@
-package sdk
+package tigris
 
 import (
 	"context"
 	"fmt"
 	"net/http"
-	"strings"
 	"tigris-core/pkg/models/operations"
 	"tigris-core/pkg/models/shared"
 	"tigris-core/pkg/utils"
 )
 
-type projects struct {
+type user struct {
 	defaultClient  HTTPClient
 	securityClient HTTPClient
 	serverURL      string
@@ -19,8 +18,8 @@ type projects struct {
 	genVersion     string
 }
 
-func newProjects(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *projects {
-	return &projects{
+func newUser(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *user {
+	return &user{
 		defaultClient:  defaultClient,
 		securityClient: securityClient,
 		serverURL:      serverURL,
@@ -30,11 +29,11 @@ func newProjects(defaultClient, securityClient HTTPClient, serverURL, language, 
 	}
 }
 
-// TigrisCreateProject - Create Project
-// Creates a new project. Returns an AlreadyExists error with a status code 409 if the project already exists.
-func (s *projects) TigrisCreateProject(ctx context.Context, request operations.TigrisCreateProjectRequest) (*operations.TigrisCreateProjectResponse, error) {
+// GetMetadata - Reads the User Metadata
+// GetUserMetadata inserts the user metadata object
+func (s *user) GetMetadata(ctx context.Context, request operations.ManagementGetUserMetadataRequest) (*operations.ManagementGetUserMetadataResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/create", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/get", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
 	if err != nil {
@@ -64,7 +63,7 @@ func (s *projects) TigrisCreateProject(ctx context.Context, request operations.T
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.TigrisCreateProjectResponse{
+	res := &operations.ManagementGetUserMetadataResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -73,12 +72,12 @@ func (s *projects) TigrisCreateProject(ctx context.Context, request operations.T
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.CreateProjectResponse
+			var out *shared.GetUserMetadataResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.CreateProjectResponse = out
+			res.GetUserMetadataResponse = out
 		}
 	default:
 		switch {
@@ -95,11 +94,11 @@ func (s *projects) TigrisCreateProject(ctx context.Context, request operations.T
 	return res, nil
 }
 
-// TigrisDeleteProject - Delete Project and all resources under project
-// Delete Project deletes all the collections in this project along with all of the documents, and associated metadata for these collections.
-func (s *projects) TigrisDeleteProject(ctx context.Context, request operations.TigrisDeleteProjectRequest) (*operations.TigrisDeleteProjectResponse, error) {
+// InsertMetadata - Inserts User Metadata
+// insertUserMetadata inserts the user metadata object
+func (s *user) InsertMetadata(ctx context.Context, request operations.ManagementInsertUserMetadataRequest) (*operations.ManagementInsertUserMetadataResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/delete", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/insert", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
 	if err != nil {
@@ -109,7 +108,7 @@ func (s *projects) TigrisDeleteProject(ctx context.Context, request operations.T
 		return nil, fmt.Errorf("request body is required")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "DELETE", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -129,7 +128,7 @@ func (s *projects) TigrisDeleteProject(ctx context.Context, request operations.T
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.TigrisDeleteProjectResponse{
+	res := &operations.ManagementInsertUserMetadataResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -138,12 +137,12 @@ func (s *projects) TigrisDeleteProject(ctx context.Context, request operations.T
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.DeleteProjectResponse
+			var out *shared.InsertUserMetadataResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.DeleteProjectResponse = out
+			res.InsertUserMetadataResponse = out
 		}
 	default:
 		switch {
@@ -160,16 +159,26 @@ func (s *projects) TigrisDeleteProject(ctx context.Context, request operations.T
 	return res, nil
 }
 
-// TigrisListProjects - List Projects
-// List returns all the projects.
-func (s *projects) TigrisListProjects(ctx context.Context) (*operations.TigrisListProjectsResponse, error) {
+// UpdateMetadata - Updates User Metadata
+// updateUserMetadata updates the user metadata object
+func (s *user) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateUserMetadataRequest) (*operations.ManagementUpdateUserMetadataResponse, error) {
 	baseURL := s.serverURL
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/projects"
+	url := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/update", request.PathParams)
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+
+	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.securityClient
 
@@ -184,7 +193,7 @@ func (s *projects) TigrisListProjects(ctx context.Context) (*operations.TigrisLi
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.TigrisListProjectsResponse{
+	res := &operations.ManagementUpdateUserMetadataResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -193,12 +202,12 @@ func (s *projects) TigrisListProjects(ctx context.Context) (*operations.TigrisLi
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ListProjectsResponse
+			var out *shared.UpdateUserMetadataResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ListProjectsResponse = out
+			res.UpdateUserMetadataResponse = out
 		}
 	default:
 		switch {

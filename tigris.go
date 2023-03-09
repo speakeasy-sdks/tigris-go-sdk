@@ -1,4 +1,4 @@
-package sdk
+package tigris
 
 import (
 	"net/http"
@@ -73,17 +73,18 @@ func String(s string) *string { return &s }
 //
 // # Limitations
 // <li>Do not rely on case to distinguish between databases or collections names.</li> <li>Database Name and Collection Name cannot be empty and can only have the characters matches the regex: <code>^[a-zA-Z]+[a-zA-Z0-9_]+$</code>.</li> <li>Duplicate field names are not allowed. </li> <li>The maximum allowed document size is 100KB.</li> <li>The maximum allowed transaction size is 10MB.</li>
-type SDK struct {
-	ApplicationKeys *applicationKeys
-	Authentication  *authentication
-	Cache           *cache
-	Collections     *collections
-	Database        *database
-	Management      *management
-	Observability   *observability
-	Projects        *projects
-	Realtime        *realtime
-	Search          *search
+type Tigris struct {
+	AppKey     *appKey
+	Auth       *auth
+	Cache      *cache
+	Channel    *channel
+	Collection *collection
+	Database   *database
+	Namespace  *namespace
+	Project    *project
+	Search     *search
+	System     *system
+	User       *user
 
 	// Non-idiomatic field names below are to namespace fields from the fields names above to avoid name conflicts
 	_defaultClient  HTTPClient
@@ -95,16 +96,16 @@ type SDK struct {
 	_genVersion     string
 }
 
-type SDKOption func(*SDK)
+type SDKOption func(*Tigris)
 
 func WithServerURL(serverURL string) SDKOption {
-	return func(sdk *SDK) {
+	return func(sdk *Tigris) {
 		sdk._serverURL = serverURL
 	}
 }
 
 func WithTemplatedServerURL(serverURL string, params map[string]string) SDKOption {
-	return func(sdk *SDK) {
+	return func(sdk *Tigris) {
 		if params != nil {
 			serverURL = utils.ReplaceParameters(serverURL, params)
 		}
@@ -114,22 +115,22 @@ func WithTemplatedServerURL(serverURL string, params map[string]string) SDKOptio
 }
 
 func WithClient(client HTTPClient) SDKOption {
-	return func(sdk *SDK) {
+	return func(sdk *Tigris) {
 		sdk._defaultClient = client
 	}
 }
 
 func WithSecurity(security shared.Security) SDKOption {
-	return func(sdk *SDK) {
+	return func(sdk *Tigris) {
 		sdk._security = &security
 	}
 }
 
-func New(opts ...SDKOption) *SDK {
-	sdk := &SDK{
+func New(opts ...SDKOption) *Tigris {
+	sdk := &Tigris{
 		_language:   "go",
-		_sdkVersion: "0.1.0",
-		_genVersion: "1.9.0",
+		_sdkVersion: "0.0.1",
+		_genVersion: "1.9.1",
 	}
 	for _, opt := range opts {
 		opt(sdk)
@@ -153,7 +154,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._serverURL = ServerList[0]
 	}
 
-	sdk.ApplicationKeys = newApplicationKeys(
+	sdk.AppKey = newAppKey(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -162,7 +163,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Authentication = newAuthentication(
+	sdk.Auth = newAuth(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -180,7 +181,16 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Collections = newCollections(
+	sdk.Channel = newChannel(
+		sdk._defaultClient,
+		sdk._securityClient,
+		sdk._serverURL,
+		sdk._language,
+		sdk._sdkVersion,
+		sdk._genVersion,
+	)
+
+	sdk.Collection = newCollection(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -198,7 +208,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Management = newManagement(
+	sdk.Namespace = newNamespace(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -207,25 +217,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk._genVersion,
 	)
 
-	sdk.Observability = newObservability(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
-
-	sdk.Projects = newProjects(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-	)
-
-	sdk.Realtime = newRealtime(
+	sdk.Project = newProject(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,
@@ -235,6 +227,24 @@ func New(opts ...SDKOption) *SDK {
 	)
 
 	sdk.Search = newSearch(
+		sdk._defaultClient,
+		sdk._securityClient,
+		sdk._serverURL,
+		sdk._language,
+		sdk._sdkVersion,
+		sdk._genVersion,
+	)
+
+	sdk.System = newSystem(
+		sdk._defaultClient,
+		sdk._securityClient,
+		sdk._serverURL,
+		sdk._language,
+		sdk._sdkVersion,
+		sdk._genVersion,
+	)
+
+	sdk.User = newUser(
 		sdk._defaultClient,
 		sdk._securityClient,
 		sdk._serverURL,

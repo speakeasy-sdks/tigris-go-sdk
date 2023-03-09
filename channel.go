@@ -1,16 +1,15 @@
-package sdk
+package tigris
 
 import (
 	"context"
 	"fmt"
 	"net/http"
-	"strings"
 	"tigris-core/pkg/models/operations"
 	"tigris-core/pkg/models/shared"
 	"tigris-core/pkg/utils"
 )
 
-type observability struct {
+type channel struct {
 	defaultClient  HTTPClient
 	securityClient HTTPClient
 	serverURL      string
@@ -19,8 +18,8 @@ type observability struct {
 	genVersion     string
 }
 
-func newObservability(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *observability {
-	return &observability{
+func newChannel(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *channel {
+	return &channel{
 		defaultClient:  defaultClient,
 		securityClient: securityClient,
 		serverURL:      serverURL,
@@ -30,11 +29,10 @@ func newObservability(defaultClient, securityClient HTTPClient, serverURL, langu
 	}
 }
 
-// HealthAPIHealth - Health Check
-// This endpoint can be used to check the liveness of the server.
-func (s *observability) HealthAPIHealth(ctx context.Context) (*operations.HealthAPIHealthResponse, error) {
+// Get - Get the details about a channel
+func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChannelRequest) (*operations.RealtimeGetRTChannelResponse, error) {
 	baseURL := s.serverURL
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/health"
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
@@ -54,7 +52,7 @@ func (s *observability) HealthAPIHealth(ctx context.Context) (*operations.Health
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.HealthAPIHealthResponse{
+	res := &operations.RealtimeGetRTChannelResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -63,12 +61,12 @@ func (s *observability) HealthAPIHealth(ctx context.Context) (*operations.Health
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.HealthCheckResponse
+			var out *shared.GetRTChannelResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.HealthCheckResponse = out
+			res.GetRTChannelResponse = out
 		}
 	default:
 		switch {
@@ -85,11 +83,68 @@ func (s *observability) HealthAPIHealth(ctx context.Context) (*operations.Health
 	return res, nil
 }
 
-// ObservabilityGetInfo - Information about the server
-// Provides the information about the server. This information includes returning the server version, etc.
-func (s *observability) ObservabilityGetInfo(ctx context.Context) (*operations.ObservabilityGetInfoResponse, error) {
+// GetMessages - Get all messages for a channel
+func (s *channel) GetMessages(ctx context.Context, request operations.RealtimeReadMessagesRequest) (*operations.RealtimeReadMessagesResponse, error) {
 	baseURL := s.serverURL
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/info"
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/messages", request.PathParams)
+
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
+
+	client := s.securityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+	defer httpRes.Body.Close()
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RealtimeReadMessagesResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.ReadMessagesResponse
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.ReadMessagesResponse = out
+		}
+	default:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.Status
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.Status = out
+		}
+	}
+
+	return res, nil
+}
+
+// List - Get all channels for your application project
+func (s *channel) List(ctx context.Context, request operations.RealtimeGetRTChannelsRequest) (*operations.RealtimeGetRTChannelsResponse, error) {
+	baseURL := s.serverURL
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels", request.PathParams)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
@@ -109,7 +164,7 @@ func (s *observability) ObservabilityGetInfo(ctx context.Context) (*operations.O
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.ObservabilityGetInfoResponse{
+	res := &operations.RealtimeGetRTChannelsResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -118,12 +173,12 @@ func (s *observability) ObservabilityGetInfo(ctx context.Context) (*operations.O
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.GetInfoResponse
+			var out *shared.GetRTChannelsResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.GetInfoResponse = out
+			res.GetRTChannelsResponse = out
 		}
 	default:
 		switch {
@@ -140,11 +195,68 @@ func (s *observability) ObservabilityGetInfo(ctx context.Context) (*operations.O
 	return res, nil
 }
 
-// ObservabilityQueryTimeSeriesMetrics - Queries time series metrics
-// Queries time series metrics
-func (s *observability) ObservabilityQueryTimeSeriesMetrics(ctx context.Context, request operations.ObservabilityQueryTimeSeriesMetricsRequest) (*operations.ObservabilityQueryTimeSeriesMetricsResponse, error) {
+// ListSubscriptions - Get the subscriptions details about a channel
+func (s *channel) ListSubscriptions(ctx context.Context, request operations.RealtimeListSubscriptionsRequest) (*operations.RealtimeListSubscriptionsResponse, error) {
 	baseURL := s.serverURL
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/metrics/timeseries/query"
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/subscriptions", request.PathParams)
+
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+
+	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
+
+	client := s.securityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+	defer httpRes.Body.Close()
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RealtimeListSubscriptionsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.ListSubscriptionResponse
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.ListSubscriptionResponse = out
+		}
+	default:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.Status
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.Status = out
+		}
+	}
+
+	return res, nil
+}
+
+// PushMessages - push messages to a single channel
+func (s *channel) PushMessages(ctx context.Context, request operations.RealtimeMessagesRequest) (*operations.RealtimeMessagesResponse, error) {
+	baseURL := s.serverURL
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/messages", request.PathParams)
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
 	if err != nil {
@@ -174,7 +286,7 @@ func (s *observability) ObservabilityQueryTimeSeriesMetrics(ctx context.Context,
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.ObservabilityQueryTimeSeriesMetricsResponse{
+	res := &operations.RealtimeMessagesResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -183,12 +295,12 @@ func (s *observability) ObservabilityQueryTimeSeriesMetrics(ctx context.Context,
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.QueryTimeSeriesMetricsResponse
+			var out *shared.MessagesResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.QueryTimeSeriesMetricsResponse = out
+			res.MessagesResponse = out
 		}
 	default:
 		switch {
@@ -205,26 +317,15 @@ func (s *observability) ObservabilityQueryTimeSeriesMetrics(ctx context.Context,
 	return res, nil
 }
 
-// ObservabilityQuotaLimits - Queries current namespace quota limits
-// Returns current namespace quota limits
-func (s *observability) ObservabilityQuotaLimits(ctx context.Context, request operations.ObservabilityQuotaLimitsRequest) (*operations.ObservabilityQuotaLimitsResponse, error) {
+// RealtimePresence - Presence about the channel
+func (s *channel) RealtimePresence(ctx context.Context, request operations.RealtimePresenceRequest) (*operations.RealtimePresenceResponse, error) {
 	baseURL := s.serverURL
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/limits"
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/presence", request.PathParams)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
-	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-
-	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.securityClient
 
@@ -239,7 +340,7 @@ func (s *observability) ObservabilityQuotaLimits(ctx context.Context, request op
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.ObservabilityQuotaLimitsResponse{
+	res := &operations.RealtimePresenceResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -248,77 +349,12 @@ func (s *observability) ObservabilityQuotaLimits(ctx context.Context, request op
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.QuotaLimitsResponse
+			var out *shared.PresenceResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.QuotaLimitsResponse = out
-		}
-	default:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
-				return nil, err
-			}
-
-			res.Status = out
-		}
-	}
-
-	return res, nil
-}
-
-// ObservabilityQuotaUsage - Queries current namespace quota usage
-// Returns current namespace quota limits
-func (s *observability) ObservabilityQuotaUsage(ctx context.Context, request operations.ObservabilityQuotaUsageRequest) (*operations.ObservabilityQuotaUsageResponse, error) {
-	baseURL := s.serverURL
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/usage"
-
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
-	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-
-	req.Header.Set("Content-Type", reqContentType)
-
-	client := s.securityClient
-
-	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
-	defer httpRes.Body.Close()
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	res := &operations.ObservabilityQuotaUsageResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-	}
-	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.QuotaUsageResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
-				return nil, err
-			}
-
-			res.QuotaUsageResponse = out
+			res.PresenceResponse = out
 		}
 	default:
 		switch {

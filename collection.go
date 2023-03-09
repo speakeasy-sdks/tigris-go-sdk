@@ -1,4 +1,4 @@
-package sdk
+package tigris
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 	"tigris-core/pkg/utils"
 )
 
-type collections struct {
+type collection struct {
 	defaultClient  HTTPClient
 	securityClient HTTPClient
 	serverURL      string
@@ -18,8 +18,8 @@ type collections struct {
 	genVersion     string
 }
 
-func newCollections(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *collections {
-	return &collections{
+func newCollection(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *collection {
+	return &collection{
 		defaultClient:  defaultClient,
 		securityClient: securityClient,
 		serverURL:      serverURL,
@@ -29,14 +29,14 @@ func newCollections(defaultClient, securityClient HTTPClient, serverURL, languag
 	}
 }
 
-// TigrisCreateOrUpdateCollection - Create or update a collection
+// Create - Create or update a collection
 // Creates a new collection or atomically upgrades the collection to the new schema provided in the request.
 //
 //	Schema changes are applied atomically and immediately without any downtime.
 //	Tigris Offers two types of collections: <p></p>
 //	   <li> `DOCUMENTS`: Offers rich CRUD APIs.
 //	   <li> `MESSAGES`: Offers event streaming APIs.
-func (s *collections) TigrisCreateOrUpdateCollection(ctx context.Context, request operations.TigrisCreateOrUpdateCollectionRequest) (*operations.TigrisCreateOrUpdateCollectionResponse, error) {
+func (s *collection) Create(ctx context.Context, request operations.TigrisCreateOrUpdateCollectionRequest) (*operations.TigrisCreateOrUpdateCollectionResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/createOrUpdate", request.PathParams)
 
@@ -99,9 +99,9 @@ func (s *collections) TigrisCreateOrUpdateCollection(ctx context.Context, reques
 	return res, nil
 }
 
-// TigrisDelete - Delete Documents
+// DeleteDocuments - Delete Documents
 // Delete a range of documents in the collection using the condition provided in the filter.
-func (s *collections) TigrisDelete(ctx context.Context, request operations.TigrisDeleteRequest) (*operations.TigrisDeleteResponse, error) {
+func (s *collection) DeleteDocuments(ctx context.Context, request operations.TigrisDeleteRequest) (*operations.TigrisDeleteResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/delete", request.PathParams)
 
@@ -164,9 +164,9 @@ func (s *collections) TigrisDelete(ctx context.Context, request operations.Tigri
 	return res, nil
 }
 
-// TigrisDescribeCollection - Describe Collection
+// Describe - Describe Collection
 // Returns the information related to the collection. This can be used to retrieve the schema or size of the collection.
-func (s *collections) TigrisDescribeCollection(ctx context.Context, request operations.TigrisDescribeCollectionRequest) (*operations.TigrisDescribeCollectionResponse, error) {
+func (s *collection) Describe(ctx context.Context, request operations.TigrisDescribeCollectionRequest) (*operations.TigrisDescribeCollectionResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/describe", request.PathParams)
 
@@ -229,11 +229,11 @@ func (s *collections) TigrisDescribeCollection(ctx context.Context, request oper
 	return res, nil
 }
 
-// TigrisDropCollection - Drop Collection
+// Drop - Drop Collection
 // Drops the collection inside this project. This API deletes all of the
 //
 //	documents inside this collection and any metadata associated with it.
-func (s *collections) TigrisDropCollection(ctx context.Context, request operations.TigrisDropCollectionRequest) (*operations.TigrisDropCollectionResponse, error) {
+func (s *collection) Drop(ctx context.Context, request operations.TigrisDropCollectionRequest) (*operations.TigrisDropCollectionResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/drop", request.PathParams)
 
@@ -296,14 +296,14 @@ func (s *collections) TigrisDropCollection(ctx context.Context, request operatio
 	return res, nil
 }
 
-// TigrisImport - Import Documents
+// ImportDocuments - Import Documents
 // Imports documents into the collection.
 //
 //	It automatically:
 //	 * Detects the schema of the documents in the batch
 //	 * Evolves the schema as soon as it's backward compatible
 //	 * Creates collection with inferred schema (if requested)
-func (s *collections) TigrisImport(ctx context.Context, request operations.TigrisImportRequest) (*operations.TigrisImportResponse, error) {
+func (s *collection) ImportDocuments(ctx context.Context, request operations.TigrisImportRequest) (*operations.TigrisImportResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/import", request.PathParams)
 
@@ -366,12 +366,12 @@ func (s *collections) TigrisImport(ctx context.Context, request operations.Tigri
 	return res, nil
 }
 
-// TigrisInsert - Insert Documents
+// InsertDocuments - Insert Documents
 // Inserts new documents in the collection and returns an AlreadyExists error if any of the documents
 //
 //	in the request already exists. Insert provides idempotency by returning an error if the document
 //	already exists. To replace documents, use REPLACE API instead of INSERT.
-func (s *collections) TigrisInsert(ctx context.Context, request operations.TigrisInsertRequest) (*operations.TigrisInsertResponse, error) {
+func (s *collection) InsertDocuments(ctx context.Context, request operations.TigrisInsertRequest) (*operations.TigrisInsertResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/insert", request.PathParams)
 
@@ -434,7 +434,7 @@ func (s *collections) TigrisInsert(ctx context.Context, request operations.Tigri
 	return res, nil
 }
 
-// TigrisRead - Read Documents
+// ReadDocuments - Read Documents
 // Reads a range of documents from the collection, or messages from a collection in case of event streaming. Tigris does not require you to
 //
 //	index any fields and automatically index all the fields which means you can filter by any field in the document.
@@ -442,7 +442,7 @@ func (s *collections) TigrisInsert(ctx context.Context, request operations.Tigri
 //	can be used by passing `Limit/Skip` parameters. The `skip` parameter skips the number of documents from the start and
 //	the `limit` parameter is used to specify the number of documents to read. You can find more detailed documentation
 //	of the Read API <a href="https://docs.tigrisdata.com/overview/query" title="here">here</a>.
-func (s *collections) TigrisRead(ctx context.Context, request operations.TigrisReadRequest) (*operations.TigrisReadResponse, error) {
+func (s *collection) ReadDocuments(ctx context.Context, request operations.TigrisReadRequest) (*operations.TigrisReadResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/read", request.PathParams)
 
@@ -505,9 +505,9 @@ func (s *collections) TigrisRead(ctx context.Context, request operations.TigrisR
 	return res, nil
 }
 
-// TigrisReplace - Insert or Replace Documents
+// ReplaceDocuments - Insert or Replace Documents
 // Inserts the documents or replaces the existing documents in the collections.
-func (s *collections) TigrisReplace(ctx context.Context, request operations.TigrisReplaceRequest) (*operations.TigrisReplaceResponse, error) {
+func (s *collection) ReplaceDocuments(ctx context.Context, request operations.TigrisReplaceRequest) (*operations.TigrisReplaceResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/replace", request.PathParams)
 
@@ -570,13 +570,13 @@ func (s *collections) TigrisReplace(ctx context.Context, request operations.Tigr
 	return res, nil
 }
 
-// TigrisSearch - Search Documents.
+// SearchDocuments - Search Documents.
 // Searches a collection for the documents matching the query, or messages in case of event streaming. A search can be
 //
 //	a term search or a phrase search. Search API allows filtering the result set using filters as documented <a href="https://docs.tigrisdata.com/overview/query#specification-1" title="here">here</a>.
 //	You can also perform a faceted search by passing the fields in the facet parameter.
 //	You can find more detailed documentation of the Search API with multiple examples <a href="https://docs.tigrisdata.com/overview/search" title="here">here</a>.
-func (s *collections) TigrisSearch(ctx context.Context, request operations.TigrisSearchRequest) (*operations.TigrisSearchResponse, error) {
+func (s *collection) SearchDocuments(ctx context.Context, request operations.TigrisSearchRequest) (*operations.TigrisSearchResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/search", request.PathParams)
 
@@ -639,9 +639,9 @@ func (s *collections) TigrisSearch(ctx context.Context, request operations.Tigri
 	return res, nil
 }
 
-// TigrisUpdate - Update Documents.
+// UpdateDocuments - Update Documents.
 // Update a range of documents in the collection using the condition provided in the filter.
-func (s *collections) TigrisUpdate(ctx context.Context, request operations.TigrisUpdateRequest) (*operations.TigrisUpdateResponse, error) {
+func (s *collection) UpdateDocuments(ctx context.Context, request operations.TigrisUpdateRequest) (*operations.TigrisUpdateResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/update", request.PathParams)
 

@@ -5,11 +5,11 @@ import (
 	"tigris-core/pkg/models/shared"
 )
 
-type ManagementCreateNamespaceRequest struct {
+type CreateNamespaceRequest struct {
 	Request shared.CreateNamespaceRequest `request:"mediaType=application/json"`
 }
 
-type ManagementCreateNamespaceResponse struct {
+type CreateNamespaceResponse struct {
 	ContentType             string
 	CreateNamespaceResponse *shared.CreateNamespaceResponse
 	Status                  *shared.Status

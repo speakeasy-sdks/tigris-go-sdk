@@ -11,31 +11,28 @@ import (
 )
 
 func main() {
-    s := sdk.New(sdk.WithSecurity(
+    s := tigris.New(tigris.WithSecurity(
         shared.Security{
-            BearerAuth: shared.SchemeBearerAuth{
-                Authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
-            },
+            BearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
         },
     ))
     
-    req := operations.TigrisCreateAppKeyRequest{
-        PathParams: operations.TigrisCreateAppKeyPathParams{
+    req := operations.TigrisDeleteAppKeyRequest{
+        PathParams: operations.TigrisDeleteAppKeyPathParams{
             Project: "unde",
         },
-        Request: shared.CreateAppKeyRequest{
-            Description: "deserunt",
-            Name: "porro",
+        Request: shared.DeleteAppKeyRequest{
+            ID: "deserunt",
         },
     }
 
     ctx := context.Background()
-    res, err := s.ApplicationKeys.TigrisCreateAppKey(ctx, req)
+    res, err := s.AppKey.Delete(ctx, req)
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.CreateAppKeyResponse != nil {
+    if res.DeleteAppKeyResponse != nil {
         // handle response
     }
 }

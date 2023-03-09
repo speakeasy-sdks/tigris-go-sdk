@@ -1,4 +1,4 @@
-package sdk
+package tigris
 
 import (
 	"context"
@@ -29,12 +29,12 @@ func newDatabase(defaultClient, securityClient HTTPClient, serverURL, language, 
 	}
 }
 
-// TigrisBeginTransaction - Begin a transaction
+// BeginTransaction - Begin a transaction
 // Starts a new transaction and returns a transactional object. All reads/writes performed
 //
 //	within a transaction will run with serializable isolation. Tigris offers global transactions,
 //	with ACID properties and strict serializability.
-func (s *database) TigrisBeginTransaction(ctx context.Context, request operations.TigrisBeginTransactionRequest) (*operations.TigrisBeginTransactionResponse, error) {
+func (s *database) BeginTransaction(ctx context.Context, request operations.TigrisBeginTransactionRequest) (*operations.TigrisBeginTransactionResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/transactions/begin", request.PathParams)
 
@@ -97,11 +97,11 @@ func (s *database) TigrisBeginTransaction(ctx context.Context, request operation
 	return res, nil
 }
 
-// TigrisCommitTransaction - Commit a Transaction
+// CommitTransaction - Commit a Transaction
 // Atomically commit all the changes performed in the context of the transaction. Commit provides all
 //
 //	or nothing semantics by ensuring no partial updates are in the project due to a transaction failure.
-func (s *database) TigrisCommitTransaction(ctx context.Context, request operations.TigrisCommitTransactionRequest) (*operations.TigrisCommitTransactionResponse, error) {
+func (s *database) CommitTransaction(ctx context.Context, request operations.TigrisCommitTransactionRequest) (*operations.TigrisCommitTransactionResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/transactions/commit", request.PathParams)
 
@@ -164,9 +164,9 @@ func (s *database) TigrisCommitTransaction(ctx context.Context, request operatio
 	return res, nil
 }
 
-// TigrisCreateBranch - Create a database branch
+// CreateBranch - Create a database branch
 // Creates a new database branch, if not already existing.
-func (s *database) TigrisCreateBranch(ctx context.Context, request operations.TigrisCreateBranchRequest) (*operations.TigrisCreateBranchResponse, error) {
+func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCreateBranchRequest) (*operations.TigrisCreateBranchResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/branches/{branch}/create", request.PathParams)
 
@@ -229,11 +229,11 @@ func (s *database) TigrisCreateBranch(ctx context.Context, request operations.Ti
 	return res, nil
 }
 
-// TigrisDeleteBranch - Delete a database branch
+// DeleteBranch - Delete a database branch
 // Deletes a database branch, if exists.
 //
 //	Throws 400 Bad Request if "main" branch is being deleted
-func (s *database) TigrisDeleteBranch(ctx context.Context, request operations.TigrisDeleteBranchRequest) (*operations.TigrisDeleteBranchResponse, error) {
+func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDeleteBranchRequest) (*operations.TigrisDeleteBranchResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/branches/{branch}/delete", request.PathParams)
 
@@ -296,11 +296,11 @@ func (s *database) TigrisDeleteBranch(ctx context.Context, request operations.Ti
 	return res, nil
 }
 
-// TigrisDescribeDatabase - Describe database
+// Describe - Describe database
 // This API returns information related to the project along with all the collections inside the project.
 //
 //	This can be used to retrieve the size of the project or to retrieve schemas, branches and the size of all the collections present in this project.
-func (s *database) TigrisDescribeDatabase(ctx context.Context, request operations.TigrisDescribeDatabaseRequest) (*operations.TigrisDescribeDatabaseResponse, error) {
+func (s *database) Describe(ctx context.Context, request operations.TigrisDescribeDatabaseRequest) (*operations.TigrisDescribeDatabaseResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/describe", request.PathParams)
 
@@ -363,64 +363,9 @@ func (s *database) TigrisDescribeDatabase(ctx context.Context, request operation
 	return res, nil
 }
 
-// TigrisListBranches - List database branches
-// List database branches
-func (s *database) TigrisListBranches(ctx context.Context, request operations.TigrisListBranchesRequest) (*operations.TigrisListBranchesResponse, error) {
-	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/branches", request.PathParams)
-
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-
-	client := s.securityClient
-
-	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
-	defer httpRes.Body.Close()
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	res := &operations.TigrisListBranchesResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-	}
-	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ListBranchesResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
-				return nil, err
-			}
-
-			res.ListBranchesResponse = out
-		}
-	default:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
-				return nil, err
-			}
-
-			res.Status = out
-		}
-	}
-
-	return res, nil
-}
-
-// TigrisListCollections - List Collections
+// ListCollections - List Collections
 // List all the collections present in the project passed in the request.
-func (s *database) TigrisListCollections(ctx context.Context, request operations.TigrisListCollectionsRequest) (*operations.TigrisListCollectionsResponse, error) {
+func (s *database) ListCollections(ctx context.Context, request operations.TigrisListCollectionsRequest) (*operations.TigrisListCollectionsResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections", request.PathParams)
 
@@ -477,11 +422,11 @@ func (s *database) TigrisListCollections(ctx context.Context, request operations
 	return res, nil
 }
 
-// TigrisRollbackTransaction - Rollback a transaction
+// RollbackTransaction - Rollback a transaction
 // Rollback transaction discards all the changes
 //
 //	performed in the transaction
-func (s *database) TigrisRollbackTransaction(ctx context.Context, request operations.TigrisRollbackTransactionRequest) (*operations.TigrisRollbackTransactionResponse, error) {
+func (s *database) RollbackTransaction(ctx context.Context, request operations.TigrisRollbackTransactionRequest) (*operations.TigrisRollbackTransactionResponse, error) {
 	baseURL := s.serverURL
 	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/transactions/rollback", request.PathParams)
 
@@ -528,6 +473,61 @@ func (s *database) TigrisRollbackTransaction(ctx context.Context, request operat
 			}
 
 			res.RollbackTransactionResponse = out
+		}
+	default:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.Status
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.Status = out
+		}
+	}
+
+	return res, nil
+}
+
+// TigrisListBranches - List database branches
+// List database branches
+func (s *database) TigrisListBranches(ctx context.Context, request operations.TigrisListBranchesRequest) (*operations.TigrisListBranchesResponse, error) {
+	baseURL := s.serverURL
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/branches", request.PathParams)
+
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+
+	client := s.securityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+	defer httpRes.Body.Close()
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.TigrisListBranchesResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.ListBranchesResponse
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.ListBranchesResponse = out
 		}
 	default:
 		switch {

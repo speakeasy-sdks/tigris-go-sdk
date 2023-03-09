@@ -1,15 +1,16 @@
-package sdk
+package tigris
 
 import (
 	"context"
 	"fmt"
 	"net/http"
+	"strings"
 	"tigris-core/pkg/models/operations"
 	"tigris-core/pkg/models/shared"
 	"tigris-core/pkg/utils"
 )
 
-type applicationKeys struct {
+type system struct {
 	defaultClient  HTTPClient
 	securityClient HTTPClient
 	serverURL      string
@@ -18,8 +19,8 @@ type applicationKeys struct {
 	genVersion     string
 }
 
-func newApplicationKeys(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *applicationKeys {
-	return &applicationKeys{
+func newSystem(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *system {
+	return &system{
 		defaultClient:  defaultClient,
 		securityClient: securityClient,
 		serverURL:      serverURL,
@@ -29,141 +30,11 @@ func newApplicationKeys(defaultClient, securityClient HTTPClient, serverURL, lan
 	}
 }
 
-// TigrisCreateAppKey - Creates the app key
-// Create an app key.
-func (s *applicationKeys) TigrisCreateAppKey(ctx context.Context, request operations.TigrisCreateAppKeyRequest) (*operations.TigrisCreateAppKeyResponse, error) {
+// GetHealth - Health Check
+// This endpoint can be used to check the liveness of the server.
+func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/create", request.PathParams)
-
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
-	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-
-	req.Header.Set("Content-Type", reqContentType)
-
-	client := s.securityClient
-
-	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
-	defer httpRes.Body.Close()
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	res := &operations.TigrisCreateAppKeyResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-	}
-	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.CreateAppKeyResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
-				return nil, err
-			}
-
-			res.CreateAppKeyResponse = out
-		}
-	default:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
-				return nil, err
-			}
-
-			res.Status = out
-		}
-	}
-
-	return res, nil
-}
-
-// TigrisDeleteAppKey - Deletes the app key
-// Delete an app key.
-func (s *applicationKeys) TigrisDeleteAppKey(ctx context.Context, request operations.TigrisDeleteAppKeyRequest) (*operations.TigrisDeleteAppKeyResponse, error) {
-	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/delete", request.PathParams)
-
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
-	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "DELETE", url, bodyReader)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-
-	req.Header.Set("Content-Type", reqContentType)
-
-	client := s.securityClient
-
-	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
-	defer httpRes.Body.Close()
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	res := &operations.TigrisDeleteAppKeyResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-	}
-	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.DeleteAppKeyResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
-				return nil, err
-			}
-
-			res.DeleteAppKeyResponse = out
-		}
-	default:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
-				return nil, err
-			}
-
-			res.Status = out
-		}
-	}
-
-	return res, nil
-}
-
-// TigrisListAppKeys - List all the app keys
-// Lists all app keys visible to requesting actor.
-func (s *applicationKeys) TigrisListAppKeys(ctx context.Context, request operations.TigrisListAppKeysRequest) (*operations.TigrisListAppKeysResponse, error) {
-	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys", request.PathParams)
+	url := strings.TrimSuffix(baseURL, "/") + "/v1/health"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
@@ -183,7 +54,7 @@ func (s *applicationKeys) TigrisListAppKeys(ctx context.Context, request operati
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.TigrisListAppKeysResponse{
+	res := &operations.HealthAPIHealthResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -192,12 +63,12 @@ func (s *applicationKeys) TigrisListAppKeys(ctx context.Context, request operati
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ListAppKeysResponse
+			var out *shared.HealthCheckResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ListAppKeysResponse = out
+			res.HealthCheckResponse = out
 		}
 	default:
 		switch {
@@ -214,11 +85,66 @@ func (s *applicationKeys) TigrisListAppKeys(ctx context.Context, request operati
 	return res, nil
 }
 
-// TigrisRotateAppKeySecret - Rotates the app key secret
-// Endpoint is used to rotate the secret for the app key.
-func (s *applicationKeys) TigrisRotateAppKeySecret(ctx context.Context, request operations.TigrisRotateAppKeySecretRequest) (*operations.TigrisRotateAppKeySecretResponse, error) {
+// GetServerInfo - Information about the server
+// Provides the information about the server. This information includes returning the server version, etc.
+func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGetInfoResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/rotate", request.PathParams)
+	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/info"
+
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+
+	client := s.securityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+	defer httpRes.Body.Close()
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.ObservabilityGetInfoResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.GetInfoResponse
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.GetInfoResponse = out
+		}
+	default:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.Status
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.Status = out
+		}
+	}
+
+	return res, nil
+}
+
+// ObservabilityQuotaUsage - Queries current namespace quota usage
+// Returns current namespace quota limits
+func (s *system) ObservabilityQuotaUsage(ctx context.Context, request operations.ObservabilityQuotaUsageRequest) (*operations.ObservabilityQuotaUsageResponse, error) {
+	baseURL := s.serverURL
+	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/usage"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
 	if err != nil {
@@ -248,7 +174,7 @@ func (s *applicationKeys) TigrisRotateAppKeySecret(ctx context.Context, request 
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.TigrisRotateAppKeySecretResponse{
+	res := &operations.ObservabilityQuotaUsageResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -257,12 +183,12 @@ func (s *applicationKeys) TigrisRotateAppKeySecret(ctx context.Context, request 
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.RotateAppKeyResponse
+			var out *shared.QuotaUsageResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.RotateAppKeyResponse = out
+			res.QuotaUsageResponse = out
 		}
 	default:
 		switch {
@@ -279,11 +205,11 @@ func (s *applicationKeys) TigrisRotateAppKeySecret(ctx context.Context, request 
 	return res, nil
 }
 
-// TigrisUpdateAppKey - Updates the description of the app key
-// Update the description of an app key.
-func (s *applicationKeys) TigrisUpdateAppKey(ctx context.Context, request operations.TigrisUpdateAppKeyRequest) (*operations.TigrisUpdateAppKeyResponse, error) {
+// QueryQuotaLimits - Queries current namespace quota limits
+// Returns current namespace quota limits
+func (s *system) QueryQuotaLimits(ctx context.Context, request operations.ObservabilityQuotaLimitsRequest) (*operations.ObservabilityQuotaLimitsResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/update", request.PathParams)
+	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/limits"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
 	if err != nil {
@@ -313,7 +239,7 @@ func (s *applicationKeys) TigrisUpdateAppKey(ctx context.Context, request operat
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.TigrisUpdateAppKeyResponse{
+	res := &operations.ObservabilityQuotaLimitsResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -322,12 +248,77 @@ func (s *applicationKeys) TigrisUpdateAppKey(ctx context.Context, request operat
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.UpdateAppKeyResponse
+			var out *shared.QuotaLimitsResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.UpdateAppKeyResponse = out
+			res.QuotaLimitsResponse = out
+		}
+	default:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.Status
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.Status = out
+		}
+	}
+
+	return res, nil
+}
+
+// QueryTimeSeriesMetrics - Queries time series metrics
+// Queries time series metrics
+func (s *system) QueryTimeSeriesMetrics(ctx context.Context, request operations.ObservabilityQueryTimeSeriesMetricsRequest) (*operations.ObservabilityQueryTimeSeriesMetricsResponse, error) {
+	baseURL := s.serverURL
+	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/metrics/timeseries/query"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.securityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+	defer httpRes.Body.Close()
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.ObservabilityQueryTimeSeriesMetricsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.QueryTimeSeriesMetricsResponse
+			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+				return nil, err
+			}
+
+			res.QueryTimeSeriesMetricsResponse = out
 		}
 	default:
 		switch {
