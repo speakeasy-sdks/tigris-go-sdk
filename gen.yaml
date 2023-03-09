@@ -5,7 +5,7 @@ management:
   speakeasyVersion: 1.9.0
 generation:
   telemetryEnabled: false
-  sdkClassName: SDK
+  sdkClassName: tigris
   sdkFlattening: false
 go:
   version: 0.1.0
