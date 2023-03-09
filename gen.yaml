@@ -8,5 +8,5 @@ generation:
   sdkClassName: tigris
   sdkFlattening: true
 go:
-  version: 0.1.0
+  version: ""
   packageName: tigris-core
