@@ -9,4 +9,4 @@ generation:
   sdkFlattening: true
 go:
   version: 0.0.1
-  packageName: tigris-core
+  packageName: github.com/speakeasy-sdks/tigris-go-sdk
