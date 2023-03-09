@@ -1,0 +1,158 @@
+# tigris-core
+
+<!-- Start SDK Installation -->
+## SDK Installation
+
+```bash
+go get tigris-core
+```
+<!-- End SDK Installation -->
+
+## SDK Example Usage
+<!-- Start SDK Example Usage -->
+```go
+package main
+
+import (
+    "context"
+    "log"
+    "tigris-core"
+    "tigris-core/pkg/models/shared"
+    "tigris-core/pkg/models/operations"
+)
+
+func main() {
+    s := sdk.New(sdk.WithSecurity(
+        shared.Security{
+            BearerAuth: shared.SchemeBearerAuth{
+                Authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
+            },
+        },
+    ))
+    
+    req := operations.TigrisCreateAppKeyRequest{
+        PathParams: operations.TigrisCreateAppKeyPathParams{
+            Project: "unde",
+        },
+        Request: shared.CreateAppKeyRequest{
+            Description: "deserunt",
+            Name: "porro",
+        },
+    }
+
+    ctx := context.Background()
+    res, err := s.ApplicationKeys.TigrisCreateAppKey(ctx, req)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.CreateAppKeyResponse != nil {
+        // handle response
+    }
+}
+```
+<!-- End SDK Example Usage -->
+
+<!-- Start SDK Available Operations -->
+## SDK Available Operations
+
+
+### ApplicationKeys
+
+* `TigrisCreateAppKey` - Creates the app key
+* `TigrisDeleteAppKey` - Deletes the app key
+* `TigrisListAppKeys` - List all the app keys
+* `TigrisRotateAppKeySecret` - Rotates the app key secret
+* `TigrisUpdateAppKey` - Updates the description of the app key
+
+### Authentication
+
+* `AuthGetAccessToken` - Access Token
+
+### Cache
+
+* `CacheCreateCache` - Creates the cache
+* `CacheDel` - Deletes an entry from cache
+* `CacheDeleteCache` - Deletes the cache
+* `CacheGet` - Reads an entry from cache
+* `CacheGetSet` - Sets an entry in the cache and returns the previous value if exists
+* `CacheKeys` - Lists all the key for this cache
+* `CacheListCaches` - Lists all the caches for the given project
+* `CacheSet` - Sets an entry in the cache
+
+### Collections
+
+* `TigrisCreateOrUpdateCollection` - Create or update a collection
+* `TigrisDelete` - Delete Documents
+* `TigrisDescribeCollection` - Describe Collection
+* `TigrisDropCollection` - Drop Collection
+* `TigrisImport` - Import Documents
+* `TigrisInsert` - Insert Documents
+* `TigrisRead` - Read Documents
+* `TigrisReplace` - Insert or Replace Documents
+* `TigrisSearch` - Search Documents.
+* `TigrisUpdate` - Update Documents.
+
+### Database
+
+* `TigrisBeginTransaction` - Begin a transaction
+* `TigrisCommitTransaction` - Commit a Transaction
+* `TigrisCreateBranch` - Create a database branch
+* `TigrisDeleteBranch` - Delete a database branch
+* `TigrisDescribeDatabase` - Describe database
+* `TigrisListBranches` - List database branches
+* `TigrisListCollections` - List Collections
+* `TigrisRollbackTransaction` - Rollback a transaction
+
+### Management
+
+* `ManagementCreateNamespace` - Creates a Namespace
+* `ManagementDescribeNamespaces` - Describe the details of all namespaces
+* `ManagementGetNamespaceMetadata` - Reads the Namespace Metadata
+* `ManagementGetUserMetadata` - Reads the User Metadata
+* `ManagementInsertNamespaceMetadata` - Inserts Namespace Metadata
+* `ManagementInsertUserMetadata` - Inserts User Metadata
+* `ManagementListNamespaces` - Lists all Namespaces
+* `ManagementUpdateNamespaceMetadata` - Updates Namespace Metadata
+* `ManagementUpdateUserMetadata` - Updates User Metadata
+
+### Observability
+
+* `HealthAPIHealth` - Health Check
+* `ObservabilityGetInfo` - Information about the server
+* `ObservabilityQueryTimeSeriesMetrics` - Queries time series metrics
+* `ObservabilityQuotaLimits` - Queries current namespace quota limits
+* `ObservabilityQuotaUsage` - Queries current namespace quota usage
+
+### Projects
+
+* `TigrisCreateProject` - Create Project
+* `TigrisDeleteProject` - Delete Project and all resources under project
+* `TigrisListProjects` - List Projects
+
+### Realtime
+
+* `RealtimeGetRTChannel` - Get the details about a channel
+* `RealtimeGetRTChannels` - Get all channels for your application project
+* `RealtimeListSubscriptions` - Get the subscriptions details about a channel
+* `RealtimeMessages` - push messages to a single channel
+* `RealtimePresence` - Presence about the channel
+* `RealtimeReadMessages` - Get all messages for a channel
+
+### Search
+
+* `SearchCreate` - Create multiple documents
+* `SearchCreateByID` - Create a single document
+* `SearchCreateOrReplace` - Create or replace documents in an index
+* `SearchCreateOrUpdateIndex` - Creates or updates search index
+* `SearchDelete` - Delete documents by ids
+* `SearchDeleteByQuery` - Delete documents by query
+* `SearchDeleteIndex` - Deletes search index
+* `SearchGet` - Get a single or multiple documents
+* `SearchGetIndex` - Get information about a search index
+* `SearchListIndexes` - List search indexes
+* `SearchSearch` - Search Documents.
+* `SearchUpdate` - Update documents in an index
+<!-- End SDK Available Operations -->
+
+### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
