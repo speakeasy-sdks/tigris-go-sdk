@@ -28,8 +28,8 @@ func main() {
         },
     ))
     
-    req := operations.TigrisDeleteAppKeyRequest{
-        PathParams: operations.TigrisDeleteAppKeyPathParams{
+    req := operations.DeleteAppKeyRequest{
+        PathParams: operations.DeleteAppKeyPathParams{
             Project: "unde",
         },
         Request: shared.DeleteAppKeyRequest{
