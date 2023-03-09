@@ -3,10 +3,10 @@ package tigris
 import (
 	"context"
 	"fmt"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"net/http"
-	"tigris-core/pkg/models/operations"
-	"tigris-core/pkg/models/shared"
-	"tigris-core/pkg/utils"
 )
 
 type database struct {

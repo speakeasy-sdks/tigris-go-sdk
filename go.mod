@@ -1,4 +1,4 @@
-module tigris-core
+module github.com/speakeasy-sdks/tigris-go-sdk
 
 go 1.14
 

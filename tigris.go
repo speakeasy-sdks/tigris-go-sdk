@@ -1,9 +1,9 @@
 package tigris
 
 import (
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"net/http"
-	"tigris-core/pkg/models/shared"
-	"tigris-core/pkg/utils"
 	"time"
 )
 
@@ -129,7 +129,7 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Tigris {
 	sdk := &Tigris{
 		_language:   "go",
-		_sdkVersion: "0.0.1",
+		_sdkVersion: "0.0.2",
 		_genVersion: "1.9.1",
 	}
 	for _, opt := range opts {

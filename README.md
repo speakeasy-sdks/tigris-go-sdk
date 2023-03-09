@@ -16,9 +16,9 @@ package main
 import (
     "context"
     "log"
-    "tigris-core"
-    "tigris-core/pkg/models/shared"
-    "tigris-core/pkg/models/operations"
+    "github.com/speakeasy-sdks/tigris-go-sdk"
+    "github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+    "github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -28,8 +28,8 @@ func main() {
         },
     ))
     
-    req := operations.DeleteAppKeyRequest{
-        PathParams: operations.DeleteAppKeyPathParams{
+    req := operations.TigrisDeleteAppKeyRequest{
+        PathParams: operations.TigrisDeleteAppKeyPathParams{
             Project: "unde",
         },
         Request: shared.DeleteAppKeyRequest{

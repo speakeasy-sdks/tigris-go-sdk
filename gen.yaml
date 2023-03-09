@@ -8,5 +8,5 @@ generation:
   sdkClassName: tigris
   sdkFlattening: true
 go:
-  version: 0.0.1
+  version: 0.0.2
   packageName: github.com/speakeasy-sdks/tigris-go-sdk

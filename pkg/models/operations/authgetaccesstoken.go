@@ -1,8 +1,8 @@
 package operations
 
 import (
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"net/http"
-	"tigris-core/pkg/models/shared"
 )
 
 type AuthGetAccessTokenResponse struct {

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"tigris-core/pkg/types"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/types"
 )
 
 func populateForm(paramName string, explode bool, objType reflect.Type, objValue reflect.Value, getFieldName func(reflect.StructField) string) url.Values {
