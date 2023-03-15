@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisBeginTransactionPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisBeginTransactionRequest struct {
-	PathParams TigrisBeginTransactionPathParams
-	Request    shared.BeginTransactionRequest `request:"mediaType=application/json"`
+	BeginTransactionRequest shared.BeginTransactionRequest `request:"mediaType=application/json"`
+	Project                 string                         `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisBeginTransactionResponse struct {

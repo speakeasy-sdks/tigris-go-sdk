@@ -32,11 +32,11 @@ func newNamespace(defaultClient, securityClient HTTPClient, serverURL, language,
 
 // Create - Creates a Namespace
 // Creates a new namespace, if it does not exist
-func (s *namespace) Create(ctx context.Context, request operations.CreateNamespaceRequest) (*operations.CreateNamespaceResponse, error) {
+func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRequest) (*operations.CreateNamespaceResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/management/namespaces/create"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -154,9 +154,9 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 // GetNamespaceMetadata inserts the user metadata object
 func (s *namespace) GetMetadata(ctx context.Context, request operations.ManagementGetNamespaceMetadataRequest) (*operations.ManagementGetNamespaceMetadataResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/get", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/get", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "GetNamespaceMetadataRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -219,9 +219,9 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 // InsertNamespaceMetadata inserts the namespace metadata object
 func (s *namespace) InsertMetadata(ctx context.Context, request operations.ManagementInsertNamespaceMetadataRequest) (*operations.ManagementInsertNamespaceMetadataResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/insert", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/insert", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "InsertNamespaceMetadataRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -339,9 +339,9 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 // UpdateNamespaceMetadata updates the user metadata object
 func (s *namespace) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateNamespaceMetadataRequest) (*operations.ManagementUpdateNamespaceMetadataResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/update", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/update", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "UpdateNamespaceMetadataRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}

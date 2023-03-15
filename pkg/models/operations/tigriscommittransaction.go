@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisCommitTransactionPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisCommitTransactionRequest struct {
-	PathParams TigrisCommitTransactionPathParams
-	Request    shared.CommitTransactionRequest `request:"mediaType=application/json"`
+	CommitTransactionRequest shared.CommitTransactionRequest `request:"mediaType=application/json"`
+	Project                  string                          `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisCommitTransactionResponse struct {

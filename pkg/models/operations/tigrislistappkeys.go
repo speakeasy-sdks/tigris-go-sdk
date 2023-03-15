@@ -5,12 +5,8 @@ import (
 	"net/http"
 )
 
-type TigrisListAppKeysPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisListAppKeysRequest struct {
-	PathParams TigrisListAppKeysPathParams
+	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisListAppKeysResponse struct {

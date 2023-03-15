@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisImportPathParams struct {
-	Collection string `pathParam:"style=simple,explode=false,name=collection"`
-	Project    string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisImportRequest struct {
-	PathParams TigrisImportPathParams
-	Request    shared.ImportRequest `request:"mediaType=application/json"`
+	ImportRequest shared.ImportRequest `request:"mediaType=application/json"`
+	Collection    string               `pathParam:"style=simple,explode=false,name=collection"`
+	Project       string               `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisImportResponse struct {

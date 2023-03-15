@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type ManagementGetUserMetadataPathParams struct {
-	MetadataKey string `pathParam:"style=simple,explode=false,name=metadataKey"`
-}
-
 type ManagementGetUserMetadataRequest struct {
-	PathParams ManagementGetUserMetadataPathParams
-	Request    shared.GetUserMetadataRequest `request:"mediaType=application/json"`
+	GetUserMetadataRequest shared.GetUserMetadataRequest `request:"mediaType=application/json"`
+	MetadataKey            string                        `pathParam:"style=simple,explode=false,name=metadataKey"`
 }
 
 type ManagementGetUserMetadataResponse struct {

@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type CacheGetPathParams struct {
+type CacheGetRequest struct {
 	Key     string `pathParam:"style=simple,explode=false,name=key"`
 	Name    string `pathParam:"style=simple,explode=false,name=name"`
 	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type CacheGetRequest struct {
-	PathParams CacheGetPathParams
 }
 
 type CacheGetResponse struct {

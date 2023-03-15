@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type SearchCreateOrUpdateIndexPathParams struct {
-	Name    string `pathParam:"style=simple,explode=false,name=name"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type SearchCreateOrUpdateIndexRequest struct {
-	PathParams SearchCreateOrUpdateIndexPathParams
-	Request    shared.CreateOrUpdateIndexRequest `request:"mediaType=application/json"`
+	CreateOrUpdateIndexRequest shared.CreateOrUpdateIndexRequest `request:"mediaType=application/json"`
+	Name                       string                            `pathParam:"style=simple,explode=false,name=name"`
+	Project                    string                            `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type SearchCreateOrUpdateIndexResponse struct {

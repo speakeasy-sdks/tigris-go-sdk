@@ -5,15 +5,11 @@ import (
 	"net/http"
 )
 
-type CacheSetPathParams struct {
-	Key     string `pathParam:"style=simple,explode=false,name=key"`
-	Name    string `pathParam:"style=simple,explode=false,name=name"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type CacheSetRequest struct {
-	PathParams CacheSetPathParams
-	Request    shared.SetRequest `request:"mediaType=application/json"`
+	SetRequest shared.SetRequest `request:"mediaType=application/json"`
+	Key        string            `pathParam:"style=simple,explode=false,name=key"`
+	Name       string            `pathParam:"style=simple,explode=false,name=name"`
+	Project    string            `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type CacheSetResponse struct {

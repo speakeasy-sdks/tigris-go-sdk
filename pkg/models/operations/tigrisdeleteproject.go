@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisDeleteProjectPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisDeleteProjectRequest struct {
-	PathParams TigrisDeleteProjectPathParams
-	Request    map[string]interface{} `request:"mediaType=application/json"`
+	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	Project     string                 `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisDeleteProjectResponse struct {

@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type SearchCreatePathParams struct {
-	Index   string `pathParam:"style=simple,explode=false,name=index"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type SearchCreateRequest struct {
-	PathParams SearchCreatePathParams
-	Request    shared.CreateDocumentRequest `request:"mediaType=application/json"`
+	CreateDocumentRequest shared.CreateDocumentRequest `request:"mediaType=application/json"`
+	Index                 string                       `pathParam:"style=simple,explode=false,name=index"`
+	Project               string                       `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type SearchCreateResponse struct {

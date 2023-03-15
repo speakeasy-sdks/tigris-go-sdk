@@ -37,9 +37,9 @@ func newSearch(defaultClient, securityClient HTTPClient, serverURL, language, sd
 //	with HTTP status code 409.
 func (s *search) CreateDocument(ctx context.Context, request operations.SearchCreateByIDRequest) (*operations.SearchCreateByIDResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/{id}", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/{id}", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "CreateByIDRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -107,9 +107,9 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 //	documents will succeed. Returns an array of status indicating the status of each document.
 func (s *search) CreateDocuments(ctx context.Context, request operations.SearchCreateRequest) (*operations.SearchCreateResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "CreateDocumentRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -175,9 +175,9 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 //	an error code and message.
 func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchDeleteRequest) (*operations.SearchDeleteResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "DeleteDocumentRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -239,9 +239,9 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 // DeleteIndex - Deletes search index
 func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDeleteIndexRequest) (*operations.SearchDeleteIndexResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "DeleteIndexRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -309,9 +309,9 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 //	Search API with multiple examples <a href="https://docs.tigrisdata.com/overview/search" title="here">here</a>.
 func (s *search) FindDocuments(ctx context.Context, request operations.SearchSearchRequest) (*operations.SearchSearchResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/search", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/search", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "SearchIndexRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -376,14 +376,14 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 //	A null is returned for the documents that are not found.
 func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetRequest) (*operations.SearchGetResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -434,7 +434,7 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 // GetIndex - Get information about a search index
 func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndexRequest) (*operations.SearchGetIndexResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
@@ -488,14 +488,14 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 // ListIndexes - List search indexes
 func (s *search) ListIndexes(ctx context.Context, request operations.SearchListIndexesRequest) (*operations.SearchListIndexesResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes", request, nil)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 
-	if err := utils.PopulateQueryParams(ctx, req, request.QueryParams); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -549,9 +549,9 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 //	you can pass the filter as follows ```{"id": "test"}```. Returns a count of number of documents deleted.
 func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.SearchDeleteByQueryRequest) (*operations.SearchDeleteByQueryResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/deleteByQuery", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/deleteByQuery", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "DeleteByQueryRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -618,9 +618,9 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 //	the status of each document.
 func (s *search) ReplaceDocuments(ctx context.Context, request operations.SearchCreateOrReplaceRequest) (*operations.SearchCreateOrReplaceResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "CreateOrReplaceDocumentRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -687,9 +687,9 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 //	field is set with a code and message.
 func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchUpdateRequest) (*operations.SearchUpdateResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "UpdateDocumentRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -751,9 +751,9 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 // UpdateIndex - Creates or updates search index
 func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreateOrUpdateIndexRequest) (*operations.SearchCreateOrUpdateIndexResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "CreateOrUpdateIndexRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}

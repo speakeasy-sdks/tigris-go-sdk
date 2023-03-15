@@ -142,11 +142,11 @@ func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 
 // ObservabilityQuotaUsage - Queries current namespace quota usage
 // Returns current namespace quota limits
-func (s *system) ObservabilityQuotaUsage(ctx context.Context, request operations.ObservabilityQuotaUsageRequest) (*operations.ObservabilityQuotaUsageResponse, error) {
+func (s *system) ObservabilityQuotaUsage(ctx context.Context, request map[string]interface{}) (*operations.ObservabilityQuotaUsageResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/usage"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -207,11 +207,11 @@ func (s *system) ObservabilityQuotaUsage(ctx context.Context, request operations
 
 // QueryQuotaLimits - Queries current namespace quota limits
 // Returns current namespace quota limits
-func (s *system) QueryQuotaLimits(ctx context.Context, request operations.ObservabilityQuotaLimitsRequest) (*operations.ObservabilityQuotaLimitsResponse, error) {
+func (s *system) QueryQuotaLimits(ctx context.Context, request map[string]interface{}) (*operations.ObservabilityQuotaLimitsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/limits"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -272,11 +272,11 @@ func (s *system) QueryQuotaLimits(ctx context.Context, request operations.Observ
 
 // QueryTimeSeriesMetrics - Queries time series metrics
 // Queries time series metrics
-func (s *system) QueryTimeSeriesMetrics(ctx context.Context, request operations.ObservabilityQueryTimeSeriesMetricsRequest) (*operations.ObservabilityQueryTimeSeriesMetricsResponse, error) {
+func (s *system) QueryTimeSeriesMetrics(ctx context.Context, request shared.QueryTimeSeriesMetricsRequest) (*operations.ObservabilityQueryTimeSeriesMetricsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/metrics/timeseries/query"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}

@@ -5,10 +5,6 @@ import (
 	"net/http"
 )
 
-type CreateNamespaceRequest struct {
-	Request shared.CreateNamespaceRequest `request:"mediaType=application/json"`
-}
-
 type CreateNamespaceResponse struct {
 	ContentType             string
 	CreateNamespaceResponse *shared.CreateNamespaceResponse

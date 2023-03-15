@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisCreateProjectPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisCreateProjectRequest struct {
-	PathParams TigrisCreateProjectPathParams
-	Request    map[string]interface{} `request:"mediaType=application/json"`
+	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	Project     string                 `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisCreateProjectResponse struct {

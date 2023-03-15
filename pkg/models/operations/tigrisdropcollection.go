@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisDropCollectionPathParams struct {
-	Collection string `pathParam:"style=simple,explode=false,name=collection"`
-	Project    string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisDropCollectionRequest struct {
-	PathParams TigrisDropCollectionPathParams
-	Request    shared.DropCollectionRequest `request:"mediaType=application/json"`
+	DropCollectionRequest shared.DropCollectionRequest `request:"mediaType=application/json"`
+	Collection            string                       `pathParam:"style=simple,explode=false,name=collection"`
+	Project               string                       `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisDropCollectionResponse struct {

@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisInsertPathParams struct {
-	Collection string `pathParam:"style=simple,explode=false,name=collection"`
-	Project    string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisInsertRequest struct {
-	PathParams TigrisInsertPathParams
-	Request    shared.InsertRequest `request:"mediaType=application/json"`
+	InsertRequest shared.InsertRequest `request:"mediaType=application/json"`
+	Collection    string               `pathParam:"style=simple,explode=false,name=collection"`
+	Project       string               `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisInsertResponse struct {

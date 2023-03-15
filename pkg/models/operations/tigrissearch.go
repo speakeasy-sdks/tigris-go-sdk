@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisSearchPathParams struct {
-	Collection string `pathParam:"style=simple,explode=false,name=collection"`
-	Project    string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisSearchRequest struct {
-	PathParams TigrisSearchPathParams
-	Request    shared.SearchRequest `request:"mediaType=application/json"`
+	SearchRequest shared.SearchRequest `request:"mediaType=application/json"`
+	Collection    string               `pathParam:"style=simple,explode=false,name=collection"`
+	Project       string               `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisSearchResponse struct {

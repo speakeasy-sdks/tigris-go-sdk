@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisReadPathParams struct {
-	Collection string `pathParam:"style=simple,explode=false,name=collection"`
-	Project    string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisReadRequest struct {
-	PathParams TigrisReadPathParams
-	Request    shared.ReadRequest `request:"mediaType=application/json"`
+	ReadRequest shared.ReadRequest `request:"mediaType=application/json"`
+	Collection  string             `pathParam:"style=simple,explode=false,name=collection"`
+	Project     string             `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisReadResponse struct {

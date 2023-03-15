@@ -5,12 +5,8 @@ import (
 	"net/http"
 )
 
-type CacheListCachesPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type CacheListCachesRequest struct {
-	PathParams CacheListCachesPathParams
+	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type CacheListCachesResponse struct {

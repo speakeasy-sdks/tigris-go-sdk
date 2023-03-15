@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisUpdateAppKeyPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisUpdateAppKeyRequest struct {
-	PathParams TigrisUpdateAppKeyPathParams
-	Request    shared.UpdateAppKeyRequest `request:"mediaType=application/json"`
+	UpdateAppKeyRequest shared.UpdateAppKeyRequest `request:"mediaType=application/json"`
+	Project             string                     `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisUpdateAppKeyResponse struct {

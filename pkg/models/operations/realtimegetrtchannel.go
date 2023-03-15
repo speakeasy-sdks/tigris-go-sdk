@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type RealtimeGetRTChannelPathParams struct {
+type RealtimeGetRTChannelRequest struct {
 	Channel string `pathParam:"style=simple,explode=false,name=channel"`
 	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type RealtimeGetRTChannelRequest struct {
-	PathParams RealtimeGetRTChannelPathParams
 }
 
 type RealtimeGetRTChannelResponse struct {

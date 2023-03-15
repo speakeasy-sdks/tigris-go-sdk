@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisDeleteBranchPathParams struct {
-	Branch  string `pathParam:"style=simple,explode=false,name=branch"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisDeleteBranchRequest struct {
-	PathParams TigrisDeleteBranchPathParams
-	Request    map[string]interface{} `request:"mediaType=application/json"`
+	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	Branch      string                 `pathParam:"style=simple,explode=false,name=branch"`
+	Project     string                 `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisDeleteBranchResponse struct {

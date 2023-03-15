@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type SearchGetIndexPathParams struct {
+type SearchGetIndexRequest struct {
 	Name    string `pathParam:"style=simple,explode=false,name=name"`
 	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type SearchGetIndexRequest struct {
-	PathParams SearchGetIndexPathParams
 }
 
 type SearchGetIndexResponse struct {

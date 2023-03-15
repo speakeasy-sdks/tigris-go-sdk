@@ -5,17 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisListCollectionsPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type TigrisListCollectionsQueryParams struct {
-	Branch *string `queryParam:"style=form,explode=true,name=branch"`
-}
-
 type TigrisListCollectionsRequest struct {
-	PathParams  TigrisListCollectionsPathParams
-	QueryParams TigrisListCollectionsQueryParams
+	Branch  *string `queryParam:"style=form,explode=true,name=branch"`
+	Project string  `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisListCollectionsResponse struct {

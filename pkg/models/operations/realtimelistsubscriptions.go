@@ -5,19 +5,11 @@ import (
 	"net/http"
 )
 
-type RealtimeListSubscriptionsPathParams struct {
-	Channel string `pathParam:"style=simple,explode=false,name=channel"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type RealtimeListSubscriptionsQueryParams struct {
-	Page     *int `queryParam:"style=form,explode=true,name=page"`
-	PageSize *int `queryParam:"style=form,explode=true,name=page_size"`
-}
-
 type RealtimeListSubscriptionsRequest struct {
-	PathParams  RealtimeListSubscriptionsPathParams
-	QueryParams RealtimeListSubscriptionsQueryParams
+	Channel  string `pathParam:"style=simple,explode=false,name=channel"`
+	Page     *int   `queryParam:"style=form,explode=true,name=page"`
+	PageSize *int   `queryParam:"style=form,explode=true,name=page_size"`
+	Project  string `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type RealtimeListSubscriptionsResponse struct {

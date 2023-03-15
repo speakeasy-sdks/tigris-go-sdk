@@ -5,20 +5,12 @@ import (
 	"net/http"
 )
 
-type CacheKeysPathParams struct {
-	Name    string `pathParam:"style=simple,explode=false,name=name"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type CacheKeysQueryParams struct {
+type CacheKeysRequest struct {
 	Count   *int64  `queryParam:"style=form,explode=true,name=count"`
 	Cursor  *int64  `queryParam:"style=form,explode=true,name=cursor"`
+	Name    string  `pathParam:"style=simple,explode=false,name=name"`
 	Pattern *string `queryParam:"style=form,explode=true,name=pattern"`
-}
-
-type CacheKeysRequest struct {
-	PathParams  CacheKeysPathParams
-	QueryParams CacheKeysQueryParams
+	Project string  `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type CacheKeysResponse struct {

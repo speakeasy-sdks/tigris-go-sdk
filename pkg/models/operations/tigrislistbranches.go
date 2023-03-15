@@ -5,12 +5,8 @@ import (
 	"net/http"
 )
 
-type TigrisListBranchesPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisListBranchesRequest struct {
-	PathParams TigrisListBranchesPathParams
+	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisListBranchesResponse struct {

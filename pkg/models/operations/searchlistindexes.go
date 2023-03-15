@@ -5,19 +5,11 @@ import (
 	"net/http"
 )
 
-type SearchListIndexesPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type SearchListIndexesQueryParams struct {
+type SearchListIndexesRequest struct {
 	FilterBranch     *string `queryParam:"style=form,explode=true,name=filter.branch"`
 	FilterCollection *string `queryParam:"style=form,explode=true,name=filter.collection"`
 	FilterType       *string `queryParam:"style=form,explode=true,name=filter.type"`
-}
-
-type SearchListIndexesRequest struct {
-	PathParams  SearchListIndexesPathParams
-	QueryParams SearchListIndexesQueryParams
+	Project          string  `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type SearchListIndexesResponse struct {

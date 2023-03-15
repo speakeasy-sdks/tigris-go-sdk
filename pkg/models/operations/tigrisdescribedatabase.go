@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisDescribeDatabasePathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisDescribeDatabaseRequest struct {
-	PathParams TigrisDescribeDatabasePathParams
-	Request    shared.DescribeDatabaseRequest `request:"mediaType=application/json"`
+	DescribeDatabaseRequest shared.DescribeDatabaseRequest `request:"mediaType=application/json"`
+	Project                 string                         `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisDescribeDatabaseResponse struct {

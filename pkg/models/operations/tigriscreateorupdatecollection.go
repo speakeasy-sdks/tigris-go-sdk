@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisCreateOrUpdateCollectionPathParams struct {
-	Collection string `pathParam:"style=simple,explode=false,name=collection"`
-	Project    string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisCreateOrUpdateCollectionRequest struct {
-	PathParams TigrisCreateOrUpdateCollectionPathParams
-	Request    shared.CreateOrUpdateCollectionRequest `request:"mediaType=application/json"`
+	CreateOrUpdateCollectionRequest shared.CreateOrUpdateCollectionRequest `request:"mediaType=application/json"`
+	Collection                      string                                 `pathParam:"style=simple,explode=false,name=collection"`
+	Project                         string                                 `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisCreateOrUpdateCollectionResponse struct {

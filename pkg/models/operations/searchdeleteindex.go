@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type SearchDeleteIndexPathParams struct {
-	Name    string `pathParam:"style=simple,explode=false,name=name"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type SearchDeleteIndexRequest struct {
-	PathParams SearchDeleteIndexPathParams
-	Request    shared.DeleteIndexRequest `request:"mediaType=application/json"`
+	DeleteIndexRequest shared.DeleteIndexRequest `request:"mediaType=application/json"`
+	Name               string                    `pathParam:"style=simple,explode=false,name=name"`
+	Project            string                    `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type SearchDeleteIndexResponse struct {

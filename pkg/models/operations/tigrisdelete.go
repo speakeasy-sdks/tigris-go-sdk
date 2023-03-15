@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisDeletePathParams struct {
-	Collection string `pathParam:"style=simple,explode=false,name=collection"`
-	Project    string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisDeleteRequest struct {
-	PathParams TigrisDeletePathParams
-	Request    shared.DeleteRequest `request:"mediaType=application/json"`
+	DeleteRequest shared.DeleteRequest `request:"mediaType=application/json"`
+	Collection    string               `pathParam:"style=simple,explode=false,name=collection"`
+	Project       string               `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisDeleteResponse struct {

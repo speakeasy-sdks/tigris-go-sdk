@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisRollbackTransactionPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisRollbackTransactionRequest struct {
-	PathParams TigrisRollbackTransactionPathParams
-	Request    shared.RollbackTransactionRequest `request:"mediaType=application/json"`
+	RollbackTransactionRequest shared.RollbackTransactionRequest `request:"mediaType=application/json"`
+	Project                    string                            `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisRollbackTransactionResponse struct {

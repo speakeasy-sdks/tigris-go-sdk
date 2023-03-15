@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisDeleteAppKeyPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisDeleteAppKeyRequest struct {
-	PathParams TigrisDeleteAppKeyPathParams
-	Request    shared.DeleteAppKeyRequest `request:"mediaType=application/json"`
+	DeleteAppKeyRequest shared.DeleteAppKeyRequest `request:"mediaType=application/json"`
+	Project             string                     `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisDeleteAppKeyResponse struct {

@@ -5,18 +5,10 @@ import (
 	"net/http"
 )
 
-type SearchGetPathParams struct {
-	Index   string `pathParam:"style=simple,explode=false,name=index"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type SearchGetQueryParams struct {
-	Ids []string `queryParam:"style=form,explode=true,name=ids"`
-}
-
 type SearchGetRequest struct {
-	PathParams  SearchGetPathParams
-	QueryParams SearchGetQueryParams
+	Ids     []string `queryParam:"style=form,explode=true,name=ids"`
+	Index   string   `pathParam:"style=simple,explode=false,name=index"`
+	Project string   `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type SearchGetResponse struct {

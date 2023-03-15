@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type RealtimePresencePathParams struct {
+type RealtimePresenceRequest struct {
 	Channel string `pathParam:"style=simple,explode=false,name=channel"`
 	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
-type RealtimePresenceRequest struct {
-	PathParams RealtimePresencePathParams
 }
 
 type RealtimePresenceResponse struct {

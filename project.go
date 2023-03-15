@@ -34,9 +34,9 @@ func newProject(defaultClient, securityClient HTTPClient, serverURL, language, s
 // Creates a new project. Returns an AlreadyExists error with a status code 409 if the project already exists.
 func (s *project) Create(ctx context.Context, request operations.TigrisCreateProjectRequest) (*operations.TigrisCreateProjectResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/create", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/create", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "RequestBody", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -99,9 +99,9 @@ func (s *project) Create(ctx context.Context, request operations.TigrisCreatePro
 // Delete Project deletes all the collections in this project along with all of the documents, and associated metadata for these collections.
 func (s *project) DeleteProject(ctx context.Context, request operations.TigrisDeleteProjectRequest) (*operations.TigrisDeleteProjectResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/delete", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/delete", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "RequestBody", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}

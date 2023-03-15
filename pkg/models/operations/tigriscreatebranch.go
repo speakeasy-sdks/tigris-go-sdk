@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type TigrisCreateBranchPathParams struct {
-	Branch  string `pathParam:"style=simple,explode=false,name=branch"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisCreateBranchRequest struct {
-	PathParams TigrisCreateBranchPathParams
-	Request    map[string]interface{} `request:"mediaType=application/json"`
+	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	Branch      string                 `pathParam:"style=simple,explode=false,name=branch"`
+	Project     string                 `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisCreateBranchResponse struct {

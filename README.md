@@ -22,19 +22,17 @@ import (
 )
 
 func main() {
-    s := tigris.New(tigris.WithSecurity(
-        shared.Security{
+    s := tigris.New(
+        WithSecurity(        shared.Security{
             BearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
-        },
-    ))
-    
+        }),
+    )
+
     req := operations.TigrisDeleteAppKeyRequest{
-        PathParams: operations.TigrisDeleteAppKeyPathParams{
-            Project: "unde",
+        DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
+            ID: "unde",
         },
-        Request: shared.DeleteAppKeyRequest{
-            ID: "deserunt",
-        },
+        Project: "deserunt",
     }
 
     ctx := context.Background()

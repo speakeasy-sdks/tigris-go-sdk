@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type CacheDeleteCachePathParams struct {
-	Name    string `pathParam:"style=simple,explode=false,name=name"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type CacheDeleteCacheRequest struct {
-	PathParams CacheDeleteCachePathParams
-	Request    map[string]interface{} `request:"mediaType=application/json"`
+	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	Name        string                 `pathParam:"style=simple,explode=false,name=name"`
+	Project     string                 `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type CacheDeleteCacheResponse struct {

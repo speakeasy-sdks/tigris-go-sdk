@@ -5,13 +5,9 @@ import (
 	"net/http"
 )
 
-type TigrisRotateAppKeySecretPathParams struct {
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type TigrisRotateAppKeySecretRequest struct {
-	PathParams TigrisRotateAppKeySecretPathParams
-	Request    shared.RotateAppKeyRequest `request:"mediaType=application/json"`
+	RotateAppKeyRequest shared.RotateAppKeyRequest `request:"mediaType=application/json"`
+	Project             string                     `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type TigrisRotateAppKeySecretResponse struct {

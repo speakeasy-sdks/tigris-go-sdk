@@ -5,10 +5,6 @@ import (
 	"net/http"
 )
 
-type ObservabilityQueryTimeSeriesMetricsRequest struct {
-	Request shared.QueryTimeSeriesMetricsRequest `request:"mediaType=application/json"`
-}
-
 type ObservabilityQueryTimeSeriesMetricsResponse struct {
 	ContentType                    string
 	QueryTimeSeriesMetricsResponse *shared.QueryTimeSeriesMetricsResponse

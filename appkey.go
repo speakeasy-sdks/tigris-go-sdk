@@ -33,9 +33,9 @@ func newAppKey(defaultClient, securityClient HTTPClient, serverURL, language, sd
 // Delete an app key.
 func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppKeyRequest) (*operations.TigrisDeleteAppKeyResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/delete", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/delete", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "DeleteAppKeyRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -98,7 +98,7 @@ func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 // Lists all app keys visible to requesting actor.
 func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysRequest) (*operations.TigrisListAppKeysResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys", request, nil)
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
@@ -153,9 +153,9 @@ func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysR
 // Endpoint is used to rotate the secret for the app key.
 func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppKeySecretRequest) (*operations.TigrisRotateAppKeySecretResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/rotate", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/rotate", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "RotateAppKeyRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -218,9 +218,9 @@ func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppK
 // Create an app key.
 func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.TigrisCreateAppKeyRequest) (*operations.TigrisCreateAppKeyResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/create", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/create", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "CreateAppKeyRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -283,9 +283,9 @@ func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.Tigr
 // Update the description of an app key.
 func (s *appKey) Update(ctx context.Context, request operations.TigrisUpdateAppKeyRequest) (*operations.TigrisUpdateAppKeyResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/update", request.PathParams)
+	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/update", request, nil)
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "UpdateAppKeyRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}

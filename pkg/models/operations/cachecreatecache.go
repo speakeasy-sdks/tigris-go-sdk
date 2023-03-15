@@ -5,14 +5,10 @@ import (
 	"net/http"
 )
 
-type CacheCreateCachePathParams struct {
-	Name    string `pathParam:"style=simple,explode=false,name=name"`
-	Project string `pathParam:"style=simple,explode=false,name=project"`
-}
-
 type CacheCreateCacheRequest struct {
-	PathParams CacheCreateCachePathParams
-	Request    shared.CreateCacheRequest `request:"mediaType=application/json"`
+	CreateCacheRequest shared.CreateCacheRequest `request:"mediaType=application/json"`
+	Name               string                    `pathParam:"style=simple,explode=false,name=name"`
+	Project            string                    `pathParam:"style=simple,explode=false,name=project"`
 }
 
 type CacheCreateCacheResponse struct {
