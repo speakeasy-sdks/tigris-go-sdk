@@ -23,7 +23,7 @@ import (
 
 func main() {
     s := tigris.New(
-        WithSecurity(        shared.Security{
+        tigris.WithSecurity(shared.Security{
             BearerAuth: "Bearer YOUR_BEARER_TOKEN_HERE",
         }),
     )
