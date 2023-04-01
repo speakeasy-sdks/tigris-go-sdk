@@ -19,9 +19,9 @@ func main() {
 
     req := operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: "unde",
+            ID: "corrupti",
         },
-        Project: "deserunt",
+        Project: "provident",
     }
 
     ctx := context.Background()

@@ -30,9 +30,9 @@ func main() {
 
     req := operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: "unde",
+            ID: "corrupti",
         },
-        Project: "deserunt",
+        Project: "provident",
     }
 
     ctx := context.Background()
@@ -49,7 +49,7 @@ func main() {
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### AppKey

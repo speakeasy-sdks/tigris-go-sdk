@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 type RollupFunctionAggregatorEnum string
 
 const (
@@ -11,6 +16,28 @@ const (
 	RollupFunctionAggregatorEnumRollupAggregatorMax   RollupFunctionAggregatorEnum = "ROLLUP_AGGREGATOR_MAX"
 	RollupFunctionAggregatorEnumRollupAggregatorAvg   RollupFunctionAggregatorEnum = "ROLLUP_AGGREGATOR_AVG"
 )
+
+func (e *RollupFunctionAggregatorEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "ROLLUP_AGGREGATOR_SUM":
+		fallthrough
+	case "ROLLUP_AGGREGATOR_COUNT":
+		fallthrough
+	case "ROLLUP_AGGREGATOR_MIN":
+		fallthrough
+	case "ROLLUP_AGGREGATOR_MAX":
+		fallthrough
+	case "ROLLUP_AGGREGATOR_AVG":
+		*e = RollupFunctionAggregatorEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RollupFunctionAggregatorEnum: %s", s)
+	}
+}
 
 // RollupFunction - Rollup function aggregates the slices of metrics returned by original query and lets you operate on the slices using aggregator and constructs the bigger slice of your choice of interval (specified in seconds).
 type RollupFunction struct {

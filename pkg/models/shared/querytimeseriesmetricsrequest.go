@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 type QueryTimeSeriesMetricsRequestFunctionEnum string
 
 const (
@@ -9,6 +14,24 @@ const (
 	QueryTimeSeriesMetricsRequestFunctionEnumCount QueryTimeSeriesMetricsRequestFunctionEnum = "COUNT"
 	QueryTimeSeriesMetricsRequestFunctionEnumNone  QueryTimeSeriesMetricsRequestFunctionEnum = "NONE"
 )
+
+func (e *QueryTimeSeriesMetricsRequestFunctionEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "RATE":
+		fallthrough
+	case "COUNT":
+		fallthrough
+	case "NONE":
+		*e = QueryTimeSeriesMetricsRequestFunctionEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestFunctionEnum: %s", s)
+	}
+}
 
 type QueryTimeSeriesMetricsRequestSpaceAggregationEnum string
 
@@ -19,6 +42,26 @@ const (
 	QueryTimeSeriesMetricsRequestSpaceAggregationEnumSum QueryTimeSeriesMetricsRequestSpaceAggregationEnum = "SUM"
 )
 
+func (e *QueryTimeSeriesMetricsRequestSpaceAggregationEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "AVG":
+		fallthrough
+	case "MIN":
+		fallthrough
+	case "MAX":
+		fallthrough
+	case "SUM":
+		*e = QueryTimeSeriesMetricsRequestSpaceAggregationEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestSpaceAggregationEnum: %s", s)
+	}
+}
+
 type QueryTimeSeriesMetricsRequestTigrisOperationEnum string
 
 const (
@@ -27,6 +70,26 @@ const (
 	QueryTimeSeriesMetricsRequestTigrisOperationEnumWrite    QueryTimeSeriesMetricsRequestTigrisOperationEnum = "WRITE"
 	QueryTimeSeriesMetricsRequestTigrisOperationEnumMetadata QueryTimeSeriesMetricsRequestTigrisOperationEnum = "METADATA"
 )
+
+func (e *QueryTimeSeriesMetricsRequestTigrisOperationEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "ALL":
+		fallthrough
+	case "READ":
+		fallthrough
+	case "WRITE":
+		fallthrough
+	case "METADATA":
+		*e = QueryTimeSeriesMetricsRequestTigrisOperationEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestTigrisOperationEnum: %s", s)
+	}
+}
 
 // QueryTimeSeriesMetricsRequest - Requests the time series metrics
 type QueryTimeSeriesMetricsRequest struct {

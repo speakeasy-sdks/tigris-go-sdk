@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // ErrorCodeEnum - The status code is a short, machine parsable string, which uniquely identifies the error type. Tigris to HTTP code mapping [here](/reference/http-code)
 type ErrorCodeEnum string
 
@@ -27,6 +32,58 @@ const (
 	ErrorCodeEnumBadGateway         ErrorCodeEnum = "BAD_GATEWAY"
 	ErrorCodeEnumMethodNotAllowed   ErrorCodeEnum = "METHOD_NOT_ALLOWED"
 )
+
+func (e *ErrorCodeEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "OK":
+		fallthrough
+	case "CANCELLED":
+		fallthrough
+	case "UNKNOWN":
+		fallthrough
+	case "INVALID_ARGUMENT":
+		fallthrough
+	case "DEADLINE_EXCEEDED":
+		fallthrough
+	case "NOT_FOUND":
+		fallthrough
+	case "ALREADY_EXISTS":
+		fallthrough
+	case "PERMISSION_DENIED":
+		fallthrough
+	case "RESOURCE_EXHAUSTED":
+		fallthrough
+	case "FAILED_PRECONDITION":
+		fallthrough
+	case "ABORTED":
+		fallthrough
+	case "OUT_OF_RANGE":
+		fallthrough
+	case "UNIMPLEMENTED":
+		fallthrough
+	case "INTERNAL":
+		fallthrough
+	case "UNAVAILABLE":
+		fallthrough
+	case "DATA_LOSS":
+		fallthrough
+	case "UNAUTHENTICATED":
+		fallthrough
+	case "CONFLICT":
+		fallthrough
+	case "BAD_GATEWAY":
+		fallthrough
+	case "METHOD_NOT_ALLOWED":
+		*e = ErrorCodeEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ErrorCodeEnum: %s", s)
+	}
+}
 
 // Error - The Error type defines a logical error model
 type Error struct {
