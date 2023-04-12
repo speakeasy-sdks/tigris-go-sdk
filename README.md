@@ -28,6 +28,7 @@ func main() {
         }),
     )
 
+    ctx := context.Background()    
     req := operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
             ID: "corrupti",
@@ -35,7 +36,6 @@ func main() {
         Project: "provident",
     }
 
-    ctx := context.Background()
     res, err := s.AppKey.Delete(ctx, req)
     if err != nil {
         log.Fatal(err)

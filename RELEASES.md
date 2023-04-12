@@ -79,3 +79,11 @@ Based on:
 - Speakeasy CLI 1.19.3 (2.16.7) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Go v0.4.0] https://github.com/speakeasy-sdks/tigris-go-sdk/releases/tag/v0.4.0 - .
+
+## 2023-04-12 00:30:19
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 https://prod.speakeasyapi.dev/v1/apis/tigris-api/version/0.0.1/schema/download
+- Speakeasy CLI 1.19.7 (2.17.9) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v0.5.0] https://github.com/speakeasy-sdks/tigris-go-sdk/releases/tag/v0.5.0 - .
