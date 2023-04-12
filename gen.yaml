@@ -7,8 +7,8 @@ management:
 generation:
   telemetryEnabled: false
   sdkClassName: tigris
-  sdkFlattening: true
+  sdkFlattening: false
   singleTagPerOp: false
 go:
-  version: 0.5.0
+  version: 0.5.1
   packageName: github.com/speakeasy-sdks/tigris-go-sdk
