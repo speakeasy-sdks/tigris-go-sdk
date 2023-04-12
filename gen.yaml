@@ -7,7 +7,7 @@ management:
 generation:
   telemetryEnabled: false
   sdkClassName: tigris
-  sdkFlattening: false
+  sdkFlattening: true
   singleTagPerOp: false
 go:
   version: 0.5.0
