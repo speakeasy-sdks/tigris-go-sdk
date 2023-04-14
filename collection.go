@@ -41,7 +41,10 @@ func newCollection(defaultClient, securityClient HTTPClient, serverURL, language
 //	   <li> `MESSAGES`: Offers event streaming APIs.
 func (s *collection) Create(ctx context.Context, request operations.TigrisCreateOrUpdateCollectionRequest) (*operations.TigrisCreateOrUpdateCollectionResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/createOrUpdate", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/createOrUpdate", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "CreateOrUpdateCollectionRequest", "json")
 	if err != nil {
@@ -106,7 +109,10 @@ func (s *collection) Create(ctx context.Context, request operations.TigrisCreate
 // Delete a range of documents in the collection using the condition provided in the filter.
 func (s *collection) DeleteDocuments(ctx context.Context, request operations.TigrisDeleteRequest) (*operations.TigrisDeleteResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/delete", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/delete", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "DeleteRequest", "json")
 	if err != nil {
@@ -171,7 +177,10 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 // Returns the information related to the collection. This can be used to retrieve the schema or size of the collection.
 func (s *collection) Describe(ctx context.Context, request operations.TigrisDescribeCollectionRequest) (*operations.TigrisDescribeCollectionResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/describe", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/describe", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "DescribeCollectionRequest", "json")
 	if err != nil {
@@ -238,7 +247,10 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 //	documents inside this collection and any metadata associated with it.
 func (s *collection) Drop(ctx context.Context, request operations.TigrisDropCollectionRequest) (*operations.TigrisDropCollectionResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/drop", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/drop", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "DropCollectionRequest", "json")
 	if err != nil {
@@ -308,7 +320,10 @@ func (s *collection) Drop(ctx context.Context, request operations.TigrisDropColl
 //	 * Creates collection with inferred schema (if requested)
 func (s *collection) ImportDocuments(ctx context.Context, request operations.TigrisImportRequest) (*operations.TigrisImportResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/import", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/import", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "ImportRequest", "json")
 	if err != nil {
@@ -376,7 +391,10 @@ func (s *collection) ImportDocuments(ctx context.Context, request operations.Tig
 //	already exists. To replace documents, use REPLACE API instead of INSERT.
 func (s *collection) InsertDocuments(ctx context.Context, request operations.TigrisInsertRequest) (*operations.TigrisInsertResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/insert", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/insert", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "InsertRequest", "json")
 	if err != nil {
@@ -447,7 +465,10 @@ func (s *collection) InsertDocuments(ctx context.Context, request operations.Tig
 //	of the Read API <a href="https://docs.tigrisdata.com/overview/query" title="here">here</a>.
 func (s *collection) ReadDocuments(ctx context.Context, request operations.TigrisReadRequest) (*operations.TigrisReadResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/read", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/read", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "ReadRequest", "json")
 	if err != nil {
@@ -512,7 +533,10 @@ func (s *collection) ReadDocuments(ctx context.Context, request operations.Tigri
 // Inserts the documents or replaces the existing documents in the collections.
 func (s *collection) ReplaceDocuments(ctx context.Context, request operations.TigrisReplaceRequest) (*operations.TigrisReplaceResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/replace", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/replace", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "ReplaceRequest", "json")
 	if err != nil {
@@ -581,7 +605,10 @@ func (s *collection) ReplaceDocuments(ctx context.Context, request operations.Ti
 //	You can find more detailed documentation of the Search API with multiple examples <a href="https://docs.tigrisdata.com/overview/search" title="here">here</a>.
 func (s *collection) SearchDocuments(ctx context.Context, request operations.TigrisSearchRequest) (*operations.TigrisSearchResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/search", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/search", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "SearchRequest", "json")
 	if err != nil {
@@ -646,7 +673,10 @@ func (s *collection) SearchDocuments(ctx context.Context, request operations.Tig
 // Update a range of documents in the collection using the condition provided in the filter.
 func (s *collection) UpdateDocuments(ctx context.Context, request operations.TigrisUpdateRequest) (*operations.TigrisUpdateResponse, error) {
 	baseURL := s.serverURL
-	url := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/update", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/update", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "UpdateRequest", "json")
 	if err != nil {

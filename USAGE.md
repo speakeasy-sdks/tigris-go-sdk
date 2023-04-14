@@ -20,9 +20,9 @@ func main() {
     ctx := context.Background()    
     req := operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: "corrupti",
+            ID: "89bd9d8d-69a6-474e-8f46-7cc8796ed151",
         },
-        Project: "provident",
+        Project: "deserunt",
     }
 
     res, err := s.AppKey.Delete(ctx, req)
