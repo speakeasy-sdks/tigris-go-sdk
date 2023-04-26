@@ -25,6 +25,21 @@ type HTTPClient interface {
 // String provides a helper function to return a pointer to a string
 func String(s string) *string { return &s }
 
+// Bool provides a helper function to return a pointer to a bool
+func Bool(b bool) *bool { return &b }
+
+// Int provides a helper function to return a pointer to an int
+func Int(i int) *int { return &i }
+
+// Int64 provides a helper function to return a pointer to an int64
+func Int64(i int64) *int64 { return &i }
+
+// Float32 provides a helper function to return a pointer to a float32
+func Float32(f float32) *float32 { return &f }
+
+// Float64 provides a helper function to return a pointer to a float64
+func Float64(f float64) *float64 { return &f }
+
 // Tigris - # Overview
 // This section is organized around HTTP APIs. The APIs accepts JSON requests and returns JSON-encoded responses.The APIs conforms to standard HTTP status codes.
 //
@@ -151,8 +166,8 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Tigris {
 	sdk := &Tigris{
 		_language:   "go",
-		_sdkVersion: "0.6.0",
-		_genVersion: "2.18.0",
+		_sdkVersion: "0.7.0",
+		_genVersion: "2.21.1",
 	}
 	for _, opt := range opts {
 		opt(sdk)

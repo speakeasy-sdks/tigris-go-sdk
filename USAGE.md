@@ -2,12 +2,12 @@
 ```go
 package main
 
-import (
-    "context"
-    "log"
-    "github.com/speakeasy-sdks/tigris-go-sdk"
-    "github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
-    "github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+import(
+	"context"
+	"log"
+	"github.com/speakeasy-sdks/tigris-go-sdk"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
     ctx := context.Background()    
     req := operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: "89bd9d8d-69a6-474e-8f46-7cc8796ed151",
+            ID: tigris.String("89bd9d8d-69a6-474e-8f46-7cc8796ed151"),
         },
         Project: "deserunt",
     }

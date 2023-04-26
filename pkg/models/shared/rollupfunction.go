@@ -17,6 +17,10 @@ const (
 	RollupFunctionAggregatorEnumRollupAggregatorAvg   RollupFunctionAggregatorEnum = "ROLLUP_AGGREGATOR_AVG"
 )
 
+func (e RollupFunctionAggregatorEnum) ToPointer() *RollupFunctionAggregatorEnum {
+	return &e
+}
+
 func (e *RollupFunctionAggregatorEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

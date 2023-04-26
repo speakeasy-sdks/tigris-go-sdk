@@ -13,6 +13,7 @@ tigris.go
 go.mod
 go.sum
 pkg/types/date.go
+pkg/types/datetime.go
 pkg/utils/contenttype.go
 pkg/utils/form.go
 pkg/utils/headers.go
@@ -235,4 +236,16 @@ pkg/models/shared/insertusermetadatarequest.go
 pkg/models/shared/updateusermetadataresponse.go
 pkg/models/shared/updateusermetadatarequest.go
 pkg/models/shared/security.go
+docs/tigris/README.md
+docs/appkey/README.md
+docs/auth/README.md
+docs/cache/README.md
+docs/channel/README.md
+docs/collection/README.md
+docs/database/README.md
+docs/namespace/README.md
+docs/project/README.md
+docs/search/README.md
+docs/system/README.md
+docs/user/README.md
 USAGE.md

@@ -15,6 +15,10 @@ const (
 	QueryTimeSeriesMetricsRequestFunctionEnumNone  QueryTimeSeriesMetricsRequestFunctionEnum = "NONE"
 )
 
+func (e QueryTimeSeriesMetricsRequestFunctionEnum) ToPointer() *QueryTimeSeriesMetricsRequestFunctionEnum {
+	return &e
+}
+
 func (e *QueryTimeSeriesMetricsRequestFunctionEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -41,6 +45,10 @@ const (
 	QueryTimeSeriesMetricsRequestSpaceAggregationEnumMax QueryTimeSeriesMetricsRequestSpaceAggregationEnum = "MAX"
 	QueryTimeSeriesMetricsRequestSpaceAggregationEnumSum QueryTimeSeriesMetricsRequestSpaceAggregationEnum = "SUM"
 )
+
+func (e QueryTimeSeriesMetricsRequestSpaceAggregationEnum) ToPointer() *QueryTimeSeriesMetricsRequestSpaceAggregationEnum {
+	return &e
+}
 
 func (e *QueryTimeSeriesMetricsRequestSpaceAggregationEnum) UnmarshalJSON(data []byte) error {
 	var s string
@@ -70,6 +78,10 @@ const (
 	QueryTimeSeriesMetricsRequestTigrisOperationEnumWrite    QueryTimeSeriesMetricsRequestTigrisOperationEnum = "WRITE"
 	QueryTimeSeriesMetricsRequestTigrisOperationEnumMetadata QueryTimeSeriesMetricsRequestTigrisOperationEnum = "METADATA"
 )
+
+func (e QueryTimeSeriesMetricsRequestTigrisOperationEnum) ToPointer() *QueryTimeSeriesMetricsRequestTigrisOperationEnum {
+	return &e
+}
 
 func (e *QueryTimeSeriesMetricsRequestTigrisOperationEnum) UnmarshalJSON(data []byte) error {
 	var s string

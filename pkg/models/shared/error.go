@@ -33,6 +33,10 @@ const (
 	ErrorCodeEnumMethodNotAllowed   ErrorCodeEnum = "METHOD_NOT_ALLOWED"
 )
 
+func (e ErrorCodeEnum) ToPointer() *ErrorCodeEnum {
+	return &e
+}
+
 func (e *ErrorCodeEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
