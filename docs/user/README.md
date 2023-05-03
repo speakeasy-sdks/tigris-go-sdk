@@ -34,8 +34,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.ManagementGetUserMetadataRequest{
+    ctx := context.Background()
+    res, err := s.User.GetMetadata(ctx, operations.ManagementGetUserMetadataRequest{
         GetUserMetadataRequest: shared.GetUserMetadataRequest{
             MetadataKey: tigris.String("qui"),
             Value: map[string]interface{}{
@@ -46,9 +46,7 @@ func main() {
             },
         },
         MetadataKey: "at",
-    }
-
-    res, err := s.User.GetMetadata(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -83,8 +81,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.ManagementInsertUserMetadataRequest{
+    ctx := context.Background()
+    res, err := s.User.InsertMetadata(ctx, operations.ManagementInsertUserMetadataRequest{
         InsertUserMetadataRequest: shared.InsertUserMetadataRequest{
             MetadataKey: tigris.String("et"),
             Value: map[string]interface{}{
@@ -93,9 +91,7 @@ func main() {
             },
         },
         MetadataKey: "adipisci",
-    }
-
-    res, err := s.User.InsertMetadata(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -130,8 +126,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.ManagementUpdateUserMetadataRequest{
+    ctx := context.Background()
+    res, err := s.User.UpdateMetadata(ctx, operations.ManagementUpdateUserMetadataRequest{
         UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{
             MetadataKey: tigris.String("iste"),
             Value: map[string]interface{}{
@@ -142,9 +138,7 @@ func main() {
             },
         },
         MetadataKey: "non",
-    }
-
-    res, err := s.User.UpdateMetadata(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

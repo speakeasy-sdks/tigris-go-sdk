@@ -41,8 +41,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.TigrisBeginTransactionRequest{
+    ctx := context.Background()
+    res, err := s.Database.BeginTransaction(ctx, operations.TigrisBeginTransactionRequest{
         BeginTransactionRequest: shared.BeginTransactionRequest{
             Branch: tigris.String("maxime"),
             Options: map[string]interface{}{
@@ -53,9 +53,7 @@ func main() {
             },
         },
         Project: "facilis",
-    }
-
-    res, err := s.Database.BeginTransaction(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -91,15 +89,13 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.TigrisCommitTransactionRequest{
+    ctx := context.Background()
+    res, err := s.Database.CommitTransaction(ctx, operations.TigrisCommitTransactionRequest{
         CommitTransactionRequest: shared.CommitTransactionRequest{
             Branch: tigris.String("aliquid"),
         },
         Project: "quam",
-    }
-
-    res, err := s.Database.CommitTransaction(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -133,8 +129,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.TigrisCreateBranchRequest{
+    ctx := context.Background()
+    res, err := s.Database.CreateBranch(ctx, operations.TigrisCreateBranchRequest{
         RequestBody: map[string]interface{}{
             "temporibus": "qui",
             "neque": "fugit",
@@ -142,9 +138,7 @@ func main() {
         },
         Branch: "sunt",
         Project: "ullam",
-    }
-
-    res, err := s.Database.CreateBranch(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -179,8 +173,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.TigrisDeleteBranchRequest{
+    ctx := context.Background()
+    res, err := s.Database.DeleteBranch(ctx, operations.TigrisDeleteBranchRequest{
         RequestBody: map[string]interface{}{
             "hic": "voluptatem",
             "cumque": "soluta",
@@ -188,9 +182,7 @@ func main() {
         },
         Branch: "saepe",
         Project: "ipsum",
-    }
-
-    res, err := s.Database.DeleteBranch(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -226,17 +218,15 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.TigrisDescribeDatabaseRequest{
+    ctx := context.Background()
+    res, err := s.Database.Describe(ctx, operations.TigrisDescribeDatabaseRequest{
         DescribeDatabaseRequest: shared.DescribeDatabaseRequest{
             Branch: tigris.String("veritatis"),
             Project: tigris.String("nobis"),
             SchemaFormat: tigris.String("quos"),
         },
         Project: "tempore",
-    }
-
-    res, err := s.Database.Describe(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -270,13 +260,11 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.TigrisListCollectionsRequest{
+    ctx := context.Background()
+    res, err := s.Database.ListCollections(ctx, operations.TigrisListCollectionsRequest{
         Branch: tigris.String("cupiditate"),
         Project: "aperiam",
-    }
-
-    res, err := s.Database.ListCollections(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -312,15 +300,13 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.TigrisRollbackTransactionRequest{
+    ctx := context.Background()
+    res, err := s.Database.RollbackTransaction(ctx, operations.TigrisRollbackTransactionRequest{
         RollbackTransactionRequest: shared.RollbackTransactionRequest{
             Branch: tigris.String("delectus"),
         },
         Project: "dolorem",
-    }
-
-    res, err := s.Database.RollbackTransaction(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -354,12 +340,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.TigrisListBranchesRequest{
+    ctx := context.Background()
+    res, err := s.Database.TigrisListBranches(ctx, operations.TigrisListBranchesRequest{
         Project: "dolore",
-    }
-
-    res, err := s.Database.TigrisListBranches(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

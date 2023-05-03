@@ -22,11 +22,11 @@ func (e RollupFunctionAggregatorEnum) ToPointer() *RollupFunctionAggregatorEnum 
 }
 
 func (e *RollupFunctionAggregatorEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "ROLLUP_AGGREGATOR_SUM":
 		fallthrough
 	case "ROLLUP_AGGREGATOR_COUNT":
@@ -36,10 +36,10 @@ func (e *RollupFunctionAggregatorEnum) UnmarshalJSON(data []byte) error {
 	case "ROLLUP_AGGREGATOR_MAX":
 		fallthrough
 	case "ROLLUP_AGGREGATOR_AVG":
-		*e = RollupFunctionAggregatorEnum(s)
+		*e = RollupFunctionAggregatorEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RollupFunctionAggregatorEnum: %s", s)
+		return fmt.Errorf("invalid value for RollupFunctionAggregatorEnum: %v", v)
 	}
 }
 

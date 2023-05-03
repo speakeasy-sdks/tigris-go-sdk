@@ -34,6 +34,7 @@ func newAppKey(defaultClient, securityClient HTTPClient, serverURL, language, sd
 
 // Delete - Deletes the app key
 // Delete an app key.
+
 func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppKeyRequest) (*operations.TigrisDeleteAppKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/delete", request, nil)
@@ -102,6 +103,7 @@ func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 
 // List - List all the app keys
 // Lists all app keys visible to requesting actor.
+
 func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysRequest) (*operations.TigrisListAppKeysResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys", request, nil)
@@ -160,6 +162,7 @@ func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysR
 
 // Rotate - Rotates the app key secret
 // Endpoint is used to rotate the secret for the app key.
+
 func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppKeySecretRequest) (*operations.TigrisRotateAppKeySecretResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/rotate", request, nil)
@@ -228,6 +231,7 @@ func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppK
 
 // TigrisCreateAppKey - Creates the app key
 // Create an app key.
+
 func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.TigrisCreateAppKeyRequest) (*operations.TigrisCreateAppKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/create", request, nil)
@@ -296,6 +300,7 @@ func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.Tigr
 
 // Update - Updates the description of the app key
 // Update the description of an app key.
+
 func (s *appKey) Update(ctx context.Context, request operations.TigrisUpdateAppKeyRequest) (*operations.TigrisUpdateAppKeyResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/update", request, nil)

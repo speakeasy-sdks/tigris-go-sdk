@@ -102,13 +102,11 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := map[string]interface{}{
+    ctx := context.Background()
+    res, err := s.System.ObservabilityQuotaUsage(ctx, map[string]interface{}{
         "quasi": "a",
         "error": "sint",
-    }
-
-    res, err := s.System.ObservabilityQuotaUsage(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -141,15 +139,13 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := map[string]interface{}{
+    ctx := context.Background()
+    res, err := s.System.QueryQuotaLimits(ctx, map[string]interface{}{
         "possimus": "quia",
         "eveniet": "asperiores",
         "facere": "veritatis",
         "consequuntur": "quasi",
-    }
-
-    res, err := s.System.QueryQuotaLimits(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -183,8 +179,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := shared.QueryTimeSeriesMetricsRequest{
+    ctx := context.Background()
+    res, err := s.System.QueryTimeSeriesMetrics(ctx, shared.QueryTimeSeriesMetricsRequest{
         AdditionalFunctions: []shared.AdditionalFunction{
             shared.AdditionalFunction{
                 Rollup: &shared.RollupFunction{
@@ -221,9 +217,7 @@ func main() {
         SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationEnumMin.ToPointer(),
         TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationEnumAll.ToPointer(),
         To: tigris.Int64(531849),
-    }
-
-    res, err := s.System.QueryTimeSeriesMetrics(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

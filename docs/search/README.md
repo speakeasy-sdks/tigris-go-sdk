@@ -46,8 +46,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchCreateByIDRequest{
+    ctx := context.Background()
+    res, err := s.Search.CreateDocument(ctx, operations.SearchCreateByIDRequest{
         CreateByIDRequest: shared.CreateByIDRequest{
             Document: tigris.String("ex"),
             ID: tigris.String("d9f5fce6-c556-4146-83e2-50fb008c42e1"),
@@ -57,9 +57,7 @@ func main() {
         ID: "aac366c8-dd6b-4144-a907-474778a7bd46",
         Index: "suscipit",
         Project: "assumenda",
-    }
-
-    res, err := s.Search.CreateDocument(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -98,8 +96,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchCreateRequest{
+    ctx := context.Background()
+    res, err := s.Search.CreateDocuments(ctx, operations.SearchCreateRequest{
         CreateDocumentRequest: shared.CreateDocumentRequest{
             Documents: []string{
                 "praesentium",
@@ -109,9 +107,7 @@ func main() {
         },
         Index: "ipsa",
         Project: "id",
-    }
-
-    res, err := s.Search.CreateDocuments(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -148,8 +144,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchDeleteRequest{
+    ctx := context.Background()
+    res, err := s.Search.DeleteDocuments(ctx, operations.SearchDeleteRequest{
         DeleteDocumentRequest: shared.DeleteDocumentRequest{
             Ids: []string{
                 "neque",
@@ -161,9 +157,7 @@ func main() {
         },
         Index: "eius",
         Project: "eos",
-    }
-
-    res, err := s.Search.DeleteDocuments(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -198,17 +192,15 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchDeleteIndexRequest{
+    ctx := context.Background()
+    res, err := s.Search.DeleteIndex(ctx, operations.SearchDeleteIndexRequest{
         DeleteIndexRequest: shared.DeleteIndexRequest{
             Name: tigris.String("Mrs. Virginia McGlynn"),
             Project: tigris.String("ipsam"),
         },
         Name: "Emily Satterfield",
         Project: "aperiam",
-    }
-
-    res, err := s.Search.DeleteIndex(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -247,8 +239,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchSearchRequest{
+    ctx := context.Background()
+    res, err := s.Search.FindDocuments(ctx, operations.SearchSearchRequest{
         SearchIndexRequest: shared.SearchIndexRequest{
             Collation: &shared.Collation{
                 Case: tigris.String("distinctio"),
@@ -280,9 +272,7 @@ func main() {
         },
         Index: "fugit",
         Project: "fuga",
-    }
-
-    res, err := s.Search.FindDocuments(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -317,8 +307,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchGetRequest{
+    ctx := context.Background()
+    res, err := s.Search.GetDocuments(ctx, operations.SearchGetRequest{
         Ids: []string{
             "incidunt",
             "atque",
@@ -326,9 +316,7 @@ func main() {
         },
         Index: "minima",
         Project: "nisi",
-    }
-
-    res, err := s.Search.GetDocuments(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -362,13 +350,11 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchGetIndexRequest{
+    ctx := context.Background()
+    res, err := s.Search.GetIndex(ctx, operations.SearchGetIndexRequest{
         Name: "Jeannie Cronin",
         Project: "saepe",
-    }
-
-    res, err := s.Search.GetIndex(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -402,15 +388,13 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchListIndexesRequest{
+    ctx := context.Background()
+    res, err := s.Search.ListIndexes(ctx, operations.SearchListIndexesRequest{
         FilterBranch: tigris.String("occaecati"),
         FilterCollection: tigris.String("atque"),
         FilterType: tigris.String("et"),
         Project: "esse",
-    }
-
-    res, err := s.Search.ListIndexes(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -446,8 +430,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchDeleteByQueryRequest{
+    ctx := context.Background()
+    res, err := s.Search.QueryDeleteDocuments(ctx, operations.SearchDeleteByQueryRequest{
         DeleteByQueryRequest: shared.DeleteByQueryRequest{
             Filter: tigris.String("eveniet"),
             Index: tigris.String("accusamus"),
@@ -455,9 +439,7 @@ func main() {
         },
         Index: "esse",
         Project: "quod",
-    }
-
-    res, err := s.Search.QueryDeleteDocuments(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -495,8 +477,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchCreateOrReplaceRequest{
+    ctx := context.Background()
+    res, err := s.Search.ReplaceDocuments(ctx, operations.SearchCreateOrReplaceRequest{
         CreateOrReplaceDocumentRequest: shared.CreateOrReplaceDocumentRequest{
             Documents: []string{
                 "vero",
@@ -508,9 +490,7 @@ func main() {
         },
         Index: "harum",
         Project: "molestiae",
-    }
-
-    res, err := s.Search.ReplaceDocuments(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -548,8 +528,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchUpdateRequest{
+    ctx := context.Background()
+    res, err := s.Search.UpdateDocuments(ctx, operations.SearchUpdateRequest{
         UpdateDocumentRequest: shared.UpdateDocumentRequest{
             Documents: []string{
                 "occaecati",
@@ -561,9 +541,7 @@ func main() {
         },
         Index: "culpa",
         Project: "tempore",
-    }
-
-    res, err := s.Search.UpdateDocuments(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -598,8 +576,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.SearchCreateOrUpdateIndexRequest{
+    ctx := context.Background()
+    res, err := s.Search.UpdateIndex(ctx, operations.SearchCreateOrUpdateIndexRequest{
         CreateOrUpdateIndexRequest: shared.CreateOrUpdateIndexRequest{
             Name: tigris.String("Miss Blanca Cronin"),
             OnlyCreate: tigris.Bool(false),
@@ -608,9 +586,7 @@ func main() {
         },
         Name: "Mattie McLaughlin",
         Project: "quas",
-    }
-
-    res, err := s.Search.UpdateIndex(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

@@ -39,8 +39,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.CacheCreateCacheRequest{
+    ctx := context.Background()
+    res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
             Options: &shared.CreateCacheOptions{
                 TTLMs: tigris.Int64(509624),
@@ -48,9 +48,7 @@ func main() {
         },
         Name: "Jose Moen",
         Project: "perferendis",
-    }
-
-    res, err := s.Cache.Create(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -84,16 +82,14 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.CacheDeleteCacheRequest{
+    ctx := context.Background()
+    res, err := s.Cache.Delete(ctx, operations.CacheDeleteCacheRequest{
         RequestBody: map[string]interface{}{
             "reprehenderit": "ut",
         },
         Name: "Willie Hessel",
         Project: "dicta",
-    }
-
-    res, err := s.Cache.Delete(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -127,8 +123,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.CacheDelRequest{
+    ctx := context.Background()
+    res, err := s.Cache.DeleteKeys(ctx, operations.CacheDelRequest{
         RequestBody: map[string]interface{}{
             "enim": "accusamus",
             "commodi": "repudiandae",
@@ -137,9 +133,7 @@ func main() {
         Key: "quidem",
         Name: "Andy Streich",
         Project: "rem",
-    }
-
-    res, err := s.Cache.DeleteKeys(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -173,14 +167,12 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.CacheGetRequest{
+    ctx := context.Background()
+    res, err := s.Cache.GetKey(ctx, operations.CacheGetRequest{
         Key: "voluptates",
         Name: "Dr. Casey Mayer",
         Project: "enim",
-    }
-
-    res, err := s.Cache.GetKey(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -215,17 +207,15 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.CacheGetSetRequest{
+    ctx := context.Background()
+    res, err := s.Cache.GetSetKey(ctx, operations.CacheGetSetRequest{
         GetSetRequest: shared.GetSetRequest{
             Value: tigris.String("consequatur"),
         },
         Key: "est",
         Name: "Benjamin O'Connell",
         Project: "labore",
-    }
-
-    res, err := s.Cache.GetSetKey(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -259,12 +249,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.CacheListCachesRequest{
+    ctx := context.Background()
+    res, err := s.Cache.List(ctx, operations.CacheListCachesRequest{
         Project: "modi",
-    }
-
-    res, err := s.Cache.List(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -298,16 +286,14 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.CacheKeysRequest{
+    ctx := context.Background()
+    res, err := s.Cache.ListKeys(ctx, operations.CacheKeysRequest{
         Count: tigris.Int64(183191),
         Cursor: tigris.Int64(397821),
         Name: "Isaac Aufderhar",
         Pattern: tigris.String("ipsam"),
         Project: "alias",
-    }
-
-    res, err := s.Cache.ListKeys(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -342,8 +328,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.CacheSetRequest{
+    ctx := context.Background()
+    res, err := s.Cache.SetKey(ctx, operations.CacheSetRequest{
         SetRequest: shared.SetRequest{
             Ex: tigris.Int64(146441),
             Nx: tigris.Bool(false),
@@ -354,9 +340,7 @@ func main() {
         Key: "tempora",
         Name: "Geoffrey Green",
         Project: "non",
-    }
-
-    res, err := s.Cache.SetKey(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

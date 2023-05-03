@@ -35,6 +35,7 @@ func newProject(defaultClient, securityClient HTTPClient, serverURL, language, s
 
 // Create - Create Project
 // Creates a new project. Returns an AlreadyExists error with a status code 409 if the project already exists.
+
 func (s *project) Create(ctx context.Context, request operations.TigrisCreateProjectRequest) (*operations.TigrisCreateProjectResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/create", request, nil)
@@ -103,6 +104,7 @@ func (s *project) Create(ctx context.Context, request operations.TigrisCreatePro
 
 // DeleteProject - Delete Project and all resources under project
 // Delete Project deletes all the collections in this project along with all of the documents, and associated metadata for these collections.
+
 func (s *project) DeleteProject(ctx context.Context, request operations.TigrisDeleteProjectRequest) (*operations.TigrisDeleteProjectResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/delete", request, nil)
@@ -171,6 +173,7 @@ func (s *project) DeleteProject(ctx context.Context, request operations.TigrisDe
 
 // List - List Projects
 // List returns all the projects.
+
 func (s *project) List(ctx context.Context) (*operations.TigrisListProjectsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/projects"

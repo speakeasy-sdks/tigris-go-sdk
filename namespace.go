@@ -35,6 +35,7 @@ func newNamespace(defaultClient, securityClient HTTPClient, serverURL, language,
 
 // Create - Creates a Namespace
 // Creates a new namespace, if it does not exist
+
 func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRequest) (*operations.CreateNamespaceResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/management/namespaces/create"
@@ -100,6 +101,7 @@ func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRe
 
 // Get - Describe the details of all namespaces
 // Get details for all namespaces
+
 func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeNamespacesResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/management/namespaces/describe"
@@ -155,6 +157,7 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 
 // GetMetadata - Reads the Namespace Metadata
 // GetNamespaceMetadata inserts the user metadata object
+
 func (s *namespace) GetMetadata(ctx context.Context, request operations.ManagementGetNamespaceMetadataRequest) (*operations.ManagementGetNamespaceMetadataResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/get", request, nil)
@@ -223,6 +226,7 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 
 // InsertMetadata - Inserts Namespace Metadata
 // InsertNamespaceMetadata inserts the namespace metadata object
+
 func (s *namespace) InsertMetadata(ctx context.Context, request operations.ManagementInsertNamespaceMetadataRequest) (*operations.ManagementInsertNamespaceMetadataResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/insert", request, nil)
@@ -291,6 +295,7 @@ func (s *namespace) InsertMetadata(ctx context.Context, request operations.Manag
 
 // List - Lists all Namespaces
 // List all namespace
+
 func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespacesResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/management/namespaces/list"
@@ -346,6 +351,7 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 
 // UpdateMetadata - Updates Namespace Metadata
 // UpdateNamespaceMetadata updates the user metadata object
+
 func (s *namespace) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateNamespaceMetadataRequest) (*operations.ManagementUpdateNamespaceMetadataResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/update", request, nil)

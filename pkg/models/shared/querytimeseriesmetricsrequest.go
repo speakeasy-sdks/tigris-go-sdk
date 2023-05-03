@@ -20,20 +20,20 @@ func (e QueryTimeSeriesMetricsRequestFunctionEnum) ToPointer() *QueryTimeSeriesM
 }
 
 func (e *QueryTimeSeriesMetricsRequestFunctionEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "RATE":
 		fallthrough
 	case "COUNT":
 		fallthrough
 	case "NONE":
-		*e = QueryTimeSeriesMetricsRequestFunctionEnum(s)
+		*e = QueryTimeSeriesMetricsRequestFunctionEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestFunctionEnum: %s", s)
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestFunctionEnum: %v", v)
 	}
 }
 
@@ -51,11 +51,11 @@ func (e QueryTimeSeriesMetricsRequestSpaceAggregationEnum) ToPointer() *QueryTim
 }
 
 func (e *QueryTimeSeriesMetricsRequestSpaceAggregationEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "AVG":
 		fallthrough
 	case "MIN":
@@ -63,10 +63,10 @@ func (e *QueryTimeSeriesMetricsRequestSpaceAggregationEnum) UnmarshalJSON(data [
 	case "MAX":
 		fallthrough
 	case "SUM":
-		*e = QueryTimeSeriesMetricsRequestSpaceAggregationEnum(s)
+		*e = QueryTimeSeriesMetricsRequestSpaceAggregationEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestSpaceAggregationEnum: %s", s)
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestSpaceAggregationEnum: %v", v)
 	}
 }
 
@@ -84,11 +84,11 @@ func (e QueryTimeSeriesMetricsRequestTigrisOperationEnum) ToPointer() *QueryTime
 }
 
 func (e *QueryTimeSeriesMetricsRequestTigrisOperationEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "ALL":
 		fallthrough
 	case "READ":
@@ -96,10 +96,10 @@ func (e *QueryTimeSeriesMetricsRequestTigrisOperationEnum) UnmarshalJSON(data []
 	case "WRITE":
 		fallthrough
 	case "METADATA":
-		*e = QueryTimeSeriesMetricsRequestTigrisOperationEnum(s)
+		*e = QueryTimeSeriesMetricsRequestTigrisOperationEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestTigrisOperationEnum: %s", s)
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestTigrisOperationEnum: %v", v)
 	}
 }
 

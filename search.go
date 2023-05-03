@@ -34,10 +34,10 @@ func newSearch(defaultClient, securityClient HTTPClient, serverURL, language, sd
 
 // CreateDocument - Create a single document
 // CreateById is used for indexing a single document. The API expects a single document. An "id" is optional
-//
-//	and the server can automatically generate it for you in case it is missing. In cases an id is provided in
-//	the document and the document already exists then that document will not be indexed and an error is returned
-//	with HTTP status code 409.
+//  and the server can automatically generate it for you in case it is missing. In cases an id is provided in
+//  the document and the document already exists then that document will not be indexed and an error is returned
+//  with HTTP status code 409.
+
 func (s *search) CreateDocument(ctx context.Context, request operations.SearchCreateByIDRequest) (*operations.SearchCreateByIDResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/{id}", request, nil)
@@ -106,11 +106,11 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 
 // CreateDocuments - Create multiple documents
 // Create is used for indexing a single or multiple documents. The API expects an array of documents.
-//
-//	Each document is a JSON object. An "id" is optional and the server can automatically generate it for you in
-//	case it is missing. In cases when an id is provided in the document and the document already exists then that
-//	document will not be indexed and in the response there will be an error corresponding to that document id other
-//	documents will succeed. Returns an array of status indicating the status of each document.
+//  Each document is a JSON object. An "id" is optional and the server can automatically generate it for you in
+//  case it is missing. In cases when an id is provided in the document and the document already exists then that
+//  document will not be indexed and in the response there will be an error corresponding to that document id other
+//  documents will succeed. Returns an array of status indicating the status of each document.
+
 func (s *search) CreateDocuments(ctx context.Context, request operations.SearchCreateRequest) (*operations.SearchCreateResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
@@ -179,9 +179,9 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 
 // DeleteDocuments - Delete documents by ids
 // Delete one or more documents by id. Returns an array of status indicating the status of each document. Each status
-//
-//	has an error field that is set to null in case document is deleted successfully otherwise it will non null with
-//	an error code and message.
+//  has an error field that is set to null in case document is deleted successfully otherwise it will non null with
+//  an error code and message.
+
 func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchDeleteRequest) (*operations.SearchDeleteResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
@@ -249,6 +249,7 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 }
 
 // DeleteIndex - Deletes search index
+
 func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDeleteIndexRequest) (*operations.SearchDeleteIndexResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)
@@ -317,11 +318,11 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 
 // FindDocuments - Search Documents.
 // Searches an index for the documents matching the query. A search can be a term search or a phrase search.
-//
-//	Search API allows filtering the result set using filters as documented
-//	<a href="https://docs.tigrisdata.com/overview/query#specification-1" title="here">here</a>. You can also perform
-//	a faceted search by passing the fields in the facet parameter. You can find more detailed documentation of the
-//	Search API with multiple examples <a href="https://docs.tigrisdata.com/overview/search" title="here">here</a>.
+//  Search API allows filtering the result set using filters as documented
+//  <a href="https://docs.tigrisdata.com/overview/query#specification-1" title="here">here</a>. You can also perform
+//  a faceted search by passing the fields in the facet parameter. You can find more detailed documentation of the
+//  Search API with multiple examples <a href="https://docs.tigrisdata.com/overview/search" title="here">here</a>.
+
 func (s *search) FindDocuments(ctx context.Context, request operations.SearchSearchRequest) (*operations.SearchSearchResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/search", request, nil)
@@ -390,8 +391,8 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 
 // GetDocuments - Get a single or multiple documents
 // Retrieves one or more documents by id. The response is an array of documents in the same order it is requests.
-//
-//	A null is returned for the documents that are not found.
+//  A null is returned for the documents that are not found.
+
 func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetRequest) (*operations.SearchGetResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
@@ -453,6 +454,7 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 }
 
 // GetIndex - Get information about a search index
+
 func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndexRequest) (*operations.SearchGetIndexResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)
@@ -510,6 +512,7 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 }
 
 // ListIndexes - List search indexes
+
 func (s *search) ListIndexes(ctx context.Context, request operations.SearchListIndexesRequest) (*operations.SearchListIndexesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes", request, nil)
@@ -572,8 +575,8 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 
 // QueryDeleteDocuments - Delete documents by query
 // DeleteByQuery is used to delete documents that match the filter. A filter is required. To delete document by id,
-//
-//	you can pass the filter as follows ```{"id": "test"}```. Returns a count of number of documents deleted.
+//  you can pass the filter as follows ```{"id": "test"}```. Returns a count of number of documents deleted.
+
 func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.SearchDeleteByQueryRequest) (*operations.SearchDeleteByQueryResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/deleteByQuery", request, nil)
@@ -642,10 +645,10 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 
 // ReplaceDocuments - Create or replace documents in an index
 // Creates or replaces one or more documents. Each document is a JSON object. A document is replaced
-//
-//	if it already exists. An "id" is generated automatically in case it is missing in the document. The
-//	document is created if "id" doesn't exists otherwise it is replaced. Returns an array of status indicating
-//	the status of each document.
+//  if it already exists. An "id" is generated automatically in case it is missing in the document. The
+//  document is created if "id" doesn't exists otherwise it is replaced. Returns an array of status indicating
+//  the status of each document.
+
 func (s *search) ReplaceDocuments(ctx context.Context, request operations.SearchCreateOrReplaceRequest) (*operations.SearchCreateOrReplaceResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
@@ -714,10 +717,10 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 
 // UpdateDocuments - Update documents in an index
 // Updates one or more documents by "id". Each document is required to have the
-//
-//	"id" field in it. Returns an array of status indicating the status of each document. Each status
-//	has an error field that is set to null in case document is updated successfully otherwise the error
-//	field is set with a code and message.
+//  "id" field in it. Returns an array of status indicating the status of each document. Each status
+//  has an error field that is set to null in case document is updated successfully otherwise the error
+//  field is set with a code and message.
+
 func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchUpdateRequest) (*operations.SearchUpdateResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
@@ -785,6 +788,7 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 }
 
 // UpdateIndex - Creates or updates search index
+
 func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreateOrUpdateIndexRequest) (*operations.SearchCreateOrUpdateIndexResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)

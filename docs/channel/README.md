@@ -36,13 +36,11 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.RealtimeGetRTChannelRequest{
+    ctx := context.Background()
+    res, err := s.Channel.Get(ctx, operations.RealtimeGetRTChannelRequest{
         Channel: "eligendi",
         Project: "sint",
-    }
-
-    res, err := s.Channel.Get(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -76,8 +74,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.RealtimeReadMessagesRequest{
+    ctx := context.Background()
+    res, err := s.Channel.GetMessages(ctx, operations.RealtimeReadMessagesRequest{
         Channel: "aliquid",
         End: tigris.String("provident"),
         Event: tigris.String("necessitatibus"),
@@ -86,9 +84,7 @@ func main() {
         SessionID: tigris.String("dolor"),
         SocketID: tigris.String("debitis"),
         Start: tigris.String("a"),
-    }
-
-    res, err := s.Channel.GetMessages(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -122,12 +118,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.RealtimeGetRTChannelsRequest{
+    ctx := context.Background()
+    res, err := s.Channel.List(ctx, operations.RealtimeGetRTChannelsRequest{
         Project: "dolorum",
-    }
-
-    res, err := s.Channel.List(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -161,15 +155,13 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.RealtimeListSubscriptionsRequest{
+    ctx := context.Background()
+    res, err := s.Channel.ListSubscriptions(ctx, operations.RealtimeListSubscriptionsRequest{
         Channel: "in",
         Page: tigris.Int(449198),
         PageSize: tigris.Int(846409),
         Project: "maiores",
-    }
-
-    res, err := s.Channel.ListSubscriptions(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -204,8 +196,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.RealtimeMessagesRequest{
+    ctx := context.Background()
+    res, err := s.Channel.PushMessages(ctx, operations.RealtimeMessagesRequest{
         MessagesRequest: shared.MessagesRequest{
             Channel: tigris.String("rerum"),
             Messages: []shared.Message{
@@ -220,9 +212,7 @@ func main() {
         },
         Channel: "architecto",
         Project: "magnam",
-    }
-
-    res, err := s.Channel.PushMessages(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -256,13 +246,11 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.RealtimePresenceRequest{
+    ctx := context.Background()
+    res, err := s.Channel.RealtimePresence(ctx, operations.RealtimePresenceRequest{
         Channel: "et",
         Project: "excepturi",
-    }
-
-    res, err := s.Channel.RealtimePresence(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
