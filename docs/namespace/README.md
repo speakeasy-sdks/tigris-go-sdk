@@ -38,9 +38,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Namespace.Create(ctx, shared.CreateNamespaceRequest{
-        Code: tigris.Int64(286915),
-        ID: tigris.String("3a1108e0-adcf-44b9-a187-9fce953f73ef"),
-        Name: tigris.String("Darla Rau"),
+        Code: tigris.Int64(606476),
+        ID: tigris.String("53f73ef7-fbc7-4abd-b4dd-39c0f5d2cff7"),
+        Name: tigris.String("Kurt Abernathy"),
     })
     if err != nil {
         log.Fatal(err)
@@ -113,14 +113,13 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.GetMetadata(ctx, operations.ManagementGetNamespaceMetadataRequest{
         GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{
-            MetadataKey: tigris.String("similique"),
+            MetadataKey: tigris.String("ipsam"),
             Value: map[string]interface{}{
-                "vero": "ducimus",
-                "dolore": "quibusdam",
-                "illum": "sequi",
+                "aspernatur": "vel",
+                "possimus": "magnam",
             },
         },
-        MetadataKey: "natus",
+        MetadataKey: "ratione",
     })
     if err != nil {
         log.Fatal(err)
@@ -159,12 +158,14 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.InsertMetadata(ctx, operations.ManagementInsertNamespaceMetadataRequest{
         InsertNamespaceMetadataRequest: shared.InsertNamespaceMetadataRequest{
-            MetadataKey: tigris.String("impedit"),
+            MetadataKey: tigris.String("ex"),
             Value: map[string]interface{}{
-                "voluptatibus": "exercitationem",
+                "dicta": "dolor",
+                "maiores": "quasi",
+                "ex": "nulla",
             },
         },
-        MetadataKey: "nulla",
+        MetadataKey: "excepturi",
     })
     if err != nil {
         log.Fatal(err)
@@ -237,15 +238,13 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.UpdateMetadata(ctx, operations.ManagementUpdateNamespaceMetadataRequest{
         UpdateNamespaceMetadataRequest: shared.UpdateNamespaceMetadataRequest{
-            MetadataKey: tigris.String("fugit"),
+            MetadataKey: tigris.String("voluptatibus"),
             Value: map[string]interface{}{
-                "maiores": "doloribus",
-                "iusto": "eligendi",
-                "ducimus": "alias",
-                "officia": "tempora",
+                "sapiente": "quisquam",
+                "saepe": "ea",
             },
         },
-        MetadataKey: "ipsam",
+        MetadataKey: "impedit",
     })
     if err != nil {
         log.Fatal(err)

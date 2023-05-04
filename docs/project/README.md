@@ -36,10 +36,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Project.Create(ctx, operations.TigrisCreateProjectRequest{
         RequestBody: map[string]interface{}{
-            "aspernatur": "vel",
-            "possimus": "magnam",
+            "veniam": "aliquid",
+            "inventore": "magnam",
         },
-        Project: "ratione",
+        Project: "ea",
     })
     if err != nil {
         log.Fatal(err)
@@ -77,10 +77,12 @@ func main() {
     ctx := context.Background()
     res, err := s.Project.DeleteProject(ctx, operations.TigrisDeleteProjectRequest{
         RequestBody: map[string]interface{}{
-            "laudantium": "dicta",
-            "dolor": "maiores",
+            "consectetur": "recusandae",
+            "aspernatur": "minima",
+            "eaque": "a",
+            "libero": "aut",
         },
-        Project: "quasi",
+        Project: "aut",
     })
     if err != nil {
         log.Fatal(err)

@@ -37,15 +37,12 @@ func main() {
     ctx := context.Background()
     res, err := s.User.GetMetadata(ctx, operations.ManagementGetUserMetadataRequest{
         GetUserMetadataRequest: shared.GetUserMetadataRequest{
-            MetadataKey: tigris.String("qui"),
+            MetadataKey: tigris.String("consectetur"),
             Value: map[string]interface{}{
-                "ex": "deleniti",
-                "itaque": "dolorum",
-                "architecto": "omnis",
-                "tenetur": "quasi",
+                "iste": "temporibus",
             },
         },
-        MetadataKey: "at",
+        MetadataKey: "accusantium",
     })
     if err != nil {
         log.Fatal(err)
@@ -84,13 +81,12 @@ func main() {
     ctx := context.Background()
     res, err := s.User.InsertMetadata(ctx, operations.ManagementInsertUserMetadataRequest{
         InsertUserMetadataRequest: shared.InsertUserMetadataRequest{
-            MetadataKey: tigris.String("et"),
+            MetadataKey: tigris.String("rem"),
             Value: map[string]interface{}{
-                "ipsa": "minima",
-                "veritatis": "consectetur",
+                "laudantium": "eum",
             },
         },
-        MetadataKey: "adipisci",
+        MetadataKey: "mollitia",
     })
     if err != nil {
         log.Fatal(err)
@@ -129,15 +125,14 @@ func main() {
     ctx := context.Background()
     res, err := s.User.UpdateMetadata(ctx, operations.ManagementUpdateUserMetadataRequest{
         UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{
-            MetadataKey: tigris.String("iste"),
+            MetadataKey: tigris.String("ab"),
             Value: map[string]interface{}{
-                "accusantium": "rem",
-                "aut": "laudantium",
-                "eum": "mollitia",
-                "ab": "corrupti",
+                "non": "voluptatem",
+                "dolor": "occaecati",
+                "numquam": "impedit",
             },
         },
-        MetadataKey: "non",
+        MetadataKey: "explicabo",
     })
     if err != nil {
         log.Fatal(err)

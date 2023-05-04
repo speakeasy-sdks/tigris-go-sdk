@@ -104,8 +104,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.System.ObservabilityQuotaUsage(ctx, map[string]interface{}{
-        "quasi": "a",
-        "error": "sint",
+        "libero": "illum",
+        "soluta": "accusantium",
     })
     if err != nil {
         log.Fatal(err)
@@ -141,10 +141,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.System.QueryQuotaLimits(ctx, map[string]interface{}{
-        "possimus": "quia",
-        "eveniet": "asperiores",
-        "facere": "veritatis",
-        "consequuntur": "quasi",
+        "sapiente": "dicta",
+        "ullam": "reprehenderit",
     })
     if err != nil {
         log.Fatal(err)
@@ -184,39 +182,33 @@ func main() {
         AdditionalFunctions: []shared.AdditionalFunction{
             shared.AdditionalFunction{
                 Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorEnumRollupAggregatorMax.ToPointer(),
-                    Interval: tigris.Int64(398434),
+                    Aggregator: shared.RollupFunctionAggregatorEnumRollupAggregatorCount.ToPointer(),
+                    Interval: tigris.Int64(16328),
                 },
             },
             shared.AdditionalFunction{
                 Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorEnumRollupAggregatorAvg.ToPointer(),
-                    Interval: tigris.Int64(62713),
-                },
-            },
-            shared.AdditionalFunction{
-                Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorEnumRollupAggregatorAvg.ToPointer(),
-                    Interval: tigris.Int64(424032),
+                    Aggregator: shared.RollupFunctionAggregatorEnumRollupAggregatorMin.ToPointer(),
+                    Interval: tigris.Int64(185232),
                 },
             },
         },
-        Branch: tigris.String("in"),
-        Collection: tigris.String("eius"),
-        Db: tigris.String("libero"),
-        From: tigris.Int64(849039),
+        Branch: tigris.String("quibusdam"),
+        Collection: tigris.String("ex"),
+        Db: tigris.String("deleniti"),
+        From: tigris.Int64(929292),
         Function: shared.QueryTimeSeriesMetricsRequestFunctionEnumNone.ToPointer(),
-        MetricName: tigris.String("accusantium"),
-        Quantile: tigris.Float32(3069.86),
+        MetricName: tigris.String("architecto"),
+        Quantile: tigris.Float32(6091.78),
         SpaceAggregatedBy: []string{
-            "dicta",
-            "ullam",
-            "reprehenderit",
-            "ullam",
+            "quasi",
+            "at",
+            "et",
+            "voluptate",
         },
-        SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationEnumMin.ToPointer(),
-        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationEnumAll.ToPointer(),
-        To: tigris.Int64(531849),
+        SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationEnumAvg.ToPointer(),
+        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationEnumRead.ToPointer(),
+        To: tigris.Int64(86532),
     })
     if err != nil {
         log.Fatal(err)

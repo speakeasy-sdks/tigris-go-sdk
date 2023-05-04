@@ -39,9 +39,9 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Delete(ctx, operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: tigris.String("05dfc2dd-f7cc-478c-a1ba-928fc816742c"),
+            ID: tigris.String("d69a674e-0f46-47cc-8796-ed151a05dfc2"),
         },
-        Project: "cum",
+        Project: "at",
     })
     if err != nil {
         log.Fatal(err)
@@ -78,7 +78,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AppKey.List(ctx, operations.TigrisListAppKeysRequest{
-        Project: "esse",
+        Project: "at",
     })
     if err != nil {
         log.Fatal(err)
@@ -117,10 +117,10 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Rotate(ctx, operations.TigrisRotateAppKeySecretRequest{
         RotateAppKeyRequest: shared.RotateAppKeyRequest{
-            ID: tigris.String("39205929-396f-4ea7-996e-b10faaa2352c"),
-            Project: tigris.String("enim"),
+            ID: tigris.String("f7cc78ca-1ba9-428f-8816-742cb7392059"),
+            Project: tigris.String("sed"),
         },
-        Project: "omnis",
+        Project: "iste",
     })
     if err != nil {
         log.Fatal(err)
@@ -159,10 +159,10 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.TigrisCreateAppKey(ctx, operations.TigrisCreateAppKeyRequest{
         CreateAppKeyRequest: shared.CreateAppKeyRequest{
-            Description: tigris.String("nemo"),
-            Name: tigris.String("Velma Batz"),
+            Description: tigris.String("dolor"),
+            Name: tigris.String("Lester Welch"),
         },
-        Project: "doloribus",
+        Project: "in",
     })
     if err != nil {
         log.Fatal(err)
@@ -201,11 +201,11 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Update(ctx, operations.TigrisUpdateAppKeyRequest{
         UpdateAppKeyRequest: shared.UpdateAppKeyRequest{
-            Description: tigris.String("sapiente"),
-            ID: tigris.String("1a3a2fa9-4677-4392-91aa-52c3f5ad019d"),
-            Name: tigris.String("Ryan Witting"),
+            Description: tigris.String("corporis"),
+            ID: tigris.String("96eb10fa-aa23-452c-9955-907aff1a3a2f"),
+            Name: tigris.String("Tracy Fritsch"),
         },
-        Project: "nihil",
+        Project: "molestiae",
     })
     if err != nil {
         log.Fatal(err)

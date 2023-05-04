@@ -29,17 +29,20 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.AppKey.Delete(ctx, operations.TigrisDeleteAppKeyRequest{
-        DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: tigris.String("89bd9d8d-69a6-474e-8f46-7cc8796ed151"),
+    res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
+        CreateCacheRequest: shared.CreateCacheRequest{
+            Options: &shared.CreateCacheOptions{
+                TTLMs: tigris.Int64(548814),
+            },
         },
-        Project: "deserunt",
+        Name: "Kelvin Sporer",
+        Project: "corrupti",
     })
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.DeleteAppKeyResponse != nil {
+    if res.CreateCacheResponse != nil {
         // handle response
     }
 }

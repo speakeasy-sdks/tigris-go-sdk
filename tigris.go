@@ -166,7 +166,7 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Tigris {
 	sdk := &Tigris{
 		_language:   "go",
-		_sdkVersion: "0.8.0",
+		_sdkVersion: "0.8.1",
 		_genVersion: "2.24.0",
 	}
 	for _, opt := range opts {

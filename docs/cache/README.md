@@ -43,11 +43,11 @@ func main() {
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
             Options: &shared.CreateCacheOptions{
-                TTLMs: tigris.Int64(509624),
+                TTLMs: tigris.Int64(244425),
             },
         },
-        Name: "Jose Moen",
-        Project: "perferendis",
+        Name: "Miss Eugene Hauck",
+        Project: "enim",
     })
     if err != nil {
         log.Fatal(err)
@@ -85,10 +85,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.Delete(ctx, operations.CacheDeleteCacheRequest{
         RequestBody: map[string]interface{}{
-            "reprehenderit": "ut",
+            "quo": "sequi",
         },
-        Name: "Willie Hessel",
-        Project: "dicta",
+        Name: "Vernon Ondricka Sr.",
+        Project: "error",
     })
     if err != nil {
         log.Fatal(err)
@@ -126,13 +126,14 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.DeleteKeys(ctx, operations.CacheDelRequest{
         RequestBody: map[string]interface{}{
-            "enim": "accusamus",
-            "commodi": "repudiandae",
-            "quae": "ipsum",
+            "laborum": "quasi",
+            "reiciendis": "voluptatibus",
+            "vero": "nihil",
+            "praesentium": "voluptatibus",
         },
-        Key: "quidem",
-        Name: "Andy Streich",
-        Project: "rem",
+        Key: "ipsa",
+        Name: "Mr. Jared Ritchie",
+        Project: "ut",
     })
     if err != nil {
         log.Fatal(err)
@@ -169,8 +170,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.GetKey(ctx, operations.CacheGetRequest{
-        Key: "voluptates",
-        Name: "Dr. Casey Mayer",
+        Key: "maiores",
+        Name: "Stacy Gulgowski MD",
         Project: "enim",
     })
     if err != nil {
@@ -210,11 +211,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.GetSetKey(ctx, operations.CacheGetSetRequest{
         GetSetRequest: shared.GetSetRequest{
-            Value: tigris.String("consequatur"),
+            Value: tigris.String("accusamus"),
         },
-        Key: "est",
-        Name: "Benjamin O'Connell",
-        Project: "labore",
+        Key: "commodi",
+        Name: "Eric Emmerich",
+        Project: "excepturi",
     })
     if err != nil {
         log.Fatal(err)
@@ -251,7 +252,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.List(ctx, operations.CacheListCachesRequest{
-        Project: "modi",
+        Project: "pariatur",
     })
     if err != nil {
         log.Fatal(err)
@@ -288,11 +289,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.ListKeys(ctx, operations.CacheKeysRequest{
-        Count: tigris.Int64(183191),
-        Cursor: tigris.Int64(397821),
-        Name: "Isaac Aufderhar",
-        Pattern: tigris.String("ipsam"),
-        Project: "alias",
+        Count: tigris.Int64(265389),
+        Cursor: tigris.Int64(508969),
+        Name: "Grady Botsford",
+        Pattern: tigris.String("veritatis"),
+        Project: "itaque",
     })
     if err != nil {
         log.Fatal(err)
@@ -331,15 +332,15 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.SetKey(ctx, operations.CacheSetRequest{
         SetRequest: shared.SetRequest{
-            Ex: tigris.Int64(146441),
+            Ex: tigris.Int64(277718),
             Nx: tigris.Bool(false),
-            Px: tigris.Int64(677817),
-            Value: tigris.String("excepturi"),
+            Px: tigris.Int64(318569),
+            Value: tigris.String("consequatur"),
             Xx: tigris.Bool(false),
         },
-        Key: "tempora",
-        Name: "Geoffrey Green",
-        Project: "non",
+        Key: "est",
+        Name: "Benjamin O'Connell",
+        Project: "labore",
     })
     if err != nil {
         log.Fatal(err)
