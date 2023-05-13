@@ -33,7 +33,6 @@ func newCache(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 }
 
 // Create - Creates the cache
-
 func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheRequest) (*operations.CacheCreateCacheResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/create", request, nil)
@@ -101,7 +100,6 @@ func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 }
 
 // Delete - Deletes the cache
-
 func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheRequest) (*operations.CacheDeleteCacheResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/delete", request, nil)
@@ -169,7 +167,6 @@ func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 }
 
 // DeleteKeys - Deletes an entry from cache
-
 func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelRequest) (*operations.CacheDelResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/delete", request, nil)
@@ -237,7 +234,6 @@ func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 }
 
 // GetKey - Reads an entry from cache
-
 func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) (*operations.CacheGetResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/get", request, nil)
@@ -295,7 +291,6 @@ func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 }
 
 // GetSetKey - Sets an entry in the cache and returns the previous value if exists
-
 func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetRequest) (*operations.CacheGetSetResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/getset", request, nil)
@@ -363,7 +358,6 @@ func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 }
 
 // List - Lists all the caches for the given project
-
 func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequest) (*operations.CacheListCachesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/list", request, nil)
@@ -421,7 +415,6 @@ func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequ
 }
 
 // ListKeys - Lists all the key for this cache
-
 func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysRequest) (*operations.CacheKeysResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/keys", request, nil)
@@ -483,7 +476,6 @@ func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 }
 
 // SetKey - Sets an entry in the cache
-
 func (s *cache) SetKey(ctx context.Context, request operations.CacheSetRequest) (*operations.CacheSetResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/set", request, nil)

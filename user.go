@@ -34,7 +34,6 @@ func newUser(defaultClient, securityClient HTTPClient, serverURL, language, sdkV
 
 // GetMetadata - Reads the User Metadata
 // GetUserMetadata inserts the user metadata object
-
 func (s *user) GetMetadata(ctx context.Context, request operations.ManagementGetUserMetadataRequest) (*operations.ManagementGetUserMetadataResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/get", request, nil)
@@ -103,7 +102,6 @@ func (s *user) GetMetadata(ctx context.Context, request operations.ManagementGet
 
 // InsertMetadata - Inserts User Metadata
 // insertUserMetadata inserts the user metadata object
-
 func (s *user) InsertMetadata(ctx context.Context, request operations.ManagementInsertUserMetadataRequest) (*operations.ManagementInsertUserMetadataResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/insert", request, nil)
@@ -172,7 +170,6 @@ func (s *user) InsertMetadata(ctx context.Context, request operations.Management
 
 // UpdateMetadata - Updates User Metadata
 // updateUserMetadata updates the user metadata object
-
 func (s *user) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateUserMetadataRequest) (*operations.ManagementUpdateUserMetadataResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/update", request, nil)

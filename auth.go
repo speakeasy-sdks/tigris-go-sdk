@@ -35,9 +35,9 @@ func newAuth(defaultClient, securityClient HTTPClient, serverURL, language, sdkV
 
 // Get - Access Token
 // Endpoint for receiving access token from Tigris Server. The endpoint requires Grant Type(`grant_type`) which has
-//  two possible values <i>"REFRESH_TOKEN"</i> or <i>"CLIENT_CREDENTIALS"</i> based on which either Refresh token(`refresh_token`)
-//  needs to be set or client credentials(`client_id`, `client_secret`).
-
+//
+//	two possible values <i>"REFRESH_TOKEN"</i> or <i>"CLIENT_CREDENTIALS"</i> based on which either Refresh token(`refresh_token`)
+//	needs to be set or client credentials(`client_id`, `client_secret`).
 func (s *auth) Get(ctx context.Context) (*operations.AuthGetAccessTokenResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/auth/token"

@@ -33,7 +33,6 @@ func newChannel(defaultClient, securityClient HTTPClient, serverURL, language, s
 }
 
 // Get - Get the details about a channel
-
 func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChannelRequest) (*operations.RealtimeGetRTChannelResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}", request, nil)
@@ -91,7 +90,6 @@ func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChann
 }
 
 // GetMessages - Get all messages for a channel
-
 func (s *channel) GetMessages(ctx context.Context, request operations.RealtimeReadMessagesRequest) (*operations.RealtimeReadMessagesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/messages", request, nil)
@@ -153,7 +151,6 @@ func (s *channel) GetMessages(ctx context.Context, request operations.RealtimeRe
 }
 
 // List - Get all channels for your application project
-
 func (s *channel) List(ctx context.Context, request operations.RealtimeGetRTChannelsRequest) (*operations.RealtimeGetRTChannelsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels", request, nil)
@@ -211,7 +208,6 @@ func (s *channel) List(ctx context.Context, request operations.RealtimeGetRTChan
 }
 
 // ListSubscriptions - Get the subscriptions details about a channel
-
 func (s *channel) ListSubscriptions(ctx context.Context, request operations.RealtimeListSubscriptionsRequest) (*operations.RealtimeListSubscriptionsResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/subscriptions", request, nil)
@@ -273,7 +269,6 @@ func (s *channel) ListSubscriptions(ctx context.Context, request operations.Real
 }
 
 // PushMessages - push messages to a single channel
-
 func (s *channel) PushMessages(ctx context.Context, request operations.RealtimeMessagesRequest) (*operations.RealtimeMessagesResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/messages", request, nil)
@@ -341,7 +336,6 @@ func (s *channel) PushMessages(ctx context.Context, request operations.RealtimeM
 }
 
 // RealtimePresence - Presence about the channel
-
 func (s *channel) RealtimePresence(ctx context.Context, request operations.RealtimePresenceRequest) (*operations.RealtimePresenceResponse, error) {
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/presence", request, nil)

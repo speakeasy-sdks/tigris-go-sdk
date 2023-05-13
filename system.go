@@ -35,7 +35,6 @@ func newSystem(defaultClient, securityClient HTTPClient, serverURL, language, sd
 
 // GetHealth - Health Check
 // This endpoint can be used to check the liveness of the server.
-
 func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/health"
@@ -91,7 +90,6 @@ func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResp
 
 // GetServerInfo - Information about the server
 // Provides the information about the server. This information includes returning the server version, etc.
-
 func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGetInfoResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/info"
@@ -147,7 +145,6 @@ func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 
 // ObservabilityQuotaUsage - Queries current namespace quota usage
 // Returns current namespace quota limits
-
 func (s *system) ObservabilityQuotaUsage(ctx context.Context, request map[string]interface{}) (*operations.ObservabilityQuotaUsageResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/usage"
@@ -213,7 +210,6 @@ func (s *system) ObservabilityQuotaUsage(ctx context.Context, request map[string
 
 // QueryQuotaLimits - Queries current namespace quota limits
 // Returns current namespace quota limits
-
 func (s *system) QueryQuotaLimits(ctx context.Context, request map[string]interface{}) (*operations.ObservabilityQuotaLimitsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/limits"
@@ -279,7 +275,6 @@ func (s *system) QueryQuotaLimits(ctx context.Context, request map[string]interf
 
 // QueryTimeSeriesMetrics - Queries time series metrics
 // Queries time series metrics
-
 func (s *system) QueryTimeSeriesMetrics(ctx context.Context, request shared.QueryTimeSeriesMetricsRequest) (*operations.ObservabilityQueryTimeSeriesMetricsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/metrics/timeseries/query"
