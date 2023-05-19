@@ -7,21 +7,21 @@ import (
 	"fmt"
 )
 
-type RollupFunctionAggregatorEnum string
+type RollupFunctionAggregator string
 
 const (
-	RollupFunctionAggregatorEnumRollupAggregatorSum   RollupFunctionAggregatorEnum = "ROLLUP_AGGREGATOR_SUM"
-	RollupFunctionAggregatorEnumRollupAggregatorCount RollupFunctionAggregatorEnum = "ROLLUP_AGGREGATOR_COUNT"
-	RollupFunctionAggregatorEnumRollupAggregatorMin   RollupFunctionAggregatorEnum = "ROLLUP_AGGREGATOR_MIN"
-	RollupFunctionAggregatorEnumRollupAggregatorMax   RollupFunctionAggregatorEnum = "ROLLUP_AGGREGATOR_MAX"
-	RollupFunctionAggregatorEnumRollupAggregatorAvg   RollupFunctionAggregatorEnum = "ROLLUP_AGGREGATOR_AVG"
+	RollupFunctionAggregatorRollupAggregatorSum   RollupFunctionAggregator = "ROLLUP_AGGREGATOR_SUM"
+	RollupFunctionAggregatorRollupAggregatorCount RollupFunctionAggregator = "ROLLUP_AGGREGATOR_COUNT"
+	RollupFunctionAggregatorRollupAggregatorMin   RollupFunctionAggregator = "ROLLUP_AGGREGATOR_MIN"
+	RollupFunctionAggregatorRollupAggregatorMax   RollupFunctionAggregator = "ROLLUP_AGGREGATOR_MAX"
+	RollupFunctionAggregatorRollupAggregatorAvg   RollupFunctionAggregator = "ROLLUP_AGGREGATOR_AVG"
 )
 
-func (e RollupFunctionAggregatorEnum) ToPointer() *RollupFunctionAggregatorEnum {
+func (e RollupFunctionAggregator) ToPointer() *RollupFunctionAggregator {
 	return &e
 }
 
-func (e *RollupFunctionAggregatorEnum) UnmarshalJSON(data []byte) error {
+func (e *RollupFunctionAggregator) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -36,15 +36,15 @@ func (e *RollupFunctionAggregatorEnum) UnmarshalJSON(data []byte) error {
 	case "ROLLUP_AGGREGATOR_MAX":
 		fallthrough
 	case "ROLLUP_AGGREGATOR_AVG":
-		*e = RollupFunctionAggregatorEnum(v)
+		*e = RollupFunctionAggregator(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RollupFunctionAggregatorEnum: %v", v)
+		return fmt.Errorf("invalid value for RollupFunctionAggregator: %v", v)
 	}
 }
 
 // RollupFunction - Rollup function aggregates the slices of metrics returned by original query and lets you operate on the slices using aggregator and constructs the bigger slice of your choice of interval (specified in seconds).
 type RollupFunction struct {
-	Aggregator *RollupFunctionAggregatorEnum `json:"aggregator,omitempty"`
-	Interval   *int64                        `json:"interval,omitempty"`
+	Aggregator *RollupFunctionAggregator `json:"aggregator,omitempty"`
+	Interval   *int64                    `json:"interval,omitempty"`
 }

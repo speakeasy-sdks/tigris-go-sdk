@@ -182,13 +182,13 @@ func main() {
         AdditionalFunctions: []shared.AdditionalFunction{
             shared.AdditionalFunction{
                 Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorEnumRollupAggregatorCount.ToPointer(),
+                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorCount.ToPointer(),
                     Interval: tigris.Int64(16328),
                 },
             },
             shared.AdditionalFunction{
                 Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorEnumRollupAggregatorMin.ToPointer(),
+                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorMin.ToPointer(),
                     Interval: tigris.Int64(185232),
                 },
             },
@@ -197,7 +197,7 @@ func main() {
         Collection: tigris.String("ex"),
         Db: tigris.String("deleniti"),
         From: tigris.Int64(929292),
-        Function: shared.QueryTimeSeriesMetricsRequestFunctionEnumNone.ToPointer(),
+        Function: shared.QueryTimeSeriesMetricsRequestFunctionNone.ToPointer(),
         MetricName: tigris.String("architecto"),
         Quantile: tigris.Float32(6091.78),
         SpaceAggregatedBy: []string{
@@ -206,8 +206,8 @@ func main() {
             "et",
             "voluptate",
         },
-        SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationEnumAvg.ToPointer(),
-        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationEnumRead.ToPointer(),
+        SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationAvg.ToPointer(),
+        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationRead.ToPointer(),
         To: tigris.Int64(86532),
     })
     if err != nil {

@@ -7,37 +7,37 @@ import (
 	"fmt"
 )
 
-// ErrorCodeEnum - The status code is a short, machine parsable string, which uniquely identifies the error type. Tigris to HTTP code mapping [here](/reference/http-code)
-type ErrorCodeEnum string
+// ErrorCode - The status code is a short, machine parsable string, which uniquely identifies the error type. Tigris to HTTP code mapping [here](/reference/http-code)
+type ErrorCode string
 
 const (
-	ErrorCodeEnumOk                 ErrorCodeEnum = "OK"
-	ErrorCodeEnumCancelled          ErrorCodeEnum = "CANCELLED"
-	ErrorCodeEnumUnknown            ErrorCodeEnum = "UNKNOWN"
-	ErrorCodeEnumInvalidArgument    ErrorCodeEnum = "INVALID_ARGUMENT"
-	ErrorCodeEnumDeadlineExceeded   ErrorCodeEnum = "DEADLINE_EXCEEDED"
-	ErrorCodeEnumNotFound           ErrorCodeEnum = "NOT_FOUND"
-	ErrorCodeEnumAlreadyExists      ErrorCodeEnum = "ALREADY_EXISTS"
-	ErrorCodeEnumPermissionDenied   ErrorCodeEnum = "PERMISSION_DENIED"
-	ErrorCodeEnumResourceExhausted  ErrorCodeEnum = "RESOURCE_EXHAUSTED"
-	ErrorCodeEnumFailedPrecondition ErrorCodeEnum = "FAILED_PRECONDITION"
-	ErrorCodeEnumAborted            ErrorCodeEnum = "ABORTED"
-	ErrorCodeEnumOutOfRange         ErrorCodeEnum = "OUT_OF_RANGE"
-	ErrorCodeEnumUnimplemented      ErrorCodeEnum = "UNIMPLEMENTED"
-	ErrorCodeEnumInternal           ErrorCodeEnum = "INTERNAL"
-	ErrorCodeEnumUnavailable        ErrorCodeEnum = "UNAVAILABLE"
-	ErrorCodeEnumDataLoss           ErrorCodeEnum = "DATA_LOSS"
-	ErrorCodeEnumUnauthenticated    ErrorCodeEnum = "UNAUTHENTICATED"
-	ErrorCodeEnumConflict           ErrorCodeEnum = "CONFLICT"
-	ErrorCodeEnumBadGateway         ErrorCodeEnum = "BAD_GATEWAY"
-	ErrorCodeEnumMethodNotAllowed   ErrorCodeEnum = "METHOD_NOT_ALLOWED"
+	ErrorCodeOk                 ErrorCode = "OK"
+	ErrorCodeCancelled          ErrorCode = "CANCELLED"
+	ErrorCodeUnknown            ErrorCode = "UNKNOWN"
+	ErrorCodeInvalidArgument    ErrorCode = "INVALID_ARGUMENT"
+	ErrorCodeDeadlineExceeded   ErrorCode = "DEADLINE_EXCEEDED"
+	ErrorCodeNotFound           ErrorCode = "NOT_FOUND"
+	ErrorCodeAlreadyExists      ErrorCode = "ALREADY_EXISTS"
+	ErrorCodePermissionDenied   ErrorCode = "PERMISSION_DENIED"
+	ErrorCodeResourceExhausted  ErrorCode = "RESOURCE_EXHAUSTED"
+	ErrorCodeFailedPrecondition ErrorCode = "FAILED_PRECONDITION"
+	ErrorCodeAborted            ErrorCode = "ABORTED"
+	ErrorCodeOutOfRange         ErrorCode = "OUT_OF_RANGE"
+	ErrorCodeUnimplemented      ErrorCode = "UNIMPLEMENTED"
+	ErrorCodeInternal           ErrorCode = "INTERNAL"
+	ErrorCodeUnavailable        ErrorCode = "UNAVAILABLE"
+	ErrorCodeDataLoss           ErrorCode = "DATA_LOSS"
+	ErrorCodeUnauthenticated    ErrorCode = "UNAUTHENTICATED"
+	ErrorCodeConflict           ErrorCode = "CONFLICT"
+	ErrorCodeBadGateway         ErrorCode = "BAD_GATEWAY"
+	ErrorCodeMethodNotAllowed   ErrorCode = "METHOD_NOT_ALLOWED"
 )
 
-func (e ErrorCodeEnum) ToPointer() *ErrorCodeEnum {
+func (e ErrorCode) ToPointer() *ErrorCode {
 	return &e
 }
 
-func (e *ErrorCodeEnum) UnmarshalJSON(data []byte) error {
+func (e *ErrorCode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -82,17 +82,17 @@ func (e *ErrorCodeEnum) UnmarshalJSON(data []byte) error {
 	case "BAD_GATEWAY":
 		fallthrough
 	case "METHOD_NOT_ALLOWED":
-		*e = ErrorCodeEnum(v)
+		*e = ErrorCode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ErrorCodeEnum: %v", v)
+		return fmt.Errorf("invalid value for ErrorCode: %v", v)
 	}
 }
 
 // Error - The Error type defines a logical error model
 type Error struct {
 	// The status code is a short, machine parsable string, which uniquely identifies the error type. Tigris to HTTP code mapping [here](/reference/http-code)
-	Code *ErrorCodeEnum `json:"code,omitempty"`
+	Code *ErrorCode `json:"code,omitempty"`
 	// A developer-facing descriptive error message
 	Message *string `json:"message,omitempty"`
 }

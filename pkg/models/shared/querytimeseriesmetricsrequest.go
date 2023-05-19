@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-type QueryTimeSeriesMetricsRequestFunctionEnum string
+type QueryTimeSeriesMetricsRequestFunction string
 
 const (
-	QueryTimeSeriesMetricsRequestFunctionEnumRate  QueryTimeSeriesMetricsRequestFunctionEnum = "RATE"
-	QueryTimeSeriesMetricsRequestFunctionEnumCount QueryTimeSeriesMetricsRequestFunctionEnum = "COUNT"
-	QueryTimeSeriesMetricsRequestFunctionEnumNone  QueryTimeSeriesMetricsRequestFunctionEnum = "NONE"
+	QueryTimeSeriesMetricsRequestFunctionRate  QueryTimeSeriesMetricsRequestFunction = "RATE"
+	QueryTimeSeriesMetricsRequestFunctionCount QueryTimeSeriesMetricsRequestFunction = "COUNT"
+	QueryTimeSeriesMetricsRequestFunctionNone  QueryTimeSeriesMetricsRequestFunction = "NONE"
 )
 
-func (e QueryTimeSeriesMetricsRequestFunctionEnum) ToPointer() *QueryTimeSeriesMetricsRequestFunctionEnum {
+func (e QueryTimeSeriesMetricsRequestFunction) ToPointer() *QueryTimeSeriesMetricsRequestFunction {
 	return &e
 }
 
-func (e *QueryTimeSeriesMetricsRequestFunctionEnum) UnmarshalJSON(data []byte) error {
+func (e *QueryTimeSeriesMetricsRequestFunction) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,27 +30,27 @@ func (e *QueryTimeSeriesMetricsRequestFunctionEnum) UnmarshalJSON(data []byte) e
 	case "COUNT":
 		fallthrough
 	case "NONE":
-		*e = QueryTimeSeriesMetricsRequestFunctionEnum(v)
+		*e = QueryTimeSeriesMetricsRequestFunction(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestFunctionEnum: %v", v)
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestFunction: %v", v)
 	}
 }
 
-type QueryTimeSeriesMetricsRequestSpaceAggregationEnum string
+type QueryTimeSeriesMetricsRequestSpaceAggregation string
 
 const (
-	QueryTimeSeriesMetricsRequestSpaceAggregationEnumAvg QueryTimeSeriesMetricsRequestSpaceAggregationEnum = "AVG"
-	QueryTimeSeriesMetricsRequestSpaceAggregationEnumMin QueryTimeSeriesMetricsRequestSpaceAggregationEnum = "MIN"
-	QueryTimeSeriesMetricsRequestSpaceAggregationEnumMax QueryTimeSeriesMetricsRequestSpaceAggregationEnum = "MAX"
-	QueryTimeSeriesMetricsRequestSpaceAggregationEnumSum QueryTimeSeriesMetricsRequestSpaceAggregationEnum = "SUM"
+	QueryTimeSeriesMetricsRequestSpaceAggregationAvg QueryTimeSeriesMetricsRequestSpaceAggregation = "AVG"
+	QueryTimeSeriesMetricsRequestSpaceAggregationMin QueryTimeSeriesMetricsRequestSpaceAggregation = "MIN"
+	QueryTimeSeriesMetricsRequestSpaceAggregationMax QueryTimeSeriesMetricsRequestSpaceAggregation = "MAX"
+	QueryTimeSeriesMetricsRequestSpaceAggregationSum QueryTimeSeriesMetricsRequestSpaceAggregation = "SUM"
 )
 
-func (e QueryTimeSeriesMetricsRequestSpaceAggregationEnum) ToPointer() *QueryTimeSeriesMetricsRequestSpaceAggregationEnum {
+func (e QueryTimeSeriesMetricsRequestSpaceAggregation) ToPointer() *QueryTimeSeriesMetricsRequestSpaceAggregation {
 	return &e
 }
 
-func (e *QueryTimeSeriesMetricsRequestSpaceAggregationEnum) UnmarshalJSON(data []byte) error {
+func (e *QueryTimeSeriesMetricsRequestSpaceAggregation) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -63,27 +63,27 @@ func (e *QueryTimeSeriesMetricsRequestSpaceAggregationEnum) UnmarshalJSON(data [
 	case "MAX":
 		fallthrough
 	case "SUM":
-		*e = QueryTimeSeriesMetricsRequestSpaceAggregationEnum(v)
+		*e = QueryTimeSeriesMetricsRequestSpaceAggregation(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestSpaceAggregationEnum: %v", v)
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestSpaceAggregation: %v", v)
 	}
 }
 
-type QueryTimeSeriesMetricsRequestTigrisOperationEnum string
+type QueryTimeSeriesMetricsRequestTigrisOperation string
 
 const (
-	QueryTimeSeriesMetricsRequestTigrisOperationEnumAll      QueryTimeSeriesMetricsRequestTigrisOperationEnum = "ALL"
-	QueryTimeSeriesMetricsRequestTigrisOperationEnumRead     QueryTimeSeriesMetricsRequestTigrisOperationEnum = "READ"
-	QueryTimeSeriesMetricsRequestTigrisOperationEnumWrite    QueryTimeSeriesMetricsRequestTigrisOperationEnum = "WRITE"
-	QueryTimeSeriesMetricsRequestTigrisOperationEnumMetadata QueryTimeSeriesMetricsRequestTigrisOperationEnum = "METADATA"
+	QueryTimeSeriesMetricsRequestTigrisOperationAll      QueryTimeSeriesMetricsRequestTigrisOperation = "ALL"
+	QueryTimeSeriesMetricsRequestTigrisOperationRead     QueryTimeSeriesMetricsRequestTigrisOperation = "READ"
+	QueryTimeSeriesMetricsRequestTigrisOperationWrite    QueryTimeSeriesMetricsRequestTigrisOperation = "WRITE"
+	QueryTimeSeriesMetricsRequestTigrisOperationMetadata QueryTimeSeriesMetricsRequestTigrisOperation = "METADATA"
 )
 
-func (e QueryTimeSeriesMetricsRequestTigrisOperationEnum) ToPointer() *QueryTimeSeriesMetricsRequestTigrisOperationEnum {
+func (e QueryTimeSeriesMetricsRequestTigrisOperation) ToPointer() *QueryTimeSeriesMetricsRequestTigrisOperation {
 	return &e
 }
 
-func (e *QueryTimeSeriesMetricsRequestTigrisOperationEnum) UnmarshalJSON(data []byte) error {
+func (e *QueryTimeSeriesMetricsRequestTigrisOperation) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -96,25 +96,25 @@ func (e *QueryTimeSeriesMetricsRequestTigrisOperationEnum) UnmarshalJSON(data []
 	case "WRITE":
 		fallthrough
 	case "METADATA":
-		*e = QueryTimeSeriesMetricsRequestTigrisOperationEnum(v)
+		*e = QueryTimeSeriesMetricsRequestTigrisOperation(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestTigrisOperationEnum: %v", v)
+		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestTigrisOperation: %v", v)
 	}
 }
 
 // QueryTimeSeriesMetricsRequest - Requests the time series metrics
 type QueryTimeSeriesMetricsRequest struct {
-	AdditionalFunctions []AdditionalFunction                               `json:"additionalFunctions,omitempty"`
-	Branch              *string                                            `json:"branch,omitempty"`
-	Collection          *string                                            `json:"collection,omitempty"`
-	Db                  *string                                            `json:"db,omitempty"`
-	From                *int64                                             `json:"from,omitempty"`
-	Function            *QueryTimeSeriesMetricsRequestFunctionEnum         `json:"function,omitempty"`
-	MetricName          *string                                            `json:"metric_name,omitempty"`
-	Quantile            *float32                                           `json:"quantile,omitempty"`
-	SpaceAggregatedBy   []string                                           `json:"space_aggregated_by,omitempty"`
-	SpaceAggregation    *QueryTimeSeriesMetricsRequestSpaceAggregationEnum `json:"space_aggregation,omitempty"`
-	TigrisOperation     *QueryTimeSeriesMetricsRequestTigrisOperationEnum  `json:"tigris_operation,omitempty"`
-	To                  *int64                                             `json:"to,omitempty"`
+	AdditionalFunctions []AdditionalFunction                           `json:"additionalFunctions,omitempty"`
+	Branch              *string                                        `json:"branch,omitempty"`
+	Collection          *string                                        `json:"collection,omitempty"`
+	Db                  *string                                        `json:"db,omitempty"`
+	From                *int64                                         `json:"from,omitempty"`
+	Function            *QueryTimeSeriesMetricsRequestFunction         `json:"function,omitempty"`
+	MetricName          *string                                        `json:"metric_name,omitempty"`
+	Quantile            *float32                                       `json:"quantile,omitempty"`
+	SpaceAggregatedBy   []string                                       `json:"space_aggregated_by,omitempty"`
+	SpaceAggregation    *QueryTimeSeriesMetricsRequestSpaceAggregation `json:"space_aggregation,omitempty"`
+	TigrisOperation     *QueryTimeSeriesMetricsRequestTigrisOperation  `json:"tigris_operation,omitempty"`
+	To                  *int64                                         `json:"to,omitempty"`
 }
