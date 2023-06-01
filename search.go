@@ -3,11 +3,13 @@
 package tigris
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
+	"io"
 	"net/http"
 )
 
@@ -71,7 +73,13 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -85,7 +93,7 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CreateByIDResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -95,7 +103,7 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -146,7 +154,13 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -160,7 +174,7 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CreateDocumentResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -170,7 +184,7 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -219,7 +233,13 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -233,7 +253,7 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeleteDocumentResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -243,7 +263,7 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -288,7 +308,13 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -302,7 +328,7 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeleteIndexResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -312,7 +338,7 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -363,7 +389,13 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -377,7 +409,7 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.SearchIndexResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -387,7 +419,7 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -429,7 +461,13 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -443,7 +481,7 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.GetDocumentResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -453,7 +491,7 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -488,7 +526,13 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -502,7 +546,7 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.GetIndexResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -512,7 +556,7 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -551,7 +595,13 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -565,7 +615,7 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ListIndexesResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -575,7 +625,7 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -623,7 +673,13 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -637,7 +693,7 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeleteByQueryResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -647,7 +703,7 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -697,7 +753,13 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -711,7 +773,7 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CreateOrReplaceDocumentResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -721,7 +783,7 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -771,7 +833,13 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -785,7 +853,7 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.UpdateDocumentResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -795,7 +863,7 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -840,7 +908,13 @@ func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreat
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -854,7 +928,7 @@ func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreat
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CreateOrUpdateIndexResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -864,7 +938,7 @@ func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreat
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

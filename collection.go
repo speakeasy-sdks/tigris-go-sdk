@@ -3,11 +3,13 @@
 package tigris
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
+	"io"
 	"net/http"
 )
 
@@ -72,7 +74,13 @@ func (s *collection) Create(ctx context.Context, request operations.TigrisCreate
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -86,7 +94,7 @@ func (s *collection) Create(ctx context.Context, request operations.TigrisCreate
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CreateOrUpdateCollectionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -96,7 +104,7 @@ func (s *collection) Create(ctx context.Context, request operations.TigrisCreate
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -142,7 +150,13 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -156,7 +170,7 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeleteResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -166,7 +180,7 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -212,7 +226,13 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -226,7 +246,7 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DescribeCollectionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -236,7 +256,7 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -284,7 +304,13 @@ func (s *collection) Drop(ctx context.Context, request operations.TigrisDropColl
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -298,7 +324,7 @@ func (s *collection) Drop(ctx context.Context, request operations.TigrisDropColl
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DropCollectionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -308,7 +334,7 @@ func (s *collection) Drop(ctx context.Context, request operations.TigrisDropColl
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -359,7 +385,13 @@ func (s *collection) ImportDocuments(ctx context.Context, request operations.Tig
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -373,7 +405,7 @@ func (s *collection) ImportDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ImportResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -383,7 +415,7 @@ func (s *collection) ImportDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -432,7 +464,13 @@ func (s *collection) InsertDocuments(ctx context.Context, request operations.Tig
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -446,7 +484,7 @@ func (s *collection) InsertDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.InsertResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -456,7 +494,7 @@ func (s *collection) InsertDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -508,7 +546,13 @@ func (s *collection) ReadDocuments(ctx context.Context, request operations.Tigri
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -522,7 +566,7 @@ func (s *collection) ReadDocuments(ctx context.Context, request operations.Tigri
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.StreamingReadResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -532,7 +576,7 @@ func (s *collection) ReadDocuments(ctx context.Context, request operations.Tigri
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -578,7 +622,13 @@ func (s *collection) ReplaceDocuments(ctx context.Context, request operations.Ti
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -592,7 +642,7 @@ func (s *collection) ReplaceDocuments(ctx context.Context, request operations.Ti
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ReplaceResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -602,7 +652,7 @@ func (s *collection) ReplaceDocuments(ctx context.Context, request operations.Ti
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -652,7 +702,13 @@ func (s *collection) SearchDocuments(ctx context.Context, request operations.Tig
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -666,7 +722,7 @@ func (s *collection) SearchDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.StreamingSearchResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -676,7 +732,7 @@ func (s *collection) SearchDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -722,7 +778,13 @@ func (s *collection) UpdateDocuments(ctx context.Context, request operations.Tig
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -736,7 +798,7 @@ func (s *collection) UpdateDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.UpdateResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -746,7 +808,7 @@ func (s *collection) UpdateDocuments(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

@@ -3,11 +3,13 @@
 package tigris
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
+	"io"
 	"net/http"
 )
 
@@ -66,7 +68,13 @@ func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -80,7 +88,7 @@ func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CreateCacheResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -90,7 +98,7 @@ func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -135,7 +143,13 @@ func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -149,7 +163,7 @@ func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeleteCacheResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -159,7 +173,7 @@ func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -204,7 +218,13 @@ func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -218,7 +238,7 @@ func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DelResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -228,7 +248,7 @@ func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -263,7 +283,13 @@ func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -277,7 +303,7 @@ func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.GetResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -287,7 +313,7 @@ func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -332,7 +358,13 @@ func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -346,7 +378,7 @@ func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.GetSetResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -356,7 +388,7 @@ func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -391,7 +423,13 @@ func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequ
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -405,7 +443,7 @@ func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ListCachesResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -415,7 +453,7 @@ func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -454,7 +492,13 @@ func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -468,7 +512,7 @@ func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.KeysResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -478,7 +522,7 @@ func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -523,7 +567,13 @@ func (s *cache) SetKey(ctx context.Context, request operations.CacheSetRequest) 
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -537,7 +587,7 @@ func (s *cache) SetKey(ctx context.Context, request operations.CacheSetRequest) 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.SetResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -547,7 +597,7 @@ func (s *cache) SetKey(ctx context.Context, request operations.CacheSetRequest) 
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

@@ -3,11 +3,13 @@
 package tigris
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
+	"io"
 	"net/http"
 )
 
@@ -70,7 +72,13 @@ func (s *database) BeginTransaction(ctx context.Context, request operations.Tigr
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -84,7 +92,7 @@ func (s *database) BeginTransaction(ctx context.Context, request operations.Tigr
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.BeginTransactionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -94,7 +102,7 @@ func (s *database) BeginTransaction(ctx context.Context, request operations.Tigr
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -142,7 +150,13 @@ func (s *database) CommitTransaction(ctx context.Context, request operations.Tig
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -156,7 +170,7 @@ func (s *database) CommitTransaction(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CommitTransactionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -166,7 +180,7 @@ func (s *database) CommitTransaction(ctx context.Context, request operations.Tig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -212,7 +226,13 @@ func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCr
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -226,7 +246,7 @@ func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCr
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CreateBranchResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -236,7 +256,7 @@ func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCr
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -284,7 +304,13 @@ func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDe
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -298,7 +324,7 @@ func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDe
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DeleteBranchResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -308,7 +334,7 @@ func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDe
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -356,7 +382,13 @@ func (s *database) Describe(ctx context.Context, request operations.TigrisDescri
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -370,7 +402,7 @@ func (s *database) Describe(ctx context.Context, request operations.TigrisDescri
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DescribeDatabaseResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -380,7 +412,7 @@ func (s *database) Describe(ctx context.Context, request operations.TigrisDescri
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -420,7 +452,13 @@ func (s *database) ListCollections(ctx context.Context, request operations.Tigri
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -434,7 +472,7 @@ func (s *database) ListCollections(ctx context.Context, request operations.Tigri
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ListCollectionsResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -444,7 +482,7 @@ func (s *database) ListCollections(ctx context.Context, request operations.Tigri
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -492,7 +530,13 @@ func (s *database) RollbackTransaction(ctx context.Context, request operations.T
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -506,7 +550,7 @@ func (s *database) RollbackTransaction(ctx context.Context, request operations.T
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.RollbackTransactionResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -516,7 +560,7 @@ func (s *database) RollbackTransaction(ctx context.Context, request operations.T
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -552,7 +596,13 @@ func (s *database) TigrisListBranches(ctx context.Context, request operations.Ti
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -566,7 +616,7 @@ func (s *database) TigrisListBranches(ctx context.Context, request operations.Ti
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ListBranchesResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -576,7 +626,7 @@ func (s *database) TigrisListBranches(ctx context.Context, request operations.Ti
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

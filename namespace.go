@@ -3,11 +3,13 @@
 package tigris
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
+	"io"
 	"net/http"
 	"strings"
 )
@@ -65,7 +67,13 @@ func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRe
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -79,7 +87,7 @@ func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRe
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.CreateNamespaceResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -89,7 +97,7 @@ func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRe
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -122,7 +130,13 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -136,7 +150,7 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.DescribeNamespacesResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -146,7 +160,7 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -192,7 +206,13 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -206,7 +226,7 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.GetNamespaceMetadataResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -216,7 +236,7 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -262,7 +282,13 @@ func (s *namespace) InsertMetadata(ctx context.Context, request operations.Manag
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -276,7 +302,7 @@ func (s *namespace) InsertMetadata(ctx context.Context, request operations.Manag
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.InsertNamespaceMetadataResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -286,7 +312,7 @@ func (s *namespace) InsertMetadata(ctx context.Context, request operations.Manag
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -319,7 +345,13 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -333,7 +365,7 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ListNamespacesResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -343,7 +375,7 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -389,7 +421,13 @@ func (s *namespace) UpdateMetadata(ctx context.Context, request operations.Manag
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -403,7 +441,7 @@ func (s *namespace) UpdateMetadata(ctx context.Context, request operations.Manag
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.UpdateNamespaceMetadataResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -413,7 +451,7 @@ func (s *namespace) UpdateMetadata(ctx context.Context, request operations.Manag
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.Status
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

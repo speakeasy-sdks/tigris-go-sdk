@@ -10,6 +10,7 @@ search.go
 system.go
 user.go
 tigris.go
+.gitignore
 go.mod
 go.sum
 pkg/types/bigint.go
