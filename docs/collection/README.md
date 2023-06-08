@@ -41,7 +41,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -94,7 +94,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -152,7 +152,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -201,7 +201,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -254,7 +254,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -322,7 +322,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -392,7 +392,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -452,7 +452,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -514,7 +514,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
@@ -596,7 +596,7 @@ import(
 func main() {
     s := tigris.New(
         tigris.WithSecurity(shared.Security{
-            BearerAuth: "YOUR_BEARER_TOKEN_HERE",
+            BearerAuth: "",
         }),
     )
 
