@@ -193,8 +193,8 @@ func New(opts ...SDKOption) *Tigris {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.13.0",
-			GenVersion:        "2.37.0",
+			SDKVersion:        "0.14.0",
+			GenVersion:        "2.39.0",
 		},
 	}
 	for _, opt := range opts {

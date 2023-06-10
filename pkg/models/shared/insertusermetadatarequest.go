@@ -2,8 +2,11 @@
 
 package shared
 
+type InsertUserMetadataRequestValue struct {
+}
+
 // InsertUserMetadataRequest - Request insertion of user metadata
 type InsertUserMetadataRequest struct {
-	MetadataKey *string                `json:"metadataKey,omitempty"`
-	Value       map[string]interface{} `json:"value,omitempty"`
+	MetadataKey *string                         `json:"metadataKey,omitempty"`
+	Value       *InsertUserMetadataRequestValue `json:"value,omitempty"`
 }

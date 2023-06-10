@@ -153,7 +153,7 @@ func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 
 // ObservabilityQuotaUsage - Queries current namespace quota usage
 // Returns current namespace quota limits
-func (s *system) ObservabilityQuotaUsage(ctx context.Context, request map[string]interface{}) (*operations.ObservabilityQuotaUsageResponse, error) {
+func (s *system) ObservabilityQuotaUsage(ctx context.Context, request shared.QuotaUsageRequest) (*operations.ObservabilityQuotaUsageResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/usage"
 
@@ -226,7 +226,7 @@ func (s *system) ObservabilityQuotaUsage(ctx context.Context, request map[string
 
 // QueryQuotaLimits - Queries current namespace quota limits
 // Returns current namespace quota limits
-func (s *system) QueryQuotaLimits(ctx context.Context, request map[string]interface{}) (*operations.ObservabilityQuotaLimitsResponse, error) {
+func (s *system) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimitsRequest) (*operations.ObservabilityQuotaLimitsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/limits"
 

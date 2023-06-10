@@ -2,9 +2,13 @@
 
 package shared
 
+// ReadResponseData - Object containing the collection document.
+type ReadResponseData struct {
+}
+
 type ReadResponse struct {
 	// Object containing the collection document.
-	Data map[string]interface{} `json:"data,omitempty"`
+	Data *ReadResponseData `json:"data,omitempty"`
 	// Has metadata related to the documents stored.
 	Metadata *ResponseMetadata `json:"metadata,omitempty"`
 	// An internal key, used for pagination.

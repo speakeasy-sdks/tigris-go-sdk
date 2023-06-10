@@ -8,7 +8,7 @@ import (
 )
 
 type CacheDelRequest struct {
-	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	DelRequest shared.DelRequest `request:"mediaType=application/json"`
 	// cache key
 	Key string `pathParam:"style=simple,explode=false,name=key"`
 	// cache name

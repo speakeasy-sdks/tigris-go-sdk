@@ -2,12 +2,16 @@
 
 package shared
 
+// CollectionDescriptionSchema - Collections schema
+type CollectionDescriptionSchema struct {
+}
+
 type CollectionDescription struct {
 	// Name of the collection.
-	Collection *string                `json:"collection,omitempty"`
-	Metadata   map[string]interface{} `json:"metadata,omitempty"`
+	Collection *string             `json:"collection,omitempty"`
+	Metadata   *CollectionMetadata `json:"metadata,omitempty"`
 	// Collections schema
-	Schema map[string]interface{} `json:"schema,omitempty"`
+	Schema *CollectionDescriptionSchema `json:"schema,omitempty"`
 	// Collection size in bytes
 	Size *int64 `json:"size,omitempty"`
 }

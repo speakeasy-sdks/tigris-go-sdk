@@ -5,5 +5,5 @@ package shared
 // ReplaceRequestOptions - Additional options for replace requests.
 type ReplaceRequestOptions struct {
 	// Additional options to modify write requests.
-	WriteOptions map[string]interface{} `json:"write_options,omitempty"`
+	WriteOptions *WriteOptions `json:"write_options,omitempty"`
 }

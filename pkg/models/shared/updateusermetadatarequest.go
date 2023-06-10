@@ -2,8 +2,11 @@
 
 package shared
 
+type UpdateUserMetadataRequestValue struct {
+}
+
 // UpdateUserMetadataRequest - Request update of user metadata
 type UpdateUserMetadataRequest struct {
-	MetadataKey *string                `json:"metadataKey,omitempty"`
-	Value       map[string]interface{} `json:"value,omitempty"`
+	MetadataKey *string                         `json:"metadataKey,omitempty"`
+	Value       *UpdateUserMetadataRequestValue `json:"value,omitempty"`
 }

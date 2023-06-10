@@ -4,6 +4,6 @@ package shared
 
 type BranchInfo struct {
 	// Branch name
-	Branch   *string                `json:"branch,omitempty"`
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Branch   *string         `json:"branch,omitempty"`
+	Metadata *BranchMetadata `json:"metadata,omitempty"`
 }

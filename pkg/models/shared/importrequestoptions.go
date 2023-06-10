@@ -5,5 +5,5 @@ package shared
 // ImportRequestOptions - additional options for import requests.
 type ImportRequestOptions struct {
 	// Additional options to modify write requests.
-	WriteOptions map[string]interface{} `json:"write_options,omitempty"`
+	WriteOptions *WriteOptions `json:"write_options,omitempty"`
 }

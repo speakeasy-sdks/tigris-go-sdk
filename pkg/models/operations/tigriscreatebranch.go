@@ -8,7 +8,7 @@ import (
 )
 
 type TigrisCreateBranchRequest struct {
-	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	CreateBranchRequest shared.CreateBranchRequest `request:"mediaType=application/json"`
 	// Name of the database branch to be created. <p></p>**Note**: `main` is a reserved branch name for primary database and is automatically created with CreateProject
 	Branch string `pathParam:"style=simple,explode=false,name=branch"`
 	// Create a database branch in this project

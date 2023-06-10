@@ -4,6 +4,6 @@ package shared
 
 type CollectionInfo struct {
 	// Collection name.
-	Collection *string                `json:"collection,omitempty"`
-	Metadata   map[string]interface{} `json:"metadata,omitempty"`
+	Collection *string             `json:"collection,omitempty"`
+	Metadata   *CollectionMetadata `json:"metadata,omitempty"`
 }

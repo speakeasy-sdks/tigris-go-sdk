@@ -2,13 +2,17 @@
 
 package shared
 
+// DescribeCollectionResponseSchema - Schema of this collection.
+type DescribeCollectionResponseSchema struct {
+}
+
 // DescribeCollectionResponse - A detailed description of the collection. The description returns collection metadata and the schema.
 type DescribeCollectionResponse struct {
 	// Name of the collection.
-	Collection *string                `json:"collection,omitempty"`
-	Metadata   map[string]interface{} `json:"metadata,omitempty"`
+	Collection *string             `json:"collection,omitempty"`
+	Metadata   *CollectionMetadata `json:"metadata,omitempty"`
 	// Schema of this collection.
-	Schema map[string]interface{} `json:"schema,omitempty"`
+	Schema *DescribeCollectionResponseSchema `json:"schema,omitempty"`
 	// The size of this collection in bytes.
 	Size *int64 `json:"size,omitempty"`
 }

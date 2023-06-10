@@ -2,9 +2,13 @@
 
 package shared
 
+// SearchHitData - Actual search document
+type SearchHitData struct {
+}
+
 type SearchHit struct {
 	// Actual search document
-	Data map[string]interface{} `json:"data,omitempty"`
+	Data *SearchHitData `json:"data,omitempty"`
 	// Contains metadata related to the search hit, has information about document created_at/updated_at as well.
 	Metadata *SearchHitMeta `json:"metadata,omitempty"`
 }

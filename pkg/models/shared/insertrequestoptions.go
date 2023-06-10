@@ -5,5 +5,5 @@ package shared
 // InsertRequestOptions - additional options for insert requests.
 type InsertRequestOptions struct {
 	// Additional options to modify write requests.
-	WriteOptions map[string]interface{} `json:"write_options,omitempty"`
+	WriteOptions *WriteOptions `json:"write_options,omitempty"`
 }

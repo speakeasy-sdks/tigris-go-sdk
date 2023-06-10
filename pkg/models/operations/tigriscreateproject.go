@@ -8,7 +8,7 @@ import (
 )
 
 type TigrisCreateProjectRequest struct {
-	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	CreateProjectRequest shared.CreateProjectRequest `request:"mediaType=application/json"`
 	// Create project with this name.
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }

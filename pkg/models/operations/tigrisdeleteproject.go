@@ -8,7 +8,7 @@ import (
 )
 
 type TigrisDeleteProjectRequest struct {
-	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	DeleteProjectRequest shared.DeleteProjectRequest `request:"mediaType=application/json"`
 	// Delete Project with this name. <p></p>**Note**: Deletes all resources under this project. Use with caution.
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }

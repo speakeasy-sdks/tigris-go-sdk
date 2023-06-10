@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: db7bd8f69518c551928aef7eb16008e2
   docVersion: 0.0.1
-  speakeasyVersion: 1.45.0
-  generationVersion: 2.37.0
+  speakeasyVersion: 1.47.0
+  generationVersion: 2.39.0
 generation:
   sdkClassName: tigris
   singleTagPerOp: false
   telemetryEnabled: false
 go:
-  version: 0.13.0
+  version: 0.14.0
   maxMethodParams: 0
   packageName: github.com/speakeasy-sdks/tigris-go-sdk

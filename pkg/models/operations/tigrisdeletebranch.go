@@ -8,7 +8,7 @@ import (
 )
 
 type TigrisDeleteBranchRequest struct {
-	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	DeleteBranchRequest shared.DeleteBranchRequest `request:"mediaType=application/json"`
 	// Name of the database branch to delete. <p></p>**Note**: `main` branch cannot be deleted, use DeleteProject instead
 	Branch string `pathParam:"style=simple,explode=false,name=branch"`
 	// Delete a database branch in this project

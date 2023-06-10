@@ -2,11 +2,14 @@
 
 package shared
 
+type InsertRequestDocuments struct {
+}
+
 type InsertRequest struct {
 	// Optionally specify a database branch name to perform operation on
 	Branch *string `json:"branch,omitempty"`
 	// Array of documents to insert. Each document is a JSON object.
-	Documents []map[string]interface{} `json:"documents,omitempty"`
+	Documents []InsertRequestDocuments `json:"documents,omitempty"`
 	// additional options for insert requests.
 	Options *InsertRequestOptions `json:"options,omitempty"`
 }

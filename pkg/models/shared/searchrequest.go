@@ -2,6 +2,21 @@
 
 package shared
 
+// SearchRequestFacet - Facet query to aggregate results on given fields. The field name for the facet search can be passed like this `{"brand": { "size": 10 }}` where the size controls the total facets for this field.
+type SearchRequestFacet struct {
+}
+
+type SearchRequestFields struct {
+}
+
+// SearchRequestFilter - Filter stacks on top of query results to further narrow down the results. Similar to `ReadRequest.filter`
+type SearchRequestFilter struct {
+}
+
+// SearchRequestSort - Array of fields and corresponding sort orders to order the results `[{ "salary": "$desc" }]`
+type SearchRequestSort struct {
+}
+
 type SearchRequest struct {
 	// Optionally specify a database branch name to perform operation on
 	Branch *string `json:"branch,omitempty"`
@@ -10,10 +25,10 @@ type SearchRequest struct {
 	// Array of document field names to exclude from results. `include_fields`, if specified, takes precedence over `exclude_fields`.
 	ExcludeFields []string `json:"exclude_fields,omitempty"`
 	// Facet query to aggregate results on given fields. The field name for the facet search can be passed like this `{"brand": { "size": 10 }}` where the size controls the total facets for this field.
-	Facet  map[string]interface{} `json:"facet,omitempty"`
-	Fields map[string]interface{} `json:"fields,omitempty"`
+	Facet  *SearchRequestFacet  `json:"facet,omitempty"`
+	Fields *SearchRequestFields `json:"fields,omitempty"`
 	// Filter stacks on top of query results to further narrow down the results. Similar to `ReadRequest.filter`
-	Filter map[string]interface{} `json:"filter,omitempty"`
+	Filter *SearchRequestFilter `json:"filter,omitempty"`
 	// Array of document field names to include in results. By default, all fields are included.
 	IncludeFields []string `json:"include_fields,omitempty"`
 	// Optionally can specify the page to retrieve. If page is set then only hits for this page is returned
@@ -25,5 +40,5 @@ type SearchRequest struct {
 	// Array of fields to project search query against
 	SearchFields []string `json:"search_fields,omitempty"`
 	// Array of fields and corresponding sort orders to order the results `[{ "salary": "$desc" }]`
-	Sort map[string]interface{} `json:"sort,omitempty"`
+	Sort *SearchRequestSort `json:"sort,omitempty"`
 }

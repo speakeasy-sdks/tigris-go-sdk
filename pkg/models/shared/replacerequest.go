@@ -2,11 +2,14 @@
 
 package shared
 
+type ReplaceRequestDocuments struct {
+}
+
 type ReplaceRequest struct {
 	// Optionally specify a database branch name to perform operation on
 	Branch *string `json:"branch,omitempty"`
 	// Array of documents to be replaced. Each document is a JSON object.
-	Documents []map[string]interface{} `json:"documents,omitempty"`
+	Documents []ReplaceRequestDocuments `json:"documents,omitempty"`
 	// Additional options for replace requests.
 	Options *ReplaceRequestOptions `json:"options,omitempty"`
 }

@@ -8,7 +8,7 @@ type DescribeDatabaseResponse struct {
 	Branches []string `json:"branches,omitempty"`
 	// A detailed description about all the collections. The description returns collection metadata and the schema.
 	Collections []CollectionDescription `json:"collections,omitempty"`
-	Metadata    map[string]interface{}  `json:"metadata,omitempty"`
+	Metadata    *DatabaseMetadata       `json:"metadata,omitempty"`
 	// Sum of all the collections sizes present in this database
 	Size *int64 `json:"size,omitempty"`
 }

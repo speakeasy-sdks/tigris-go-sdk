@@ -2,13 +2,17 @@
 
 package shared
 
+// CreateOrUpdateCollectionRequestSchema - The schema specifications are same as JSON schema specification defined <a href="https://json-schema.org/specification.html" title="here">here</a>.<p></p> Schema example: `{  "title": "user",  "description": "Collection of documents with details of users",  "properties": {    "id": {      "description": "A unique identifier for the user",      "type": "integer"    },    "name": {      "description": "Name of the user",      "type": "string",      "maxLength": 128    },    "balance": {      "description": "User account balance",      "type": "number"    }  },  "primary_key": ["id"] }`
+type CreateOrUpdateCollectionRequestSchema struct {
+}
+
 type CreateOrUpdateCollectionRequest struct {
 	// Optionally specify a database branch name to perform operation on
 	Branch *string `json:"branch,omitempty"`
 	// If set to `true` then the update schema request to the collection will fail by returning a conflict with HTTP Status code 409. The default is false.
 	OnlyCreate *bool `json:"only_create,omitempty"`
 	// Collection requests modifying options.
-	Options map[string]interface{} `json:"options,omitempty"`
+	Options *CollectionOptions `json:"options,omitempty"`
 	// The schema specifications are same as JSON schema specification defined <a href="https://json-schema.org/specification.html" title="here">here</a>.<p></p> Schema example: `{  "title": "user",  "description": "Collection of documents with details of users",  "properties": {    "id": {      "description": "A unique identifier for the user",      "type": "integer"    },    "name": {      "description": "Name of the user",      "type": "string",      "maxLength": 128    },    "balance": {      "description": "User account balance",      "type": "number"    }  },  "primary_key": ["id"] }`
-	Schema map[string]interface{} `json:"schema,omitempty"`
+	Schema *CreateOrUpdateCollectionRequestSchema `json:"schema,omitempty"`
 }

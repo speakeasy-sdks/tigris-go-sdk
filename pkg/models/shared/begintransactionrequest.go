@@ -7,5 +7,5 @@ type BeginTransactionRequest struct {
 	// Optionally specify a project branch name to perform operation on
 	Branch *string `json:"branch,omitempty"`
 	// Options that can be used to modify the transaction semantics.
-	Options map[string]interface{} `json:"options,omitempty"`
+	Options *TransactionOptions `json:"options,omitempty"`
 }

@@ -3,7 +3,7 @@
 package shared
 
 type ProjectInfo struct {
-	Metadata map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *ProjectMetadata `json:"metadata,omitempty"`
 	// Project name.
 	Project *string `json:"project,omitempty"`
 }

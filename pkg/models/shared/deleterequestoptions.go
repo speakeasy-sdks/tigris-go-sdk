@@ -9,5 +9,5 @@ type DeleteRequestOptions struct {
 	// Limit the number of documents to be deleted
 	Limit *int64 `json:"limit,omitempty"`
 	// Additional options to modify write requests.
-	WriteOptions map[string]interface{} `json:"write_options,omitempty"`
+	WriteOptions *WriteOptions `json:"write_options,omitempty"`
 }

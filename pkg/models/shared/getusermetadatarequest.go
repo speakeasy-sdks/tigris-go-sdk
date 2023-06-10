@@ -2,8 +2,11 @@
 
 package shared
 
+type GetUserMetadataRequestValue struct {
+}
+
 // GetUserMetadataRequest - Request user metadata
 type GetUserMetadataRequest struct {
-	MetadataKey *string                `json:"metadataKey,omitempty"`
-	Value       map[string]interface{} `json:"value,omitempty"`
+	MetadataKey *string                      `json:"metadataKey,omitempty"`
+	Value       *GetUserMetadataRequestValue `json:"value,omitempty"`
 }

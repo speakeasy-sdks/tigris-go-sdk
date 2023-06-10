@@ -8,7 +8,7 @@ import (
 )
 
 type CacheDeleteCacheRequest struct {
-	RequestBody map[string]interface{} `request:"mediaType=application/json"`
+	DeleteCacheRequest shared.DeleteCacheRequest `request:"mediaType=application/json"`
 	// cache name
 	Name string `pathParam:"style=simple,explode=false,name=name"`
 	// Tigris project name

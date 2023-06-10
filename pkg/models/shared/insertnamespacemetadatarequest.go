@@ -2,8 +2,11 @@
 
 package shared
 
+type InsertNamespaceMetadataRequestValue struct {
+}
+
 // InsertNamespaceMetadataRequest - Request insertion of namespace metadata
 type InsertNamespaceMetadataRequest struct {
-	MetadataKey *string                `json:"metadataKey,omitempty"`
-	Value       map[string]interface{} `json:"value,omitempty"`
+	MetadataKey *string                              `json:"metadataKey,omitempty"`
+	Value       *InsertNamespaceMetadataRequestValue `json:"value,omitempty"`
 }

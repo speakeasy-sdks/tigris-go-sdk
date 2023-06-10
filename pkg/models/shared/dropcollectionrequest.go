@@ -6,5 +6,5 @@ type DropCollectionRequest struct {
 	// Optionally specify a project branch name to perform operation on
 	Branch *string `json:"branch,omitempty"`
 	// Collection requests modifying options.
-	Options map[string]interface{} `json:"options,omitempty"`
+	Options *CollectionOptions `json:"options,omitempty"`
 }
