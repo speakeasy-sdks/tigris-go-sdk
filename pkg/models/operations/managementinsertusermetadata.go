@@ -12,6 +12,20 @@ type ManagementInsertUserMetadataRequest struct {
 	MetadataKey               string                           `pathParam:"style=simple,explode=false,name=metadataKey"`
 }
 
+func (o *ManagementInsertUserMetadataRequest) GetInsertUserMetadataRequest() shared.InsertUserMetadataRequest {
+	if o == nil {
+		return shared.InsertUserMetadataRequest{}
+	}
+	return o.InsertUserMetadataRequest
+}
+
+func (o *ManagementInsertUserMetadataRequest) GetMetadataKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.MetadataKey
+}
+
 type ManagementInsertUserMetadataResponse struct {
 	ContentType string
 	// OK
@@ -20,4 +34,39 @@ type ManagementInsertUserMetadataResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *ManagementInsertUserMetadataResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ManagementInsertUserMetadataResponse) GetInsertUserMetadataResponse() *shared.InsertUserMetadataResponse {
+	if o == nil {
+		return nil
+	}
+	return o.InsertUserMetadataResponse
+}
+
+func (o *ManagementInsertUserMetadataResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ManagementInsertUserMetadataResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ManagementInsertUserMetadataResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

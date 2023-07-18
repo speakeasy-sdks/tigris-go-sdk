@@ -10,3 +10,17 @@ type GetUserMetadataRequest struct {
 	MetadataKey *string                      `json:"metadataKey,omitempty"`
 	Value       *GetUserMetadataRequestValue `json:"value,omitempty"`
 }
+
+func (o *GetUserMetadataRequest) GetMetadataKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetadataKey
+}
+
+func (o *GetUserMetadataRequest) GetValue() *GetUserMetadataRequestValue {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

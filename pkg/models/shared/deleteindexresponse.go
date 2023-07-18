@@ -9,3 +9,17 @@ type DeleteIndexResponse struct {
 	// An enum with value set as "deleted".
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *DeleteIndexResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *DeleteIndexResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

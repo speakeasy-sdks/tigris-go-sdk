@@ -5,3 +5,10 @@ package shared
 type CreateCacheRequest struct {
 	Options *CreateCacheOptions `json:"options,omitempty"`
 }
+
+func (o *CreateCacheRequest) GetOptions() *CreateCacheOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}

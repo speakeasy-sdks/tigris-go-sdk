@@ -11,3 +11,24 @@ type GetNamespaceMetadataResponse struct {
 	NamespaceID *int64                             `json:"namespaceId,omitempty"`
 	Value       *GetNamespaceMetadataResponseValue `json:"value,omitempty"`
 }
+
+func (o *GetNamespaceMetadataResponse) GetMetadataKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetadataKey
+}
+
+func (o *GetNamespaceMetadataResponse) GetNamespaceID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceID
+}
+
+func (o *GetNamespaceMetadataResponse) GetValue() *GetNamespaceMetadataResponseValue {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

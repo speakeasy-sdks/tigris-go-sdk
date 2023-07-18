@@ -12,6 +12,13 @@ type TigrisListAppKeysRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisListAppKeysRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisListAppKeysResponse struct {
 	ContentType string
 	// OK
@@ -20,4 +27,39 @@ type TigrisListAppKeysResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisListAppKeysResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisListAppKeysResponse) GetListAppKeysResponse() *shared.ListAppKeysResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListAppKeysResponse
+}
+
+func (o *TigrisListAppKeysResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisListAppKeysResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisListAppKeysResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

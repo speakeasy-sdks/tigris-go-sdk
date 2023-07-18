@@ -14,3 +14,38 @@ type DescribeCollectionRequest struct {
 	// Return schema in the requested format. Format can be JSON, Go, TypeScript, Java. Default is JSON.
 	SchemaFormat *string `json:"schema_format,omitempty"`
 }
+
+func (o *DescribeCollectionRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *DescribeCollectionRequest) GetCollection() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Collection
+}
+
+func (o *DescribeCollectionRequest) GetOptions() *CollectionOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}
+
+func (o *DescribeCollectionRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}
+
+func (o *DescribeCollectionRequest) GetSchemaFormat() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SchemaFormat
+}

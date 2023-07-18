@@ -12,6 +12,20 @@ type ManagementInsertNamespaceMetadataRequest struct {
 	MetadataKey                    string                                `pathParam:"style=simple,explode=false,name=metadataKey"`
 }
 
+func (o *ManagementInsertNamespaceMetadataRequest) GetInsertNamespaceMetadataRequest() shared.InsertNamespaceMetadataRequest {
+	if o == nil {
+		return shared.InsertNamespaceMetadataRequest{}
+	}
+	return o.InsertNamespaceMetadataRequest
+}
+
+func (o *ManagementInsertNamespaceMetadataRequest) GetMetadataKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.MetadataKey
+}
+
 type ManagementInsertNamespaceMetadataResponse struct {
 	ContentType string
 	// OK
@@ -20,4 +34,39 @@ type ManagementInsertNamespaceMetadataResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *ManagementInsertNamespaceMetadataResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ManagementInsertNamespaceMetadataResponse) GetInsertNamespaceMetadataResponse() *shared.InsertNamespaceMetadataResponse {
+	if o == nil {
+		return nil
+	}
+	return o.InsertNamespaceMetadataResponse
+}
+
+func (o *ManagementInsertNamespaceMetadataResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ManagementInsertNamespaceMetadataResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ManagementInsertNamespaceMetadataResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

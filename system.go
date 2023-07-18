@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
@@ -38,7 +39,7 @@ func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResp
 	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
 	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
-	client := s.sdkConfiguration.SecurityClient
+	client := s.sdkConfiguration.DefaultClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -72,6 +73,8 @@ func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResp
 			}
 
 			res.HealthCheckResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -82,6 +85,8 @@ func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResp
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -135,6 +140,8 @@ func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 			}
 
 			res.GetInfoResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -145,6 +152,8 @@ func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -208,6 +217,8 @@ func (s *system) ObservabilityQuotaUsage(ctx context.Context, request shared.Quo
 			}
 
 			res.QuotaUsageResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -218,6 +229,8 @@ func (s *system) ObservabilityQuotaUsage(ctx context.Context, request shared.Quo
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -281,6 +294,8 @@ func (s *system) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimit
 			}
 
 			res.QuotaLimitsResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -291,6 +306,8 @@ func (s *system) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimit
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -354,6 +371,8 @@ func (s *system) QueryTimeSeriesMetrics(ctx context.Context, request shared.Quer
 			}
 
 			res.QueryTimeSeriesMetricsResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -364,6 +383,8 @@ func (s *system) QueryTimeSeriesMetrics(ctx context.Context, request shared.Quer
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

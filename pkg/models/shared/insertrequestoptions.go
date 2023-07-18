@@ -7,3 +7,10 @@ type InsertRequestOptions struct {
 	// Additional options to modify write requests.
 	WriteOptions *WriteOptions `json:"write_options,omitempty"`
 }
+
+func (o *InsertRequestOptions) GetWriteOptions() *WriteOptions {
+	if o == nil {
+		return nil
+	}
+	return o.WriteOptions
+}

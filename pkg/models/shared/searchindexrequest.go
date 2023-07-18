@@ -28,3 +28,87 @@ type SearchIndexRequest struct {
 	// Array of fields and corresponding sort orders to order the results `[{ "salary": "$desc" }]`
 	Sort *string `json:"sort,omitempty"`
 }
+
+func (o *SearchIndexRequest) GetCollation() *Collation {
+	if o == nil {
+		return nil
+	}
+	return o.Collation
+}
+
+func (o *SearchIndexRequest) GetExcludeFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ExcludeFields
+}
+
+func (o *SearchIndexRequest) GetFacet() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Facet
+}
+
+func (o *SearchIndexRequest) GetFilter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Filter
+}
+
+func (o *SearchIndexRequest) GetIncludeFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.IncludeFields
+}
+
+func (o *SearchIndexRequest) GetIndex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *SearchIndexRequest) GetPage() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Page
+}
+
+func (o *SearchIndexRequest) GetPageSize() *int {
+	if o == nil {
+		return nil
+	}
+	return o.PageSize
+}
+
+func (o *SearchIndexRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}
+
+func (o *SearchIndexRequest) GetQ() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Q
+}
+
+func (o *SearchIndexRequest) GetSearchFields() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SearchFields
+}
+
+func (o *SearchIndexRequest) GetSort() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sort
+}

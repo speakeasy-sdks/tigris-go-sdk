@@ -10,3 +10,24 @@ type SearchMetadata struct {
 	// Number representing the total pages of results
 	TotalPages *int `json:"total_pages,omitempty"`
 }
+
+func (o *SearchMetadata) GetFound() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Found
+}
+
+func (o *SearchMetadata) GetPage() *Page {
+	if o == nil {
+		return nil
+	}
+	return o.Page
+}
+
+func (o *SearchMetadata) GetTotalPages() *int {
+	if o == nil {
+		return nil
+	}
+	return o.TotalPages
+}

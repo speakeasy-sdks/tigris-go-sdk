@@ -10,3 +10,24 @@ type CreateDocumentRequest struct {
 	// Tigris project name.
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *CreateDocumentRequest) GetDocuments() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Documents
+}
+
+func (o *CreateDocumentRequest) GetIndex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *CreateDocumentRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

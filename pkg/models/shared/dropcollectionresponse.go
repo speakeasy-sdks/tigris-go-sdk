@@ -9,3 +9,17 @@ type DropCollectionResponse struct {
 	// An enum with value set as "dropped".
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *DropCollectionResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *DropCollectionResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

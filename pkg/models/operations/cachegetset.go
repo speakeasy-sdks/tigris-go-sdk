@@ -17,6 +17,34 @@ type CacheGetSetRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *CacheGetSetRequest) GetGetSetRequest() shared.GetSetRequest {
+	if o == nil {
+		return shared.GetSetRequest{}
+	}
+	return o.GetSetRequest
+}
+
+func (o *CacheGetSetRequest) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *CacheGetSetRequest) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CacheGetSetRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type CacheGetSetResponse struct {
 	ContentType string
 	// OK
@@ -25,4 +53,39 @@ type CacheGetSetResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CacheGetSetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CacheGetSetResponse) GetGetSetResponse() *shared.GetSetResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetSetResponse
+}
+
+func (o *CacheGetSetResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CacheGetSetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CacheGetSetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

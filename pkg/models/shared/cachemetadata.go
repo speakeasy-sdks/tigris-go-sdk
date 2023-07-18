@@ -6,3 +6,10 @@ type CacheMetadata struct {
 	// Cache name
 	Name *string `json:"name,omitempty"`
 }
+
+func (o *CacheMetadata) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

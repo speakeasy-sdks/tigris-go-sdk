@@ -18,6 +18,62 @@ type RealtimeReadMessagesRequest struct {
 	Start     *string `queryParam:"style=form,explode=true,name=start"`
 }
 
+func (o *RealtimeReadMessagesRequest) GetChannel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Channel
+}
+
+func (o *RealtimeReadMessagesRequest) GetEnd() *string {
+	if o == nil {
+		return nil
+	}
+	return o.End
+}
+
+func (o *RealtimeReadMessagesRequest) GetEvent() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Event
+}
+
+func (o *RealtimeReadMessagesRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *RealtimeReadMessagesRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
+func (o *RealtimeReadMessagesRequest) GetSessionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SessionID
+}
+
+func (o *RealtimeReadMessagesRequest) GetSocketID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SocketID
+}
+
+func (o *RealtimeReadMessagesRequest) GetStart() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Start
+}
+
 type RealtimeReadMessagesResponse struct {
 	ContentType string
 	// OK
@@ -26,4 +82,39 @@ type RealtimeReadMessagesResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *RealtimeReadMessagesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RealtimeReadMessagesResponse) GetReadMessagesResponse() *shared.ReadMessagesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ReadMessagesResponse
+}
+
+func (o *RealtimeReadMessagesResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *RealtimeReadMessagesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RealtimeReadMessagesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

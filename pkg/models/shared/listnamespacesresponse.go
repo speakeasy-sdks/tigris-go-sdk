@@ -6,3 +6,10 @@ package shared
 type ListNamespacesResponse struct {
 	Namespaces []NamespaceInfo `json:"namespaces,omitempty"`
 }
+
+func (o *ListNamespacesResponse) GetNamespaces() []NamespaceInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Namespaces
+}

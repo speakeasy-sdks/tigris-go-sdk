@@ -16,3 +16,38 @@ type CreateNamespaceResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *CreateNamespaceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateNamespaceResponse) GetCreateNamespaceResponse() *shared.CreateNamespaceResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CreateNamespaceResponse
+}
+
+func (o *CreateNamespaceResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CreateNamespaceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateNamespaceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

@@ -8,3 +8,17 @@ type StreamingReadResponse struct {
 	Error  *Error        `json:"error,omitempty"`
 	Result *ReadResponse `json:"result,omitempty"`
 }
+
+func (o *StreamingReadResponse) GetError() *Error {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *StreamingReadResponse) GetResult() *ReadResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Result
+}

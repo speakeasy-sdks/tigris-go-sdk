@@ -7,3 +7,17 @@ type BranchInfo struct {
 	Branch   *string         `json:"branch,omitempty"`
 	Metadata *BranchMetadata `json:"metadata,omitempty"`
 }
+
+func (o *BranchInfo) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *BranchInfo) GetMetadata() *BranchMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}

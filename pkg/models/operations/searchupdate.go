@@ -15,6 +15,27 @@ type SearchUpdateRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *SearchUpdateRequest) GetUpdateDocumentRequest() shared.UpdateDocumentRequest {
+	if o == nil {
+		return shared.UpdateDocumentRequest{}
+	}
+	return o.UpdateDocumentRequest
+}
+
+func (o *SearchUpdateRequest) GetIndex() string {
+	if o == nil {
+		return ""
+	}
+	return o.Index
+}
+
+func (o *SearchUpdateRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type SearchUpdateResponse struct {
 	ContentType string
 	StatusCode  int
@@ -23,4 +44,39 @@ type SearchUpdateResponse struct {
 	Status *shared.Status
 	// OK
 	UpdateDocumentResponse *shared.UpdateDocumentResponse
+}
+
+func (o *SearchUpdateResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SearchUpdateResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SearchUpdateResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *SearchUpdateResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *SearchUpdateResponse) GetUpdateDocumentResponse() *shared.UpdateDocumentResponse {
+	if o == nil {
+		return nil
+	}
+	return o.UpdateDocumentResponse
 }

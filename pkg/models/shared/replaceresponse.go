@@ -11,3 +11,24 @@ type ReplaceResponse struct {
 	// an enum with value set as "replaced"
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *ReplaceResponse) GetKeys() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Keys
+}
+
+func (o *ReplaceResponse) GetMetadata() *ResponseMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *ReplaceResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

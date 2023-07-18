@@ -10,3 +10,24 @@ type DeleteByQueryRequest struct {
 	// The project name.
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *DeleteByQueryRequest) GetFilter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Filter
+}
+
+func (o *DeleteByQueryRequest) GetIndex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *DeleteByQueryRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

@@ -20,3 +20,31 @@ type UpdateRequest struct {
 	// Additional options for update requests.
 	Options *UpdateRequestOptions `json:"options,omitempty"`
 }
+
+func (o *UpdateRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *UpdateRequest) GetFields() *UpdateRequestFields {
+	if o == nil {
+		return nil
+	}
+	return o.Fields
+}
+
+func (o *UpdateRequest) GetFilter() *UpdateRequestFilter {
+	if o == nil {
+		return nil
+	}
+	return o.Filter
+}
+
+func (o *UpdateRequest) GetOptions() *UpdateRequestOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}

@@ -7,3 +7,10 @@ type RotateAppKeyResponse struct {
 	// An user AppKey
 	AppKey *AppKey `json:"app_key,omitempty"`
 }
+
+func (o *RotateAppKeyResponse) GetAppKey() *AppKey {
+	if o == nil {
+		return nil
+	}
+	return o.AppKey
+}

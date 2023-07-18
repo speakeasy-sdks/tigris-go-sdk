@@ -16,3 +16,38 @@ type ManagementDescribeNamespacesResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *ManagementDescribeNamespacesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ManagementDescribeNamespacesResponse) GetDescribeNamespacesResponse() *shared.DescribeNamespacesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DescribeNamespacesResponse
+}
+
+func (o *ManagementDescribeNamespacesResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ManagementDescribeNamespacesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ManagementDescribeNamespacesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

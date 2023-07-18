@@ -22,3 +22,38 @@ type ReadRequest struct {
 	// Array of fields and corresponding sort orders to order the results. Ex: 1 `[{ "salary": "$desc" }]`, Ex: 2  `[{ "salary": "$asc"}]`
 	Sort *string `json:"sort,omitempty"`
 }
+
+func (o *ReadRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *ReadRequest) GetFields() *ReadRequestFields {
+	if o == nil {
+		return nil
+	}
+	return o.Fields
+}
+
+func (o *ReadRequest) GetFilter() *ReadRequestFilter {
+	if o == nil {
+		return nil
+	}
+	return o.Filter
+}
+
+func (o *ReadRequest) GetOptions() *ReadRequestOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}
+
+func (o *ReadRequest) GetSort() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sort
+}

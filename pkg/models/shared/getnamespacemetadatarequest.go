@@ -10,3 +10,17 @@ type GetNamespaceMetadataRequest struct {
 	MetadataKey *string                           `json:"metadataKey,omitempty"`
 	Value       *GetNamespaceMetadataRequestValue `json:"value,omitempty"`
 }
+
+func (o *GetNamespaceMetadataRequest) GetMetadataKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetadataKey
+}
+
+func (o *GetNamespaceMetadataRequest) GetValue() *GetNamespaceMetadataRequestValue {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

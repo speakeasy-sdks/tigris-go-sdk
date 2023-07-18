@@ -7,3 +7,17 @@ type SearchFacet struct {
 	// Additional stats for faceted field
 	Stats *FacetStats `json:"stats,omitempty"`
 }
+
+func (o *SearchFacet) GetCounts() []FacetCount {
+	if o == nil {
+		return nil
+	}
+	return o.Counts
+}
+
+func (o *SearchFacet) GetStats() *FacetStats {
+	if o == nil {
+		return nil
+	}
+	return o.Stats
+}

@@ -15,6 +15,27 @@ type TigrisSearchRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisSearchRequest) GetSearchRequest() shared.SearchRequest {
+	if o == nil {
+		return shared.SearchRequest{}
+	}
+	return o.SearchRequest
+}
+
+func (o *TigrisSearchRequest) GetCollection() string {
+	if o == nil {
+		return ""
+	}
+	return o.Collection
+}
+
+func (o *TigrisSearchRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisSearchResponse struct {
 	ContentType string
 	StatusCode  int
@@ -23,4 +44,39 @@ type TigrisSearchResponse struct {
 	Status *shared.Status
 	// OK
 	StreamingSearchResponse *shared.StreamingSearchResponse
+}
+
+func (o *TigrisSearchResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisSearchResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisSearchResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *TigrisSearchResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisSearchResponse) GetStreamingSearchResponse() *shared.StreamingSearchResponse {
+	if o == nil {
+		return nil
+	}
+	return o.StreamingSearchResponse
 }

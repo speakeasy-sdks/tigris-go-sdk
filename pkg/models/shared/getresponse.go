@@ -9,3 +9,17 @@ type GetResponse struct {
 	// value
 	Value *string `json:"value,omitempty"`
 }
+
+func (o *GetResponse) GetExpiresInMs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ExpiresInMs
+}
+
+func (o *GetResponse) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

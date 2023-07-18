@@ -9,3 +9,17 @@ type Page struct {
 	// Maximum number of results per page
 	Size *int `json:"size,omitempty"`
 }
+
+func (o *Page) GetCurrent() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Current
+}
+
+func (o *Page) GetSize() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}

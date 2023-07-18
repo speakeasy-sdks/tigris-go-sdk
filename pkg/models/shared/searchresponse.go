@@ -8,3 +8,24 @@ type SearchResponse struct {
 	Hits   []SearchHit            `json:"hits,omitempty"`
 	Meta   *SearchMetadata        `json:"meta,omitempty"`
 }
+
+func (o *SearchResponse) GetFacets() map[string]SearchFacet {
+	if o == nil {
+		return nil
+	}
+	return o.Facets
+}
+
+func (o *SearchResponse) GetHits() []SearchHit {
+	if o == nil {
+		return nil
+	}
+	return o.Hits
+}
+
+func (o *SearchResponse) GetMeta() *SearchMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}

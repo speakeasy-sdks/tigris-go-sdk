@@ -12,3 +12,31 @@ type DescribeDatabaseResponse struct {
 	// Sum of all the collections sizes present in this database
 	Size *int64 `json:"size,omitempty"`
 }
+
+func (o *DescribeDatabaseResponse) GetBranches() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Branches
+}
+
+func (o *DescribeDatabaseResponse) GetCollections() []CollectionDescription {
+	if o == nil {
+		return nil
+	}
+	return o.Collections
+}
+
+func (o *DescribeDatabaseResponse) GetMetadata() *DatabaseMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *DescribeDatabaseResponse) GetSize() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}

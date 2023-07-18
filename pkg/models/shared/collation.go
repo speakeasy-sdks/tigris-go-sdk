@@ -6,3 +6,10 @@ package shared
 type Collation struct {
 	Case *string `json:"case,omitempty"`
 }
+
+func (o *Collation) GetCase() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Case
+}

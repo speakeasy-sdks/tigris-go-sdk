@@ -7,3 +7,10 @@ type CommitTransactionRequest struct {
 	// Optionally specify a database branch name to perform operation on
 	Branch *string `json:"branch,omitempty"`
 }
+
+func (o *CommitTransactionRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}

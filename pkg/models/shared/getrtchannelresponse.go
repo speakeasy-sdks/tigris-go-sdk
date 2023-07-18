@@ -6,3 +6,10 @@ package shared
 type GetRTChannelResponse struct {
 	Channel *string `json:"channel,omitempty"`
 }
+
+func (o *GetRTChannelResponse) GetChannel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Channel
+}

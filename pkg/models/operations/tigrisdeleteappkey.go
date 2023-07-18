@@ -13,6 +13,20 @@ type TigrisDeleteAppKeyRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisDeleteAppKeyRequest) GetDeleteAppKeyRequest() shared.DeleteAppKeyRequest {
+	if o == nil {
+		return shared.DeleteAppKeyRequest{}
+	}
+	return o.DeleteAppKeyRequest
+}
+
+func (o *TigrisDeleteAppKeyRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisDeleteAppKeyResponse struct {
 	ContentType string
 	// OK
@@ -21,4 +35,39 @@ type TigrisDeleteAppKeyResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisDeleteAppKeyResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisDeleteAppKeyResponse) GetDeleteAppKeyResponse() *shared.DeleteAppKeyResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteAppKeyResponse
+}
+
+func (o *TigrisDeleteAppKeyResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisDeleteAppKeyResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisDeleteAppKeyResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

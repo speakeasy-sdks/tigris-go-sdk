@@ -9,3 +9,17 @@ type DeleteCacheResponse struct {
 	// An enum with value set as "deleted"
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *DeleteCacheResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *DeleteCacheResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

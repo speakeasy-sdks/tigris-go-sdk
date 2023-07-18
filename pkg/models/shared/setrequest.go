@@ -14,3 +14,38 @@ type SetRequest struct {
 	// set only if the key exist
 	Xx *bool `json:"xx,omitempty"`
 }
+
+func (o *SetRequest) GetEx() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Ex
+}
+
+func (o *SetRequest) GetNx() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Nx
+}
+
+func (o *SetRequest) GetPx() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Px
+}
+
+func (o *SetRequest) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *SetRequest) GetXx() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Xx
+}

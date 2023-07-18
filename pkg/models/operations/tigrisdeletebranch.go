@@ -15,6 +15,27 @@ type TigrisDeleteBranchRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisDeleteBranchRequest) GetDeleteBranchRequest() shared.DeleteBranchRequest {
+	if o == nil {
+		return shared.DeleteBranchRequest{}
+	}
+	return o.DeleteBranchRequest
+}
+
+func (o *TigrisDeleteBranchRequest) GetBranch() string {
+	if o == nil {
+		return ""
+	}
+	return o.Branch
+}
+
+func (o *TigrisDeleteBranchRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisDeleteBranchResponse struct {
 	ContentType string
 	// OK
@@ -23,4 +44,39 @@ type TigrisDeleteBranchResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisDeleteBranchResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisDeleteBranchResponse) GetDeleteBranchResponse() *shared.DeleteBranchResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteBranchResponse
+}
+
+func (o *TigrisDeleteBranchResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisDeleteBranchResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisDeleteBranchResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

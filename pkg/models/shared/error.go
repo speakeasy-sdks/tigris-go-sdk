@@ -96,3 +96,17 @@ type Error struct {
 	// A developer-facing descriptive error message
 	Message *string `json:"message,omitempty"`
 }
+
+func (o *Error) GetCode() *ErrorCode {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *Error) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}

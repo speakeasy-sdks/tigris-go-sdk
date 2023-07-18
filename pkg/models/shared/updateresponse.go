@@ -11,3 +11,24 @@ type UpdateResponse struct {
 	// an enum with value set as "updated".
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *UpdateResponse) GetMetadata() *ResponseMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *UpdateResponse) GetModifiedCount() *int {
+	if o == nil {
+		return nil
+	}
+	return o.ModifiedCount
+}
+
+func (o *UpdateResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

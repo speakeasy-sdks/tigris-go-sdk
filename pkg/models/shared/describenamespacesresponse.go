@@ -6,3 +6,10 @@ package shared
 type DescribeNamespacesResponse struct {
 	Data *DescribeNamespacesData `json:"data,omitempty"`
 }
+
+func (o *DescribeNamespacesResponse) GetData() *DescribeNamespacesData {
+	if o == nil {
+		return nil
+	}
+	return o.Data
+}

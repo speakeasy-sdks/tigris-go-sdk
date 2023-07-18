@@ -7,3 +7,10 @@ type BeginTransactionResponse struct {
 	// Contains ID which uniquely identifies transaction This context is returned by BeginTransaction request and should be passed in the metadata (headers) of subsequent requests in order to run them in the context of the same transaction.
 	TxCtx *TransactionCtx `json:"tx_ctx,omitempty"`
 }
+
+func (o *BeginTransactionResponse) GetTxCtx() *TransactionCtx {
+	if o == nil {
+		return nil
+	}
+	return o.TxCtx
+}

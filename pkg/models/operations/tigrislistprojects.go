@@ -16,3 +16,38 @@ type TigrisListProjectsResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *TigrisListProjectsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisListProjectsResponse) GetListProjectsResponse() *shared.ListProjectsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListProjectsResponse
+}
+
+func (o *TigrisListProjectsResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisListProjectsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisListProjectsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

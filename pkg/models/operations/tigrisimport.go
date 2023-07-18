@@ -15,6 +15,27 @@ type TigrisImportRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisImportRequest) GetImportRequest() shared.ImportRequest {
+	if o == nil {
+		return shared.ImportRequest{}
+	}
+	return o.ImportRequest
+}
+
+func (o *TigrisImportRequest) GetCollection() string {
+	if o == nil {
+		return ""
+	}
+	return o.Collection
+}
+
+func (o *TigrisImportRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisImportResponse struct {
 	ContentType string
 	// OK
@@ -23,4 +44,39 @@ type TigrisImportResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisImportResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisImportResponse) GetImportResponse() *shared.ImportResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ImportResponse
+}
+
+func (o *TigrisImportResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisImportResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisImportResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

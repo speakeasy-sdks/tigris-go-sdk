@@ -16,3 +16,38 @@ type ObservabilityQueryTimeSeriesMetricsResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *ObservabilityQueryTimeSeriesMetricsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ObservabilityQueryTimeSeriesMetricsResponse) GetQueryTimeSeriesMetricsResponse() *shared.QueryTimeSeriesMetricsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.QueryTimeSeriesMetricsResponse
+}
+
+func (o *ObservabilityQueryTimeSeriesMetricsResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ObservabilityQueryTimeSeriesMetricsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ObservabilityQueryTimeSeriesMetricsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

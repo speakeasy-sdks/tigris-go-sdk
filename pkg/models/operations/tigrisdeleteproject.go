@@ -13,6 +13,20 @@ type TigrisDeleteProjectRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisDeleteProjectRequest) GetDeleteProjectRequest() shared.DeleteProjectRequest {
+	if o == nil {
+		return shared.DeleteProjectRequest{}
+	}
+	return o.DeleteProjectRequest
+}
+
+func (o *TigrisDeleteProjectRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisDeleteProjectResponse struct {
 	ContentType string
 	// OK
@@ -21,4 +35,39 @@ type TigrisDeleteProjectResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisDeleteProjectResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisDeleteProjectResponse) GetDeleteProjectResponse() *shared.DeleteProjectResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteProjectResponse
+}
+
+func (o *TigrisDeleteProjectResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisDeleteProjectResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisDeleteProjectResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

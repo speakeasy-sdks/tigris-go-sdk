@@ -13,3 +13,24 @@ type ReplaceRequest struct {
 	// Additional options for replace requests.
 	Options *ReplaceRequestOptions `json:"options,omitempty"`
 }
+
+func (o *ReplaceRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *ReplaceRequest) GetDocuments() []ReplaceRequestDocuments {
+	if o == nil {
+		return nil
+	}
+	return o.Documents
+}
+
+func (o *ReplaceRequest) GetOptions() *ReplaceRequestOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}

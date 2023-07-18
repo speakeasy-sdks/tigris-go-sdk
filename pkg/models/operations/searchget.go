@@ -16,6 +16,27 @@ type SearchGetRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *SearchGetRequest) GetIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ids
+}
+
+func (o *SearchGetRequest) GetIndex() string {
+	if o == nil {
+		return ""
+	}
+	return o.Index
+}
+
+func (o *SearchGetRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type SearchGetResponse struct {
 	ContentType string
 	// OK
@@ -24,4 +45,39 @@ type SearchGetResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *SearchGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SearchGetResponse) GetGetDocumentResponse() *shared.GetDocumentResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetDocumentResponse
+}
+
+func (o *SearchGetResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *SearchGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SearchGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

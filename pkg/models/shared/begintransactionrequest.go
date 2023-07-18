@@ -9,3 +9,17 @@ type BeginTransactionRequest struct {
 	// Options that can be used to modify the transaction semantics.
 	Options *TransactionOptions `json:"options,omitempty"`
 }
+
+func (o *BeginTransactionRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *BeginTransactionRequest) GetOptions() *TransactionOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}

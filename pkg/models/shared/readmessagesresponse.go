@@ -6,3 +6,10 @@ package shared
 type ReadMessagesResponse struct {
 	Message *Message `json:"message,omitempty"`
 }
+
+func (o *ReadMessagesResponse) GetMessage() *Message {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}

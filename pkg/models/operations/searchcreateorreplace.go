@@ -15,6 +15,27 @@ type SearchCreateOrReplaceRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *SearchCreateOrReplaceRequest) GetCreateOrReplaceDocumentRequest() shared.CreateOrReplaceDocumentRequest {
+	if o == nil {
+		return shared.CreateOrReplaceDocumentRequest{}
+	}
+	return o.CreateOrReplaceDocumentRequest
+}
+
+func (o *SearchCreateOrReplaceRequest) GetIndex() string {
+	if o == nil {
+		return ""
+	}
+	return o.Index
+}
+
+func (o *SearchCreateOrReplaceRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type SearchCreateOrReplaceResponse struct {
 	ContentType string
 	// OK
@@ -23,4 +44,39 @@ type SearchCreateOrReplaceResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *SearchCreateOrReplaceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SearchCreateOrReplaceResponse) GetCreateOrReplaceDocumentResponse() *shared.CreateOrReplaceDocumentResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CreateOrReplaceDocumentResponse
+}
+
+func (o *SearchCreateOrReplaceResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *SearchCreateOrReplaceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SearchCreateOrReplaceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

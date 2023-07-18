@@ -9,3 +9,31 @@ type GetUserMetadataResponse struct {
 	UserID      *string `json:"userId,omitempty"`
 	Value       *string `json:"value,omitempty"`
 }
+
+func (o *GetUserMetadataResponse) GetMetadataKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetadataKey
+}
+
+func (o *GetUserMetadataResponse) GetNamespaceID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceID
+}
+
+func (o *GetUserMetadataResponse) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *GetUserMetadataResponse) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

@@ -11,3 +11,24 @@ type DeleteRequestOptions struct {
 	// Additional options to modify write requests.
 	WriteOptions *WriteOptions `json:"write_options,omitempty"`
 }
+
+func (o *DeleteRequestOptions) GetCollation() *Collation {
+	if o == nil {
+		return nil
+	}
+	return o.Collation
+}
+
+func (o *DeleteRequestOptions) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *DeleteRequestOptions) GetWriteOptions() *WriteOptions {
+	if o == nil {
+		return nil
+	}
+	return o.WriteOptions
+}

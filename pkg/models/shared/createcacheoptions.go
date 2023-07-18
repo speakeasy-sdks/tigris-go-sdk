@@ -5,3 +5,10 @@ package shared
 type CreateCacheOptions struct {
 	TTLMs *int64 `json:"ttl_ms,omitempty"`
 }
+
+func (o *CreateCacheOptions) GetTTLMs() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.TTLMs
+}

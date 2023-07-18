@@ -16,3 +16,38 @@ type ObservabilityGetInfoResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *ObservabilityGetInfoResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ObservabilityGetInfoResponse) GetGetInfoResponse() *shared.GetInfoResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetInfoResponse
+}
+
+func (o *ObservabilityGetInfoResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ObservabilityGetInfoResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ObservabilityGetInfoResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

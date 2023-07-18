@@ -6,3 +6,10 @@ package shared
 type ListSubscriptionResponse struct {
 	Devices []string `json:"devices,omitempty"`
 }
+
+func (o *ListSubscriptionResponse) GetDevices() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Devices
+}

@@ -11,3 +11,24 @@ type UpdateRequestOptions struct {
 	// Additional options to modify write requests.
 	WriteOptions *WriteOptions `json:"write_options,omitempty"`
 }
+
+func (o *UpdateRequestOptions) GetCollation() *Collation {
+	if o == nil {
+		return nil
+	}
+	return o.Collation
+}
+
+func (o *UpdateRequestOptions) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *UpdateRequestOptions) GetWriteOptions() *WriteOptions {
+	if o == nil {
+		return nil
+	}
+	return o.WriteOptions
+}

@@ -12,6 +12,20 @@ type RealtimePresenceRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *RealtimePresenceRequest) GetChannel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Channel
+}
+
+func (o *RealtimePresenceRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type RealtimePresenceResponse struct {
 	ContentType string
 	// OK
@@ -20,4 +34,39 @@ type RealtimePresenceResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *RealtimePresenceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RealtimePresenceResponse) GetPresenceResponse() *shared.PresenceResponse {
+	if o == nil {
+		return nil
+	}
+	return o.PresenceResponse
+}
+
+func (o *RealtimePresenceResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *RealtimePresenceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RealtimePresenceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

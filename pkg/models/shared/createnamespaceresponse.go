@@ -10,3 +10,24 @@ type CreateNamespaceResponse struct {
 	// An enum with value set as "created".
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *CreateNamespaceResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *CreateNamespaceResponse) GetNamespace() *NamespaceInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Namespace
+}
+
+func (o *CreateNamespaceResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

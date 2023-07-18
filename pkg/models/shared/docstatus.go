@@ -8,3 +8,17 @@ type DocStatus struct {
 	// An id of the document.
 	ID *string `json:"id,omitempty"`
 }
+
+func (o *DocStatus) GetError() *Error {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *DocStatus) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}

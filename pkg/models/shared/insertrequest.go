@@ -13,3 +13,24 @@ type InsertRequest struct {
 	// additional options for insert requests.
 	Options *InsertRequestOptions `json:"options,omitempty"`
 }
+
+func (o *InsertRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *InsertRequest) GetDocuments() []InsertRequestDocuments {
+	if o == nil {
+		return nil
+	}
+	return o.Documents
+}
+
+func (o *InsertRequest) GetOptions() *InsertRequestOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}

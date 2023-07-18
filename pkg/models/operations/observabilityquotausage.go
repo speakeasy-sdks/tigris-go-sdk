@@ -16,3 +16,38 @@ type ObservabilityQuotaUsageResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *ObservabilityQuotaUsageResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ObservabilityQuotaUsageResponse) GetQuotaUsageResponse() *shared.QuotaUsageResponse {
+	if o == nil {
+		return nil
+	}
+	return o.QuotaUsageResponse
+}
+
+func (o *ObservabilityQuotaUsageResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ObservabilityQuotaUsageResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ObservabilityQuotaUsageResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

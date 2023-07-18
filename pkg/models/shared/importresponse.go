@@ -11,3 +11,24 @@ type ImportResponse struct {
 	// An enum with value set as "inserted"
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *ImportResponse) GetKeys() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Keys
+}
+
+func (o *ImportResponse) GetMetadata() *ResponseMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *ImportResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

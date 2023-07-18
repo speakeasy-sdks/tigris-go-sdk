@@ -7,3 +7,10 @@ type Status struct {
 	// The Error type defines a logical error model
 	Error *Error `json:"error,omitempty"`
 }
+
+func (o *Status) GetError() *Error {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}

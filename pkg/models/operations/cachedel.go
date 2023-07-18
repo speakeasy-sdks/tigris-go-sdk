@@ -17,6 +17,34 @@ type CacheDelRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *CacheDelRequest) GetDelRequest() shared.DelRequest {
+	if o == nil {
+		return shared.DelRequest{}
+	}
+	return o.DelRequest
+}
+
+func (o *CacheDelRequest) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *CacheDelRequest) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CacheDelRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type CacheDelResponse struct {
 	ContentType string
 	// OK
@@ -25,4 +53,39 @@ type CacheDelResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CacheDelResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CacheDelResponse) GetDelResponse() *shared.DelResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DelResponse
+}
+
+func (o *CacheDelResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CacheDelResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CacheDelResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

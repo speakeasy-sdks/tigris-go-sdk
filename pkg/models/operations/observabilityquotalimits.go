@@ -16,3 +16,38 @@ type ObservabilityQuotaLimitsResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *ObservabilityQuotaLimitsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ObservabilityQuotaLimitsResponse) GetQuotaLimitsResponse() *shared.QuotaLimitsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.QuotaLimitsResponse
+}
+
+func (o *ObservabilityQuotaLimitsResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ObservabilityQuotaLimitsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ObservabilityQuotaLimitsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

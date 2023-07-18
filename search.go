@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
@@ -88,6 +89,8 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 			}
 
 			res.CreateByIDResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -98,6 +101,8 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -169,6 +174,8 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 			}
 
 			res.CreateDocumentResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -179,6 +186,8 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -248,6 +257,8 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 			}
 
 			res.DeleteDocumentResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -258,6 +269,8 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -323,6 +336,8 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 			}
 
 			res.DeleteIndexResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -333,6 +348,8 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -404,6 +421,8 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 			}
 
 			res.SearchIndexResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -414,6 +433,8 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -476,6 +497,8 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 			}
 
 			res.GetDocumentResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -486,6 +509,8 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -541,6 +566,8 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 			}
 
 			res.GetIndexResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -551,6 +578,8 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -610,6 +639,8 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 			}
 
 			res.ListIndexesResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -620,6 +651,8 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -688,6 +721,8 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 			}
 
 			res.DeleteByQueryResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -698,6 +733,8 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -768,6 +805,8 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 			}
 
 			res.CreateOrReplaceDocumentResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -778,6 +817,8 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -848,6 +889,8 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 			}
 
 			res.UpdateDocumentResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -858,6 +901,8 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -923,6 +968,8 @@ func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreat
 			}
 
 			res.CreateOrUpdateIndexResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -933,6 +980,8 @@ func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreat
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
@@ -73,6 +74,8 @@ func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChann
 			}
 
 			res.GetRTChannelResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -83,6 +86,8 @@ func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChann
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -142,6 +147,8 @@ func (s *channel) GetMessages(ctx context.Context, request operations.RealtimeRe
 			}
 
 			res.ReadMessagesResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -152,6 +159,8 @@ func (s *channel) GetMessages(ctx context.Context, request operations.RealtimeRe
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -207,6 +216,8 @@ func (s *channel) List(ctx context.Context, request operations.RealtimeGetRTChan
 			}
 
 			res.GetRTChannelsResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -217,6 +228,8 @@ func (s *channel) List(ctx context.Context, request operations.RealtimeGetRTChan
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -276,6 +289,8 @@ func (s *channel) ListSubscriptions(ctx context.Context, request operations.Real
 			}
 
 			res.ListSubscriptionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -286,6 +301,8 @@ func (s *channel) ListSubscriptions(ctx context.Context, request operations.Real
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -351,6 +368,8 @@ func (s *channel) PushMessages(ctx context.Context, request operations.RealtimeM
 			}
 
 			res.MessagesResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -361,6 +380,8 @@ func (s *channel) PushMessages(ctx context.Context, request operations.RealtimeM
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -416,6 +437,8 @@ func (s *channel) RealtimePresence(ctx context.Context, request operations.Realt
 			}
 
 			res.PresenceResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -426,6 +449,8 @@ func (s *channel) RealtimePresence(ctx context.Context, request operations.Realt
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

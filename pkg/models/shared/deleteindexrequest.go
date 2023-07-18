@@ -8,3 +8,17 @@ type DeleteIndexRequest struct {
 	// Tigris project name.
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *DeleteIndexRequest) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *DeleteIndexRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

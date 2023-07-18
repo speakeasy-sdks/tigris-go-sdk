@@ -9,3 +9,17 @@ type RotateAppKeyRequest struct {
 	// project name
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *RotateAppKeyRequest) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *RotateAppKeyRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

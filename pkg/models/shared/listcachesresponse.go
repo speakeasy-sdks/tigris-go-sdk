@@ -7,3 +7,10 @@ type ListCachesResponse struct {
 	// List of caches metadata
 	Caches []CacheMetadata `json:"caches,omitempty"`
 }
+
+func (o *ListCachesResponse) GetCaches() []CacheMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Caches
+}

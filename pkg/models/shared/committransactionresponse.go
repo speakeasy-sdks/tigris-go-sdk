@@ -7,3 +7,10 @@ type CommitTransactionResponse struct {
 	// Status of commit transaction operation.
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *CommitTransactionResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

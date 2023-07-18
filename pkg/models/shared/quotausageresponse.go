@@ -17,3 +17,45 @@ type QuotaUsageResponse struct {
 	// Number of write units throttled per second. Units which was rejected with "resource exhausted error".
 	WriteUnitsThrottled *int64 `json:"WriteUnitsThrottled,omitempty"`
 }
+
+func (o *QuotaUsageResponse) GetReadUnits() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ReadUnits
+}
+
+func (o *QuotaUsageResponse) GetReadUnitsThrottled() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ReadUnitsThrottled
+}
+
+func (o *QuotaUsageResponse) GetStorageSize() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.StorageSize
+}
+
+func (o *QuotaUsageResponse) GetStorageSizeThrottled() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.StorageSizeThrottled
+}
+
+func (o *QuotaUsageResponse) GetWriteUnits() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.WriteUnits
+}
+
+func (o *QuotaUsageResponse) GetWriteUnitsThrottled() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.WriteUnitsThrottled
+}

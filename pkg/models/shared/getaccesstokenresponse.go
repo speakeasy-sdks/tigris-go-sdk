@@ -11,3 +11,24 @@ type GetAccessTokenResponse struct {
 	// The Refresh Token.
 	RefreshToken *string `json:"refresh_token,omitempty"`
 }
+
+func (o *GetAccessTokenResponse) GetAccessToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AccessToken
+}
+
+func (o *GetAccessTokenResponse) GetExpiresIn() *int {
+	if o == nil {
+		return nil
+	}
+	return o.ExpiresIn
+}
+
+func (o *GetAccessTokenResponse) GetRefreshToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RefreshToken
+}

@@ -13,3 +13,31 @@ type ReadRequestOptions struct {
 	// Number of documents to skip before starting to return resulting documents.
 	Skip *int64 `json:"skip,omitempty"`
 }
+
+func (o *ReadRequestOptions) GetCollation() *Collation {
+	if o == nil {
+		return nil
+	}
+	return o.Collation
+}
+
+func (o *ReadRequestOptions) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *ReadRequestOptions) GetOffset() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Offset
+}
+
+func (o *ReadRequestOptions) GetSkip() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Skip
+}

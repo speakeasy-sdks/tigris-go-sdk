@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
@@ -89,6 +90,8 @@ func (s *collection) Create(ctx context.Context, request operations.TigrisCreate
 			}
 
 			res.CreateOrUpdateCollectionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -99,6 +102,8 @@ func (s *collection) Create(ctx context.Context, request operations.TigrisCreate
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -165,6 +170,8 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.DeleteResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -175,6 +182,8 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -241,6 +250,8 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 			}
 
 			res.DescribeCollectionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -251,6 +262,8 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -319,6 +332,8 @@ func (s *collection) Drop(ctx context.Context, request operations.TigrisDropColl
 			}
 
 			res.DropCollectionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -329,6 +344,8 @@ func (s *collection) Drop(ctx context.Context, request operations.TigrisDropColl
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -400,6 +417,8 @@ func (s *collection) ImportDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.ImportResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -410,6 +429,8 @@ func (s *collection) ImportDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -479,6 +500,8 @@ func (s *collection) InsertDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.InsertResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -489,6 +512,8 @@ func (s *collection) InsertDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -561,6 +586,8 @@ func (s *collection) ReadDocuments(ctx context.Context, request operations.Tigri
 			}
 
 			res.StreamingReadResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -571,6 +598,8 @@ func (s *collection) ReadDocuments(ctx context.Context, request operations.Tigri
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -637,6 +666,8 @@ func (s *collection) ReplaceDocuments(ctx context.Context, request operations.Ti
 			}
 
 			res.ReplaceResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -647,6 +678,8 @@ func (s *collection) ReplaceDocuments(ctx context.Context, request operations.Ti
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -717,6 +750,8 @@ func (s *collection) SearchDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.StreamingSearchResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -727,6 +762,8 @@ func (s *collection) SearchDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -793,6 +830,8 @@ func (s *collection) UpdateDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.UpdateResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -803,6 +842,8 @@ func (s *collection) UpdateDocuments(ctx context.Context, request operations.Tig
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

@@ -12,6 +12,13 @@ type TigrisListBranchesRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisListBranchesRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisListBranchesResponse struct {
 	ContentType string
 	// OK
@@ -20,4 +27,39 @@ type TigrisListBranchesResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisListBranchesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisListBranchesResponse) GetListBranchesResponse() *shared.ListBranchesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListBranchesResponse
+}
+
+func (o *TigrisListBranchesResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisListBranchesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisListBranchesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -118,3 +118,87 @@ type QueryTimeSeriesMetricsRequest struct {
 	TigrisOperation     *QueryTimeSeriesMetricsRequestTigrisOperation  `json:"tigris_operation,omitempty"`
 	To                  *int64                                         `json:"to,omitempty"`
 }
+
+func (o *QueryTimeSeriesMetricsRequest) GetAdditionalFunctions() []AdditionalFunction {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalFunctions
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetCollection() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Collection
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetDb() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Db
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetFrom() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.From
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetFunction() *QueryTimeSeriesMetricsRequestFunction {
+	if o == nil {
+		return nil
+	}
+	return o.Function
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetMetricName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetricName
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetQuantile() *float32 {
+	if o == nil {
+		return nil
+	}
+	return o.Quantile
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetSpaceAggregatedBy() []string {
+	if o == nil {
+		return nil
+	}
+	return o.SpaceAggregatedBy
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetSpaceAggregation() *QueryTimeSeriesMetricsRequestSpaceAggregation {
+	if o == nil {
+		return nil
+	}
+	return o.SpaceAggregation
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetTigrisOperation() *QueryTimeSeriesMetricsRequestTigrisOperation {
+	if o == nil {
+		return nil
+	}
+	return o.TigrisOperation
+}
+
+func (o *QueryTimeSeriesMetricsRequest) GetTo() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.To
+}

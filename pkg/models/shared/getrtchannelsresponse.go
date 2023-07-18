@@ -6,3 +6,10 @@ package shared
 type GetRTChannelsResponse struct {
 	Channels []ChannelMetadata `json:"channels,omitempty"`
 }
+
+func (o *GetRTChannelsResponse) GetChannels() []ChannelMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Channels
+}

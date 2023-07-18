@@ -6,3 +6,17 @@ type FacetCount struct {
 	Count *int64  `json:"count,omitempty"`
 	Value *string `json:"value,omitempty"`
 }
+
+func (o *FacetCount) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *FacetCount) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

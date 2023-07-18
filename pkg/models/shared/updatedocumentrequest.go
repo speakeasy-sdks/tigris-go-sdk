@@ -10,3 +10,24 @@ type UpdateDocumentRequest struct {
 	// Project name whose db is under target to insert documents.
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *UpdateDocumentRequest) GetDocuments() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Documents
+}
+
+func (o *UpdateDocumentRequest) GetIndex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *UpdateDocumentRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
@@ -82,6 +83,8 @@ func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRe
 			}
 
 			res.CreateNamespaceResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -92,6 +95,8 @@ func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRe
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -145,6 +150,8 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 			}
 
 			res.DescribeNamespacesResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -155,6 +162,8 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -221,6 +230,8 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 			}
 
 			res.GetNamespaceMetadataResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -231,6 +242,8 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -297,6 +310,8 @@ func (s *namespace) InsertMetadata(ctx context.Context, request operations.Manag
 			}
 
 			res.InsertNamespaceMetadataResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -307,6 +322,8 @@ func (s *namespace) InsertMetadata(ctx context.Context, request operations.Manag
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -360,6 +377,8 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 			}
 
 			res.ListNamespacesResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -370,6 +389,8 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -436,6 +457,8 @@ func (s *namespace) UpdateMetadata(ctx context.Context, request operations.Manag
 			}
 
 			res.UpdateNamespaceMetadataResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -446,6 +469,8 @@ func (s *namespace) UpdateMetadata(ctx context.Context, request operations.Manag
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

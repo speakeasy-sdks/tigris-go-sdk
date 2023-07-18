@@ -9,3 +9,17 @@ type SetResponse struct {
 	// An enum with value set as "set"
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *SetResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *SetResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

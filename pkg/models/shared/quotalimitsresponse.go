@@ -11,3 +11,24 @@ type QuotaLimitsResponse struct {
 	// Number of allowed write units per second
 	WriteUnits *int64 `json:"WriteUnits,omitempty"`
 }
+
+func (o *QuotaLimitsResponse) GetReadUnits() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ReadUnits
+}
+
+func (o *QuotaLimitsResponse) GetStorageSize() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.StorageSize
+}
+
+func (o *QuotaLimitsResponse) GetWriteUnits() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.WriteUnits
+}

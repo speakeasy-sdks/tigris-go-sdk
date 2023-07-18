@@ -9,3 +9,17 @@ type DelResponse struct {
 	// An enum with value set as "deleted" or "not_found"
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *DelResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *DelResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

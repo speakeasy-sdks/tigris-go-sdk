@@ -16,3 +16,38 @@ type HealthAPIHealthResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *HealthAPIHealthResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *HealthAPIHealthResponse) GetHealthCheckResponse() *shared.HealthCheckResponse {
+	if o == nil {
+		return nil
+	}
+	return o.HealthCheckResponse
+}
+
+func (o *HealthAPIHealthResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *HealthAPIHealthResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *HealthAPIHealthResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

@@ -7,3 +7,10 @@ type CreateByIDResponse struct {
 	// Returns the id of the created document.
 	ID *string `json:"id,omitempty"`
 }
+
+func (o *CreateByIDResponse) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}

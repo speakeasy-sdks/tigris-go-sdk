@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
@@ -84,6 +85,8 @@ func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 			}
 
 			res.DeleteAppKeyResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -94,6 +97,8 @@ func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -150,6 +155,8 @@ func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysR
 			}
 
 			res.ListAppKeysResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -160,6 +167,8 @@ func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysR
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -226,6 +235,8 @@ func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppK
 			}
 
 			res.RotateAppKeyResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -236,6 +247,8 @@ func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppK
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -302,6 +315,8 @@ func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.Tigr
 			}
 
 			res.CreateAppKeyResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -312,6 +327,8 @@ func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.Tigr
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -378,6 +395,8 @@ func (s *appKey) Update(ctx context.Context, request operations.TigrisUpdateAppK
 			}
 
 			res.UpdateAppKeyResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -388,6 +407,8 @@ func (s *appKey) Update(ctx context.Context, request operations.TigrisUpdateAppK
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

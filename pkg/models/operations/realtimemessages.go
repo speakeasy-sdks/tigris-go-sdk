@@ -13,6 +13,27 @@ type RealtimeMessagesRequest struct {
 	Project         string                 `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *RealtimeMessagesRequest) GetMessagesRequest() shared.MessagesRequest {
+	if o == nil {
+		return shared.MessagesRequest{}
+	}
+	return o.MessagesRequest
+}
+
+func (o *RealtimeMessagesRequest) GetChannel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Channel
+}
+
+func (o *RealtimeMessagesRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type RealtimeMessagesResponse struct {
 	ContentType string
 	// OK
@@ -21,4 +42,39 @@ type RealtimeMessagesResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *RealtimeMessagesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RealtimeMessagesResponse) GetMessagesResponse() *shared.MessagesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.MessagesResponse
+}
+
+func (o *RealtimeMessagesResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *RealtimeMessagesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RealtimeMessagesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

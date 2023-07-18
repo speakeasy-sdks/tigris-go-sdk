@@ -15,3 +15,38 @@ type FacetStats struct {
 	// Sum of all values in a field. Only available for numeric fields
 	Sum *float64 `json:"sum,omitempty"`
 }
+
+func (o *FacetStats) GetAvg() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Avg
+}
+
+func (o *FacetStats) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *FacetStats) GetMax() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Max
+}
+
+func (o *FacetStats) GetMin() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Min
+}
+
+func (o *FacetStats) GetSum() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Sum
+}

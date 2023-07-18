@@ -7,3 +7,17 @@ type ProjectInfo struct {
 	// Project name.
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *ProjectInfo) GetMetadata() *ProjectMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *ProjectInfo) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

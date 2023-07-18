@@ -6,3 +6,10 @@ type GetSetRequest struct {
 	// free form byte[] value
 	Value *string `json:"value,omitempty"`
 }
+
+func (o *GetSetRequest) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

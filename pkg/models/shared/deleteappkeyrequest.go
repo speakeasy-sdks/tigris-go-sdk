@@ -7,3 +7,10 @@ type DeleteAppKeyRequest struct {
 	// app_key id
 	ID *string `json:"id,omitempty"`
 }
+
+func (o *DeleteAppKeyRequest) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}

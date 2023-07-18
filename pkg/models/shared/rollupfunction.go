@@ -48,3 +48,17 @@ type RollupFunction struct {
 	Aggregator *RollupFunctionAggregator `json:"aggregator,omitempty"`
 	Interval   *int64                    `json:"interval,omitempty"`
 }
+
+func (o *RollupFunction) GetAggregator() *RollupFunctionAggregator {
+	if o == nil {
+		return nil
+	}
+	return o.Aggregator
+}
+
+func (o *RollupFunction) GetInterval() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Interval
+}

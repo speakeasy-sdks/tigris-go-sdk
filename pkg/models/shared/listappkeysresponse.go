@@ -6,3 +6,10 @@ package shared
 type ListAppKeysResponse struct {
 	AppKeys []AppKey `json:"app_keys,omitempty"`
 }
+
+func (o *ListAppKeysResponse) GetAppKeys() []AppKey {
+	if o == nil {
+		return nil
+	}
+	return o.AppKeys
+}

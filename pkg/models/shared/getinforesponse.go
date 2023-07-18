@@ -6,3 +6,10 @@ package shared
 type GetInfoResponse struct {
 	ServerVersion *string `json:"server_version,omitempty"`
 }
+
+func (o *GetInfoResponse) GetServerVersion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ServerVersion
+}

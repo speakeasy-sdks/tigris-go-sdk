@@ -9,3 +9,31 @@ type Message struct {
 	Name     *string `json:"name,omitempty"`
 	Sequence *string `json:"sequence,omitempty"`
 }
+
+func (o *Message) GetData() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Data
+}
+
+func (o *Message) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *Message) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Message) GetSequence() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sequence
+}

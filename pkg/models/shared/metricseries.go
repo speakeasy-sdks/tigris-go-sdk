@@ -10,3 +10,38 @@ type MetricSeries struct {
 	Scope      *string     `json:"scope,omitempty"`
 	To         *int64      `json:"to,omitempty"`
 }
+
+func (o *MetricSeries) GetDataPoints() []DataPoint {
+	if o == nil {
+		return nil
+	}
+	return o.DataPoints
+}
+
+func (o *MetricSeries) GetFrom() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.From
+}
+
+func (o *MetricSeries) GetMetric() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Metric
+}
+
+func (o *MetricSeries) GetScope() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Scope
+}
+
+func (o *MetricSeries) GetTo() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.To
+}

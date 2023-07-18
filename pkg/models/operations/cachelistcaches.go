@@ -12,6 +12,13 @@ type CacheListCachesRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *CacheListCachesRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type CacheListCachesResponse struct {
 	ContentType string
 	// OK
@@ -20,4 +27,39 @@ type CacheListCachesResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CacheListCachesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CacheListCachesResponse) GetListCachesResponse() *shared.ListCachesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListCachesResponse
+}
+
+func (o *CacheListCachesResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CacheListCachesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CacheListCachesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

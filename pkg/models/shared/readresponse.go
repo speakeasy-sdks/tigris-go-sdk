@@ -14,3 +14,24 @@ type ReadResponse struct {
 	// An internal key, used for pagination.
 	ResumeToken *string `json:"resume_token,omitempty"`
 }
+
+func (o *ReadResponse) GetData() *ReadResponseData {
+	if o == nil {
+		return nil
+	}
+	return o.Data
+}
+
+func (o *ReadResponse) GetMetadata() *ResponseMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *ReadResponse) GetResumeToken() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ResumeToken
+}

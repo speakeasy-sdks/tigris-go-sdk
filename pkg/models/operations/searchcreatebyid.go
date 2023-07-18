@@ -17,6 +17,34 @@ type SearchCreateByIDRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *SearchCreateByIDRequest) GetCreateByIDRequest() shared.CreateByIDRequest {
+	if o == nil {
+		return shared.CreateByIDRequest{}
+	}
+	return o.CreateByIDRequest
+}
+
+func (o *SearchCreateByIDRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *SearchCreateByIDRequest) GetIndex() string {
+	if o == nil {
+		return ""
+	}
+	return o.Index
+}
+
+func (o *SearchCreateByIDRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type SearchCreateByIDResponse struct {
 	ContentType string
 	// OK
@@ -25,4 +53,39 @@ type SearchCreateByIDResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *SearchCreateByIDResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SearchCreateByIDResponse) GetCreateByIDResponse() *shared.CreateByIDResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CreateByIDResponse
+}
+
+func (o *SearchCreateByIDResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *SearchCreateByIDResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SearchCreateByIDResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

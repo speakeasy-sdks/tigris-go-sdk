@@ -12,3 +12,31 @@ type InsertUserMetadataResponse struct {
 	UserID      *string                          `json:"userId,omitempty"`
 	Value       *InsertUserMetadataResponseValue `json:"value,omitempty"`
 }
+
+func (o *InsertUserMetadataResponse) GetMetadataKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MetadataKey
+}
+
+func (o *InsertUserMetadataResponse) GetNamespaceID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NamespaceID
+}
+
+func (o *InsertUserMetadataResponse) GetUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UserID
+}
+
+func (o *InsertUserMetadataResponse) GetValue() *InsertUserMetadataResponseValue {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

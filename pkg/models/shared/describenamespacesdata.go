@@ -5,3 +5,10 @@ package shared
 type DescribeNamespacesData struct {
 	Details *string `json:"details,omitempty"`
 }
+
+func (o *DescribeNamespacesData) GetDetails() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Details
+}

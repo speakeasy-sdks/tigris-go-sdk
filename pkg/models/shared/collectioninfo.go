@@ -7,3 +7,17 @@ type CollectionInfo struct {
 	Collection *string             `json:"collection,omitempty"`
 	Metadata   *CollectionMetadata `json:"metadata,omitempty"`
 }
+
+func (o *CollectionInfo) GetCollection() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Collection
+}
+
+func (o *CollectionInfo) GetMetadata() *CollectionMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}

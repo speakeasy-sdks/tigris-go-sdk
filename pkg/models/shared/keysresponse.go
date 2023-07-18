@@ -9,3 +9,17 @@ type KeysResponse struct {
 	// keys
 	Keys []string `json:"keys,omitempty"`
 }
+
+func (o *KeysResponse) GetCursor() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Cursor
+}
+
+func (o *KeysResponse) GetKeys() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Keys
+}

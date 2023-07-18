@@ -15,3 +15,31 @@ type CollectionDescription struct {
 	// Collection size in bytes
 	Size *int64 `json:"size,omitempty"`
 }
+
+func (o *CollectionDescription) GetCollection() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Collection
+}
+
+func (o *CollectionDescription) GetMetadata() *CollectionMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *CollectionDescription) GetSchema() *CollectionDescriptionSchema {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *CollectionDescription) GetSize() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}

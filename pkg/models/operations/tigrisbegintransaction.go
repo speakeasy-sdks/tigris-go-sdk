@@ -13,6 +13,20 @@ type TigrisBeginTransactionRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisBeginTransactionRequest) GetBeginTransactionRequest() shared.BeginTransactionRequest {
+	if o == nil {
+		return shared.BeginTransactionRequest{}
+	}
+	return o.BeginTransactionRequest
+}
+
+func (o *TigrisBeginTransactionRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisBeginTransactionResponse struct {
 	// OK
 	BeginTransactionResponse *shared.BeginTransactionResponse
@@ -21,4 +35,39 @@ type TigrisBeginTransactionResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisBeginTransactionResponse) GetBeginTransactionResponse() *shared.BeginTransactionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.BeginTransactionResponse
+}
+
+func (o *TigrisBeginTransactionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisBeginTransactionResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisBeginTransactionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisBeginTransactionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

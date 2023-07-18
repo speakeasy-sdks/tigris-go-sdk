@@ -9,3 +9,17 @@ type CreateOrUpdateIndexResponse struct {
 	// An enum with value set as "created"
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *CreateOrUpdateIndexResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *CreateOrUpdateIndexResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

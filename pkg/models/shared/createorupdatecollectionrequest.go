@@ -16,3 +16,31 @@ type CreateOrUpdateCollectionRequest struct {
 	// The schema specifications are same as JSON schema specification defined <a href="https://json-schema.org/specification.html" title="here">here</a>.<p></p> Schema example: `{  "title": "user",  "description": "Collection of documents with details of users",  "properties": {    "id": {      "description": "A unique identifier for the user",      "type": "integer"    },    "name": {      "description": "Name of the user",      "type": "string",      "maxLength": 128    },    "balance": {      "description": "User account balance",      "type": "number"    }  },  "primary_key": ["id"] }`
 	Schema *CreateOrUpdateCollectionRequestSchema `json:"schema,omitempty"`
 }
+
+func (o *CreateOrUpdateCollectionRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *CreateOrUpdateCollectionRequest) GetOnlyCreate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.OnlyCreate
+}
+
+func (o *CreateOrUpdateCollectionRequest) GetOptions() *CollectionOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}
+
+func (o *CreateOrUpdateCollectionRequest) GetSchema() *CreateOrUpdateCollectionRequestSchema {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}

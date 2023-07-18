@@ -15,6 +15,27 @@ type TigrisReadRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisReadRequest) GetReadRequest() shared.ReadRequest {
+	if o == nil {
+		return shared.ReadRequest{}
+	}
+	return o.ReadRequest
+}
+
+func (o *TigrisReadRequest) GetCollection() string {
+	if o == nil {
+		return ""
+	}
+	return o.Collection
+}
+
+func (o *TigrisReadRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisReadResponse struct {
 	ContentType string
 	StatusCode  int
@@ -23,4 +44,39 @@ type TigrisReadResponse struct {
 	Status *shared.Status
 	// OK
 	StreamingReadResponse *shared.StreamingReadResponse
+}
+
+func (o *TigrisReadResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisReadResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisReadResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *TigrisReadResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisReadResponse) GetStreamingReadResponse() *shared.StreamingReadResponse {
+	if o == nil {
+		return nil
+	}
+	return o.StreamingReadResponse
 }

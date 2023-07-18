@@ -11,3 +11,24 @@ type UpdateAppKeyRequest struct {
 	// A new human readable app name
 	Name *string `json:"name,omitempty"`
 }
+
+func (o *UpdateAppKeyRequest) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *UpdateAppKeyRequest) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *UpdateAppKeyRequest) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

@@ -13,3 +13,17 @@ type DocMeta struct {
 	// Time at which the document was updated. Measured in nano-seconds since the Unix epoch.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
+
+func (o *DocMeta) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *DocMeta) GetUpdatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}

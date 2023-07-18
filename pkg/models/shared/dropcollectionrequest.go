@@ -8,3 +8,17 @@ type DropCollectionRequest struct {
 	// Collection requests modifying options.
 	Options *CollectionOptions `json:"options,omitempty"`
 }
+
+func (o *DropCollectionRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *DropCollectionRequest) GetOptions() *CollectionOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}

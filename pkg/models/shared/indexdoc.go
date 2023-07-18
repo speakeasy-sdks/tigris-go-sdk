@@ -8,3 +8,17 @@ type IndexDoc struct {
 	// Contains metadata related to the search hit, has information about document created_at/updated_at as well.
 	Metadata *DocMeta `json:"metadata,omitempty"`
 }
+
+func (o *IndexDoc) GetDoc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Doc
+}
+
+func (o *IndexDoc) GetMetadata() *DocMeta {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}

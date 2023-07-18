@@ -18,6 +18,34 @@ type SearchListIndexesRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *SearchListIndexesRequest) GetFilterBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FilterBranch
+}
+
+func (o *SearchListIndexesRequest) GetFilterCollection() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FilterCollection
+}
+
+func (o *SearchListIndexesRequest) GetFilterType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FilterType
+}
+
+func (o *SearchListIndexesRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type SearchListIndexesResponse struct {
 	ContentType string
 	// OK
@@ -26,4 +54,39 @@ type SearchListIndexesResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *SearchListIndexesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SearchListIndexesResponse) GetListIndexesResponse() *shared.ListIndexesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListIndexesResponse
+}
+
+func (o *SearchListIndexesResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *SearchListIndexesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SearchListIndexesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

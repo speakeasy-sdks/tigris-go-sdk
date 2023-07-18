@@ -8,3 +8,17 @@ type IndexInfo struct {
 	// Schema of the index.
 	Schema *string `json:"schema,omitempty"`
 }
+
+func (o *IndexInfo) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *IndexInfo) GetSchema() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}

@@ -9,3 +9,17 @@ type TransactionCtx struct {
 	// Serves as an internal identifier.
 	Origin *string `json:"origin,omitempty"`
 }
+
+func (o *TransactionCtx) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *TransactionCtx) GetOrigin() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Origin
+}

@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
@@ -83,6 +84,8 @@ func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 			}
 
 			res.CreateCacheResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -93,6 +96,8 @@ func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -158,6 +163,8 @@ func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 			}
 
 			res.DeleteCacheResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -168,6 +175,8 @@ func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -233,6 +242,8 @@ func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 			}
 
 			res.DelResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -243,6 +254,8 @@ func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -298,6 +311,8 @@ func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 			}
 
 			res.GetResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -308,6 +323,8 @@ func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -373,6 +390,8 @@ func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 			}
 
 			res.GetSetResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -383,6 +402,8 @@ func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -438,6 +459,8 @@ func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequ
 			}
 
 			res.ListCachesResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -448,6 +471,8 @@ func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequ
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -507,6 +532,8 @@ func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 			}
 
 			res.KeysResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -517,6 +544,8 @@ func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -582,6 +611,8 @@ func (s *cache) SetKey(ctx context.Context, request operations.CacheSetRequest) 
 			}
 
 			res.SetResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -592,6 +623,8 @@ func (s *cache) SetKey(ctx context.Context, request operations.CacheSetRequest) 
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

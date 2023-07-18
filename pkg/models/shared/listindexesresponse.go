@@ -7,3 +7,10 @@ type ListIndexesResponse struct {
 	// List of indexes.
 	Indexes []IndexInfo `json:"indexes,omitempty"`
 }
+
+func (o *ListIndexesResponse) GetIndexes() []IndexInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Indexes
+}

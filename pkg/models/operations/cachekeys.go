@@ -20,6 +20,41 @@ type CacheKeysRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *CacheKeysRequest) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *CacheKeysRequest) GetCursor() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Cursor
+}
+
+func (o *CacheKeysRequest) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CacheKeysRequest) GetPattern() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Pattern
+}
+
+func (o *CacheKeysRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type CacheKeysResponse struct {
 	ContentType string
 	// OK
@@ -28,4 +63,39 @@ type CacheKeysResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CacheKeysResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CacheKeysResponse) GetKeysResponse() *shared.KeysResponse {
+	if o == nil {
+		return nil
+	}
+	return o.KeysResponse
+}
+
+func (o *CacheKeysResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CacheKeysResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CacheKeysResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

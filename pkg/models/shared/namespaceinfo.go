@@ -10,3 +10,24 @@ type NamespaceInfo struct {
 	// The namespace display name.
 	Name *string `json:"name,omitempty"`
 }
+
+func (o *NamespaceInfo) GetCode() *int {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *NamespaceInfo) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *NamespaceInfo) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

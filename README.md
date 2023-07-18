@@ -10,6 +10,8 @@ go get github.com/speakeasy-sdks/tigris-go-sdk
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```go
 package main
 
@@ -17,8 +19,8 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {

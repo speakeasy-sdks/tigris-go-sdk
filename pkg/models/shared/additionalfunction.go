@@ -7,3 +7,10 @@ type AdditionalFunction struct {
 	// Rollup function aggregates the slices of metrics returned by original query and lets you operate on the slices using aggregator and constructs the bigger slice of your choice of interval (specified in seconds).
 	Rollup *RollupFunction `json:"rollup,omitempty"`
 }
+
+func (o *AdditionalFunction) GetRollup() *RollupFunction {
+	if o == nil {
+		return nil
+	}
+	return o.Rollup
+}

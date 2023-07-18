@@ -6,3 +6,10 @@ package shared
 type PresenceResponse struct {
 	Response *string `json:"response,omitempty"`
 }
+
+func (o *PresenceResponse) GetResponse() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Response
+}

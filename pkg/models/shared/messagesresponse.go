@@ -7,3 +7,10 @@ type MessagesResponse struct {
 	// ids of the published messages
 	Ids []string `json:"ids,omitempty"`
 }
+
+func (o *MessagesResponse) GetIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ids
+}

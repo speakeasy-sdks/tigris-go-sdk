@@ -13,6 +13,20 @@ type TigrisDescribeDatabaseRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisDescribeDatabaseRequest) GetDescribeDatabaseRequest() shared.DescribeDatabaseRequest {
+	if o == nil {
+		return shared.DescribeDatabaseRequest{}
+	}
+	return o.DescribeDatabaseRequest
+}
+
+func (o *TigrisDescribeDatabaseRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisDescribeDatabaseResponse struct {
 	ContentType string
 	// OK
@@ -21,4 +35,39 @@ type TigrisDescribeDatabaseResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisDescribeDatabaseResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisDescribeDatabaseResponse) GetDescribeDatabaseResponse() *shared.DescribeDatabaseResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DescribeDatabaseResponse
+}
+
+func (o *TigrisDescribeDatabaseResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisDescribeDatabaseResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisDescribeDatabaseResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -7,3 +7,10 @@ type ListCollectionsResponse struct {
 	// List of the collections info in the database.
 	Collections []CollectionInfo `json:"collections,omitempty"`
 }
+
+func (o *ListCollectionsResponse) GetCollections() []CollectionInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Collections
+}

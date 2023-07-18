@@ -12,6 +12,20 @@ type ManagementGetNamespaceMetadataRequest struct {
 	MetadataKey                 string                             `pathParam:"style=simple,explode=false,name=metadataKey"`
 }
 
+func (o *ManagementGetNamespaceMetadataRequest) GetGetNamespaceMetadataRequest() shared.GetNamespaceMetadataRequest {
+	if o == nil {
+		return shared.GetNamespaceMetadataRequest{}
+	}
+	return o.GetNamespaceMetadataRequest
+}
+
+func (o *ManagementGetNamespaceMetadataRequest) GetMetadataKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.MetadataKey
+}
+
 type ManagementGetNamespaceMetadataResponse struct {
 	ContentType string
 	// OK
@@ -20,4 +34,39 @@ type ManagementGetNamespaceMetadataResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *ManagementGetNamespaceMetadataResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ManagementGetNamespaceMetadataResponse) GetGetNamespaceMetadataResponse() *shared.GetNamespaceMetadataResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetNamespaceMetadataResponse
+}
+
+func (o *ManagementGetNamespaceMetadataResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *ManagementGetNamespaceMetadataResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ManagementGetNamespaceMetadataResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

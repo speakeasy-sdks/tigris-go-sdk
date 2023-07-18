@@ -7,3 +7,10 @@ type DeleteAppKeyResponse struct {
 	// status flag for delete operation
 	Deleted *bool `json:"deleted,omitempty"`
 }
+
+func (o *DeleteAppKeyResponse) GetDeleted() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Deleted
+}

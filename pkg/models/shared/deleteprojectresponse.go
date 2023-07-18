@@ -9,3 +9,17 @@ type DeleteProjectResponse struct {
 	// An enum with value set as "dropped".
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *DeleteProjectResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *DeleteProjectResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

@@ -15,6 +15,27 @@ type TigrisInsertRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisInsertRequest) GetInsertRequest() shared.InsertRequest {
+	if o == nil {
+		return shared.InsertRequest{}
+	}
+	return o.InsertRequest
+}
+
+func (o *TigrisInsertRequest) GetCollection() string {
+	if o == nil {
+		return ""
+	}
+	return o.Collection
+}
+
+func (o *TigrisInsertRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisInsertResponse struct {
 	ContentType string
 	// OK
@@ -23,4 +44,39 @@ type TigrisInsertResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisInsertResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisInsertResponse) GetInsertResponse() *shared.InsertResponse {
+	if o == nil {
+		return nil
+	}
+	return o.InsertResponse
+}
+
+func (o *TigrisInsertResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisInsertResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisInsertResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

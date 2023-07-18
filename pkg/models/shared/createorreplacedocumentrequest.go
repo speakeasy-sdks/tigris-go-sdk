@@ -10,3 +10,24 @@ type CreateOrReplaceDocumentRequest struct {
 	// Project name whose db is under target to insert documents.
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *CreateOrReplaceDocumentRequest) GetDocuments() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Documents
+}
+
+func (o *CreateOrReplaceDocumentRequest) GetIndex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *CreateOrReplaceDocumentRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

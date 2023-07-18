@@ -14,3 +14,24 @@ type DeleteRequest struct {
 	// Additional options for deleted requests.
 	Options *DeleteRequestOptions `json:"options,omitempty"`
 }
+
+func (o *DeleteRequest) GetBranch() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Branch
+}
+
+func (o *DeleteRequest) GetFilter() *DeleteRequestFilter {
+	if o == nil {
+		return nil
+	}
+	return o.Filter
+}
+
+func (o *DeleteRequest) GetOptions() *DeleteRequestOptions {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}

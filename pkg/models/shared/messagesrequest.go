@@ -7,3 +7,24 @@ type MessagesRequest struct {
 	Messages []Message `json:"messages,omitempty"`
 	Project  *string   `json:"project,omitempty"`
 }
+
+func (o *MessagesRequest) GetChannel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Channel
+}
+
+func (o *MessagesRequest) GetMessages() []Message {
+	if o == nil {
+		return nil
+	}
+	return o.Messages
+}
+
+func (o *MessagesRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

@@ -9,3 +9,31 @@ type QueryTimeSeriesMetricsResponse struct {
 	Series []MetricSeries `json:"series,omitempty"`
 	To     *int64         `json:"to,omitempty"`
 }
+
+func (o *QueryTimeSeriesMetricsResponse) GetFrom() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.From
+}
+
+func (o *QueryTimeSeriesMetricsResponse) GetQuery() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
+func (o *QueryTimeSeriesMetricsResponse) GetSeries() []MetricSeries {
+	if o == nil {
+		return nil
+	}
+	return o.Series
+}
+
+func (o *QueryTimeSeriesMetricsResponse) GetTo() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.To
+}

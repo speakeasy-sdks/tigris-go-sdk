@@ -12,3 +12,31 @@ type CreateByIDRequest struct {
 	// Tigris project name.
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *CreateByIDRequest) GetDocument() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Document
+}
+
+func (o *CreateByIDRequest) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CreateByIDRequest) GetIndex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *CreateByIDRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

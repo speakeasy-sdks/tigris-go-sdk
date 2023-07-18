@@ -8,3 +8,24 @@ type SearchIndexResponse struct {
 	Hits   []IndexDoc             `json:"hits,omitempty"`
 	Meta   *SearchMetadata        `json:"meta,omitempty"`
 }
+
+func (o *SearchIndexResponse) GetFacets() map[string]SearchFacet {
+	if o == nil {
+		return nil
+	}
+	return o.Facets
+}
+
+func (o *SearchIndexResponse) GetHits() []IndexDoc {
+	if o == nil {
+		return nil
+	}
+	return o.Hits
+}
+
+func (o *SearchIndexResponse) GetMeta() *SearchMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Meta
+}

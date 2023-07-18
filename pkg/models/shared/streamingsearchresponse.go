@@ -9,3 +9,17 @@ type StreamingSearchResponse struct {
 	// Response struct for search
 	Result *SearchResponse `json:"result,omitempty"`
 }
+
+func (o *StreamingSearchResponse) GetError() *Error {
+	if o == nil {
+		return nil
+	}
+	return o.Error
+}
+
+func (o *StreamingSearchResponse) GetResult() *SearchResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Result
+}

@@ -9,3 +9,17 @@ type DeleteResponse struct {
 	// an enum with value set as "deleted"
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *DeleteResponse) GetMetadata() *ResponseMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}
+
+func (o *DeleteResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

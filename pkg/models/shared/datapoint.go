@@ -7,3 +7,17 @@ type DataPoint struct {
 	Timestamp *int64   `json:"timestamp,omitempty"`
 	Value     *float64 `json:"value,omitempty"`
 }
+
+func (o *DataPoint) GetTimestamp() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Timestamp
+}
+
+func (o *DataPoint) GetValue() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

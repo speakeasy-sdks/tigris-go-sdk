@@ -10,3 +10,24 @@ type DeleteDocumentRequest struct {
 	// The project name.
 	Project *string `json:"project,omitempty"`
 }
+
+func (o *DeleteDocumentRequest) GetIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ids
+}
+
+func (o *DeleteDocumentRequest) GetIndex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Index
+}
+
+func (o *DeleteDocumentRequest) GetProject() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}

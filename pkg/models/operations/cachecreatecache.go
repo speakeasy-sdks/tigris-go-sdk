@@ -15,6 +15,27 @@ type CacheCreateCacheRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *CacheCreateCacheRequest) GetCreateCacheRequest() shared.CreateCacheRequest {
+	if o == nil {
+		return shared.CreateCacheRequest{}
+	}
+	return o.CreateCacheRequest
+}
+
+func (o *CacheCreateCacheRequest) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CacheCreateCacheRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type CacheCreateCacheResponse struct {
 	ContentType string
 	// OK
@@ -23,4 +44,39 @@ type CacheCreateCacheResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CacheCreateCacheResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CacheCreateCacheResponse) GetCreateCacheResponse() *shared.CreateCacheResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CreateCacheResponse
+}
+
+func (o *CacheCreateCacheResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CacheCreateCacheResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CacheCreateCacheResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

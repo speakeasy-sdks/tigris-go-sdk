@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
@@ -87,6 +88,8 @@ func (s *database) BeginTransaction(ctx context.Context, request operations.Tigr
 			}
 
 			res.BeginTransactionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -97,6 +100,8 @@ func (s *database) BeginTransaction(ctx context.Context, request operations.Tigr
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -165,6 +170,8 @@ func (s *database) CommitTransaction(ctx context.Context, request operations.Tig
 			}
 
 			res.CommitTransactionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -175,6 +182,8 @@ func (s *database) CommitTransaction(ctx context.Context, request operations.Tig
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -241,6 +250,8 @@ func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCr
 			}
 
 			res.CreateBranchResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -251,6 +262,8 @@ func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCr
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -319,6 +332,8 @@ func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDe
 			}
 
 			res.DeleteBranchResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -329,6 +344,8 @@ func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDe
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -397,6 +414,8 @@ func (s *database) Describe(ctx context.Context, request operations.TigrisDescri
 			}
 
 			res.DescribeDatabaseResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -407,6 +426,8 @@ func (s *database) Describe(ctx context.Context, request operations.TigrisDescri
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -467,6 +488,8 @@ func (s *database) ListCollections(ctx context.Context, request operations.Tigri
 			}
 
 			res.ListCollectionsResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -477,6 +500,8 @@ func (s *database) ListCollections(ctx context.Context, request operations.Tigri
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -545,6 +570,8 @@ func (s *database) RollbackTransaction(ctx context.Context, request operations.T
 			}
 
 			res.RollbackTransactionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -555,6 +582,8 @@ func (s *database) RollbackTransaction(ctx context.Context, request operations.T
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -611,6 +640,8 @@ func (s *database) TigrisListBranches(ctx context.Context, request operations.Ti
 			}
 
 			res.ListBranchesResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	default:
 		switch {
@@ -621,6 +652,8 @@ func (s *database) TigrisListBranches(ctx context.Context, request operations.Ti
 			}
 
 			res.Status = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

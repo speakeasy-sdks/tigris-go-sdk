@@ -13,6 +13,20 @@ type TigrisUpdateAppKeyRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisUpdateAppKeyRequest) GetUpdateAppKeyRequest() shared.UpdateAppKeyRequest {
+	if o == nil {
+		return shared.UpdateAppKeyRequest{}
+	}
+	return o.UpdateAppKeyRequest
+}
+
+func (o *TigrisUpdateAppKeyRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisUpdateAppKeyResponse struct {
 	ContentType string
 	StatusCode  int
@@ -21,4 +35,39 @@ type TigrisUpdateAppKeyResponse struct {
 	Status *shared.Status
 	// OK
 	UpdateAppKeyResponse *shared.UpdateAppKeyResponse
+}
+
+func (o *TigrisUpdateAppKeyResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisUpdateAppKeyResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisUpdateAppKeyResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *TigrisUpdateAppKeyResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisUpdateAppKeyResponse) GetUpdateAppKeyResponse() *shared.UpdateAppKeyResponse {
+	if o == nil {
+		return nil
+	}
+	return o.UpdateAppKeyResponse
 }

@@ -13,6 +13,20 @@ type TigrisRotateAppKeySecretRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisRotateAppKeySecretRequest) GetRotateAppKeyRequest() shared.RotateAppKeyRequest {
+	if o == nil {
+		return shared.RotateAppKeyRequest{}
+	}
+	return o.RotateAppKeyRequest
+}
+
+func (o *TigrisRotateAppKeySecretRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisRotateAppKeySecretResponse struct {
 	ContentType string
 	// OK
@@ -21,4 +35,39 @@ type TigrisRotateAppKeySecretResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisRotateAppKeySecretResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisRotateAppKeySecretResponse) GetRotateAppKeyResponse() *shared.RotateAppKeyResponse {
+	if o == nil {
+		return nil
+	}
+	return o.RotateAppKeyResponse
+}
+
+func (o *TigrisRotateAppKeySecretResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisRotateAppKeySecretResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisRotateAppKeySecretResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

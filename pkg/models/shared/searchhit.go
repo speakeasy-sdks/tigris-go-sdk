@@ -12,3 +12,17 @@ type SearchHit struct {
 	// Contains metadata related to the search hit, has information about document created_at/updated_at as well.
 	Metadata *SearchHitMeta `json:"metadata,omitempty"`
 }
+
+func (o *SearchHit) GetData() *SearchHitData {
+	if o == nil {
+		return nil
+	}
+	return o.Data
+}
+
+func (o *SearchHit) GetMetadata() *SearchHitMeta {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
+}

@@ -12,6 +12,20 @@ type RealtimeGetRTChannelRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *RealtimeGetRTChannelRequest) GetChannel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Channel
+}
+
+func (o *RealtimeGetRTChannelRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type RealtimeGetRTChannelResponse struct {
 	ContentType string
 	// OK
@@ -20,4 +34,39 @@ type RealtimeGetRTChannelResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *RealtimeGetRTChannelResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RealtimeGetRTChannelResponse) GetGetRTChannelResponse() *shared.GetRTChannelResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetRTChannelResponse
+}
+
+func (o *RealtimeGetRTChannelResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *RealtimeGetRTChannelResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RealtimeGetRTChannelResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -13,6 +13,20 @@ type TigrisCreateProjectRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisCreateProjectRequest) GetCreateProjectRequest() shared.CreateProjectRequest {
+	if o == nil {
+		return shared.CreateProjectRequest{}
+	}
+	return o.CreateProjectRequest
+}
+
+func (o *TigrisCreateProjectRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisCreateProjectResponse struct {
 	ContentType string
 	// OK
@@ -21,4 +35,39 @@ type TigrisCreateProjectResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisCreateProjectResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisCreateProjectResponse) GetCreateProjectResponse() *shared.CreateProjectResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CreateProjectResponse
+}
+
+func (o *TigrisCreateProjectResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisCreateProjectResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisCreateProjectResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

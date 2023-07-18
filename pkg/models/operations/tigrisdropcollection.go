@@ -15,6 +15,27 @@ type TigrisDropCollectionRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *TigrisDropCollectionRequest) GetDropCollectionRequest() shared.DropCollectionRequest {
+	if o == nil {
+		return shared.DropCollectionRequest{}
+	}
+	return o.DropCollectionRequest
+}
+
+func (o *TigrisDropCollectionRequest) GetCollection() string {
+	if o == nil {
+		return ""
+	}
+	return o.Collection
+}
+
+func (o *TigrisDropCollectionRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type TigrisDropCollectionResponse struct {
 	ContentType string
 	// OK
@@ -23,4 +44,39 @@ type TigrisDropCollectionResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *TigrisDropCollectionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TigrisDropCollectionResponse) GetDropCollectionResponse() *shared.DropCollectionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DropCollectionResponse
+}
+
+func (o *TigrisDropCollectionResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *TigrisDropCollectionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TigrisDropCollectionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

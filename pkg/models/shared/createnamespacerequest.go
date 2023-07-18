@@ -10,3 +10,24 @@ type CreateNamespaceRequest struct {
 	// Required: The display name for namespace.
 	Name *string `json:"name,omitempty"`
 }
+
+func (o *CreateNamespaceRequest) GetCode() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *CreateNamespaceRequest) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CreateNamespaceRequest) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

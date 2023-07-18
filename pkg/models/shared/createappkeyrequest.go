@@ -9,3 +9,17 @@ type CreateAppKeyRequest struct {
 	// A human readable app name
 	Name *string `json:"name,omitempty"`
 }
+
+func (o *CreateAppKeyRequest) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateAppKeyRequest) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}

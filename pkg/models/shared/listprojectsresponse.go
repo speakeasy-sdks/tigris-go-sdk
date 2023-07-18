@@ -7,3 +7,10 @@ type ListProjectsResponse struct {
 	// List of the projects.
 	Projects []ProjectInfo `json:"projects,omitempty"`
 }
+
+func (o *ListProjectsResponse) GetProjects() []ProjectInfo {
+	if o == nil {
+		return nil
+	}
+	return o.Projects
+}

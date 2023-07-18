@@ -9,3 +9,17 @@ type CreateOrUpdateCollectionResponse struct {
 	// An enum with value set as "created" or "updated"
 	Status *string `json:"status,omitempty"`
 }
+
+func (o *CreateOrUpdateCollectionResponse) GetMessage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Message
+}
+
+func (o *CreateOrUpdateCollectionResponse) GetStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}

@@ -15,6 +15,27 @@ type SearchDeleteRequest struct {
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
+func (o *SearchDeleteRequest) GetDeleteDocumentRequest() shared.DeleteDocumentRequest {
+	if o == nil {
+		return shared.DeleteDocumentRequest{}
+	}
+	return o.DeleteDocumentRequest
+}
+
+func (o *SearchDeleteRequest) GetIndex() string {
+	if o == nil {
+		return ""
+	}
+	return o.Index
+}
+
+func (o *SearchDeleteRequest) GetProject() string {
+	if o == nil {
+		return ""
+	}
+	return o.Project
+}
+
 type SearchDeleteResponse struct {
 	ContentType string
 	// OK
@@ -23,4 +44,39 @@ type SearchDeleteResponse struct {
 	Status      *shared.Status
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *SearchDeleteResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SearchDeleteResponse) GetDeleteDocumentResponse() *shared.DeleteDocumentResponse {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteDocumentResponse
+}
+
+func (o *SearchDeleteResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *SearchDeleteResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SearchDeleteResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

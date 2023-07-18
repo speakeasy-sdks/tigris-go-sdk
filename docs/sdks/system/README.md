@@ -25,6 +25,7 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/tigris-go-sdk"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -71,6 +72,7 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/tigris-go-sdk"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {

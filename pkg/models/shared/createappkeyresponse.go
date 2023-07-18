@@ -7,3 +7,10 @@ type CreateAppKeyResponse struct {
 	// An user AppKey
 	CreatedAppKey *AppKey `json:"created_app_key,omitempty"`
 }
+
+func (o *CreateAppKeyResponse) GetCreatedAppKey() *AppKey {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAppKey
+}
