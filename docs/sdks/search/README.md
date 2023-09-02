@@ -484,9 +484,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.ListIndexes(ctx, operations.SearchListIndexesRequest{
-        FilterBranch: tigris.String("temporibus"),
-        FilterCollection: tigris.String("qui"),
-        FilterType: tigris.String("neque"),
+        Branch: tigris.String("temporibus"),
+        Collection: tigris.String("qui"),
+        Type: tigris.String("neque"),
         Project: "fugit",
     })
     if err != nil {
