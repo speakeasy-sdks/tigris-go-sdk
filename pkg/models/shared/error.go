@@ -89,7 +89,7 @@ func (e *ErrorCode) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Error - The Error type defines a logical error model
+// The Error type defines a logical error model
 type Error struct {
 	// The status code is a short, machine parsable string, which uniquely identifies the error type. Tigris to HTTP code mapping [here](/reference/http-code)
 	Code *ErrorCode `json:"code,omitempty"`

@@ -105,7 +105,7 @@ func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 	return res, nil
 }
 
-// List - List all the app keys
+// List all the app keys
 // Lists all app keys visible to requesting actor.
 func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysRequest) (*operations.TigrisListAppKeysResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())

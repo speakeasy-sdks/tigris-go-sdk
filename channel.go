@@ -25,7 +25,7 @@ func newChannel(sdkConfig sdkConfiguration) *channel {
 	}
 }
 
-// Get - Get the details about a channel
+// Get the details about a channel
 func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChannelRequest) (*operations.RealtimeGetRTChannelResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}", request, nil)

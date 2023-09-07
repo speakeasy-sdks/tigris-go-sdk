@@ -37,10 +37,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.GetMetadata(ctx, operations.ManagementGetUserMetadataRequest{
         GetUserMetadataRequest: shared.GetUserMetadataRequest{
-            MetadataKey: tigris.String("distinctio"),
+            MetadataKey: tigris.String("nobis"),
             Value: &shared.GetUserMetadataRequestValue{},
         },
-        MetadataKey: "quod",
+        MetadataKey: "et",
     })
     if err != nil {
         log.Fatal(err)
@@ -92,10 +92,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.InsertMetadata(ctx, operations.ManagementInsertUserMetadataRequest{
         InsertUserMetadataRequest: shared.InsertUserMetadataRequest{
-            MetadataKey: tigris.String("odio"),
+            MetadataKey: tigris.String("saepe"),
             Value: &shared.InsertUserMetadataRequestValue{},
         },
-        MetadataKey: "similique",
+        MetadataKey: "ipsum",
     })
     if err != nil {
         log.Fatal(err)
@@ -147,10 +147,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.UpdateMetadata(ctx, operations.ManagementUpdateUserMetadataRequest{
         UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{
-            MetadataKey: tigris.String("facilis"),
+            MetadataKey: tigris.String("veritatis"),
             Value: &shared.UpdateUserMetadataRequestValue{},
         },
-        MetadataKey: "vero",
+        MetadataKey: "nobis",
     })
     if err != nil {
         log.Fatal(err)

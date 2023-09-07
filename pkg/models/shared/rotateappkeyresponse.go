@@ -2,7 +2,7 @@
 
 package shared
 
-// RotateAppKeyResponse - RotateAppKeyResponse returns the new app key with rotated secret
+// RotateAppKeyResponse returns the new app key with rotated secret
 type RotateAppKeyResponse struct {
 	// An user AppKey
 	AppKey *AppKey `json:"app_key,omitempty"`

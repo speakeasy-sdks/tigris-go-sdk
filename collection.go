@@ -25,7 +25,7 @@ func newCollection(sdkConfig sdkConfiguration) *collection {
 	}
 }
 
-// Create - Create or update a collection
+// Create or update a collection
 // Creates a new collection or atomically upgrades the collection to the new schema provided in the request.
 //
 //	Schema changes are applied atomically and immediately without any downtime.
@@ -190,7 +190,7 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 	return res, nil
 }
 
-// Describe - Describe Collection
+// Describe Collection
 // Returns the information related to the collection. This can be used to retrieve the schema or size of the collection.
 func (s *collection) Describe(ctx context.Context, request operations.TigrisDescribeCollectionRequest) (*operations.TigrisDescribeCollectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
@@ -270,7 +270,7 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 	return res, nil
 }
 
-// Drop - Drop Collection
+// Drop Collection
 // Drops the collection inside this project. This API deletes all of the
 //
 //	documents inside this collection and any metadata associated with it.

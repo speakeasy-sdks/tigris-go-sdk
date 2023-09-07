@@ -14,7 +14,7 @@ import (
 	"net/http"
 )
 
-// search - The search section provides you APIs that can be used to implement powerful apps with search experiences. You can manage storing documents on your own or you can simply integrate it with your database.
+// The search section provides you APIs that can be used to implement powerful apps with search experiences. You can manage storing documents on your own or you can simply integrate it with your database.
 type search struct {
 	sdkConfiguration sdkConfiguration
 }

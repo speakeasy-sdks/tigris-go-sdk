@@ -258,9 +258,9 @@ func main() {
             Channel: tigris.String("modi"),
             Messages: []shared.Message{
                 shared.Message{
-                    Data: tigris.String("aliquid"),
-                    ID: tigris.String("9802d502-a94b-4b4f-a3c9-69e9a3efa77d"),
-                    Name: tigris.String("Jean Buckridge"),
+                    Data: tigris.String("qui"),
+                    ID: tigris.String("69802d50-2a94-4bb4-b63c-969e9a3efa77"),
+                    Name: tigris.String("Mrs. Emilio Price"),
                     Sequence: tigris.String("facere"),
                 },
             },

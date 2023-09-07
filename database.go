@@ -352,7 +352,7 @@ func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDe
 	return res, nil
 }
 
-// Describe - Describe database
+// Describe database
 // This API returns information related to the project along with all the collections inside the project.
 //
 //	This can be used to retrieve the size of the project or to retrieve schemas, branches and the size of all the collections present in this project.

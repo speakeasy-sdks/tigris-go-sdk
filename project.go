@@ -26,7 +26,7 @@ func newProject(sdkConfig sdkConfiguration) *project {
 	}
 }
 
-// Create - Create Project
+// Create Project
 // Creates a new project. Returns an AlreadyExists error with a status code 409 if the project already exists.
 func (s *project) Create(ctx context.Context, request operations.TigrisCreateProjectRequest) (*operations.TigrisCreateProjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
@@ -186,7 +186,7 @@ func (s *project) DeleteProject(ctx context.Context, request operations.TigrisDe
 	return res, nil
 }
 
-// List - List Projects
+// List Projects
 // List returns all the projects.
 func (s *project) List(ctx context.Context) (*operations.TigrisListProjectsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())

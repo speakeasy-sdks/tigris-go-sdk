@@ -61,7 +61,7 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], nil
 }
 
-// Tigris - Tigris API Reference: # Overview
+// Tigris API Reference: # Overview
 // This section is organized around HTTP APIs. The APIs accepts JSON requests and returns JSON-encoded responses.The APIs conforms to standard HTTP status codes.
 //
 // # Errors
@@ -116,27 +116,27 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 // # Limitations
 // <li>Do not rely on case to distinguish between databases or collections names.</li> <li>Database Name and Collection Name cannot be empty and can only have the characters matches the regex: <code>^[a-zA-Z]+[a-zA-Z0-9_]+$</code>.</li> <li>Duplicate field names are not allowed. </li> <li>The maximum allowed document size is 100KB.</li> <li>The maximum allowed transaction size is 10MB.</li>
 type Tigris struct {
-	// AppKey - The application keys section provide APIs that can be used to manage application keys for your project. A single project can have one or more application keys.
+	// The application keys section provide APIs that can be used to manage application keys for your project. A single project can have one or more application keys.
 	AppKey *appKey
-	// Auth - The auth section of API provides OAuth 2.0 APIs. Tigris supports pluggable OAuth provider. Pass the token in the headers for authentication, as an example `-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6I"`(replace it with your token). All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
+	// The auth section of API provides OAuth 2.0 APIs. Tigris supports pluggable OAuth provider. Pass the token in the headers for authentication, as an example `-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6I"`(replace it with your token). All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
 	Auth *auth
-	// Cache - The cache section provide APIs that can be used to perform cache operations.
+	// The cache section provide APIs that can be used to perform cache operations.
 	Cache *cache
-	// Channel - The realtime section provide APIs that can be used realtime operations.
+	// The realtime section provide APIs that can be used realtime operations.
 	Channel *channel
-	// Collection - The Collections section provide APIs that can be used to manage collections. A collection can have one or more documents.
+	// The Collections section provide APIs that can be used to manage collections. A collection can have one or more documents.
 	Collection *collection
-	// Database - The Database section provide APIs that can be used to interact with the database. A single Database can have one or more collections. A database is created automatically for you when you create a project.
+	// The Database section provide APIs that can be used to interact with the database. A single Database can have one or more collections. A database is created automatically for you when you create a project.
 	Database *database
-	// Namespace - The Management section provide APIs that can be used to manage users, and app_keys.
+	// The Management section provide APIs that can be used to manage users, and app_keys.
 	Namespace *namespace
-	// Project - Every Tigris projects comes with a transactional document database built on FoundationDB, one of the most resilient and battle-tested open source distributed key-value store. A database is created automatically for you when you create a project.
+	// Every Tigris projects comes with a transactional document database built on FoundationDB, one of the most resilient and battle-tested open source distributed key-value store. A database is created automatically for you when you create a project.
 	Project *project
-	// Search - The search section provides you APIs that can be used to implement powerful apps with search experiences. You can manage storing documents on your own or you can simply integrate it with your database.
+	// The search section provides you APIs that can be used to implement powerful apps with search experiences. You can manage storing documents on your own or you can simply integrate it with your database.
 	Search *search
-	// System - The Observability section has APIs that provides full visibility into the health, metrics, and monitoring of the Server.
+	// The Observability section has APIs that provides full visibility into the health, metrics, and monitoring of the Server.
 	System *system
-	// User - A User on the Tigris Platform.
+	// A User on the Tigris Platform.
 	User *user
 
 	sdkConfiguration sdkConfiguration
@@ -193,8 +193,8 @@ func New(opts ...SDKOption) *Tigris {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.17.0",
-			GenVersion:        "2.93.0",
+			SDKVersion:        "0.17.1",
+			GenVersion:        "2.101.0",
 		},
 	}
 	for _, opt := range opts {

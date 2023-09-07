@@ -14,7 +14,7 @@ import (
 	"net/http"
 )
 
-// cache - The cache section provide APIs that can be used to perform cache operations.
+// The cache section provide APIs that can be used to perform cache operations.
 type cache struct {
 	sdkConfiguration sdkConfiguration
 }

@@ -38,9 +38,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Namespace.Create(ctx, shared.CreateNamespaceRequest{
-        Code: tigris.Int64(982575),
-        ID: tigris.String("b576b0d5-f0d3-40c5-bbb2-587053202c73"),
-        Name: tigris.String("Dean Welch"),
+        Code: tigris.Int64(868126),
+        ID: tigris.String("028921cd-dc69-4260-9fb5-76b0d5f0d30c"),
+        Name: tigris.String("Mindy Renner"),
     })
     if err != nil {
         log.Fatal(err)
@@ -139,10 +139,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.GetMetadata(ctx, operations.ManagementGetNamespaceMetadataRequest{
         GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{
-            MetadataKey: tigris.String("facilis"),
+            MetadataKey: tigris.String("quis"),
             Value: &shared.GetNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "perspiciatis",
+        MetadataKey: "totam",
     })
     if err != nil {
         log.Fatal(err)
@@ -194,10 +194,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.InsertMetadata(ctx, operations.ManagementInsertNamespaceMetadataRequest{
         InsertNamespaceMetadataRequest: shared.InsertNamespaceMetadataRequest{
-            MetadataKey: tigris.String("voluptatem"),
+            MetadataKey: tigris.String("dignissimos"),
             Value: &shared.InsertNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "porro",
+        MetadataKey: "eaque",
     })
     if err != nil {
         log.Fatal(err)
@@ -296,10 +296,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.UpdateMetadata(ctx, operations.ManagementUpdateNamespaceMetadataRequest{
         UpdateNamespaceMetadataRequest: shared.UpdateNamespaceMetadataRequest{
-            MetadataKey: tigris.String("consequuntur"),
+            MetadataKey: tigris.String("quis"),
             Value: &shared.UpdateNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "blanditiis",
+        MetadataKey: "nesciunt",
     })
     if err != nil {
         log.Fatal(err)

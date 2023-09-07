@@ -230,36 +230,24 @@ func main() {
         AdditionalFunctions: []shared.AdditionalFunction{
             shared.AdditionalFunction{
                 Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorSum.ToPointer(),
-                    Interval: tigris.Int64(63955),
-                },
-            },
-            shared.AdditionalFunction{
-                Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorMin.ToPointer(),
-                    Interval: tigris.Int64(485628),
-                },
-            },
-            shared.AdditionalFunction{
-                Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorMin.ToPointer(),
-                    Interval: tigris.Int64(977496),
+                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorAvg.ToPointer(),
+                    Interval: tigris.Int64(183280),
                 },
             },
         },
-        Branch: tigris.String("quisquam"),
-        Collection: tigris.String("vero"),
-        Db: tigris.String("omnis"),
-        From: tigris.Int64(338159),
+        Branch: tigris.String("neque"),
+        Collection: tigris.String("fugit"),
+        Db: tigris.String("magni"),
+        From: tigris.Int64(488056),
         Function: shared.QueryTimeSeriesMetricsRequestFunctionRate.ToPointer(),
-        MetricName: tigris.String("delectus"),
-        Quantile: tigris.Float32(4551.69),
+        MetricName: tigris.String("ullam"),
+        Quantile: tigris.Float32(7220.81),
         SpaceAggregatedBy: []string{
-            "vero",
+            "hic",
         },
-        SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationSum.ToPointer(),
-        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationRead.ToPointer(),
-        To: tigris.Int64(941378),
+        SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationAvg.ToPointer(),
+        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationMetadata.ToPointer(),
+        To: tigris.Int64(746994),
     })
     if err != nil {
         log.Fatal(err)

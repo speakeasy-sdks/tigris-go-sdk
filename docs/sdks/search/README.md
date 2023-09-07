@@ -49,14 +49,14 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.CreateDocument(ctx, operations.SearchCreateByIDRequest{
         CreateByIDRequest: shared.CreateByIDRequest{
-            Document: tigris.String("occaecati"),
-            ID: tigris.String("b3fe49a8-d9cb-4f48-a333-23f9b77f3a41"),
-            Index: tigris.String("ipsa"),
-            Project: tigris.String("ipsa"),
+            Document: tigris.String("dolores"),
+            ID: tigris.String("c73d5fe9-b90c-4289-89b3-fe49a8d9cbf4"),
+            Index: tigris.String("quos"),
+            Project: tigris.String("aliquid"),
         },
-        ID: "674ebf69-280d-41ba-b7a8-9ebf737ae420",
-        Index: "amet",
-        Project: "optio",
+        ID: "33323f9b-77f3-4a41-8067-4ebf69280d1b",
+        Index: "dolorum",
+        Project: "iusto",
     })
     if err != nil {
         log.Fatal(err)
@@ -113,16 +113,13 @@ func main() {
     res, err := s.Search.CreateDocuments(ctx, operations.SearchCreateRequest{
         CreateDocumentRequest: shared.CreateDocumentRequest{
             Documents: []string{
-                "ad",
-                "saepe",
-                "suscipit",
-                "deserunt",
+                "voluptate",
             },
-            Index: tigris.String("provident"),
-            Project: tigris.String("minima"),
+            Index: tigris.String("dolorum"),
+            Project: tigris.String("deleniti"),
         },
-        Index: "repellendus",
-        Project: "totam",
+        Index: "omnis",
+        Project: "necessitatibus",
     })
     if err != nil {
         log.Fatal(err)
@@ -177,15 +174,13 @@ func main() {
     res, err := s.Search.DeleteDocuments(ctx, operations.SearchDeleteRequest{
         DeleteDocumentRequest: shared.DeleteDocumentRequest{
             Ids: []string{
-                "alias",
-                "at",
-                "quaerat",
+                "distinctio",
             },
-            Index: tigris.String("tempora"),
-            Project: tigris.String("vel"),
+            Index: tigris.String("asperiores"),
+            Project: tigris.String("nihil"),
         },
-        Index: "quod",
-        Project: "officiis",
+        Index: "ipsum",
+        Project: "voluptate",
     })
     if err != nil {
         log.Fatal(err)
@@ -237,11 +232,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.DeleteIndex(ctx, operations.SearchDeleteIndexRequest{
         DeleteIndexRequest: shared.DeleteIndexRequest{
-            Name: tigris.String("Jan Wilderman"),
-            Project: tigris.String("iusto"),
+            Name: tigris.String("Elbert Gislason I"),
+            Project: tigris.String("optio"),
         },
-        Name: "Rosalie White",
-        Project: "accusamus",
+        Name: "Tommy Turner",
+        Project: "provident",
     })
     if err != nil {
         log.Fatal(err)
@@ -298,31 +293,28 @@ func main() {
     res, err := s.Search.FindDocuments(ctx, operations.SearchSearchRequest{
         SearchIndexRequest: shared.SearchIndexRequest{
             Collation: &shared.Collation{
-                Case: tigris.String("numquam"),
+                Case: tigris.String("minima"),
             },
             ExcludeFields: []string{
-                "dolorem",
-                "sapiente",
+                "repellendus",
             },
             Facet: tigris.String("totam"),
-            Filter: tigris.String("nihil"),
+            Filter: tigris.String("similique"),
             IncludeFields: []string{
-                "expedita",
+                "alias",
             },
-            Index: tigris.String("neque"),
-            Page: tigris.Int(153694),
-            PageSize: tigris.Int(424685),
-            Project: tigris.String("libero"),
-            Q: tigris.String("voluptas"),
+            Index: tigris.String("at"),
+            Page: tigris.Int(311860),
+            PageSize: tigris.Int(273542),
+            Project: tigris.String("vel"),
+            Q: tigris.String("quod"),
             SearchFields: []string{
-                "quam",
-                "ipsum",
-                "incidunt",
+                "officiis",
             },
             Sort: tigris.String("qui"),
         },
-        Index: "cupiditate",
-        Project: "maxime",
+        Index: "dolorum",
+        Project: "a",
     })
     if err != nil {
         log.Fatal(err)
@@ -375,13 +367,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.GetDocuments(ctx, operations.SearchGetRequest{
         Ids: []string{
-            "soluta",
-            "dicta",
-            "laborum",
-            "totam",
+            "esse",
         },
-        Index: "incidunt",
-        Project: "aspernatur",
+        Index: "harum",
+        Project: "iusto",
     })
     if err != nil {
         log.Fatal(err)
@@ -432,8 +421,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.GetIndex(ctx, operations.SearchGetIndexRequest{
-        Name: "Verna Purdy",
-        Project: "molestias",
+        Name: "Rosalie White",
+        Project: "accusamus",
     })
     if err != nil {
         log.Fatal(err)
@@ -484,10 +473,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.ListIndexes(ctx, operations.SearchListIndexesRequest{
-        Branch: tigris.String("temporibus"),
-        Collection: tigris.String("qui"),
-        Type: tigris.String("neque"),
-        Project: "fugit",
+        Branch: tigris.String("numquam"),
+        Collection: tigris.String("enim"),
+        Type: tigris.String("dolorem"),
+        Project: "sapiente",
     })
     if err != nil {
         log.Fatal(err)
@@ -540,12 +529,12 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.QueryDeleteDocuments(ctx, operations.SearchDeleteByQueryRequest{
         DeleteByQueryRequest: shared.DeleteByQueryRequest{
-            Filter: tigris.String("magni"),
-            Index: tigris.String("odio"),
-            Project: tigris.String("sunt"),
+            Filter: tigris.String("totam"),
+            Index: tigris.String("nihil"),
+            Project: tigris.String("sit"),
         },
-        Index: "ullam",
-        Project: "nam",
+        Index: "expedita",
+        Project: "neque",
     })
     if err != nil {
         log.Fatal(err)
@@ -601,16 +590,13 @@ func main() {
     res, err := s.Search.ReplaceDocuments(ctx, operations.SearchCreateOrReplaceRequest{
         CreateOrReplaceDocumentRequest: shared.CreateOrReplaceDocumentRequest{
             Documents: []string{
-                "voluptatem",
-                "cumque",
-                "soluta",
-                "nobis",
+                "sed",
             },
-            Index: tigris.String("et"),
-            Project: tigris.String("saepe"),
+            Index: tigris.String("vel"),
+            Project: tigris.String("libero"),
         },
-        Index: "ipsum",
-        Project: "veritatis",
+        Index: "voluptas",
+        Project: "deserunt",
     })
     if err != nil {
         log.Fatal(err)
@@ -666,15 +652,13 @@ func main() {
     res, err := s.Search.UpdateDocuments(ctx, operations.SearchUpdateRequest{
         UpdateDocumentRequest: shared.UpdateDocumentRequest{
             Documents: []string{
-                "quos",
-                "tempore",
-                "cupiditate",
+                "quam",
             },
-            Index: tigris.String("aperiam"),
-            Project: tigris.String("delectus"),
+            Index: tigris.String("ipsum"),
+            Project: tigris.String("incidunt"),
         },
-        Index: "dolorem",
-        Project: "dolore",
+        Index: "qui",
+        Project: "cupiditate",
     })
     if err != nil {
         log.Fatal(err)
@@ -726,13 +710,13 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.UpdateIndex(ctx, operations.SearchCreateOrUpdateIndexRequest{
         CreateOrUpdateIndexRequest: shared.CreateOrUpdateIndexRequest{
-            Name: tigris.String("Mr. Josephine Pagac V"),
+            Name: tigris.String("Miss Jody Rogahn"),
             OnlyCreate: tigris.Bool(false),
-            Project: tigris.String("itaque"),
-            Schema: tigris.String("consequatur"),
+            Project: tigris.String("incidunt"),
+            Schema: tigris.String("aspernatur"),
         },
-        Name: "Marcos Schaden",
-        Project: "facilis",
+        Name: "Verna Purdy",
+        Project: "molestias",
     })
     if err != nil {
         log.Fatal(err)
