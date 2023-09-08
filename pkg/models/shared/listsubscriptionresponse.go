@@ -2,7 +2,6 @@
 
 package shared
 
-// ListSubscriptionResponse - OK
 type ListSubscriptionResponse struct {
 	Devices []string `json:"devices,omitempty"`
 }

@@ -2,7 +2,6 @@
 
 package shared
 
-// CreateBranchResponse - OK
 type CreateBranchResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

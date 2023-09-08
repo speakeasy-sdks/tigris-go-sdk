@@ -2,7 +2,6 @@
 
 package shared
 
-// CreateByIDResponse - OK
 type CreateByIDResponse struct {
 	// Returns the id of the created document.
 	ID *string `json:"id,omitempty"`

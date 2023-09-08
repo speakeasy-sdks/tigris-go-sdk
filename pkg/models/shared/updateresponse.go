@@ -2,7 +2,6 @@
 
 package shared
 
-// UpdateResponse - OK
 type UpdateResponse struct {
 	// Has metadata related to the documents stored.
 	Metadata *ResponseMetadata `json:"metadata,omitempty"`

@@ -2,7 +2,6 @@
 
 package shared
 
-// ListNamespacesResponse - OK
 type ListNamespacesResponse struct {
 	Namespaces []NamespaceInfo `json:"namespaces,omitempty"`
 }

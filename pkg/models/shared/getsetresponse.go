@@ -2,7 +2,6 @@
 
 package shared
 
-// GetSetResponse - OK
 type GetSetResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

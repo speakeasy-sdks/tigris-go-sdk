@@ -2,7 +2,6 @@
 
 package shared
 
-// GetInfoResponse - OK
 type GetInfoResponse struct {
 	ServerVersion *string `json:"server_version,omitempty"`
 }

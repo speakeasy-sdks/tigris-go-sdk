@@ -2,7 +2,6 @@
 
 package shared
 
-// RollbackTransactionResponse - OK
 type RollbackTransactionResponse struct {
 	// Status of rollback transaction operation.
 	Status *string `json:"status,omitempty"`

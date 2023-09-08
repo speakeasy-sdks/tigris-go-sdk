@@ -2,7 +2,6 @@
 
 package shared
 
-// HealthCheckResponse - OK
 type HealthCheckResponse struct {
 	Response *string `json:"response,omitempty"`
 }

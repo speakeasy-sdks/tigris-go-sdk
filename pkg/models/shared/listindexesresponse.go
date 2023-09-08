@@ -2,7 +2,6 @@
 
 package shared
 
-// ListIndexesResponse - OK
 type ListIndexesResponse struct {
 	// List of indexes.
 	Indexes []IndexInfo `json:"indexes,omitempty"`

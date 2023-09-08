@@ -2,7 +2,6 @@
 
 package shared
 
-// ListCachesResponse - OK
 type ListCachesResponse struct {
 	// List of caches metadata
 	Caches []CacheMetadata `json:"caches,omitempty"`

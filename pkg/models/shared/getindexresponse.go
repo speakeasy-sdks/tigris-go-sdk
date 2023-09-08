@@ -2,7 +2,6 @@
 
 package shared
 
-// GetIndexResponse - OK
 type GetIndexResponse struct {
 	Index *IndexInfo `json:"index,omitempty"`
 }

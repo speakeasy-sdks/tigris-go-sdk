@@ -2,7 +2,6 @@
 
 package shared
 
-// DeleteBranchResponse - OK
 type DeleteBranchResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

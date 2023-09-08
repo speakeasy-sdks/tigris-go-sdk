@@ -2,7 +2,6 @@
 
 package shared
 
-// DeleteIndexResponse - OK
 type DeleteIndexResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

@@ -2,7 +2,6 @@
 
 package shared
 
-// CreateProjectResponse - OK
 type CreateProjectResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

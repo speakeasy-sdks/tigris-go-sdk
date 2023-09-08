@@ -2,7 +2,6 @@
 
 package shared
 
-// DeleteResponse - OK
 type DeleteResponse struct {
 	// Has metadata related to the documents stored.
 	Metadata *ResponseMetadata `json:"metadata,omitempty"`

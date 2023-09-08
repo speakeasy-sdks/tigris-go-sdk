@@ -2,7 +2,6 @@
 
 package shared
 
-// CommitTransactionResponse - OK
 type CommitTransactionResponse struct {
 	// Status of commit transaction operation.
 	Status *string `json:"status,omitempty"`

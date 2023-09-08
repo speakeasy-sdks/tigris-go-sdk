@@ -2,7 +2,6 @@
 
 package shared
 
-// GetDocumentResponse - OK
 type GetDocumentResponse struct {
 	// An array of documents.
 	Documents []IndexDoc `json:"documents,omitempty"`

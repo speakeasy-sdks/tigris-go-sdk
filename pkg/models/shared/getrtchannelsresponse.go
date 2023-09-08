@@ -2,7 +2,6 @@
 
 package shared
 
-// GetRTChannelsResponse - OK
 type GetRTChannelsResponse struct {
 	Channels []ChannelMetadata `json:"channels,omitempty"`
 }
