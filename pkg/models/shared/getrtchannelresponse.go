@@ -2,7 +2,6 @@
 
 package shared
 
-// GetRTChannelResponse - OK
 type GetRTChannelResponse struct {
 	Channel *string `json:"channel,omitempty"`
 }

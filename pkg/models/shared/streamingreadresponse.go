@@ -2,7 +2,6 @@
 
 package shared
 
-// StreamingReadResponse - OK
 type StreamingReadResponse struct {
 	// The Error type defines a logical error model
 	Error  *Error        `json:"error,omitempty"`

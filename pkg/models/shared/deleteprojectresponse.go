@@ -2,7 +2,6 @@
 
 package shared
 
-// DeleteProjectResponse - OK
 type DeleteProjectResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

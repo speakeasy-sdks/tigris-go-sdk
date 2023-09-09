@@ -2,7 +2,6 @@
 
 package shared
 
-// ReplaceResponse - OK
 type ReplaceResponse struct {
 	// an array returns the value of the primary keys.
 	Keys []string `json:"keys,omitempty"`

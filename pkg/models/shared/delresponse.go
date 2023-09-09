@@ -2,7 +2,6 @@
 
 package shared
 
-// DelResponse - OK
 type DelResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

@@ -2,7 +2,6 @@
 
 package shared
 
-// Status - Default error response
 type Status struct {
 	// The Error type defines a logical error model
 	Error *Error `json:"error,omitempty"`

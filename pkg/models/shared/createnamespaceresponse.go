@@ -2,7 +2,6 @@
 
 package shared
 
-// CreateNamespaceResponse - OK
 type CreateNamespaceResponse struct {
 	// A detailed response message.
 	Message   *string        `json:"message,omitempty"`

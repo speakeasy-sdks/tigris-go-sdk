@@ -2,7 +2,6 @@
 
 package shared
 
-// CreateOrUpdateIndexResponse - OK
 type CreateOrUpdateIndexResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

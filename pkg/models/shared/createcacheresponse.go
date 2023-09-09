@@ -2,7 +2,6 @@
 
 package shared
 
-// CreateCacheResponse - OK
 type CreateCacheResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

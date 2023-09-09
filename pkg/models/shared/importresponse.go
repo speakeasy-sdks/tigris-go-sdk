@@ -2,7 +2,6 @@
 
 package shared
 
-// ImportResponse - OK
 type ImportResponse struct {
 	// an array returns the value of the primary keys.
 	Keys []string `json:"keys,omitempty"`

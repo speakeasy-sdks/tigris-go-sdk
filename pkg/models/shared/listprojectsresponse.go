@@ -2,7 +2,6 @@
 
 package shared
 
-// ListProjectsResponse - OK
 type ListProjectsResponse struct {
 	// List of the projects.
 	Projects []ProjectInfo `json:"projects,omitempty"`

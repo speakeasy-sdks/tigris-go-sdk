@@ -2,7 +2,6 @@
 
 package shared
 
-// DescribeNamespacesResponse - OK
 type DescribeNamespacesResponse struct {
 	Data *DescribeNamespacesData `json:"data,omitempty"`
 }

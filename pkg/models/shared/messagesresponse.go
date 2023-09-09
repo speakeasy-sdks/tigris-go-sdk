@@ -2,7 +2,6 @@
 
 package shared
 
-// MessagesResponse - OK
 type MessagesResponse struct {
 	// ids of the published messages
 	Ids []string `json:"ids,omitempty"`

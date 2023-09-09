@@ -2,7 +2,6 @@
 
 package shared
 
-// CreateOrUpdateCollectionResponse - OK
 type CreateOrUpdateCollectionResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

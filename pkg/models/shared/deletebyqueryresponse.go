@@ -2,7 +2,6 @@
 
 package shared
 
-// DeleteByQueryResponse - OK
 type DeleteByQueryResponse struct {
 	// The number of documents deleted.
 	Count *int `json:"count,omitempty"`

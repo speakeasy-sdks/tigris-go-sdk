@@ -2,7 +2,6 @@
 
 package shared
 
-// GetResponse - OK
 type GetResponse struct {
 	// expiration ms
 	ExpiresInMs *int64 `json:"expires_in_ms,omitempty"`

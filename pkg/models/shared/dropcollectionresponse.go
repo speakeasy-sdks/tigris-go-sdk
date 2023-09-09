@@ -2,7 +2,6 @@
 
 package shared
 
-// DropCollectionResponse - OK
 type DropCollectionResponse struct {
 	// A detailed response message.
 	Message *string `json:"message,omitempty"`

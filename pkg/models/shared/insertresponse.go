@@ -2,7 +2,6 @@
 
 package shared
 
-// InsertResponse - OK
 type InsertResponse struct {
 	// an array returns the value of the primary keys.
 	Keys []string `json:"keys,omitempty"`

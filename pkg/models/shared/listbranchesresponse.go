@@ -2,7 +2,6 @@
 
 package shared
 
-// ListBranchesResponse - OK
 type ListBranchesResponse struct {
 	// List of all the branches in this database
 	Branches []BranchInfo `json:"branches,omitempty"`

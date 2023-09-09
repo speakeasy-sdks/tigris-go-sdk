@@ -2,7 +2,6 @@
 
 package shared
 
-// ReadMessagesResponse - OK
 type ReadMessagesResponse struct {
 	Message *Message `json:"message,omitempty"`
 }
