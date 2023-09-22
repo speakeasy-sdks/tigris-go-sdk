@@ -27,14 +27,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -43,11 +43,11 @@ func main() {
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
             Options: &shared.CreateCacheOptions{
-                TTLMs: tigris.Int64(244425),
+                TTLMs: tigrisgosdk.Int64(138183),
             },
         },
-        Name: "Miss Eugene Hauck",
-        Project: "enim",
+        Name: "Jimmy Wiegand",
+        Project: "possimus",
     })
     if err != nil {
         log.Fatal(err)
@@ -84,14 +84,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -99,8 +99,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.Delete(ctx, operations.CacheDeleteCacheRequest{
         DeleteCacheRequest: shared.DeleteCacheRequest{},
-        Name: "Angelica Dietrich",
-        Project: "id",
+        Name: "Joyce Mueller",
+        Project: "quasi",
     })
     if err != nil {
         log.Fatal(err)
@@ -137,14 +137,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -152,9 +152,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.DeleteKeys(ctx, operations.CacheDelRequest{
         DelRequest: shared.DelRequest{},
-        Key: "possimus",
-        Name: "Joyce Mueller",
-        Project: "quasi",
+        Key: "reiciendis",
+        Name: "Caleb Koss",
+        Project: "ipsa",
     })
     if err != nil {
         log.Fatal(err)
@@ -191,23 +191,23 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Cache.GetKey(ctx, operations.CacheGetRequest{
-        Key: "reiciendis",
-        Name: "Caleb Koss",
-        Project: "ipsa",
+        Key: "omnis",
+        Name: "Ms. Karla Aufderhar",
+        Project: "maiores",
     })
     if err != nil {
         log.Fatal(err)
@@ -244,14 +244,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -259,11 +259,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.GetSetKey(ctx, operations.CacheGetSetRequest{
         GetSetRequest: shared.GetSetRequest{
-            Value: tigris.String("omnis"),
+            Value: tigrisgosdk.String("dicta"),
         },
-        Key: "voluptate",
-        Name: "Thomas Batz",
-        Project: "maiores",
+        Key: "corporis",
+        Name: "Heidi Carter",
+        Project: "accusamus",
     })
     if err != nil {
         log.Fatal(err)
@@ -300,21 +300,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Cache.List(ctx, operations.CacheListCachesRequest{
-        Project: "dicta",
+        Project: "commodi",
     })
     if err != nil {
         log.Fatal(err)
@@ -351,25 +351,25 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Cache.ListKeys(ctx, operations.CacheKeysRequest{
-        Count: tigris.Int64(359444),
-        Cursor: tigris.Int64(296140),
-        Name: "Mildred Pfeffer",
-        Pattern: tigris.String("commodi"),
-        Project: "repudiandae",
+        Count: tigrisgosdk.Int64(918236),
+        Cursor: tigrisgosdk.Int64(64147),
+        Name: "Alison Mann",
+        Pattern: tigrisgosdk.String("modi"),
+        Project: "praesentium",
     })
     if err != nil {
         log.Fatal(err)
@@ -406,14 +406,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -421,15 +421,15 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.SetKey(ctx, operations.CacheSetRequest{
         SetRequest: shared.SetRequest{
-            Ex: tigris.Int64(64147),
-            Nx: tigris.Bool(false),
-            Px: tigris.Int64(216822),
-            Value: tigris.String("quidem"),
-            Xx: tigris.Bool(false),
+            Ex: tigrisgosdk.Int64(523248),
+            Nx: tigrisgosdk.Bool(false),
+            Px: tigrisgosdk.Int64(916723),
+            Value: tigrisgosdk.String("quasi"),
+            Xx: tigrisgosdk.Bool(false),
         },
-        Key: "molestias",
-        Name: "Ervin Gleason",
-        Project: "voluptates",
+        Key: "repudiandae",
+        Name: "Patrick Ward",
+        Project: "consequatur",
     })
     if err != nil {
         log.Fatal(err)

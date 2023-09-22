@@ -24,14 +24,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -39,9 +39,9 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Delete(ctx, operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: tigris.String("d69a674e-0f46-47cc-8796-ed151a05dfc2"),
+            ID: tigrisgosdk.String("e0f467cc-8796-4ed1-91a0-5dfc2ddf7cc7"),
         },
-        Project: "at",
+        Project: "totam",
     })
     if err != nil {
         log.Fatal(err)
@@ -78,21 +78,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.AppKey.List(ctx, operations.TigrisListAppKeysRequest{
-        Project: "at",
+        Project: "porro",
     })
     if err != nil {
         log.Fatal(err)
@@ -129,14 +129,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -144,10 +144,10 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Rotate(ctx, operations.TigrisRotateAppKeySecretRequest{
         RotateAppKeyRequest: shared.RotateAppKeyRequest{
-            ID: tigris.String("f7cc78ca-1ba9-428f-8816-742cb7392059"),
-            Project: tigris.String("sed"),
+            ID: tigrisgosdk.String("a1ba928f-c816-4742-8b73-9205929396fe"),
+            Project: tigrisgosdk.String("fuga"),
         },
-        Project: "iste",
+        Project: "in",
     })
     if err != nil {
         log.Fatal(err)
@@ -184,14 +184,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -199,10 +199,10 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.TigrisCreateAppKey(ctx, operations.TigrisCreateAppKeyRequest{
         CreateAppKeyRequest: shared.CreateAppKeyRequest{
-            Description: tigris.String("dolor"),
-            Name: tigris.String("Lester Welch"),
+            Description: tigrisgosdk.String("corporis"),
+            Name: tigrisgosdk.String("Brad Turcotte Jr."),
         },
-        Project: "in",
+        Project: "reiciendis",
     })
     if err != nil {
         log.Fatal(err)
@@ -239,14 +239,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -254,11 +254,11 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Update(ctx, operations.TigrisUpdateAppKeyRequest{
         UpdateAppKeyRequest: shared.UpdateAppKeyRequest{
-            Description: tigris.String("corporis"),
-            ID: tigris.String("96eb10fa-aa23-452c-9955-907aff1a3a2f"),
-            Name: tigris.String("Tracy Fritsch"),
+            Description: tigrisgosdk.String("est"),
+            ID: tigrisgosdk.String("aa2352c5-9559-407a-bf1a-3a2fa9467739"),
+            Name: tigrisgosdk.String("Beatrice Brown"),
         },
-        Project: "molestiae",
+        Project: "enim",
     })
     if err != nil {
         log.Fatal(err)

@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"time"
 )
 
@@ -14,6 +15,17 @@ type ResponseMetadata struct {
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// Time at which the document was updated. Measured in nano-seconds since the Unix epoch.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+}
+
+func (r ResponseMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResponseMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ResponseMetadata) GetCreatedAt() *time.Time {

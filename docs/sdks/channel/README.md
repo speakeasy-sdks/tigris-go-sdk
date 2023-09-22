@@ -25,22 +25,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Channel.Get(ctx, operations.RealtimeGetRTChannelRequest{
-        Channel: "quasi",
-        Project: "repudiandae",
+        Channel: "est",
+        Project: "quibusdam",
     })
     if err != nil {
         log.Fatal(err)
@@ -77,28 +77,28 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Channel.GetMessages(ctx, operations.RealtimeReadMessagesRequest{
-        Channel: "sint",
-        End: tigris.String("veritatis"),
-        Event: tigris.String("itaque"),
-        Limit: tigris.Int64(277718),
-        Project: "enim",
-        SessionID: tigris.String("consequatur"),
-        SocketID: tigris.String("est"),
-        Start: tigris.String("quibusdam"),
+        Channel: "explicabo",
+        End: tigrisgosdk.String("deserunt"),
+        Event: tigrisgosdk.String("distinctio"),
+        Limit: tigrisgosdk.Int64(841386),
+        Project: "labore",
+        SessionID: tigrisgosdk.String("modi"),
+        SocketID: tigrisgosdk.String("qui"),
+        Start: tigrisgosdk.String("aliquid"),
     })
     if err != nil {
         log.Fatal(err)
@@ -135,21 +135,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Channel.List(ctx, operations.RealtimeGetRTChannelsRequest{
-        Project: "explicabo",
+        Project: "cupiditate",
     })
     if err != nil {
         log.Fatal(err)
@@ -186,24 +186,24 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Channel.ListSubscriptions(ctx, operations.RealtimeListSubscriptionsRequest{
-        Channel: "deserunt",
-        Page: tigris.Int(716327),
-        PageSize: tigris.Int(841386),
-        Project: "labore",
+        Channel: "quos",
+        Page: tigrisgosdk.Int(20107),
+        PageSize: tigrisgosdk.Int(164940),
+        Project: "assumenda",
     })
     if err != nil {
         log.Fatal(err)
@@ -240,14 +240,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -255,19 +255,19 @@ func main() {
     ctx := context.Background()
     res, err := s.Channel.PushMessages(ctx, operations.RealtimeMessagesRequest{
         MessagesRequest: shared.MessagesRequest{
-            Channel: tigris.String("modi"),
+            Channel: tigrisgosdk.String("ipsam"),
             Messages: []shared.Message{
                 shared.Message{
-                    Data: tigris.String("qui"),
-                    ID: tigris.String("69802d50-2a94-4bb4-b63c-969e9a3efa77"),
-                    Name: tigris.String("Mrs. Emilio Price"),
-                    Sequence: tigris.String("facere"),
+                    Data: tigrisgosdk.String("alias"),
+                    ID: tigrisgosdk.String("2a94bb4f-63c9-469e-9a3e-fa77dfb14cd6"),
+                    Name: tigrisgosdk.String("Kayla Thompson"),
+                    Sequence: tigrisgosdk.String("enim"),
                 },
             },
-            Project: tigris.String("ea"),
+            Project: tigrisgosdk.String("accusamus"),
         },
-        Channel: "aliquid",
-        Project: "laborum",
+        Channel: "delectus",
+        Project: "quidem",
     })
     if err != nil {
         log.Fatal(err)
@@ -304,22 +304,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Channel.RealtimePresence(ctx, operations.RealtimePresenceRequest{
-        Channel: "accusamus",
-        Project: "non",
+        Channel: "provident",
+        Project: "nam",
     })
     if err != nil {
         log.Fatal(err)

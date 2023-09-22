@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"time"
 )
 
@@ -12,6 +13,17 @@ type SearchHitMeta struct {
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// Time at which the document was updated. Measured in nano-seconds since the Unix epoch.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+}
+
+func (s SearchHitMeta) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SearchHitMeta) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SearchHitMeta) GetCreatedAt() *time.Time {

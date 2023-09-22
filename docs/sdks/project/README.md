@@ -22,14 +22,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -37,7 +37,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Project.Create(ctx, operations.TigrisCreateProjectRequest{
         CreateProjectRequest: shared.CreateProjectRequest{},
-        Project: "eos",
+        Project: "nostrum",
     })
     if err != nil {
         log.Fatal(err)
@@ -74,14 +74,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -89,7 +89,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Project.DeleteProject(ctx, operations.TigrisDeleteProjectRequest{
         DeleteProjectRequest: shared.DeleteProjectRequest{},
-        Project: "perferendis",
+        Project: "hic",
     })
     if err != nil {
         log.Fatal(err)
@@ -126,13 +126,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )

@@ -34,14 +34,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -49,14 +49,14 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.CreateDocument(ctx, operations.SearchCreateByIDRequest{
         CreateByIDRequest: shared.CreateByIDRequest{
-            Document: tigris.String("dolores"),
-            ID: tigris.String("c73d5fe9-b90c-4289-89b3-fe49a8d9cbf4"),
-            Index: tigris.String("quos"),
-            Project: tigris.String("aliquid"),
+            Document: tigrisgosdk.String("recusandae"),
+            ID: tigrisgosdk.String("9b90c289-09b3-4fe4-9a8d-9cbf48633323"),
+            Index: tigrisgosdk.String("hic"),
+            Project: tigrisgosdk.String("excepturi"),
         },
-        ID: "33323f9b-77f3-4a41-8067-4ebf69280d1b",
-        Index: "dolorum",
-        Project: "iusto",
+        ID: "b77f3a41-0067-44eb-b692-80d1ba77a89e",
+        Index: "distinctio",
+        Project: "asperiores",
     })
     if err != nil {
         log.Fatal(err)
@@ -97,14 +97,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -113,13 +113,13 @@ func main() {
     res, err := s.Search.CreateDocuments(ctx, operations.SearchCreateRequest{
         CreateDocumentRequest: shared.CreateDocumentRequest{
             Documents: []string{
-                "voluptate",
+                "nihil",
             },
-            Index: tigris.String("dolorum"),
-            Project: tigris.String("deleniti"),
+            Index: tigrisgosdk.String("ipsum"),
+            Project: tigrisgosdk.String("voluptate"),
         },
-        Index: "omnis",
-        Project: "necessitatibus",
+        Index: "id",
+        Project: "saepe",
     })
     if err != nil {
         log.Fatal(err)
@@ -158,14 +158,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -174,13 +174,13 @@ func main() {
     res, err := s.Search.DeleteDocuments(ctx, operations.SearchDeleteRequest{
         DeleteDocumentRequest: shared.DeleteDocumentRequest{
             Ids: []string{
-                "distinctio",
+                "eius",
             },
-            Index: tigris.String("asperiores"),
-            Project: tigris.String("nihil"),
+            Index: tigrisgosdk.String("aspernatur"),
+            Project: tigrisgosdk.String("perferendis"),
         },
-        Index: "ipsum",
-        Project: "voluptate",
+        Index: "amet",
+        Project: "optio",
     })
     if err != nil {
         log.Fatal(err)
@@ -217,14 +217,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -232,11 +232,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.DeleteIndex(ctx, operations.SearchDeleteIndexRequest{
         DeleteIndexRequest: shared.DeleteIndexRequest{
-            Name: tigris.String("Elbert Gislason I"),
-            Project: tigris.String("optio"),
+            Name: tigrisgosdk.String("Tommy Turner"),
+            Project: tigrisgosdk.String("provident"),
         },
-        Name: "Tommy Turner",
-        Project: "provident",
+        Name: "Kari Leannon PhD",
+        Project: "quaerat",
     })
     if err != nil {
         log.Fatal(err)
@@ -277,14 +277,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -293,28 +293,28 @@ func main() {
     res, err := s.Search.FindDocuments(ctx, operations.SearchSearchRequest{
         SearchIndexRequest: shared.SearchIndexRequest{
             Collation: &shared.Collation{
-                Case: tigris.String("minima"),
+                Case: tigrisgosdk.String("tempora"),
             },
             ExcludeFields: []string{
-                "repellendus",
+                "vel",
             },
-            Facet: tigris.String("totam"),
-            Filter: tigris.String("similique"),
+            Facet: tigrisgosdk.String("quod"),
+            Filter: tigrisgosdk.String("officiis"),
             IncludeFields: []string{
-                "alias",
+                "qui",
             },
-            Index: tigris.String("at"),
-            Page: tigris.Int(311860),
-            PageSize: tigris.Int(273542),
-            Project: tigris.String("vel"),
-            Q: tigris.String("quod"),
+            Index: tigrisgosdk.String("dolorum"),
+            Page: tigrisgosdk.Int(952792),
+            PageSize: tigrisgosdk.Int(456130),
+            Project: tigrisgosdk.String("harum"),
+            Q: tigrisgosdk.String("iusto"),
             SearchFields: []string{
-                "officiis",
+                "ipsum",
             },
-            Sort: tigris.String("qui"),
+            Sort: tigrisgosdk.String("quisquam"),
         },
-        Index: "dolorum",
-        Project: "a",
+        Index: "tenetur",
+        Project: "amet",
     })
     if err != nil {
         log.Fatal(err)
@@ -352,14 +352,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -367,10 +367,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.GetDocuments(ctx, operations.SearchGetRequest{
         Ids: []string{
-            "esse",
+            "tempore",
         },
-        Index: "harum",
-        Project: "iusto",
+        Index: "accusamus",
+        Project: "numquam",
     })
     if err != nil {
         log.Fatal(err)
@@ -407,22 +407,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Search.GetIndex(ctx, operations.SearchGetIndexRequest{
-        Name: "Rosalie White",
-        Project: "accusamus",
+        Name: "Florence Will",
+        Project: "sit",
     })
     if err != nil {
         log.Fatal(err)
@@ -459,24 +459,24 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Search.ListIndexes(ctx, operations.SearchListIndexesRequest{
-        Branch: tigris.String("numquam"),
-        Collection: tigris.String("enim"),
-        Type: tigris.String("dolorem"),
-        Project: "sapiente",
+        Branch: tigrisgosdk.String("expedita"),
+        Collection: tigrisgosdk.String("neque"),
+        Type: tigrisgosdk.String("sed"),
+        Project: "vel",
     })
     if err != nil {
         log.Fatal(err)
@@ -514,14 +514,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -529,12 +529,12 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.QueryDeleteDocuments(ctx, operations.SearchDeleteByQueryRequest{
         DeleteByQueryRequest: shared.DeleteByQueryRequest{
-            Filter: tigris.String("totam"),
-            Index: tigris.String("nihil"),
-            Project: tigris.String("sit"),
+            Filter: tigrisgosdk.String("libero"),
+            Index: tigrisgosdk.String("voluptas"),
+            Project: tigrisgosdk.String("deserunt"),
         },
-        Index: "expedita",
-        Project: "neque",
+        Index: "quam",
+        Project: "ipsum",
     })
     if err != nil {
         log.Fatal(err)
@@ -574,14 +574,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -590,13 +590,13 @@ func main() {
     res, err := s.Search.ReplaceDocuments(ctx, operations.SearchCreateOrReplaceRequest{
         CreateOrReplaceDocumentRequest: shared.CreateOrReplaceDocumentRequest{
             Documents: []string{
-                "sed",
+                "incidunt",
             },
-            Index: tigris.String("vel"),
-            Project: tigris.String("libero"),
+            Index: tigrisgosdk.String("qui"),
+            Project: tigrisgosdk.String("cupiditate"),
         },
-        Index: "voluptas",
-        Project: "deserunt",
+        Index: "maxime",
+        Project: "pariatur",
     })
     if err != nil {
         log.Fatal(err)
@@ -636,14 +636,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -652,13 +652,13 @@ func main() {
     res, err := s.Search.UpdateDocuments(ctx, operations.SearchUpdateRequest{
         UpdateDocumentRequest: shared.UpdateDocumentRequest{
             Documents: []string{
-                "quam",
+                "soluta",
             },
-            Index: tigris.String("ipsum"),
-            Project: tigris.String("incidunt"),
+            Index: tigrisgosdk.String("dicta"),
+            Project: tigrisgosdk.String("laborum"),
         },
-        Index: "qui",
-        Project: "cupiditate",
+        Index: "totam",
+        Project: "incidunt",
     })
     if err != nil {
         log.Fatal(err)
@@ -695,14 +695,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -710,13 +710,13 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.UpdateIndex(ctx, operations.SearchCreateOrUpdateIndexRequest{
         CreateOrUpdateIndexRequest: shared.CreateOrUpdateIndexRequest{
-            Name: tigris.String("Miss Jody Rogahn"),
-            OnlyCreate: tigris.Bool(false),
-            Project: tigris.String("incidunt"),
-            Schema: tigris.String("aspernatur"),
+            Name: tigrisgosdk.String("Bonnie Raynor"),
+            OnlyCreate: tigrisgosdk.Bool(false),
+            Project: tigrisgosdk.String("quam"),
+            Schema: tigrisgosdk.String("molestias"),
         },
-        Name: "Verna Purdy",
-        Project: "molestias",
+        Name: "Shawn Doyle",
+        Project: "odio",
     })
     if err != nil {
         log.Fatal(err)

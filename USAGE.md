@@ -7,14 +7,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -23,7 +23,7 @@ func main() {
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
             Options: &shared.CreateCacheOptions{
-                TTLMs: tigris.Int64(548814),
+                TTLMs: tigrisgosdk.Int64(548814),
             },
         },
         Name: "Kelvin Sporer",

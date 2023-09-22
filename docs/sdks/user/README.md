@@ -22,14 +22,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -37,10 +37,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.GetMetadata(ctx, operations.ManagementGetUserMetadataRequest{
         GetUserMetadataRequest: shared.GetUserMetadataRequest{
-            MetadataKey: tigris.String("nobis"),
+            MetadataKey: tigrisgosdk.String("quos"),
             Value: &shared.GetUserMetadataRequestValue{},
         },
-        MetadataKey: "et",
+        MetadataKey: "tempore",
     })
     if err != nil {
         log.Fatal(err)
@@ -77,14 +77,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -92,10 +92,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.InsertMetadata(ctx, operations.ManagementInsertUserMetadataRequest{
         InsertUserMetadataRequest: shared.InsertUserMetadataRequest{
-            MetadataKey: tigris.String("saepe"),
+            MetadataKey: tigrisgosdk.String("cupiditate"),
             Value: &shared.InsertUserMetadataRequestValue{},
         },
-        MetadataKey: "ipsum",
+        MetadataKey: "aperiam",
     })
     if err != nil {
         log.Fatal(err)
@@ -132,14 +132,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -147,10 +147,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.UpdateMetadata(ctx, operations.ManagementUpdateUserMetadataRequest{
         UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{
-            MetadataKey: tigris.String("veritatis"),
+            MetadataKey: tigrisgosdk.String("delectus"),
             Value: &shared.UpdateUserMetadataRequestValue{},
         },
-        MetadataKey: "nobis",
+        MetadataKey: "dolorem",
     })
     if err != nil {
         log.Fatal(err)

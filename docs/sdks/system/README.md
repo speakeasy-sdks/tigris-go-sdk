@@ -24,13 +24,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -71,13 +71,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -118,13 +118,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -166,13 +166,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -214,13 +214,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -230,24 +230,24 @@ func main() {
         AdditionalFunctions: []shared.AdditionalFunction{
             shared.AdditionalFunction{
                 Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorAvg.ToPointer(),
-                    Interval: tigris.Int64(183280),
+                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorSum.ToPointer(),
+                    Interval: tigrisgosdk.Int64(355613),
                 },
             },
         },
-        Branch: tigris.String("neque"),
-        Collection: tigris.String("fugit"),
-        Db: tigris.String("magni"),
-        From: tigris.Int64(488056),
-        Function: shared.QueryTimeSeriesMetricsRequestFunctionRate.ToPointer(),
-        MetricName: tigris.String("ullam"),
-        Quantile: tigris.Float32(7220.81),
+        Branch: tigrisgosdk.String("nam"),
+        Collection: tigrisgosdk.String("hic"),
+        Db: tigrisgosdk.String("voluptatem"),
+        From: tigrisgosdk.Int64(765326),
+        Function: shared.QueryTimeSeriesMetricsRequestFunctionNone.ToPointer(),
+        MetricName: tigrisgosdk.String("nobis"),
+        Quantile: tigrisgosdk.Float32(925.96),
         SpaceAggregatedBy: []string{
-            "hic",
+            "saepe",
         },
         SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationAvg.ToPointer(),
-        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationMetadata.ToPointer(),
-        To: tigris.Int64(746994),
+        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationAll.ToPointer(),
+        To: tigrisgosdk.Int64(749255),
     })
     if err != nil {
         log.Fatal(err)

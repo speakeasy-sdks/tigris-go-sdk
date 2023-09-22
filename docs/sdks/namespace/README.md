@@ -25,22 +25,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Namespace.Create(ctx, shared.CreateNamespaceRequest{
-        Code: tigris.Int64(868126),
-        ID: tigris.String("028921cd-dc69-4260-9fb5-76b0d5f0d30c"),
-        Name: tigris.String("Mindy Renner"),
+        Code: tigrisgosdk.Int64(779051),
+        ID: tigrisgosdk.String("ddc69260-1fb5-476b-8d5f-0d30c5fbb258"),
+        Name: tigrisgosdk.String("Cynthia Hayes"),
     })
     if err != nil {
         log.Fatal(err)
@@ -77,13 +77,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -124,14 +124,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -139,10 +139,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.GetMetadata(ctx, operations.ManagementGetNamespaceMetadataRequest{
         GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{
-            MetadataKey: tigris.String("quis"),
+            MetadataKey: tigrisgosdk.String("perferendis"),
             Value: &shared.GetNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "totam",
+        MetadataKey: "dolores",
     })
     if err != nil {
         log.Fatal(err)
@@ -179,14 +179,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -194,10 +194,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.InsertMetadata(ctx, operations.ManagementInsertNamespaceMetadataRequest{
         InsertNamespaceMetadataRequest: shared.InsertNamespaceMetadataRequest{
-            MetadataKey: tigris.String("dignissimos"),
+            MetadataKey: tigrisgosdk.String("minus"),
             Value: &shared.InsertNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "eaque",
+        MetadataKey: "quam",
     })
     if err != nil {
         log.Fatal(err)
@@ -234,13 +234,13 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -281,14 +281,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -296,10 +296,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.UpdateMetadata(ctx, operations.ManagementUpdateNamespaceMetadataRequest{
         UpdateNamespaceMetadataRequest: shared.UpdateNamespaceMetadataRequest{
-            MetadataKey: tigris.String("quis"),
+            MetadataKey: tigrisgosdk.String("dolor"),
             Value: &shared.UpdateNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "nesciunt",
+        MetadataKey: "vero",
     })
     if err != nil {
         log.Fatal(err)

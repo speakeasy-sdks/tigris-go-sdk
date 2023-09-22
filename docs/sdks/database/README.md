@@ -29,14 +29,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -44,10 +44,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.BeginTransaction(ctx, operations.TigrisBeginTransactionRequest{
         BeginTransactionRequest: shared.BeginTransactionRequest{
-            Branch: tigris.String("doloribus"),
+            Branch: tigrisgosdk.String("architecto"),
             Options: &shared.TransactionOptions{},
         },
-        Project: "debitis",
+        Project: "architecto",
     })
     if err != nil {
         log.Fatal(err)
@@ -85,14 +85,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -100,9 +100,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.CommitTransaction(ctx, operations.TigrisCommitTransactionRequest{
         CommitTransactionRequest: shared.CommitTransactionRequest{
-            Branch: tigris.String("eius"),
+            Branch: tigrisgosdk.String("repudiandae"),
         },
-        Project: "maxime",
+        Project: "ullam",
     })
     if err != nil {
         log.Fatal(err)
@@ -139,14 +139,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -154,8 +154,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.CreateBranch(ctx, operations.TigrisCreateBranchRequest{
         CreateBranchRequest: shared.CreateBranchRequest{},
-        Branch: "deleniti",
-        Project: "facilis",
+        Branch: "expedita",
+        Project: "nihil",
     })
     if err != nil {
         log.Fatal(err)
@@ -193,14 +193,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -208,8 +208,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.DeleteBranch(ctx, operations.TigrisDeleteBranchRequest{
         DeleteBranchRequest: shared.DeleteBranchRequest{},
-        Branch: "in",
-        Project: "architecto",
+        Branch: "repellat",
+        Project: "quibusdam",
     })
     if err != nil {
         log.Fatal(err)
@@ -247,14 +247,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -262,11 +262,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.Describe(ctx, operations.TigrisDescribeDatabaseRequest{
         DescribeDatabaseRequest: shared.DescribeDatabaseRequest{
-            Branch: tigris.String("architecto"),
-            Project: tigris.String("repudiandae"),
-            SchemaFormat: tigris.String("ullam"),
+            Branch: tigrisgosdk.String("sed"),
+            Project: tigrisgosdk.String("saepe"),
+            SchemaFormat: tigrisgosdk.String("pariatur"),
         },
-        Project: "expedita",
+        Project: "accusantium",
     })
     if err != nil {
         log.Fatal(err)
@@ -303,22 +303,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Database.ListCollections(ctx, operations.TigrisListCollectionsRequest{
-        Branch: tigris.String("nihil"),
-        Project: "repellat",
+        Branch: tigrisgosdk.String("consequuntur"),
+        Project: "praesentium",
     })
     if err != nil {
         log.Fatal(err)
@@ -356,14 +356,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
@@ -371,9 +371,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.RollbackTransaction(ctx, operations.TigrisRollbackTransactionRequest{
         RollbackTransactionRequest: shared.RollbackTransactionRequest{
-            Branch: tigris.String("quibusdam"),
+            Branch: tigrisgosdk.String("natus"),
         },
-        Project: "sed",
+        Project: "magni",
     })
     if err != nil {
         log.Fatal(err)
@@ -410,21 +410,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/tigris-go-sdk"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := tigris.New(
-        tigris.WithSecurity(shared.Security{
+    s := tigrisgosdk.New(
+        tigrisgosdk.WithSecurity(shared.Security{
             BearerAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Database.TigrisListBranches(ctx, operations.TigrisListBranchesRequest{
-        Project: "saepe",
+        Project: "sunt",
     })
     if err != nil {
         log.Fatal(err)
