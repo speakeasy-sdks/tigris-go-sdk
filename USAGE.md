@@ -23,11 +23,11 @@ func main() {
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
             Options: &shared.CreateCacheOptions{
-                TTLMs: tigrisgosdk.Int64(548814),
+                TTLMs: tigrisgosdk.Int64(481196),
             },
         },
-        Name: "Kelvin Sporer",
-        Project: "corrupti",
+        Name: "Tasty island Southwest",
+        Project: "National Lauderhill",
     })
     if err != nil {
         log.Fatal(err)

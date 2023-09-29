@@ -1,4 +1,5 @@
 # System
+(*System*)
 
 ## Overview
 
@@ -230,24 +231,24 @@ func main() {
         AdditionalFunctions: []shared.AdditionalFunction{
             shared.AdditionalFunction{
                 Rollup: &shared.RollupFunction{
-                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorSum.ToPointer(),
-                    Interval: tigrisgosdk.Int64(355613),
+                    Aggregator: shared.RollupFunctionAggregatorRollupAggregatorCount.ToPointer(),
+                    Interval: tigrisgosdk.Int64(724082),
                 },
             },
         },
-        Branch: tigrisgosdk.String("nam"),
-        Collection: tigrisgosdk.String("hic"),
-        Db: tigrisgosdk.String("voluptatem"),
-        From: tigrisgosdk.Int64(765326),
+        Branch: tigrisgosdk.String("Coordinator"),
+        Collection: tigrisgosdk.String("against regional"),
+        Db: tigrisgosdk.String("provided Gasoline"),
+        From: tigrisgosdk.Int64(93300),
         Function: shared.QueryTimeSeriesMetricsRequestFunctionNone.ToPointer(),
-        MetricName: tigrisgosdk.String("nobis"),
-        Quantile: tigrisgosdk.Float32(925.96),
+        MetricName: tigrisgosdk.String("Card Southwest Hat"),
+        Quantile: tigrisgosdk.Float32(4863.24),
         SpaceAggregatedBy: []string{
-            "saepe",
+            "optimal",
         },
-        SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationAvg.ToPointer(),
-        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationAll.ToPointer(),
-        To: tigrisgosdk.Int64(749255),
+        SpaceAggregation: shared.QueryTimeSeriesMetricsRequestSpaceAggregationMin.ToPointer(),
+        TigrisOperation: shared.QueryTimeSeriesMetricsRequestTigrisOperationMetadata.ToPointer(),
+        To: tigrisgosdk.Int64(60030),
     })
     if err != nil {
         log.Fatal(err)

@@ -1,4 +1,5 @@
 # Namespace
+(*Namespace*)
 
 ## Overview
 
@@ -38,9 +39,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Namespace.Create(ctx, shared.CreateNamespaceRequest{
-        Code: tigrisgosdk.Int64(779051),
-        ID: tigrisgosdk.String("ddc69260-1fb5-476b-8d5f-0d30c5fbb258"),
-        Name: tigrisgosdk.String("Cynthia Hayes"),
+        Code: tigrisgosdk.Int64(481196),
+        ID: tigrisgosdk.String("<ID>"),
+        Name: tigrisgosdk.String("Tasty island Southwest"),
     })
     if err != nil {
         log.Fatal(err)
@@ -139,10 +140,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.GetMetadata(ctx, operations.ManagementGetNamespaceMetadataRequest{
         GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{
-            MetadataKey: tigrisgosdk.String("perferendis"),
+            MetadataKey: tigrisgosdk.String("or Plastic"),
             Value: &shared.GetNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "dolores",
+        MetadataKey: "offensively Electric",
     })
     if err != nil {
         log.Fatal(err)
@@ -194,10 +195,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.InsertMetadata(ctx, operations.ManagementInsertNamespaceMetadataRequest{
         InsertNamespaceMetadataRequest: shared.InsertNamespaceMetadataRequest{
-            MetadataKey: tigrisgosdk.String("minus"),
+            MetadataKey: tigrisgosdk.String("Curve Liaison calculate"),
             Value: &shared.InsertNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "quam",
+        MetadataKey: "female Tantalum",
     })
     if err != nil {
         log.Fatal(err)
@@ -296,10 +297,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.UpdateMetadata(ctx, operations.ManagementUpdateNamespaceMetadataRequest{
         UpdateNamespaceMetadataRequest: shared.UpdateNamespaceMetadataRequest{
-            MetadataKey: tigrisgosdk.String("dolor"),
+            MetadataKey: tigrisgosdk.String("platforms Concrete Tempe"),
             Value: &shared.UpdateNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "vero",
+        MetadataKey: "transmitting Silicon North",
     })
     if err != nil {
         log.Fatal(err)

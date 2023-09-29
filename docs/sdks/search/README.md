@@ -1,4 +1,5 @@
 # Search
+(*Search*)
 
 ## Overview
 
@@ -49,14 +50,14 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.CreateDocument(ctx, operations.SearchCreateByIDRequest{
         CreateByIDRequest: shared.CreateByIDRequest{
-            Document: tigrisgosdk.String("recusandae"),
-            ID: tigrisgosdk.String("9b90c289-09b3-4fe4-9a8d-9cbf48633323"),
-            Index: tigrisgosdk.String("hic"),
-            Project: tigrisgosdk.String("excepturi"),
+            Document: tigrisgosdk.String("Radon mRNA female"),
+            ID: tigrisgosdk.String("<ID>"),
+            Index: tigrisgosdk.String("Electric pioneer"),
+            Project: tigrisgosdk.String("Rock"),
         },
-        ID: "b77f3a41-0067-44eb-b692-80d1ba77a89e",
-        Index: "distinctio",
-        Project: "asperiores",
+        ID: "<ID>",
+        Index: "cyan",
+        Project: "Tesla Concrete Metrics",
     })
     if err != nil {
         log.Fatal(err)
@@ -113,13 +114,13 @@ func main() {
     res, err := s.Search.CreateDocuments(ctx, operations.SearchCreateRequest{
         CreateDocumentRequest: shared.CreateDocumentRequest{
             Documents: []string{
-                "nihil",
+                "Assistant",
             },
-            Index: tigrisgosdk.String("ipsum"),
-            Project: tigrisgosdk.String("voluptate"),
+            Index: tigrisgosdk.String("Cadmium monitor West"),
+            Project: tigrisgosdk.String("majestically Israeli"),
         },
-        Index: "id",
-        Project: "saepe",
+        Index: "Northeast Tala Plastic",
+        Project: "tempting Iron South",
     })
     if err != nil {
         log.Fatal(err)
@@ -174,13 +175,13 @@ func main() {
     res, err := s.Search.DeleteDocuments(ctx, operations.SearchDeleteRequest{
         DeleteDocumentRequest: shared.DeleteDocumentRequest{
             Ids: []string{
-                "eius",
+                "times",
             },
-            Index: tigrisgosdk.String("aspernatur"),
-            Project: tigrisgosdk.String("perferendis"),
+            Index: tigrisgosdk.String("consequently"),
+            Project: tigrisgosdk.String("Plastic Samarium Programmable"),
         },
-        Index: "amet",
-        Project: "optio",
+        Index: "likewise Awesome turquoise",
+        Project: "North Handmade lime",
     })
     if err != nil {
         log.Fatal(err)
@@ -232,11 +233,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.DeleteIndex(ctx, operations.SearchDeleteIndexRequest{
         DeleteIndexRequest: shared.DeleteIndexRequest{
-            Name: tigrisgosdk.String("Tommy Turner"),
-            Project: tigrisgosdk.String("provident"),
+            Name: tigrisgosdk.String("New Tandem Romania"),
+            Project: tigrisgosdk.String("Executive minor Brooklyn"),
         },
-        Name: "Kari Leannon PhD",
-        Project: "quaerat",
+        Name: "however Trans woman",
+        Project: "standardization National bait",
     })
     if err != nil {
         log.Fatal(err)
@@ -293,28 +294,28 @@ func main() {
     res, err := s.Search.FindDocuments(ctx, operations.SearchSearchRequest{
         SearchIndexRequest: shared.SearchIndexRequest{
             Collation: &shared.Collation{
-                Case: tigrisgosdk.String("tempora"),
+                Case: tigrisgosdk.String("deify"),
             },
             ExcludeFields: []string{
-                "vel",
+                "how",
             },
-            Facet: tigrisgosdk.String("quod"),
-            Filter: tigrisgosdk.String("officiis"),
+            Facet: tigrisgosdk.String("Tesla Stage Salad"),
+            Filter: tigrisgosdk.String("Senior Terbium"),
             IncludeFields: []string{
-                "qui",
+                "World",
             },
-            Index: tigrisgosdk.String("dolorum"),
-            Page: tigrisgosdk.Int(952792),
-            PageSize: tigrisgosdk.Int(456130),
-            Project: tigrisgosdk.String("harum"),
-            Q: tigrisgosdk.String("iusto"),
+            Index: tigrisgosdk.String("that so volt"),
+            Page: tigrisgosdk.Int(337935),
+            PageSize: tigrisgosdk.Int(65006),
+            Project: tigrisgosdk.String("degree Indiana infomediaries"),
+            Q: tigrisgosdk.String("Diesel"),
             SearchFields: []string{
-                "ipsum",
+                "Southeast",
             },
-            Sort: tigrisgosdk.String("quisquam"),
+            Sort: tigrisgosdk.String("Buckinghamshire woot Steel"),
         },
-        Index: "tenetur",
-        Project: "amet",
+        Index: "Guiana Rock deliverables",
+        Project: "yum by 24/7",
     })
     if err != nil {
         log.Fatal(err)
@@ -367,10 +368,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.GetDocuments(ctx, operations.SearchGetRequest{
         Ids: []string{
-            "tempore",
+            "turquoise",
         },
-        Index: "accusamus",
-        Project: "numquam",
+        Index: "Loan Northwest",
+        Project: "Bugatti Federation",
     })
     if err != nil {
         log.Fatal(err)
@@ -421,8 +422,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.GetIndex(ctx, operations.SearchGetIndexRequest{
-        Name: "Florence Will",
-        Project: "sit",
+        Name: "reboot female",
+        Project: "male",
     })
     if err != nil {
         log.Fatal(err)
@@ -473,10 +474,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.ListIndexes(ctx, operations.SearchListIndexesRequest{
-        Branch: tigrisgosdk.String("expedita"),
-        Collection: tigrisgosdk.String("neque"),
-        Type: tigrisgosdk.String("sed"),
-        Project: "vel",
+        Branch: tigrisgosdk.String("dynamic"),
+        Collection: tigrisgosdk.String("bolívar Flat"),
+        Type: tigrisgosdk.String("Officer Franc Denar"),
+        Project: "Mountain SUV",
     })
     if err != nil {
         log.Fatal(err)
@@ -529,12 +530,12 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.QueryDeleteDocuments(ctx, operations.SearchDeleteByQueryRequest{
         DeleteByQueryRequest: shared.DeleteByQueryRequest{
-            Filter: tigrisgosdk.String("libero"),
-            Index: tigrisgosdk.String("voluptas"),
-            Project: tigrisgosdk.String("deserunt"),
+            Filter: tigrisgosdk.String("visible whose IB"),
+            Index: tigrisgosdk.String("Wyoming"),
+            Project: tigrisgosdk.String("Diesel male"),
         },
-        Index: "quam",
-        Project: "ipsum",
+        Index: "Table Ytterbium",
+        Project: "harness",
     })
     if err != nil {
         log.Fatal(err)
@@ -590,13 +591,13 @@ func main() {
     res, err := s.Search.ReplaceDocuments(ctx, operations.SearchCreateOrReplaceRequest{
         CreateOrReplaceDocumentRequest: shared.CreateOrReplaceDocumentRequest{
             Documents: []string{
-                "incidunt",
+                "female West Southeast",
             },
-            Index: tigrisgosdk.String("qui"),
-            Project: tigrisgosdk.String("cupiditate"),
+            Index: tigrisgosdk.String("Total phew"),
+            Project: tigrisgosdk.String("gee Coupe Bicycle"),
         },
-        Index: "maxime",
-        Project: "pariatur",
+        Index: "Chief",
+        Project: "coolly Bicycle temporibus",
     })
     if err != nil {
         log.Fatal(err)
@@ -652,13 +653,13 @@ func main() {
     res, err := s.Search.UpdateDocuments(ctx, operations.SearchUpdateRequest{
         UpdateDocumentRequest: shared.UpdateDocumentRequest{
             Documents: []string{
-                "soluta",
+                "Northwest",
             },
-            Index: tigrisgosdk.String("dicta"),
-            Project: tigrisgosdk.String("laborum"),
+            Index: tigrisgosdk.String("West"),
+            Project: tigrisgosdk.String("Jewelery black Functionality"),
         },
-        Index: "totam",
-        Project: "incidunt",
+        Index: "Market",
+        Project: "Trans Ramp services",
     })
     if err != nil {
         log.Fatal(err)
@@ -710,13 +711,13 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.UpdateIndex(ctx, operations.SearchCreateOrUpdateIndexRequest{
         CreateOrUpdateIndexRequest: shared.CreateOrUpdateIndexRequest{
-            Name: tigrisgosdk.String("Bonnie Raynor"),
+            Name: tigrisgosdk.String("maiores when male"),
             OnlyCreate: tigrisgosdk.Bool(false),
-            Project: tigrisgosdk.String("quam"),
-            Schema: tigrisgosdk.String("molestias"),
+            Project: tigrisgosdk.String("eius optical West"),
+            Schema: tigrisgosdk.String("pointed"),
         },
-        Name: "Shawn Doyle",
-        Project: "odio",
+        Name: "parse East Arsenic",
+        Project: "capacity Bicycle",
     })
     if err != nil {
         log.Fatal(err)

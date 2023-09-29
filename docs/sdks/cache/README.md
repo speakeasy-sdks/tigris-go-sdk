@@ -1,4 +1,5 @@
 # Cache
+(*Cache*)
 
 ## Overview
 
@@ -43,11 +44,11 @@ func main() {
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
             Options: &shared.CreateCacheOptions{
-                TTLMs: tigrisgosdk.Int64(138183),
+                TTLMs: tigrisgosdk.Int64(481196),
             },
         },
-        Name: "Jimmy Wiegand",
-        Project: "possimus",
+        Name: "Tasty island Southwest",
+        Project: "National Lauderhill",
     })
     if err != nil {
         log.Fatal(err)
@@ -99,8 +100,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.Delete(ctx, operations.CacheDeleteCacheRequest{
         DeleteCacheRequest: shared.DeleteCacheRequest{},
-        Name: "Joyce Mueller",
-        Project: "quasi",
+        Name: "Architect Cotton port",
+        Project: "qua",
     })
     if err != nil {
         log.Fatal(err)
@@ -152,9 +153,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.DeleteKeys(ctx, operations.CacheDelRequest{
         DelRequest: shared.DelRequest{},
-        Key: "reiciendis",
-        Name: "Caleb Koss",
-        Project: "ipsa",
+        Key: "<key>",
+        Name: "man Seamless before",
+        Project: "Diesel",
     })
     if err != nil {
         log.Fatal(err)
@@ -205,9 +206,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.GetKey(ctx, operations.CacheGetRequest{
-        Key: "omnis",
-        Name: "Ms. Karla Aufderhar",
-        Project: "maiores",
+        Key: "<key>",
+        Name: "lux robust",
+        Project: "index",
     })
     if err != nil {
         log.Fatal(err)
@@ -259,11 +260,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.GetSetKey(ctx, operations.CacheGetSetRequest{
         GetSetRequest: shared.GetSetRequest{
-            Value: tigrisgosdk.String("dicta"),
+            Value: tigrisgosdk.String("Bronze"),
         },
-        Key: "corporis",
-        Name: "Heidi Carter",
-        Project: "accusamus",
+        Key: "<key>",
+        Name: "portal salmon",
+        Project: "kelvin Harbors",
     })
     if err != nil {
         log.Fatal(err)
@@ -314,7 +315,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.List(ctx, operations.CacheListCachesRequest{
-        Project: "commodi",
+        Project: "Bronze Architect",
     })
     if err != nil {
         log.Fatal(err)
@@ -365,11 +366,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.ListKeys(ctx, operations.CacheKeysRequest{
-        Count: tigrisgosdk.Int64(918236),
-        Cursor: tigrisgosdk.Int64(64147),
-        Name: "Alison Mann",
-        Pattern: tigrisgosdk.String("modi"),
-        Project: "praesentium",
+        Count: tigrisgosdk.Int64(618311),
+        Cursor: tigrisgosdk.Int64(739921),
+        Name: "invoice pink",
+        Pattern: tigrisgosdk.String("whose West vivid"),
+        Project: "compelling duh",
     })
     if err != nil {
         log.Fatal(err)
@@ -421,15 +422,15 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.SetKey(ctx, operations.CacheSetRequest{
         SetRequest: shared.SetRequest{
-            Ex: tigrisgosdk.Int64(523248),
+            Ex: tigrisgosdk.Int64(170966),
             Nx: tigrisgosdk.Bool(false),
-            Px: tigrisgosdk.Int64(916723),
-            Value: tigrisgosdk.String("quasi"),
+            Px: tigrisgosdk.Int64(17597),
+            Value: tigrisgosdk.String("monetize"),
             Xx: tigrisgosdk.Bool(false),
         },
-        Key: "repudiandae",
-        Name: "Patrick Ward",
-        Project: "consequatur",
+        Key: "<key>",
+        Name: "Shanahan Phased",
+        Project: "Gasoline",
     })
     if err != nil {
         log.Fatal(err)

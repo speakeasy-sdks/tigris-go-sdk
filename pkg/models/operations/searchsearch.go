@@ -37,12 +37,15 @@ func (o *SearchSearchRequest) GetProject() string {
 }
 
 type SearchSearchResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// OK
 	SearchIndexResponse *shared.SearchIndexResponse
 	// Default error response
-	Status      *shared.Status
-	StatusCode  int
+	Status *shared.Status
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

@@ -32,11 +32,11 @@ func main() {
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
             Options: &shared.CreateCacheOptions{
-                TTLMs: tigrisgosdk.Int64(847252),
+                TTLMs: tigrisgosdk.Int64(481196),
             },
         },
-        Name: "Sabrina Oberbrunner",
-        Project: "magnam",
+        Name: "Tasty island Southwest",
+        Project: "National Lauderhill",
     })
     if err != nil {
         log.Fatal(err)
@@ -158,8 +158,6 @@ func main() {
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
 
 
@@ -172,8 +170,6 @@ returned response object will have a `Next` method that can be called to pull do
 return value of `Next` is `nil`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
-
-
 <!-- End Pagination -->
 
 

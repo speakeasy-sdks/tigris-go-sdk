@@ -1,4 +1,5 @@
 # AppKey
+(*AppKey*)
 
 ## Overview
 
@@ -39,9 +40,9 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Delete(ctx, operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: tigrisgosdk.String("e0f467cc-8796-4ed1-91a0-5dfc2ddf7cc7"),
+            ID: tigrisgosdk.String("<ID>"),
         },
-        Project: "totam",
+        Project: "Architect Cotton port",
     })
     if err != nil {
         log.Fatal(err)
@@ -92,7 +93,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AppKey.List(ctx, operations.TigrisListAppKeysRequest{
-        Project: "porro",
+        Project: "Bronze Architect",
     })
     if err != nil {
         log.Fatal(err)
@@ -144,10 +145,10 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Rotate(ctx, operations.TigrisRotateAppKeySecretRequest{
         RotateAppKeyRequest: shared.RotateAppKeyRequest{
-            ID: tigrisgosdk.String("a1ba928f-c816-4742-8b73-9205929396fe"),
-            Project: tigrisgosdk.String("fuga"),
+            ID: tigrisgosdk.String("<ID>"),
+            Project: tigrisgosdk.String("Facilitator"),
         },
-        Project: "in",
+        Project: "efficient compress",
     })
     if err != nil {
         log.Fatal(err)
@@ -199,10 +200,10 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.TigrisCreateAppKey(ctx, operations.TigrisCreateAppKeyRequest{
         CreateAppKeyRequest: shared.CreateAppKeyRequest{
-            Description: tigrisgosdk.String("corporis"),
-            Name: tigrisgosdk.String("Brad Turcotte Jr."),
+            Description: tigrisgosdk.String("User-centric bifurcated product"),
+            Name: tigrisgosdk.String("magenta"),
         },
-        Project: "reiciendis",
+        Project: "indigo",
     })
     if err != nil {
         log.Fatal(err)
@@ -254,11 +255,11 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Update(ctx, operations.TigrisUpdateAppKeyRequest{
         UpdateAppKeyRequest: shared.UpdateAppKeyRequest{
-            Description: tigrisgosdk.String("est"),
-            ID: tigrisgosdk.String("aa2352c5-9559-407a-bf1a-3a2fa9467739"),
-            Name: tigrisgosdk.String("Beatrice Brown"),
+            Description: tigrisgosdk.String("Optimized 24/7 middleware"),
+            ID: tigrisgosdk.String("<ID>"),
+            Name: tigrisgosdk.String("Clothing Tempe"),
         },
-        Project: "enim",
+        Project: "Ohio ADP",
     })
     if err != nil {
         log.Fatal(err)

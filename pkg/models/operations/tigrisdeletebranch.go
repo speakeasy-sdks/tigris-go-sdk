@@ -37,12 +37,15 @@ func (o *TigrisDeleteBranchRequest) GetProject() string {
 }
 
 type TigrisDeleteBranchResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// OK
 	DeleteBranchResponse *shared.DeleteBranchResponse
 	// Default error response
-	Status      *shared.Status
-	StatusCode  int
+	Status *shared.Status
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

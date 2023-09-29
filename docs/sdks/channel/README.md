@@ -1,4 +1,5 @@
 # Channel
+(*Channel*)
 
 ## Overview
 
@@ -39,8 +40,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.Get(ctx, operations.RealtimeGetRTChannelRequest{
-        Channel: "est",
-        Project: "quibusdam",
+        Channel: "Group Cambridgeshire",
+        Project: "reintermediate fuchsia Planner",
     })
     if err != nil {
         log.Fatal(err)
@@ -91,14 +92,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.GetMessages(ctx, operations.RealtimeReadMessagesRequest{
-        Channel: "explicabo",
-        End: tigrisgosdk.String("deserunt"),
-        Event: tigrisgosdk.String("distinctio"),
-        Limit: tigrisgosdk.Int64(841386),
-        Project: "labore",
-        SessionID: tigrisgosdk.String("modi"),
-        SocketID: tigrisgosdk.String("qui"),
-        Start: tigrisgosdk.String("aliquid"),
+        Channel: "parallelism",
+        End: tigrisgosdk.String("sympathetic array"),
+        Event: tigrisgosdk.String("withdrawal"),
+        Limit: tigrisgosdk.Int64(451433),
+        Project: "Account",
+        SessionID: tigrisgosdk.String("Northeast"),
+        SocketID: tigrisgosdk.String("green"),
+        Start: tigrisgosdk.String("Rock Automotive Grove"),
     })
     if err != nil {
         log.Fatal(err)
@@ -149,7 +150,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.List(ctx, operations.RealtimeGetRTChannelsRequest{
-        Project: "cupiditate",
+        Project: "Bronze Architect",
     })
     if err != nil {
         log.Fatal(err)
@@ -200,10 +201,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.ListSubscriptions(ctx, operations.RealtimeListSubscriptionsRequest{
-        Channel: "quos",
-        Page: tigrisgosdk.Int(20107),
-        PageSize: tigrisgosdk.Int(164940),
-        Project: "assumenda",
+        Channel: "UTF8 doting Brazil",
+        Page: tigrisgosdk.Int(980290),
+        PageSize: tigrisgosdk.Int(408746),
+        Project: "Crew",
     })
     if err != nil {
         log.Fatal(err)
@@ -255,19 +256,19 @@ func main() {
     ctx := context.Background()
     res, err := s.Channel.PushMessages(ctx, operations.RealtimeMessagesRequest{
         MessagesRequest: shared.MessagesRequest{
-            Channel: tigrisgosdk.String("ipsam"),
+            Channel: tigrisgosdk.String("Representative Manager"),
             Messages: []shared.Message{
                 shared.Message{
-                    Data: tigrisgosdk.String("alias"),
-                    ID: tigrisgosdk.String("2a94bb4f-63c9-469e-9a3e-fa77dfb14cd6"),
-                    Name: tigrisgosdk.String("Kayla Thompson"),
-                    Sequence: tigrisgosdk.String("enim"),
+                    Data: tigrisgosdk.String("Man"),
+                    ID: tigrisgosdk.String("<ID>"),
+                    Name: tigrisgosdk.String("phew"),
+                    Sequence: tigrisgosdk.String("Concrete"),
                 },
             },
-            Project: tigrisgosdk.String("accusamus"),
+            Project: tigrisgosdk.String("Directives purple"),
         },
-        Channel: "delectus",
-        Project: "quidem",
+        Channel: "amass RSS solutions",
+        Project: "Road",
     })
     if err != nil {
         log.Fatal(err)
@@ -318,8 +319,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.RealtimePresence(ctx, operations.RealtimePresenceRequest{
-        Channel: "provident",
-        Project: "nam",
+        Channel: "orchid AI second",
+        Project: "thankful Consultant",
     })
     if err != nil {
         log.Fatal(err)

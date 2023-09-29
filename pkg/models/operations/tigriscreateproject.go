@@ -28,12 +28,15 @@ func (o *TigrisCreateProjectRequest) GetProject() string {
 }
 
 type TigrisCreateProjectResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// OK
 	CreateProjectResponse *shared.CreateProjectResponse
 	// Default error response
-	Status      *shared.Status
-	StatusCode  int
+	Status *shared.Status
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

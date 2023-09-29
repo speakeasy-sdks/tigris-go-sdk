@@ -1,4 +1,5 @@
 # User
+(*User*)
 
 ## Overview
 
@@ -37,10 +38,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.GetMetadata(ctx, operations.ManagementGetUserMetadataRequest{
         GetUserMetadataRequest: shared.GetUserMetadataRequest{
-            MetadataKey: tigrisgosdk.String("quos"),
+            MetadataKey: tigrisgosdk.String("or Plastic"),
             Value: &shared.GetUserMetadataRequestValue{},
         },
-        MetadataKey: "tempore",
+        MetadataKey: "offensively Electric",
     })
     if err != nil {
         log.Fatal(err)
@@ -92,10 +93,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.InsertMetadata(ctx, operations.ManagementInsertUserMetadataRequest{
         InsertUserMetadataRequest: shared.InsertUserMetadataRequest{
-            MetadataKey: tigrisgosdk.String("cupiditate"),
+            MetadataKey: tigrisgosdk.String("Curve Liaison calculate"),
             Value: &shared.InsertUserMetadataRequestValue{},
         },
-        MetadataKey: "aperiam",
+        MetadataKey: "female Tantalum",
     })
     if err != nil {
         log.Fatal(err)
@@ -147,10 +148,10 @@ func main() {
     ctx := context.Background()
     res, err := s.User.UpdateMetadata(ctx, operations.ManagementUpdateUserMetadataRequest{
         UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{
-            MetadataKey: tigrisgosdk.String("delectus"),
+            MetadataKey: tigrisgosdk.String("platforms Concrete Tempe"),
             Value: &shared.UpdateUserMetadataRequestValue{},
         },
-        MetadataKey: "dolorem",
+        MetadataKey: "transmitting Silicon North",
     })
     if err != nil {
         log.Fatal(err)
