@@ -39,9 +39,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AppKey.Delete(ctx, operations.TigrisDeleteAppKeyRequest{
-        DeleteAppKeyRequest: shared.DeleteAppKeyRequest{
-            ID: tigrisgosdk.String("<ID>"),
-        },
+        DeleteAppKeyRequest: shared.DeleteAppKeyRequest{},
         Project: "Architect Cotton port",
     })
     if err != nil {
@@ -144,11 +142,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AppKey.Rotate(ctx, operations.TigrisRotateAppKeySecretRequest{
-        RotateAppKeyRequest: shared.RotateAppKeyRequest{
-            ID: tigrisgosdk.String("<ID>"),
-            Project: tigrisgosdk.String("Facilitator"),
-        },
-        Project: "efficient compress",
+        RotateAppKeyRequest: shared.RotateAppKeyRequest{},
+        Project: "Facilitator",
     })
     if err != nil {
         log.Fatal(err)
@@ -199,11 +194,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AppKey.TigrisCreateAppKey(ctx, operations.TigrisCreateAppKeyRequest{
-        CreateAppKeyRequest: shared.CreateAppKeyRequest{
-            Description: tigrisgosdk.String("User-centric bifurcated product"),
-            Name: tigrisgosdk.String("magenta"),
-        },
-        Project: "indigo",
+        CreateAppKeyRequest: shared.CreateAppKeyRequest{},
+        Project: "Rhode magenta Florida",
     })
     if err != nil {
         log.Fatal(err)
@@ -254,12 +246,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AppKey.Update(ctx, operations.TigrisUpdateAppKeyRequest{
-        UpdateAppKeyRequest: shared.UpdateAppKeyRequest{
-            Description: tigrisgosdk.String("Optimized 24/7 middleware"),
-            ID: tigrisgosdk.String("<ID>"),
-            Name: tigrisgosdk.String("Clothing Tempe"),
-        },
-        Project: "Ohio ADP",
+        UpdateAppKeyRequest: shared.UpdateAppKeyRequest{},
+        Project: "South complexity",
     })
     if err != nil {
         log.Fatal(err)

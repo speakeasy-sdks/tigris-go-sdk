@@ -28,6 +28,7 @@ pkg/utils/requestbody.go
 pkg/utils/retries.go
 pkg/utils/security.go
 pkg/utils/utils.go
+tests/helpers.go
 pkg/models/operations/tigrisdeleteappkey.go
 pkg/models/operations/tigrislistappkeys.go
 pkg/models/operations/tigrisrotateappkeysecret.go

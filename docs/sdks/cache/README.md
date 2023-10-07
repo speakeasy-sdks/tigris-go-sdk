@@ -43,12 +43,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
-            Options: &shared.CreateCacheOptions{
-                TTLMs: tigrisgosdk.Int64(481196),
-            },
+            Options: &shared.CreateCacheOptions{},
         },
-        Name: "Tasty island Southwest",
-        Project: "National Lauderhill",
+        Name: "Electric pirouette",
+        Project: "Sausages ASCII",
     })
     if err != nil {
         log.Fatal(err)
@@ -259,12 +257,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.GetSetKey(ctx, operations.CacheGetSetRequest{
-        GetSetRequest: shared.GetSetRequest{
-            Value: tigrisgosdk.String("Bronze"),
-        },
+        GetSetRequest: shared.GetSetRequest{},
         Key: "<key>",
-        Name: "portal salmon",
-        Project: "kelvin Harbors",
+        Name: "Bronze",
+        Project: "portal salmon",
     })
     if err != nil {
         log.Fatal(err)
@@ -366,11 +362,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.ListKeys(ctx, operations.CacheKeysRequest{
-        Count: tigrisgosdk.Int64(618311),
-        Cursor: tigrisgosdk.Int64(739921),
-        Name: "invoice pink",
-        Pattern: tigrisgosdk.String("whose West vivid"),
-        Project: "compelling duh",
+        Name: "Iodine invoice",
+        Project: "Synchronised",
     })
     if err != nil {
         log.Fatal(err)
@@ -421,16 +414,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.SetKey(ctx, operations.CacheSetRequest{
-        SetRequest: shared.SetRequest{
-            Ex: tigrisgosdk.Int64(170966),
-            Nx: tigrisgosdk.Bool(false),
-            Px: tigrisgosdk.Int64(17597),
-            Value: tigrisgosdk.String("monetize"),
-            Xx: tigrisgosdk.Bool(false),
-        },
+        SetRequest: shared.SetRequest{},
         Key: "<key>",
-        Name: "Shanahan Phased",
-        Project: "Gasoline",
+        Name: "North",
+        Project: "synergize",
     })
     if err != nil {
         log.Fatal(err)

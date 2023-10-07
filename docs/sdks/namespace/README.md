@@ -38,11 +38,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Namespace.Create(ctx, shared.CreateNamespaceRequest{
-        Code: tigrisgosdk.Int64(481196),
-        ID: tigrisgosdk.String("<ID>"),
-        Name: tigrisgosdk.String("Tasty island Southwest"),
-    })
+    res, err := s.Namespace.Create(ctx, shared.CreateNamespaceRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -140,10 +136,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.GetMetadata(ctx, operations.ManagementGetNamespaceMetadataRequest{
         GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{
-            MetadataKey: tigrisgosdk.String("or Plastic"),
             Value: &shared.GetNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "offensively Electric",
+        MetadataKey: "or Plastic",
     })
     if err != nil {
         log.Fatal(err)
@@ -195,10 +190,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.InsertMetadata(ctx, operations.ManagementInsertNamespaceMetadataRequest{
         InsertNamespaceMetadataRequest: shared.InsertNamespaceMetadataRequest{
-            MetadataKey: tigrisgosdk.String("Curve Liaison calculate"),
             Value: &shared.InsertNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "female Tantalum",
+        MetadataKey: "Curve Liaison calculate",
     })
     if err != nil {
         log.Fatal(err)
@@ -297,10 +291,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.UpdateMetadata(ctx, operations.ManagementUpdateNamespaceMetadataRequest{
         UpdateNamespaceMetadataRequest: shared.UpdateNamespaceMetadataRequest{
-            MetadataKey: tigrisgosdk.String("platforms Concrete Tempe"),
             Value: &shared.UpdateNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "transmitting Silicon North",
+        MetadataKey: "platforms Concrete Tempe",
     })
     if err != nil {
         log.Fatal(err)

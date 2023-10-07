@@ -38,10 +38,9 @@ func main() {
     ctx := context.Background()
     res, err := s.User.GetMetadata(ctx, operations.ManagementGetUserMetadataRequest{
         GetUserMetadataRequest: shared.GetUserMetadataRequest{
-            MetadataKey: tigrisgosdk.String("or Plastic"),
             Value: &shared.GetUserMetadataRequestValue{},
         },
-        MetadataKey: "offensively Electric",
+        MetadataKey: "or Plastic",
     })
     if err != nil {
         log.Fatal(err)
@@ -93,10 +92,9 @@ func main() {
     ctx := context.Background()
     res, err := s.User.InsertMetadata(ctx, operations.ManagementInsertUserMetadataRequest{
         InsertUserMetadataRequest: shared.InsertUserMetadataRequest{
-            MetadataKey: tigrisgosdk.String("Curve Liaison calculate"),
             Value: &shared.InsertUserMetadataRequestValue{},
         },
-        MetadataKey: "female Tantalum",
+        MetadataKey: "Curve Liaison calculate",
     })
     if err != nil {
         log.Fatal(err)
@@ -148,10 +146,9 @@ func main() {
     ctx := context.Background()
     res, err := s.User.UpdateMetadata(ctx, operations.ManagementUpdateUserMetadataRequest{
         UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{
-            MetadataKey: tigrisgosdk.String("platforms Concrete Tempe"),
             Value: &shared.UpdateUserMetadataRequestValue{},
         },
-        MetadataKey: "transmitting Silicon North",
+        MetadataKey: "platforms Concrete Tempe",
     })
     if err != nil {
         log.Fatal(err)

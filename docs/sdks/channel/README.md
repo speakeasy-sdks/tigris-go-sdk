@@ -93,13 +93,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Channel.GetMessages(ctx, operations.RealtimeReadMessagesRequest{
         Channel: "parallelism",
-        End: tigrisgosdk.String("sympathetic array"),
-        Event: tigrisgosdk.String("withdrawal"),
-        Limit: tigrisgosdk.Int64(451433),
-        Project: "Account",
-        SessionID: tigrisgosdk.String("Northeast"),
-        SocketID: tigrisgosdk.String("green"),
-        Start: tigrisgosdk.String("Rock Automotive Grove"),
+        Project: "sympathetic array",
     })
     if err != nil {
         log.Fatal(err)
@@ -202,9 +196,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Channel.ListSubscriptions(ctx, operations.RealtimeListSubscriptionsRequest{
         Channel: "UTF8 doting Brazil",
-        Page: tigrisgosdk.Int(980290),
-        PageSize: tigrisgosdk.Int(408746),
-        Project: "Crew",
+        Project: "Account Incredible North",
     })
     if err != nil {
         log.Fatal(err)
@@ -256,19 +248,12 @@ func main() {
     ctx := context.Background()
     res, err := s.Channel.PushMessages(ctx, operations.RealtimeMessagesRequest{
         MessagesRequest: shared.MessagesRequest{
-            Channel: tigrisgosdk.String("Representative Manager"),
             Messages: []shared.Message{
-                shared.Message{
-                    Data: tigrisgosdk.String("Man"),
-                    ID: tigrisgosdk.String("<ID>"),
-                    Name: tigrisgosdk.String("phew"),
-                    Sequence: tigrisgosdk.String("Concrete"),
-                },
+                shared.Message{},
             },
-            Project: tigrisgosdk.String("Directives purple"),
         },
-        Channel: "amass RSS solutions",
-        Project: "Road",
+        Channel: "Representative Manager",
+        Project: "Man",
     })
     if err != nil {
         log.Fatal(err)

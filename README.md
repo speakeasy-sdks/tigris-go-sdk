@@ -31,12 +31,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
         CreateCacheRequest: shared.CreateCacheRequest{
-            Options: &shared.CreateCacheOptions{
-                TTLMs: tigrisgosdk.Int64(481196),
-            },
+            Options: &shared.CreateCacheOptions{},
         },
-        Name: "Tasty island Southwest",
-        Project: "National Lauderhill",
+        Name: "Electric pirouette",
+        Project: "Sausages ASCII",
     })
     if err != nil {
         log.Fatal(err)

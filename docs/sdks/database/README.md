@@ -45,10 +45,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.BeginTransaction(ctx, operations.TigrisBeginTransactionRequest{
         BeginTransactionRequest: shared.BeginTransactionRequest{
-            Branch: tigrisgosdk.String("Steel East microchip"),
             Options: &shared.TransactionOptions{},
         },
-        Project: "Tandem",
+        Project: "Steel East microchip",
     })
     if err != nil {
         log.Fatal(err)
@@ -100,10 +99,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.CommitTransaction(ctx, operations.TigrisCommitTransactionRequest{
-        CommitTransactionRequest: shared.CommitTransactionRequest{
-            Branch: tigrisgosdk.String("drop Assurance"),
-        },
-        Project: "female Diesel",
+        CommitTransactionRequest: shared.CommitTransactionRequest{},
+        Project: "drop Assurance",
     })
     if err != nil {
         log.Fatal(err)
@@ -262,12 +259,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.Describe(ctx, operations.TigrisDescribeDatabaseRequest{
-        DescribeDatabaseRequest: shared.DescribeDatabaseRequest{
-            Branch: tigrisgosdk.String("morph Pickup"),
-            Project: tigrisgosdk.String("Home"),
-            SchemaFormat: tigrisgosdk.String("payment And Cloned"),
-        },
-        Project: "South whoever",
+        DescribeDatabaseRequest: shared.DescribeDatabaseRequest{},
+        Project: "morph Pickup",
     })
     if err != nil {
         log.Fatal(err)
@@ -318,8 +311,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.ListCollections(ctx, operations.TigrisListCollectionsRequest{
-        Branch: tigrisgosdk.String("Buckinghamshire green Djibouti"),
-        Project: "Hybrid",
+        Project: "Buckinghamshire green Djibouti",
     })
     if err != nil {
         log.Fatal(err)
@@ -371,10 +363,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.RollbackTransaction(ctx, operations.TigrisRollbackTransactionRequest{
-        RollbackTransactionRequest: shared.RollbackTransactionRequest{
-            Branch: tigrisgosdk.String("woman Convertible Hafnium"),
-        },
-        Project: "Whittier Hip",
+        RollbackTransactionRequest: shared.RollbackTransactionRequest{},
+        Project: "woman Convertible Hafnium",
     })
     if err != nil {
         log.Fatal(err)
