@@ -41,9 +41,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -97,9 +95,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -156,9 +152,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -212,9 +206,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -272,9 +264,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -340,9 +330,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -405,9 +393,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -464,9 +450,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -527,9 +511,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -595,9 +577,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(shared.Security{
-            BearerAuth: "",
-        }),
+        tigrisgosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
