@@ -45,7 +45,7 @@ func main() {
         BeginTransactionRequest: shared.BeginTransactionRequest{
             Options: &shared.TransactionOptions{},
         },
-        Project: "Steel East microchip",
+        Project: "ew",
     })
     if err != nil {
         log.Fatal(err)
@@ -96,7 +96,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.CommitTransaction(ctx, operations.TigrisCommitTransactionRequest{
         CommitTransactionRequest: shared.CommitTransactionRequest{},
-        Project: "drop Assurance",
+        Project: "Metrics",
     })
     if err != nil {
         log.Fatal(err)
@@ -146,8 +146,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.CreateBranch(ctx, operations.TigrisCreateBranchRequest{
         CreateBranchRequest: shared.CreateBranchRequest{},
-        Branch: "Dubnium UDP Garden",
-        Project: "solid hence Ramp",
+        Branch: "Nissan",
+        Project: "majestically",
     })
     if err != nil {
         log.Fatal(err)
@@ -198,8 +198,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.DeleteBranch(ctx, operations.TigrisDeleteBranchRequest{
         DeleteBranchRequest: shared.DeleteBranchRequest{},
-        Branch: "withdrawal",
-        Project: "West Coupe solutions",
+        Branch: "Berkshire",
+        Project: "Shoes",
     })
     if err != nil {
         log.Fatal(err)
@@ -250,7 +250,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.Describe(ctx, operations.TigrisDescribeDatabaseRequest{
         DescribeDatabaseRequest: shared.DescribeDatabaseRequest{},
-        Project: "morph Pickup",
+        Project: "copy",
     })
     if err != nil {
         log.Fatal(err)
@@ -299,7 +299,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.ListCollections(ctx, operations.TigrisListCollectionsRequest{
-        Project: "Buckinghamshire green Djibouti",
+        Project: "blah",
     })
     if err != nil {
         log.Fatal(err)
@@ -350,7 +350,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.RollbackTransaction(ctx, operations.TigrisRollbackTransactionRequest{
         RollbackTransactionRequest: shared.RollbackTransactionRequest{},
-        Project: "woman Convertible Hafnium",
+        Project: "optimisation",
     })
     if err != nil {
         log.Fatal(err)
@@ -399,7 +399,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.TigrisListBranches(ctx, operations.TigrisListBranchesRequest{
-        Project: "Funk",
+        Project: "withdrawal",
     })
     if err != nil {
         log.Fatal(err)

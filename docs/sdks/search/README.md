@@ -49,8 +49,8 @@ func main() {
     res, err := s.Search.CreateDocument(ctx, operations.SearchCreateByIDRequest{
         CreateByIDRequest: shared.CreateByIDRequest{},
         ID: "<ID>",
-        Index: "Radon mRNA female",
-        Project: "Electric pioneer",
+        Index: "Bicycle",
+        Project: "mRNA",
     })
     if err != nil {
         log.Fatal(err)
@@ -105,11 +105,11 @@ func main() {
     res, err := s.Search.CreateDocuments(ctx, operations.SearchCreateRequest{
         CreateDocumentRequest: shared.CreateDocumentRequest{
             Documents: []string{
-                "Assistant",
+                "Ohio",
             },
         },
-        Index: "Cadmium monitor West",
-        Project: "majestically Israeli",
+        Index: "Toyota",
+        Project: "Cadmium",
     })
     if err != nil {
         log.Fatal(err)
@@ -165,8 +165,8 @@ func main() {
                 "times",
             },
         },
-        Index: "consequently",
-        Project: "Plastic Samarium Programmable",
+        Index: "Southwest",
+        Project: "Glover",
     })
     if err != nil {
         log.Fatal(err)
@@ -216,8 +216,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.DeleteIndex(ctx, operations.SearchDeleteIndexRequest{
         DeleteIndexRequest: shared.DeleteIndexRequest{},
-        Name: "New Tandem Romania",
-        Project: "Executive minor Brooklyn",
+        Name: "Liaison",
+        Project: "Marketing",
     })
     if err != nil {
         log.Fatal(err)
@@ -282,8 +282,8 @@ func main() {
                 "Soft",
             },
         },
-        Index: "noxious Senior Terbium",
-        Project: "enterprise that",
+        Index: "green",
+        Project: "Salad",
     })
     if err != nil {
         log.Fatal(err)
@@ -336,8 +336,8 @@ func main() {
         Ids: []string{
             "turquoise",
         },
-        Index: "Loan Northwest",
-        Project: "Bugatti Federation",
+        Index: "navigating",
+        Project: "generating",
     })
     if err != nil {
         log.Fatal(err)
@@ -386,8 +386,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.GetIndex(ctx, operations.SearchGetIndexRequest{
-        Name: "reboot female",
-        Project: "male",
+        Name: "woman",
+        Project: "female",
     })
     if err != nil {
         log.Fatal(err)
@@ -436,7 +436,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.ListIndexes(ctx, operations.SearchListIndexesRequest{
-        Project: "dynamic",
+        Project: "Avon",
     })
     if err != nil {
         log.Fatal(err)
@@ -487,8 +487,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.QueryDeleteDocuments(ctx, operations.SearchDeleteByQueryRequest{
         DeleteByQueryRequest: shared.DeleteByQueryRequest{},
-        Index: "visible whose IB",
-        Project: "Wyoming",
+        Index: "unnaturally",
+        Project: "zowie",
     })
     if err != nil {
         log.Fatal(err)
@@ -542,11 +542,11 @@ func main() {
     res, err := s.Search.ReplaceDocuments(ctx, operations.SearchCreateOrReplaceRequest{
         CreateOrReplaceDocumentRequest: shared.CreateOrReplaceDocumentRequest{
             Documents: []string{
-                "female West Southeast",
+                "male",
             },
         },
-        Index: "Total phew",
-        Project: "gee Coupe Bicycle",
+        Index: "Avon",
+        Project: "before",
     })
     if err != nil {
         log.Fatal(err)
@@ -600,11 +600,11 @@ func main() {
     res, err := s.Search.UpdateDocuments(ctx, operations.SearchUpdateRequest{
         UpdateDocumentRequest: shared.UpdateDocumentRequest{
             Documents: []string{
-                "Northwest",
+                "revolutionary",
             },
         },
-        Index: "West",
-        Project: "Jewelery black Functionality",
+        Index: "Strategist",
+        Project: "Jewelery",
     })
     if err != nil {
         log.Fatal(err)
@@ -654,8 +654,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.UpdateIndex(ctx, operations.SearchCreateOrUpdateIndexRequest{
         CreateOrUpdateIndexRequest: shared.CreateOrUpdateIndexRequest{},
-        Name: "maiores when male",
-        Project: "eius optical West",
+        Name: "Agent",
+        Project: "male",
     })
     if err != nil {
         log.Fatal(err)

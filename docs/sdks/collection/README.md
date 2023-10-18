@@ -50,8 +50,8 @@ func main() {
             Options: &shared.CollectionOptions{},
             Schema: &shared.CreateOrUpdateCollectionRequestSchema{},
         },
-        Collection: "Electric pirouette",
-        Project: "Sausages ASCII",
+        Collection: "neural",
+        Project: "Tasty",
     })
     if err != nil {
         log.Fatal(err)
@@ -107,8 +107,8 @@ func main() {
                 WriteOptions: &shared.WriteOptions{},
             },
         },
-        Collection: "Convertible consequently female",
-        Project: "Card",
+        Collection: "times",
+        Project: "Southwest",
     })
     if err != nil {
         log.Fatal(err)
@@ -160,8 +160,8 @@ func main() {
         DescribeCollectionRequest: shared.DescribeCollectionRequest{
             Options: &shared.CollectionOptions{},
         },
-        Collection: "morph Pickup",
-        Project: "Home",
+        Collection: "copy",
+        Project: "Luxurious",
     })
     if err != nil {
         log.Fatal(err)
@@ -214,8 +214,8 @@ func main() {
         DropCollectionRequest: shared.DropCollectionRequest{
             Options: &shared.CollectionOptions{},
         },
-        Collection: "Tricycle Cummings",
-        Project: "reboot Northern",
+        Collection: "SSL",
+        Project: "an",
     })
     if err != nil {
         log.Fatal(err)
@@ -283,8 +283,8 @@ func main() {
                 "calmly",
             },
         },
-        Collection: "Sedan Peru",
-        Project: "wherever Designer",
+        Collection: "transmitting",
+        Project: "Van",
     })
     if err != nil {
         log.Fatal(err)
@@ -343,8 +343,8 @@ func main() {
                 WriteOptions: &shared.WriteOptions{},
             },
         },
-        Collection: "magnetic Hong National",
-        Project: "Lemke",
+        Collection: "ew",
+        Project: "Won",
     })
     if err != nil {
         log.Fatal(err)
@@ -405,8 +405,8 @@ func main() {
                 Collation: &shared.Collation{},
             },
         },
-        Collection: "West farad",
-        Project: "Books yellow",
+        Collection: "Lead",
+        Project: "ivory",
     })
     if err != nil {
         log.Fatal(err)
@@ -463,8 +463,8 @@ func main() {
                 WriteOptions: &shared.WriteOptions{},
             },
         },
-        Collection: "female West Southeast",
-        Project: "Total phew",
+        Collection: "male",
+        Project: "Avon",
     })
     if err != nil {
         log.Fatal(err)
@@ -532,8 +532,8 @@ func main() {
             },
             Sort: &shared.SearchRequestSort{},
         },
-        Collection: "blue Intranet Germanium",
-        Project: "Books degree Cambridgeshire",
+        Collection: "Hybrid",
+        Project: "Borders",
     })
     if err != nil {
         log.Fatal(err)
@@ -590,8 +590,8 @@ func main() {
                 WriteOptions: &shared.WriteOptions{},
             },
         },
-        Collection: "Northwest",
-        Project: "West",
+        Collection: "revolutionary",
+        Project: "Strategist",
     })
     if err != nil {
         log.Fatal(err)

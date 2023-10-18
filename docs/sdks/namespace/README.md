@@ -132,7 +132,7 @@ func main() {
         GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{
             Value: &shared.GetNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "or Plastic",
+        MetadataKey: "Chief",
     })
     if err != nil {
         log.Fatal(err)
@@ -184,7 +184,7 @@ func main() {
         InsertNamespaceMetadataRequest: shared.InsertNamespaceMetadataRequest{
             Value: &shared.InsertNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "Curve Liaison calculate",
+        MetadataKey: "Diesel",
     })
     if err != nil {
         log.Fatal(err)
@@ -281,7 +281,7 @@ func main() {
         UpdateNamespaceMetadataRequest: shared.UpdateNamespaceMetadataRequest{
             Value: &shared.UpdateNamespaceMetadataRequestValue{},
         },
-        MetadataKey: "platforms Concrete Tempe",
+        MetadataKey: "fate",
     })
     if err != nil {
         log.Fatal(err)

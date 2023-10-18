@@ -36,7 +36,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Project.Create(ctx, operations.TigrisCreateProjectRequest{
         CreateProjectRequest: shared.CreateProjectRequest{},
-        Project: "Electric pirouette",
+        Project: "neural",
     })
     if err != nil {
         log.Fatal(err)
@@ -86,7 +86,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Project.DeleteProject(ctx, operations.TigrisDeleteProjectRequest{
         DeleteProjectRequest: shared.DeleteProjectRequest{},
-        Project: "Suriname coulomb which",
+        Project: "Diesel",
     })
     if err != nil {
         log.Fatal(err)

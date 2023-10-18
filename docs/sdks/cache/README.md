@@ -43,8 +43,8 @@ func main() {
         CreateCacheRequest: shared.CreateCacheRequest{
             Options: &shared.CreateCacheOptions{},
         },
-        Name: "Electric pirouette",
-        Project: "Sausages ASCII",
+        Name: "neural",
+        Project: "Tasty",
     })
     if err != nil {
         log.Fatal(err)
@@ -94,8 +94,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.Delete(ctx, operations.CacheDeleteCacheRequest{
         DeleteCacheRequest: shared.DeleteCacheRequest{},
-        Name: "Architect Cotton port",
-        Project: "qua",
+        Name: "roughly",
+        Project: "EXE",
     })
     if err != nil {
         log.Fatal(err)
@@ -146,8 +146,8 @@ func main() {
     res, err := s.Cache.DeleteKeys(ctx, operations.CacheDelRequest{
         DelRequest: shared.DelRequest{},
         Key: "<key>",
-        Name: "man Seamless before",
-        Project: "Diesel",
+        Name: "Orchestrator",
+        Project: "gray",
     })
     if err != nil {
         log.Fatal(err)
@@ -197,8 +197,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Cache.GetKey(ctx, operations.CacheGetRequest{
         Key: "<key>",
-        Name: "lux robust",
-        Project: "index",
+        Name: "man",
+        Project: "robust",
     })
     if err != nil {
         log.Fatal(err)
@@ -249,8 +249,8 @@ func main() {
     res, err := s.Cache.GetSetKey(ctx, operations.CacheGetSetRequest{
         GetSetRequest: shared.GetSetRequest{},
         Key: "<key>",
-        Name: "Bronze",
-        Project: "portal salmon",
+        Name: "black",
+        Project: "Direct",
     })
     if err != nil {
         log.Fatal(err)
@@ -299,7 +299,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.List(ctx, operations.CacheListCachesRequest{
-        Project: "Bronze Architect",
+        Project: "Future",
     })
     if err != nil {
         log.Fatal(err)
@@ -348,8 +348,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.ListKeys(ctx, operations.CacheKeysRequest{
-        Name: "Iodine invoice",
-        Project: "Synchronised",
+        Name: "Trans",
+        Project: "invoice",
     })
     if err != nil {
         log.Fatal(err)
@@ -400,8 +400,8 @@ func main() {
     res, err := s.Cache.SetKey(ctx, operations.CacheSetRequest{
         SetRequest: shared.SetRequest{},
         Key: "<key>",
-        Name: "North",
-        Project: "synergize",
+        Name: "red",
+        Project: "Gloves",
     })
     if err != nil {
         log.Fatal(err)

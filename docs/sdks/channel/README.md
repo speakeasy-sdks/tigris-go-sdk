@@ -38,8 +38,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.Get(ctx, operations.RealtimeGetRTChannelRequest{
-        Channel: "Group Cambridgeshire",
-        Project: "reintermediate fuchsia Planner",
+        Channel: "motivating",
+        Project: "Account",
     })
     if err != nil {
         log.Fatal(err)
@@ -88,8 +88,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.GetMessages(ctx, operations.RealtimeReadMessagesRequest{
-        Channel: "parallelism",
-        Project: "sympathetic array",
+        Channel: "East",
+        Project: "Platinum",
     })
     if err != nil {
         log.Fatal(err)
@@ -138,7 +138,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.List(ctx, operations.RealtimeGetRTChannelsRequest{
-        Project: "Bronze Architect",
+        Project: "Future",
     })
     if err != nil {
         log.Fatal(err)
@@ -187,8 +187,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.ListSubscriptions(ctx, operations.RealtimeListSubscriptionsRequest{
-        Channel: "UTF8 doting Brazil",
-        Project: "Account Incredible North",
+        Channel: "internationalise",
+        Project: "which",
     })
     if err != nil {
         log.Fatal(err)
@@ -242,8 +242,8 @@ func main() {
                 shared.Message{},
             },
         },
-        Channel: "Representative Manager",
-        Project: "Man",
+        Channel: "payment",
+        Project: "pronoun",
     })
     if err != nil {
         log.Fatal(err)
@@ -292,8 +292,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.RealtimePresence(ctx, operations.RealtimePresenceRequest{
-        Channel: "orchid AI second",
-        Project: "thankful Consultant",
+        Channel: "successfully",
+        Project: "Applications",
     })
     if err != nil {
         log.Fatal(err)
