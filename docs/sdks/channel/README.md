@@ -38,8 +38,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.Get(ctx, operations.RealtimeGetRTChannelRequest{
-        Channel: "motivating",
-        Project: "Account",
+        Channel: "string",
+        Project: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -88,8 +88,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.GetMessages(ctx, operations.RealtimeReadMessagesRequest{
-        Channel: "East",
-        Project: "Platinum",
+        Channel: "string",
+        Project: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -138,7 +138,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.List(ctx, operations.RealtimeGetRTChannelsRequest{
-        Project: "Future",
+        Project: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -187,8 +187,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.ListSubscriptions(ctx, operations.RealtimeListSubscriptionsRequest{
-        Channel: "internationalise",
-        Project: "which",
+        Channel: "string",
+        Project: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -242,8 +242,8 @@ func main() {
                 shared.Message{},
             },
         },
-        Channel: "payment",
-        Project: "pronoun",
+        Channel: "string",
+        Project: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -292,8 +292,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.RealtimePresence(ctx, operations.RealtimePresenceRequest{
-        Channel: "successfully",
-        Project: "Applications",
+        Channel: "string",
+        Project: "string",
     })
     if err != nil {
         log.Fatal(err)

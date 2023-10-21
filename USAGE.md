@@ -22,8 +22,8 @@ func main() {
 		CreateCacheRequest: shared.CreateCacheRequest{
 			Options: &shared.CreateCacheOptions{},
 		},
-		Name:    "neural",
-		Project: "Tasty",
+		Name:    "string",
+		Project: "string",
 	})
 	if err != nil {
 		log.Fatal(err)

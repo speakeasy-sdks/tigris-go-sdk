@@ -224,7 +224,7 @@ func main() {
             },
         },
         SpaceAggregatedBy: []string{
-            "Concrete",
+            "string",
         },
     })
     if err != nil {

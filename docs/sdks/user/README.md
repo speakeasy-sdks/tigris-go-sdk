@@ -38,7 +38,7 @@ func main() {
         GetUserMetadataRequest: shared.GetUserMetadataRequest{
             Value: &shared.GetUserMetadataRequestValue{},
         },
-        MetadataKey: "Chief",
+        MetadataKey: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -90,7 +90,7 @@ func main() {
         InsertUserMetadataRequest: shared.InsertUserMetadataRequest{
             Value: &shared.InsertUserMetadataRequestValue{},
         },
-        MetadataKey: "Diesel",
+        MetadataKey: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -142,7 +142,7 @@ func main() {
         UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{
             Value: &shared.UpdateUserMetadataRequestValue{},
         },
-        MetadataKey: "fate",
+        MetadataKey: "string",
     })
     if err != nil {
         log.Fatal(err)
