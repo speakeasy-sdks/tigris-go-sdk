@@ -2,20 +2,20 @@
 
 package shared
 
-// ReadResponseData - Object containing the collection document.
-type ReadResponseData struct {
+// Data - Object containing the collection document.
+type Data struct {
 }
 
 type ReadResponse struct {
 	// Object containing the collection document.
-	Data *ReadResponseData `json:"data,omitempty"`
+	Data *Data `json:"data,omitempty"`
 	// Has metadata related to the documents stored.
 	Metadata *ResponseMetadata `json:"metadata,omitempty"`
 	// An internal key, used for pagination.
 	ResumeToken *string `json:"resume_token,omitempty"`
 }
 
-func (o *ReadResponse) GetData() *ReadResponseData {
+func (o *ReadResponse) GetData() *Data {
 	if o == nil {
 		return nil
 	}

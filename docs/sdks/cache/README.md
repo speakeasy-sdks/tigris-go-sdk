@@ -1,5 +1,5 @@
 # Cache
-(*Cache*)
+(*.Cache*)
 
 ## Overview
 

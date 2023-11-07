@@ -7,37 +7,37 @@ import (
 	"fmt"
 )
 
-// ErrorCode - The status code is a short, machine parsable string, which uniquely identifies the error type. Tigris to HTTP code mapping [here](/reference/http-code)
-type ErrorCode string
+// Code - The status code is a short, machine parsable string, which uniquely identifies the error type. Tigris to HTTP code mapping [here](/reference/http-code)
+type Code string
 
 const (
-	ErrorCodeOk                 ErrorCode = "OK"
-	ErrorCodeCancelled          ErrorCode = "CANCELLED"
-	ErrorCodeUnknown            ErrorCode = "UNKNOWN"
-	ErrorCodeInvalidArgument    ErrorCode = "INVALID_ARGUMENT"
-	ErrorCodeDeadlineExceeded   ErrorCode = "DEADLINE_EXCEEDED"
-	ErrorCodeNotFound           ErrorCode = "NOT_FOUND"
-	ErrorCodeAlreadyExists      ErrorCode = "ALREADY_EXISTS"
-	ErrorCodePermissionDenied   ErrorCode = "PERMISSION_DENIED"
-	ErrorCodeResourceExhausted  ErrorCode = "RESOURCE_EXHAUSTED"
-	ErrorCodeFailedPrecondition ErrorCode = "FAILED_PRECONDITION"
-	ErrorCodeAborted            ErrorCode = "ABORTED"
-	ErrorCodeOutOfRange         ErrorCode = "OUT_OF_RANGE"
-	ErrorCodeUnimplemented      ErrorCode = "UNIMPLEMENTED"
-	ErrorCodeInternal           ErrorCode = "INTERNAL"
-	ErrorCodeUnavailable        ErrorCode = "UNAVAILABLE"
-	ErrorCodeDataLoss           ErrorCode = "DATA_LOSS"
-	ErrorCodeUnauthenticated    ErrorCode = "UNAUTHENTICATED"
-	ErrorCodeConflict           ErrorCode = "CONFLICT"
-	ErrorCodeBadGateway         ErrorCode = "BAD_GATEWAY"
-	ErrorCodeMethodNotAllowed   ErrorCode = "METHOD_NOT_ALLOWED"
+	CodeOk                 Code = "OK"
+	CodeCancelled          Code = "CANCELLED"
+	CodeUnknown            Code = "UNKNOWN"
+	CodeInvalidArgument    Code = "INVALID_ARGUMENT"
+	CodeDeadlineExceeded   Code = "DEADLINE_EXCEEDED"
+	CodeNotFound           Code = "NOT_FOUND"
+	CodeAlreadyExists      Code = "ALREADY_EXISTS"
+	CodePermissionDenied   Code = "PERMISSION_DENIED"
+	CodeResourceExhausted  Code = "RESOURCE_EXHAUSTED"
+	CodeFailedPrecondition Code = "FAILED_PRECONDITION"
+	CodeAborted            Code = "ABORTED"
+	CodeOutOfRange         Code = "OUT_OF_RANGE"
+	CodeUnimplemented      Code = "UNIMPLEMENTED"
+	CodeInternal           Code = "INTERNAL"
+	CodeUnavailable        Code = "UNAVAILABLE"
+	CodeDataLoss           Code = "DATA_LOSS"
+	CodeUnauthenticated    Code = "UNAUTHENTICATED"
+	CodeConflict           Code = "CONFLICT"
+	CodeBadGateway         Code = "BAD_GATEWAY"
+	CodeMethodNotAllowed   Code = "METHOD_NOT_ALLOWED"
 )
 
-func (e ErrorCode) ToPointer() *ErrorCode {
+func (e Code) ToPointer() *Code {
 	return &e
 }
 
-func (e *ErrorCode) UnmarshalJSON(data []byte) error {
+func (e *Code) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -82,22 +82,22 @@ func (e *ErrorCode) UnmarshalJSON(data []byte) error {
 	case "BAD_GATEWAY":
 		fallthrough
 	case "METHOD_NOT_ALLOWED":
-		*e = ErrorCode(v)
+		*e = Code(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ErrorCode: %v", v)
+		return fmt.Errorf("invalid value for Code: %v", v)
 	}
 }
 
 // The Error type defines a logical error model
 type Error struct {
 	// The status code is a short, machine parsable string, which uniquely identifies the error type. Tigris to HTTP code mapping [here](/reference/http-code)
-	Code *ErrorCode `json:"code,omitempty"`
+	Code *Code `json:"code,omitempty"`
 	// A developer-facing descriptive error message
 	Message *string `json:"message,omitempty"`
 }
 
-func (o *Error) GetCode() *ErrorCode {
+func (o *Error) GetCode() *Code {
 	if o == nil {
 		return nil
 	}

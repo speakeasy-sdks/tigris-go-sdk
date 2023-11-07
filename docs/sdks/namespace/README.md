@@ -1,5 +1,5 @@
 # Namespace
-(*Namespace*)
+(*.Namespace*)
 
 ## Overview
 
@@ -130,7 +130,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Namespace.GetMetadata(ctx, operations.ManagementGetNamespaceMetadataRequest{
         GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{
-            Value: &shared.GetNamespaceMetadataRequestValue{},
+            Value: &shared.Value{},
         },
         MetadataKey: "string",
     })

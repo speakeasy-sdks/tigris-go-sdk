@@ -14,13 +14,13 @@ import (
 	"net/http"
 )
 
-// The search section provides you APIs that can be used to implement powerful apps with search experiences. You can manage storing documents on your own or you can simply integrate it with your database.
-type search struct {
+// Search - The search section provides you APIs that can be used to implement powerful apps with search experiences. You can manage storing documents on your own or you can simply integrate it with your database.
+type Search struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSearch(sdkConfig sdkConfiguration) *search {
-	return &search{
+func newSearch(sdkConfig sdkConfiguration) *Search {
+	return &Search{
 		sdkConfiguration: sdkConfig,
 	}
 }
@@ -31,7 +31,7 @@ func newSearch(sdkConfig sdkConfiguration) *search {
 //	and the server can automatically generate it for you in case it is missing. In cases an id is provided in
 //	the document and the document already exists then that document will not be indexed and an error is returned
 //	with HTTP status code 409.
-func (s *search) CreateDocument(ctx context.Context, request operations.SearchCreateByIDRequest) (*operations.SearchCreateByIDResponse, error) {
+func (s *Search) CreateDocument(ctx context.Context, request operations.SearchCreateByIDRequest) (*operations.SearchCreateByIDResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/{id}", request, nil)
 	if err != nil {
@@ -92,6 +92,10 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -116,7 +120,7 @@ func (s *search) CreateDocument(ctx context.Context, request operations.SearchCr
 //	case it is missing. In cases when an id is provided in the document and the document already exists then that
 //	document will not be indexed and in the response there will be an error corresponding to that document id other
 //	documents will succeed. Returns an array of status indicating the status of each document.
-func (s *search) CreateDocuments(ctx context.Context, request operations.SearchCreateRequest) (*operations.SearchCreateResponse, error) {
+func (s *Search) CreateDocuments(ctx context.Context, request operations.SearchCreateRequest) (*operations.SearchCreateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 	if err != nil {
@@ -177,6 +181,10 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -199,7 +207,7 @@ func (s *search) CreateDocuments(ctx context.Context, request operations.SearchC
 //
 //	has an error field that is set to null in case document is deleted successfully otherwise it will non null with
 //	an error code and message.
-func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchDeleteRequest) (*operations.SearchDeleteResponse, error) {
+func (s *Search) DeleteDocuments(ctx context.Context, request operations.SearchDeleteRequest) (*operations.SearchDeleteResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 	if err != nil {
@@ -260,6 +268,10 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -278,7 +290,7 @@ func (s *search) DeleteDocuments(ctx context.Context, request operations.SearchD
 }
 
 // DeleteIndex - Deletes search index
-func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDeleteIndexRequest) (*operations.SearchDeleteIndexResponse, error) {
+func (s *Search) DeleteIndex(ctx context.Context, request operations.SearchDeleteIndexRequest) (*operations.SearchDeleteIndexResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)
 	if err != nil {
@@ -339,6 +351,10 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -363,7 +379,7 @@ func (s *search) DeleteIndex(ctx context.Context, request operations.SearchDelet
 //	<a href="https://docs.tigrisdata.com/overview/query#specification-1" title="here">here</a>. You can also perform
 //	a faceted search by passing the fields in the facet parameter. You can find more detailed documentation of the
 //	Search API with multiple examples <a href="https://docs.tigrisdata.com/overview/search" title="here">here</a>.
-func (s *search) FindDocuments(ctx context.Context, request operations.SearchSearchRequest) (*operations.SearchSearchResponse, error) {
+func (s *Search) FindDocuments(ctx context.Context, request operations.SearchSearchRequest) (*operations.SearchSearchResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/search", request, nil)
 	if err != nil {
@@ -424,6 +440,10 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -445,7 +465,7 @@ func (s *search) FindDocuments(ctx context.Context, request operations.SearchSea
 // Retrieves one or more documents by id. The response is an array of documents in the same order it is requests.
 //
 //	A null is returned for the documents that are not found.
-func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetRequest) (*operations.SearchGetResponse, error) {
+func (s *Search) GetDocuments(ctx context.Context, request operations.SearchGetRequest) (*operations.SearchGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 	if err != nil {
@@ -500,6 +520,10 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -518,7 +542,7 @@ func (s *search) GetDocuments(ctx context.Context, request operations.SearchGetR
 }
 
 // GetIndex - Get information about a search index
-func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndexRequest) (*operations.SearchGetIndexResponse, error) {
+func (s *Search) GetIndex(ctx context.Context, request operations.SearchGetIndexRequest) (*operations.SearchGetIndexResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)
 	if err != nil {
@@ -569,6 +593,10 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -587,7 +615,7 @@ func (s *search) GetIndex(ctx context.Context, request operations.SearchGetIndex
 }
 
 // ListIndexes - List search indexes
-func (s *search) ListIndexes(ctx context.Context, request operations.SearchListIndexesRequest) (*operations.SearchListIndexesResponse, error) {
+func (s *Search) ListIndexes(ctx context.Context, request operations.SearchListIndexesRequest) (*operations.SearchListIndexesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes", request, nil)
 	if err != nil {
@@ -642,6 +670,10 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -663,7 +695,7 @@ func (s *search) ListIndexes(ctx context.Context, request operations.SearchListI
 // DeleteByQuery is used to delete documents that match the filter. A filter is required. To delete document by id,
 //
 //	you can pass the filter as follows ```{"id": "test"}```. Returns a count of number of documents deleted.
-func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.SearchDeleteByQueryRequest) (*operations.SearchDeleteByQueryResponse, error) {
+func (s *Search) QueryDeleteDocuments(ctx context.Context, request operations.SearchDeleteByQueryRequest) (*operations.SearchDeleteByQueryResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents/deleteByQuery", request, nil)
 	if err != nil {
@@ -724,6 +756,10 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -747,7 +783,7 @@ func (s *search) QueryDeleteDocuments(ctx context.Context, request operations.Se
 //	if it already exists. An "id" is generated automatically in case it is missing in the document. The
 //	document is created if "id" doesn't exists otherwise it is replaced. Returns an array of status indicating
 //	the status of each document.
-func (s *search) ReplaceDocuments(ctx context.Context, request operations.SearchCreateOrReplaceRequest) (*operations.SearchCreateOrReplaceResponse, error) {
+func (s *Search) ReplaceDocuments(ctx context.Context, request operations.SearchCreateOrReplaceRequest) (*operations.SearchCreateOrReplaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 	if err != nil {
@@ -808,6 +844,10 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -831,7 +871,7 @@ func (s *search) ReplaceDocuments(ctx context.Context, request operations.Search
 //	"id" field in it. Returns an array of status indicating the status of each document. Each status
 //	has an error field that is set to null in case document is updated successfully otherwise the error
 //	field is set with a code and message.
-func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchUpdateRequest) (*operations.SearchUpdateResponse, error) {
+func (s *Search) UpdateDocuments(ctx context.Context, request operations.SearchUpdateRequest) (*operations.SearchUpdateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{index}/documents", request, nil)
 	if err != nil {
@@ -892,6 +932,10 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -910,7 +954,7 @@ func (s *search) UpdateDocuments(ctx context.Context, request operations.SearchU
 }
 
 // UpdateIndex - Creates or updates search index
-func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreateOrUpdateIndexRequest) (*operations.SearchCreateOrUpdateIndexResponse, error) {
+func (s *Search) UpdateIndex(ctx context.Context, request operations.SearchCreateOrUpdateIndexRequest) (*operations.SearchCreateOrUpdateIndexResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/search/indexes/{name}", request, nil)
 	if err != nil {
@@ -971,6 +1015,10 @@ func (s *search) UpdateIndex(ctx context.Context, request operations.SearchCreat
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

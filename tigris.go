@@ -119,28 +119,28 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 // # Limitations
 // <li>Do not rely on case to distinguish between databases or collections names.</li> <li>Database Name and Collection Name cannot be empty and can only have the characters matches the regex: <code>^[a-zA-Z]+[a-zA-Z0-9_]+$</code>.</li> <li>Duplicate field names are not allowed. </li> <li>The maximum allowed document size is 100KB.</li> <li>The maximum allowed transaction size is 10MB.</li>
 type Tigris struct {
-	// The application keys section provide APIs that can be used to manage application keys for your project. A single project can have one or more application keys.
-	AppKey *appKey
 	// The auth section of API provides OAuth 2.0 APIs. Tigris supports pluggable OAuth provider. Pass the token in the headers for authentication, as an example `-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6I"`(replace it with your token). All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
-	Auth *auth
-	// The cache section provide APIs that can be used to perform cache operations.
-	Cache *cache
-	// The realtime section provide APIs that can be used realtime operations.
-	Channel *channel
-	// The Collections section provide APIs that can be used to manage collections. A collection can have one or more documents.
-	Collection *collection
-	// The Database section provide APIs that can be used to interact with the database. A single Database can have one or more collections. A database is created automatically for you when you create a project.
-	Database *database
-	// The Management section provide APIs that can be used to manage users, and app_keys.
-	Namespace *namespace
-	// Every Tigris projects comes with a transactional document database built on FoundationDB, one of the most resilient and battle-tested open source distributed key-value store. A database is created automatically for you when you create a project.
-	Project *project
-	// The search section provides you APIs that can be used to implement powerful apps with search experiences. You can manage storing documents on your own or you can simply integrate it with your database.
-	Search *search
+	Auth *Auth
 	// The Observability section has APIs that provides full visibility into the health, metrics, and monitoring of the Server.
-	System *system
+	System *System
+	// The Management section provide APIs that can be used to manage users, and app_keys.
+	Namespace *Namespace
 	// A User on the Tigris Platform.
-	User *user
+	User *User
+	// Every Tigris projects comes with a transactional document database built on FoundationDB, one of the most resilient and battle-tested open source distributed key-value store. A database is created automatically for you when you create a project.
+	Project *Project
+	// The application keys section provide APIs that can be used to manage application keys for your project. A single project can have one or more application keys.
+	AppKey *AppKey
+	// The cache section provide APIs that can be used to perform cache operations.
+	Cache *Cache
+	// The Database section provide APIs that can be used to interact with the database. A single Database can have one or more collections. A database is created automatically for you when you create a project.
+	Database *Database
+	// The Collections section provide APIs that can be used to manage collections. A collection can have one or more documents.
+	Collection *Collection
+	// The realtime section provide APIs that can be used realtime operations.
+	Channel *Channel
+	// The search section provides you APIs that can be used to implement powerful apps with search experiences. You can manage storing documents on your own or you can simply integrate it with your database.
+	Search *Search
 
 	sdkConfiguration sdkConfiguration
 }
@@ -210,9 +210,9 @@ func New(opts ...SDKOption) *Tigris {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.21.0",
-			GenVersion:        "2.169.0",
-			UserAgent:         "speakeasy-sdk/go 0.21.0 2.169.0 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
+			SDKVersion:        "0.22.0",
+			GenVersion:        "2.181.1",
+			UserAgent:         "speakeasy-sdk/go 0.22.0 2.181.1 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
 		},
 	}
 	for _, opt := range opts {
@@ -231,27 +231,27 @@ func New(opts ...SDKOption) *Tigris {
 		}
 	}
 
-	sdk.AppKey = newAppKey(sdk.sdkConfiguration)
-
 	sdk.Auth = newAuth(sdk.sdkConfiguration)
-
-	sdk.Cache = newCache(sdk.sdkConfiguration)
-
-	sdk.Channel = newChannel(sdk.sdkConfiguration)
-
-	sdk.Collection = newCollection(sdk.sdkConfiguration)
-
-	sdk.Database = newDatabase(sdk.sdkConfiguration)
-
-	sdk.Namespace = newNamespace(sdk.sdkConfiguration)
-
-	sdk.Project = newProject(sdk.sdkConfiguration)
-
-	sdk.Search = newSearch(sdk.sdkConfiguration)
 
 	sdk.System = newSystem(sdk.sdkConfiguration)
 
+	sdk.Namespace = newNamespace(sdk.sdkConfiguration)
+
 	sdk.User = newUser(sdk.sdkConfiguration)
+
+	sdk.Project = newProject(sdk.sdkConfiguration)
+
+	sdk.AppKey = newAppKey(sdk.sdkConfiguration)
+
+	sdk.Cache = newCache(sdk.sdkConfiguration)
+
+	sdk.Database = newDatabase(sdk.sdkConfiguration)
+
+	sdk.Collection = newCollection(sdk.sdkConfiguration)
+
+	sdk.Channel = newChannel(sdk.sdkConfiguration)
+
+	sdk.Search = newSearch(sdk.sdkConfiguration)
 
 	return sdk
 }

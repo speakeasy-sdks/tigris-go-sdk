@@ -15,13 +15,13 @@ import (
 	"strings"
 )
 
-// The auth section of API provides OAuth 2.0 APIs. Tigris supports pluggable OAuth provider. Pass the token in the headers for authentication, as an example `-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6I"`(replace it with your token). All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
-type auth struct {
+// Auth - The auth section of API provides OAuth 2.0 APIs. Tigris supports pluggable OAuth provider. Pass the token in the headers for authentication, as an example `-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6I"`(replace it with your token). All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
+type Auth struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAuth(sdkConfig sdkConfiguration) *auth {
-	return &auth{
+func newAuth(sdkConfig sdkConfiguration) *Auth {
+	return &Auth{
 		sdkConfiguration: sdkConfig,
 	}
 }
@@ -31,7 +31,7 @@ func newAuth(sdkConfig sdkConfiguration) *auth {
 //
 //	two possible values <i>"REFRESH_TOKEN"</i> or <i>"CLIENT_CREDENTIALS"</i> based on which either Refresh token(`refresh_token`)
 //	needs to be set or client credentials(`client_id`, `client_secret`).
-func (s *auth) Get(ctx context.Context) (*operations.AuthGetAccessTokenResponse, error) {
+func (s *Auth) Get(ctx context.Context) (*operations.AuthGetAccessTokenResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/auth/token"
 
@@ -79,6 +79,10 @@ func (s *auth) Get(ctx context.Context) (*operations.AuthGetAccessTokenResponse,
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

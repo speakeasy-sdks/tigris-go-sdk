@@ -5,9 +5,9 @@ QueryTimeSeriesMetric responds with this type.
 
 ## Fields
 
-| Field                                                 | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `From`                                                | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
-| `Query`                                               | **string*                                             | :heavy_minus_sign:                                    | N/A                                                   |
-| `Series`                                              | [][MetricSeries](../../models/shared/metricseries.md) | :heavy_minus_sign:                                    | N/A                                                   |
-| `To`                                                  | **int64*                                              | :heavy_minus_sign:                                    | N/A                                                   |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `From`                                                       | **int64*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `Query`                                                      | **string*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `Series`                                                     | [][shared.MetricSeries](../../models/shared/metricseries.md) | :heavy_minus_sign:                                           | N/A                                                          |
+| `To`                                                         | **int64*                                                     | :heavy_minus_sign:                                           | N/A                                                          |

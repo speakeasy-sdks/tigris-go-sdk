@@ -1,5 +1,5 @@
 # Auth
-(*Auth*)
+(*.Auth*)
 
 ## Overview
 

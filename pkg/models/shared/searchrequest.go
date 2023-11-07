@@ -2,8 +2,8 @@
 
 package shared
 
-// SearchRequestFacet - Facet query to aggregate results on given fields. The field name for the facet search can be passed like this `{"brand": { "size": 10 }}` where the size controls the total facets for this field.
-type SearchRequestFacet struct {
+// Facet query to aggregate results on given fields. The field name for the facet search can be passed like this `{"brand": { "size": 10 }}` where the size controls the total facets for this field.
+type Facet struct {
 }
 
 type SearchRequestFields struct {
@@ -13,8 +13,8 @@ type SearchRequestFields struct {
 type SearchRequestFilter struct {
 }
 
-// SearchRequestSort - Array of fields and corresponding sort orders to order the results `[{ "salary": "$desc" }]`
-type SearchRequestSort struct {
+// Sort - Array of fields and corresponding sort orders to order the results `[{ "salary": "$desc" }]`
+type Sort struct {
 }
 
 type SearchRequest struct {
@@ -25,7 +25,7 @@ type SearchRequest struct {
 	// Array of document field names to exclude from results. `include_fields`, if specified, takes precedence over `exclude_fields`.
 	ExcludeFields []string `json:"exclude_fields,omitempty"`
 	// Facet query to aggregate results on given fields. The field name for the facet search can be passed like this `{"brand": { "size": 10 }}` where the size controls the total facets for this field.
-	Facet  *SearchRequestFacet  `json:"facet,omitempty"`
+	Facet  *Facet               `json:"facet,omitempty"`
 	Fields *SearchRequestFields `json:"fields,omitempty"`
 	// Filter stacks on top of query results to further narrow down the results. Similar to `ReadRequest.filter`
 	Filter *SearchRequestFilter `json:"filter,omitempty"`
@@ -40,7 +40,7 @@ type SearchRequest struct {
 	// Array of fields to project search query against
 	SearchFields []string `json:"search_fields,omitempty"`
 	// Array of fields and corresponding sort orders to order the results `[{ "salary": "$desc" }]`
-	Sort *SearchRequestSort `json:"sort,omitempty"`
+	Sort *Sort `json:"sort,omitempty"`
 }
 
 func (o *SearchRequest) GetBranch() *string {
@@ -64,7 +64,7 @@ func (o *SearchRequest) GetExcludeFields() []string {
 	return o.ExcludeFields
 }
 
-func (o *SearchRequest) GetFacet() *SearchRequestFacet {
+func (o *SearchRequest) GetFacet() *Facet {
 	if o == nil {
 		return nil
 	}
@@ -120,7 +120,7 @@ func (o *SearchRequest) GetSearchFields() []string {
 	return o.SearchFields
 }
 
-func (o *SearchRequest) GetSort() *SearchRequestSort {
+func (o *SearchRequest) GetSort() *Sort {
 	if o == nil {
 		return nil
 	}

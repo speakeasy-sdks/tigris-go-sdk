@@ -14,13 +14,13 @@ import (
 	"net/http"
 )
 
-// collection - The Collections section provide APIs that can be used to manage collections. A collection can have one or more documents.
-type collection struct {
+// Collection - The Collections section provide APIs that can be used to manage collections. A collection can have one or more documents.
+type Collection struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newCollection(sdkConfig sdkConfiguration) *collection {
-	return &collection{
+func newCollection(sdkConfig sdkConfiguration) *Collection {
+	return &Collection{
 		sdkConfiguration: sdkConfig,
 	}
 }
@@ -32,7 +32,7 @@ func newCollection(sdkConfig sdkConfiguration) *collection {
 //	Tigris Offers two types of collections: <p></p>
 //	   <li> `DOCUMENTS`: Offers rich CRUD APIs.
 //	   <li> `MESSAGES`: Offers event streaming APIs.
-func (s *collection) Create(ctx context.Context, request operations.TigrisCreateOrUpdateCollectionRequest) (*operations.TigrisCreateOrUpdateCollectionResponse, error) {
+func (s *Collection) Create(ctx context.Context, request operations.TigrisCreateOrUpdateCollectionRequest) (*operations.TigrisCreateOrUpdateCollectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/createOrUpdate", request, nil)
 	if err != nil {
@@ -93,6 +93,10 @@ func (s *collection) Create(ctx context.Context, request operations.TigrisCreate
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -112,7 +116,7 @@ func (s *collection) Create(ctx context.Context, request operations.TigrisCreate
 
 // DeleteDocuments - Delete Documents
 // Delete a range of documents in the collection using the condition provided in the filter.
-func (s *collection) DeleteDocuments(ctx context.Context, request operations.TigrisDeleteRequest) (*operations.TigrisDeleteResponse, error) {
+func (s *Collection) DeleteDocuments(ctx context.Context, request operations.TigrisDeleteRequest) (*operations.TigrisDeleteResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/delete", request, nil)
 	if err != nil {
@@ -173,6 +177,10 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -192,7 +200,7 @@ func (s *collection) DeleteDocuments(ctx context.Context, request operations.Tig
 
 // Describe Collection
 // Returns the information related to the collection. This can be used to retrieve the schema or size of the collection.
-func (s *collection) Describe(ctx context.Context, request operations.TigrisDescribeCollectionRequest) (*operations.TigrisDescribeCollectionResponse, error) {
+func (s *Collection) Describe(ctx context.Context, request operations.TigrisDescribeCollectionRequest) (*operations.TigrisDescribeCollectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/describe", request, nil)
 	if err != nil {
@@ -253,6 +261,10 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -274,7 +286,7 @@ func (s *collection) Describe(ctx context.Context, request operations.TigrisDesc
 // Drops the collection inside this project. This API deletes all of the
 //
 //	documents inside this collection and any metadata associated with it.
-func (s *collection) Drop(ctx context.Context, request operations.TigrisDropCollectionRequest) (*operations.TigrisDropCollectionResponse, error) {
+func (s *Collection) Drop(ctx context.Context, request operations.TigrisDropCollectionRequest) (*operations.TigrisDropCollectionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/drop", request, nil)
 	if err != nil {
@@ -335,6 +347,10 @@ func (s *collection) Drop(ctx context.Context, request operations.TigrisDropColl
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -359,7 +375,7 @@ func (s *collection) Drop(ctx context.Context, request operations.TigrisDropColl
 //	 * Detects the schema of the documents in the batch
 //	 * Evolves the schema as soon as it's backward compatible
 //	 * Creates collection with inferred schema (if requested)
-func (s *collection) ImportDocuments(ctx context.Context, request operations.TigrisImportRequest) (*operations.TigrisImportResponse, error) {
+func (s *Collection) ImportDocuments(ctx context.Context, request operations.TigrisImportRequest) (*operations.TigrisImportResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/import", request, nil)
 	if err != nil {
@@ -420,6 +436,10 @@ func (s *collection) ImportDocuments(ctx context.Context, request operations.Tig
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -442,7 +462,7 @@ func (s *collection) ImportDocuments(ctx context.Context, request operations.Tig
 //
 //	in the request already exists. Insert provides idempotency by returning an error if the document
 //	already exists. To replace documents, use REPLACE API instead of INSERT.
-func (s *collection) InsertDocuments(ctx context.Context, request operations.TigrisInsertRequest) (*operations.TigrisInsertResponse, error) {
+func (s *Collection) InsertDocuments(ctx context.Context, request operations.TigrisInsertRequest) (*operations.TigrisInsertResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/insert", request, nil)
 	if err != nil {
@@ -503,6 +523,10 @@ func (s *collection) InsertDocuments(ctx context.Context, request operations.Tig
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -528,7 +552,7 @@ func (s *collection) InsertDocuments(ctx context.Context, request operations.Tig
 //	can be used by passing `Limit/Skip` parameters. The `skip` parameter skips the number of documents from the start and
 //	the `limit` parameter is used to specify the number of documents to read. You can find more detailed documentation
 //	of the Read API <a href="https://docs.tigrisdata.com/overview/query" title="here">here</a>.
-func (s *collection) ReadDocuments(ctx context.Context, request operations.TigrisReadRequest) (*operations.TigrisReadResponse, error) {
+func (s *Collection) ReadDocuments(ctx context.Context, request operations.TigrisReadRequest) (*operations.TigrisReadResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/read", request, nil)
 	if err != nil {
@@ -589,6 +613,10 @@ func (s *collection) ReadDocuments(ctx context.Context, request operations.Tigri
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -608,7 +636,7 @@ func (s *collection) ReadDocuments(ctx context.Context, request operations.Tigri
 
 // ReplaceDocuments - Insert or Replace Documents
 // Inserts the documents or replaces the existing documents in the collections.
-func (s *collection) ReplaceDocuments(ctx context.Context, request operations.TigrisReplaceRequest) (*operations.TigrisReplaceResponse, error) {
+func (s *Collection) ReplaceDocuments(ctx context.Context, request operations.TigrisReplaceRequest) (*operations.TigrisReplaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/replace", request, nil)
 	if err != nil {
@@ -669,6 +697,10 @@ func (s *collection) ReplaceDocuments(ctx context.Context, request operations.Ti
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -692,7 +724,7 @@ func (s *collection) ReplaceDocuments(ctx context.Context, request operations.Ti
 //	a term search or a phrase search. Search API allows filtering the result set using filters as documented <a href="https://docs.tigrisdata.com/overview/query#specification-1" title="here">here</a>.
 //	You can also perform a faceted search by passing the fields in the facet parameter.
 //	You can find more detailed documentation of the Search API with multiple examples <a href="https://docs.tigrisdata.com/overview/search" title="here">here</a>.
-func (s *collection) SearchDocuments(ctx context.Context, request operations.TigrisSearchRequest) (*operations.TigrisSearchResponse, error) {
+func (s *Collection) SearchDocuments(ctx context.Context, request operations.TigrisSearchRequest) (*operations.TigrisSearchResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/search", request, nil)
 	if err != nil {
@@ -753,6 +785,10 @@ func (s *collection) SearchDocuments(ctx context.Context, request operations.Tig
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -772,7 +808,7 @@ func (s *collection) SearchDocuments(ctx context.Context, request operations.Tig
 
 // UpdateDocuments - Update Documents.
 // Update a range of documents in the collection using the condition provided in the filter.
-func (s *collection) UpdateDocuments(ctx context.Context, request operations.TigrisUpdateRequest) (*operations.TigrisUpdateResponse, error) {
+func (s *Collection) UpdateDocuments(ctx context.Context, request operations.TigrisUpdateRequest) (*operations.TigrisUpdateResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections/{collection}/documents/update", request, nil)
 	if err != nil {
@@ -833,6 +869,10 @@ func (s *collection) UpdateDocuments(ctx context.Context, request operations.Tig
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

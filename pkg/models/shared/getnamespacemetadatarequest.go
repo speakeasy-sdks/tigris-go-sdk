@@ -2,13 +2,13 @@
 
 package shared
 
-type GetNamespaceMetadataRequestValue struct {
+type Value struct {
 }
 
 // GetNamespaceMetadataRequest - Request namespace metadata
 type GetNamespaceMetadataRequest struct {
-	MetadataKey *string                           `json:"metadataKey,omitempty"`
-	Value       *GetNamespaceMetadataRequestValue `json:"value,omitempty"`
+	MetadataKey *string `json:"metadataKey,omitempty"`
+	Value       *Value  `json:"value,omitempty"`
 }
 
 func (o *GetNamespaceMetadataRequest) GetMetadataKey() *string {
@@ -18,7 +18,7 @@ func (o *GetNamespaceMetadataRequest) GetMetadataKey() *string {
 	return o.MetadataKey
 }
 
-func (o *GetNamespaceMetadataRequest) GetValue() *GetNamespaceMetadataRequestValue {
+func (o *GetNamespaceMetadataRequest) GetValue() *Value {
 	if o == nil {
 		return nil
 	}

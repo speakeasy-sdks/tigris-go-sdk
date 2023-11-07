@@ -2,8 +2,8 @@
 
 package shared
 
-// CollectionDescriptionSchema - Collections schema
-type CollectionDescriptionSchema struct {
+// Schema - Collections schema
+type Schema struct {
 }
 
 type CollectionDescription struct {
@@ -11,7 +11,7 @@ type CollectionDescription struct {
 	Collection *string             `json:"collection,omitempty"`
 	Metadata   *CollectionMetadata `json:"metadata,omitempty"`
 	// Collections schema
-	Schema *CollectionDescriptionSchema `json:"schema,omitempty"`
+	Schema *Schema `json:"schema,omitempty"`
 	// Collection size in bytes
 	Size *int64 `json:"size,omitempty"`
 }
@@ -30,7 +30,7 @@ func (o *CollectionDescription) GetMetadata() *CollectionMetadata {
 	return o.Metadata
 }
 
-func (o *CollectionDescription) GetSchema() *CollectionDescriptionSchema {
+func (o *CollectionDescription) GetSchema() *Schema {
 	if o == nil {
 		return nil
 	}

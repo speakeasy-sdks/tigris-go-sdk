@@ -50,7 +50,40 @@ func main() {
 ## Available Resources and Operations
 
 
-### [AppKey](docs/sdks/appkey/README.md)
+### [.Auth](docs/sdks/auth/README.md)
+
+* [Get](docs/sdks/auth/README.md#get) - Access Token
+
+### [.System](docs/sdks/system/README.md)
+
+* [GetHealth](docs/sdks/system/README.md#gethealth) - Health Check
+* [GetServerInfo](docs/sdks/system/README.md#getserverinfo) - Information about the server
+* [ObservabilityQuotaUsage](docs/sdks/system/README.md#observabilityquotausage) - Queries current namespace quota usage
+* [QueryQuotaLimits](docs/sdks/system/README.md#queryquotalimits) - Queries current namespace quota limits
+* [QueryTimeSeriesMetrics](docs/sdks/system/README.md#querytimeseriesmetrics) - Queries time series metrics
+
+### [.Namespace](docs/sdks/namespace/README.md)
+
+* [Create](docs/sdks/namespace/README.md#create) - Creates a Namespace
+* [Get](docs/sdks/namespace/README.md#get) - Describe the details of all namespaces
+* [GetMetadata](docs/sdks/namespace/README.md#getmetadata) - Reads the Namespace Metadata
+* [InsertMetadata](docs/sdks/namespace/README.md#insertmetadata) - Inserts Namespace Metadata
+* [List](docs/sdks/namespace/README.md#list) - Lists all Namespaces
+* [UpdateMetadata](docs/sdks/namespace/README.md#updatemetadata) - Updates Namespace Metadata
+
+### [.User](docs/sdks/user/README.md)
+
+* [GetMetadata](docs/sdks/user/README.md#getmetadata) - Reads the User Metadata
+* [InsertMetadata](docs/sdks/user/README.md#insertmetadata) - Inserts User Metadata
+* [UpdateMetadata](docs/sdks/user/README.md#updatemetadata) - Updates User Metadata
+
+### [.Project](docs/sdks/project/README.md)
+
+* [Create](docs/sdks/project/README.md#create) - Create Project
+* [DeleteProject](docs/sdks/project/README.md#deleteproject) - Delete Project and all resources under project
+* [List](docs/sdks/project/README.md#list) - List Projects
+
+### [.AppKey](docs/sdks/appkey/README.md)
 
 * [Delete](docs/sdks/appkey/README.md#delete) - Deletes the app key
 * [List](docs/sdks/appkey/README.md#list) - List all the app keys
@@ -58,11 +91,7 @@ func main() {
 * [TigrisCreateAppKey](docs/sdks/appkey/README.md#tigriscreateappkey) - Creates the app key
 * [Update](docs/sdks/appkey/README.md#update) - Updates the description of the app key
 
-### [Auth](docs/sdks/auth/README.md)
-
-* [Get](docs/sdks/auth/README.md#get) - Access Token
-
-### [Cache](docs/sdks/cache/README.md)
+### [.Cache](docs/sdks/cache/README.md)
 
 * [Create](docs/sdks/cache/README.md#create) - Creates the cache
 * [Delete](docs/sdks/cache/README.md#delete) - Deletes the cache
@@ -73,16 +102,18 @@ func main() {
 * [ListKeys](docs/sdks/cache/README.md#listkeys) - Lists all the key for this cache
 * [SetKey](docs/sdks/cache/README.md#setkey) - Sets an entry in the cache
 
-### [Channel](docs/sdks/channel/README.md)
+### [.Database](docs/sdks/database/README.md)
 
-* [Get](docs/sdks/channel/README.md#get) - Get the details about a channel
-* [GetMessages](docs/sdks/channel/README.md#getmessages) - Get all messages for a channel
-* [List](docs/sdks/channel/README.md#list) - Get all channels for your application project
-* [ListSubscriptions](docs/sdks/channel/README.md#listsubscriptions) - Get the subscriptions details about a channel
-* [PushMessages](docs/sdks/channel/README.md#pushmessages) - push messages to a single channel
-* [RealtimePresence](docs/sdks/channel/README.md#realtimepresence) - Presence about the channel
+* [BeginTransaction](docs/sdks/database/README.md#begintransaction) - Begin a transaction
+* [CommitTransaction](docs/sdks/database/README.md#committransaction) - Commit a Transaction
+* [CreateBranch](docs/sdks/database/README.md#createbranch) - Create a database branch
+* [DeleteBranch](docs/sdks/database/README.md#deletebranch) - Delete a database branch
+* [Describe](docs/sdks/database/README.md#describe) - Describe database
+* [ListCollections](docs/sdks/database/README.md#listcollections) - List Collections
+* [RollbackTransaction](docs/sdks/database/README.md#rollbacktransaction) - Rollback a transaction
+* [TigrisListBranches](docs/sdks/database/README.md#tigrislistbranches) - List database branches
 
-### [Collection](docs/sdks/collection/README.md)
+### [.Collection](docs/sdks/collection/README.md)
 
 * [Create](docs/sdks/collection/README.md#create) - Create or update a collection
 * [DeleteDocuments](docs/sdks/collection/README.md#deletedocuments) - Delete Documents
@@ -95,33 +126,16 @@ func main() {
 * [SearchDocuments](docs/sdks/collection/README.md#searchdocuments) - Search Documents.
 * [UpdateDocuments](docs/sdks/collection/README.md#updatedocuments) - Update Documents.
 
-### [Database](docs/sdks/database/README.md)
+### [.Channel](docs/sdks/channel/README.md)
 
-* [BeginTransaction](docs/sdks/database/README.md#begintransaction) - Begin a transaction
-* [CommitTransaction](docs/sdks/database/README.md#committransaction) - Commit a Transaction
-* [CreateBranch](docs/sdks/database/README.md#createbranch) - Create a database branch
-* [DeleteBranch](docs/sdks/database/README.md#deletebranch) - Delete a database branch
-* [Describe](docs/sdks/database/README.md#describe) - Describe database
-* [ListCollections](docs/sdks/database/README.md#listcollections) - List Collections
-* [RollbackTransaction](docs/sdks/database/README.md#rollbacktransaction) - Rollback a transaction
-* [TigrisListBranches](docs/sdks/database/README.md#tigrislistbranches) - List database branches
+* [Get](docs/sdks/channel/README.md#get) - Get the details about a channel
+* [GetMessages](docs/sdks/channel/README.md#getmessages) - Get all messages for a channel
+* [List](docs/sdks/channel/README.md#list) - Get all channels for your application project
+* [ListSubscriptions](docs/sdks/channel/README.md#listsubscriptions) - Get the subscriptions details about a channel
+* [PushMessages](docs/sdks/channel/README.md#pushmessages) - push messages to a single channel
+* [RealtimePresence](docs/sdks/channel/README.md#realtimepresence) - Presence about the channel
 
-### [Namespace](docs/sdks/namespace/README.md)
-
-* [Create](docs/sdks/namespace/README.md#create) - Creates a Namespace
-* [Get](docs/sdks/namespace/README.md#get) - Describe the details of all namespaces
-* [GetMetadata](docs/sdks/namespace/README.md#getmetadata) - Reads the Namespace Metadata
-* [InsertMetadata](docs/sdks/namespace/README.md#insertmetadata) - Inserts Namespace Metadata
-* [List](docs/sdks/namespace/README.md#list) - Lists all Namespaces
-* [UpdateMetadata](docs/sdks/namespace/README.md#updatemetadata) - Updates Namespace Metadata
-
-### [Project](docs/sdks/project/README.md)
-
-* [Create](docs/sdks/project/README.md#create) - Create Project
-* [DeleteProject](docs/sdks/project/README.md#deleteproject) - Delete Project and all resources under project
-* [List](docs/sdks/project/README.md#list) - List Projects
-
-### [Search](docs/sdks/search/README.md)
+### [.Search](docs/sdks/search/README.md)
 
 * [CreateDocument](docs/sdks/search/README.md#createdocument) - Create a single document
 * [CreateDocuments](docs/sdks/search/README.md#createdocuments) - Create multiple documents
@@ -135,20 +149,6 @@ func main() {
 * [ReplaceDocuments](docs/sdks/search/README.md#replacedocuments) - Create or replace documents in an index
 * [UpdateDocuments](docs/sdks/search/README.md#updatedocuments) - Update documents in an index
 * [UpdateIndex](docs/sdks/search/README.md#updateindex) - Creates or updates search index
-
-### [System](docs/sdks/system/README.md)
-
-* [GetHealth](docs/sdks/system/README.md#gethealth) - Health Check
-* [GetServerInfo](docs/sdks/system/README.md#getserverinfo) - Information about the server
-* [ObservabilityQuotaUsage](docs/sdks/system/README.md#observabilityquotausage) - Queries current namespace quota usage
-* [QueryQuotaLimits](docs/sdks/system/README.md#queryquotalimits) - Queries current namespace quota limits
-* [QueryTimeSeriesMetrics](docs/sdks/system/README.md#querytimeseriesmetrics) - Queries time series metrics
-
-### [User](docs/sdks/user/README.md)
-
-* [GetMetadata](docs/sdks/user/README.md#getmetadata) - Reads the User Metadata
-* [InsertMetadata](docs/sdks/user/README.md#insertmetadata) - Inserts User Metadata
-* [UpdateMetadata](docs/sdks/user/README.md#updatemetadata) - Updates User Metadata
 <!-- End SDK Available Operations -->
 
 
@@ -174,6 +174,172 @@ Here's an example of one such pagination call:
 <!-- Start Go Types -->
 
 <!-- End Go Types -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally using the `WithServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.preview.tigrisdata.cloud` | None |
+| 1 | `http://localhost:8081` | None |
+
+For example:
+
+```go
+package main
+
+import (
+	"context"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := tigrisgosdk.New(
+		tigrisgosdk.WithServerIndex(1),
+		tigrisgosdk.WithSecurity(""),
+	)
+
+	ctx := context.Background()
+	res, err := s.Auth.Get(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.GetAccessTokenResponse != nil {
+		// handle response
+	}
+}
+
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
+
+```go
+package main
+
+import (
+	"context"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := tigrisgosdk.New(
+		tigrisgosdk.WithServerURL("https://api.preview.tigrisdata.cloud"),
+		tigrisgosdk.WithSecurity(""),
+	)
+
+	ctx := context.Background()
+	res, err := s.Auth.Get(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.GetAccessTokenResponse != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Go SDK makes API calls that wrap an internal HTTP client. The requirements for the HTTP client are very simple. It must match this interface:
+
+```go
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+```
+
+The built-in `net/http` client satisfies this interface and a default client based on the built-in is provided by default. To replace this default with a client of your own, you can implement this interface yourself or provide your own client configured as desired. Here's a simple example, which adds a client with a 30 second timeout.
+
+```go
+import (
+	"net/http"
+	"time"
+	"github.com/myorg/your-go-sdk"
+)
+
+var (
+	httpClient = &http.Client{Timeout: 30 * time.Second}
+	sdkClient  = sdk.New(sdk.WithClient(httpClient))
+)
+```
+
+This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
+<!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `BearerAuth` | http         | HTTP Bearer  |
+
+You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
+
+```go
+package main
+
+import (
+	"context"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := tigrisgosdk.New(
+		tigrisgosdk.WithSecurity(""),
+	)
+
+	ctx := context.Background()
+	res, err := s.Auth.Get(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.GetAccessTokenResponse != nil {
+		// handle response
+	}
+}
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

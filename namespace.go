@@ -15,20 +15,20 @@ import (
 	"strings"
 )
 
-// namespace - The Management section provide APIs that can be used to manage users, and app_keys.
-type namespace struct {
+// Namespace - The Management section provide APIs that can be used to manage users, and app_keys.
+type Namespace struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newNamespace(sdkConfig sdkConfiguration) *namespace {
-	return &namespace{
+func newNamespace(sdkConfig sdkConfiguration) *Namespace {
+	return &Namespace{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Create - Creates a Namespace
 // Creates a new namespace, if it does not exist
-func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRequest) (*operations.CreateNamespaceResponse, error) {
+func (s *Namespace) Create(ctx context.Context, request shared.CreateNamespaceRequest) (*operations.CreateNamespaceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/management/namespaces/create"
 
@@ -86,6 +86,10 @@ func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRe
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -105,7 +109,7 @@ func (s *namespace) Create(ctx context.Context, request shared.CreateNamespaceRe
 
 // Get - Describe the details of all namespaces
 // Get details for all namespaces
-func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeNamespacesResponse, error) {
+func (s *Namespace) Get(ctx context.Context) (*operations.ManagementDescribeNamespacesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/management/namespaces/describe"
 
@@ -153,6 +157,10 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -172,7 +180,7 @@ func (s *namespace) Get(ctx context.Context) (*operations.ManagementDescribeName
 
 // GetMetadata - Reads the Namespace Metadata
 // GetNamespaceMetadata inserts the user metadata object
-func (s *namespace) GetMetadata(ctx context.Context, request operations.ManagementGetNamespaceMetadataRequest) (*operations.ManagementGetNamespaceMetadataResponse, error) {
+func (s *Namespace) GetMetadata(ctx context.Context, request operations.ManagementGetNamespaceMetadataRequest) (*operations.ManagementGetNamespaceMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/get", request, nil)
 	if err != nil {
@@ -233,6 +241,10 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -252,7 +264,7 @@ func (s *namespace) GetMetadata(ctx context.Context, request operations.Manageme
 
 // InsertMetadata - Inserts Namespace Metadata
 // InsertNamespaceMetadata inserts the namespace metadata object
-func (s *namespace) InsertMetadata(ctx context.Context, request operations.ManagementInsertNamespaceMetadataRequest) (*operations.ManagementInsertNamespaceMetadataResponse, error) {
+func (s *Namespace) InsertMetadata(ctx context.Context, request operations.ManagementInsertNamespaceMetadataRequest) (*operations.ManagementInsertNamespaceMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/insert", request, nil)
 	if err != nil {
@@ -313,6 +325,10 @@ func (s *namespace) InsertMetadata(ctx context.Context, request operations.Manag
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -332,7 +348,7 @@ func (s *namespace) InsertMetadata(ctx context.Context, request operations.Manag
 
 // List - Lists all Namespaces
 // List all namespace
-func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespacesResponse, error) {
+func (s *Namespace) List(ctx context.Context) (*operations.ManagementListNamespacesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/management/namespaces/list"
 
@@ -380,6 +396,10 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -399,7 +419,7 @@ func (s *namespace) List(ctx context.Context) (*operations.ManagementListNamespa
 
 // UpdateMetadata - Updates Namespace Metadata
 // UpdateNamespaceMetadata updates the user metadata object
-func (s *namespace) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateNamespaceMetadataRequest) (*operations.ManagementUpdateNamespaceMetadataResponse, error) {
+func (s *Namespace) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateNamespaceMetadataRequest) (*operations.ManagementUpdateNamespaceMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/namespace/metadata/{metadataKey}/update", request, nil)
 	if err != nil {
@@ -460,6 +480,10 @@ func (s *namespace) UpdateMetadata(ctx context.Context, request operations.Manag
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

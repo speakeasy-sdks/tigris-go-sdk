@@ -1,5 +1,5 @@
 # AppKey
-(*AppKey*)
+(*.AppKey*)
 
 ## Overview
 

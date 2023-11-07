@@ -14,20 +14,20 @@ import (
 	"net/http"
 )
 
-// user - A User on the Tigris Platform.
-type user struct {
+// A User on the Tigris Platform.
+type User struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newUser(sdkConfig sdkConfiguration) *user {
-	return &user{
+func newUser(sdkConfig sdkConfiguration) *User {
+	return &User{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetMetadata - Reads the User Metadata
 // GetUserMetadata inserts the user metadata object
-func (s *user) GetMetadata(ctx context.Context, request operations.ManagementGetUserMetadataRequest) (*operations.ManagementGetUserMetadataResponse, error) {
+func (s *User) GetMetadata(ctx context.Context, request operations.ManagementGetUserMetadataRequest) (*operations.ManagementGetUserMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/get", request, nil)
 	if err != nil {
@@ -88,6 +88,10 @@ func (s *user) GetMetadata(ctx context.Context, request operations.ManagementGet
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -107,7 +111,7 @@ func (s *user) GetMetadata(ctx context.Context, request operations.ManagementGet
 
 // InsertMetadata - Inserts User Metadata
 // insertUserMetadata inserts the user metadata object
-func (s *user) InsertMetadata(ctx context.Context, request operations.ManagementInsertUserMetadataRequest) (*operations.ManagementInsertUserMetadataResponse, error) {
+func (s *User) InsertMetadata(ctx context.Context, request operations.ManagementInsertUserMetadataRequest) (*operations.ManagementInsertUserMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/insert", request, nil)
 	if err != nil {
@@ -168,6 +172,10 @@ func (s *user) InsertMetadata(ctx context.Context, request operations.Management
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -187,7 +195,7 @@ func (s *user) InsertMetadata(ctx context.Context, request operations.Management
 
 // UpdateMetadata - Updates User Metadata
 // updateUserMetadata updates the user metadata object
-func (s *user) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateUserMetadataRequest) (*operations.ManagementUpdateUserMetadataResponse, error) {
+func (s *User) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateUserMetadataRequest) (*operations.ManagementUpdateUserMetadataResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/update", request, nil)
 	if err != nil {
@@ -248,6 +256,10 @@ func (s *user) UpdateMetadata(ctx context.Context, request operations.Management
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

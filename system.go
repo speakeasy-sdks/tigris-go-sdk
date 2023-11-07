@@ -15,20 +15,20 @@ import (
 	"strings"
 )
 
-// system - The Observability section has APIs that provides full visibility into the health, metrics, and monitoring of the Server.
-type system struct {
+// System - The Observability section has APIs that provides full visibility into the health, metrics, and monitoring of the Server.
+type System struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSystem(sdkConfig sdkConfiguration) *system {
-	return &system{
+func newSystem(sdkConfig sdkConfiguration) *System {
+	return &System{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // GetHealth - Health Check
 // This endpoint can be used to check the liveness of the server.
-func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResponse, error) {
+func (s *System) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/health"
 
@@ -76,6 +76,10 @@ func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResp
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -95,7 +99,7 @@ func (s *system) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResp
 
 // GetServerInfo - Information about the server
 // Provides the information about the server. This information includes returning the server version, etc.
-func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGetInfoResponse, error) {
+func (s *System) GetServerInfo(ctx context.Context) (*operations.ObservabilityGetInfoResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/info"
 
@@ -143,6 +147,10 @@ func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -162,7 +170,7 @@ func (s *system) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 
 // ObservabilityQuotaUsage - Queries current namespace quota usage
 // Returns current namespace quota limits
-func (s *system) ObservabilityQuotaUsage(ctx context.Context, request shared.QuotaUsageRequest) (*operations.ObservabilityQuotaUsageResponse, error) {
+func (s *System) ObservabilityQuotaUsage(ctx context.Context, request shared.QuotaUsageRequest) (*operations.ObservabilityQuotaUsageResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/usage"
 
@@ -220,6 +228,10 @@ func (s *system) ObservabilityQuotaUsage(ctx context.Context, request shared.Quo
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -239,7 +251,7 @@ func (s *system) ObservabilityQuotaUsage(ctx context.Context, request shared.Quo
 
 // QueryQuotaLimits - Queries current namespace quota limits
 // Returns current namespace quota limits
-func (s *system) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimitsRequest) (*operations.ObservabilityQuotaLimitsResponse, error) {
+func (s *System) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimitsRequest) (*operations.ObservabilityQuotaLimitsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/limits"
 
@@ -297,6 +309,10 @@ func (s *system) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimit
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -316,7 +332,7 @@ func (s *system) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimit
 
 // QueryTimeSeriesMetrics - Queries time series metrics
 // Queries time series metrics
-func (s *system) QueryTimeSeriesMetrics(ctx context.Context, request shared.QueryTimeSeriesMetricsRequest) (*operations.ObservabilityQueryTimeSeriesMetricsResponse, error) {
+func (s *System) QueryTimeSeriesMetrics(ctx context.Context, request shared.QueryTimeSeriesMetricsRequest) (*operations.ObservabilityQueryTimeSeriesMetricsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/metrics/timeseries/query"
 
@@ -374,6 +390,10 @@ func (s *system) QueryTimeSeriesMetrics(ctx context.Context, request shared.Quer
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

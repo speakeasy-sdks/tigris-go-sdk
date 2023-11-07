@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-type QueryTimeSeriesMetricsRequestFunction string
+type Function string
 
 const (
-	QueryTimeSeriesMetricsRequestFunctionRate  QueryTimeSeriesMetricsRequestFunction = "RATE"
-	QueryTimeSeriesMetricsRequestFunctionCount QueryTimeSeriesMetricsRequestFunction = "COUNT"
-	QueryTimeSeriesMetricsRequestFunctionNone  QueryTimeSeriesMetricsRequestFunction = "NONE"
+	FunctionRate  Function = "RATE"
+	FunctionCount Function = "COUNT"
+	FunctionNone  Function = "NONE"
 )
 
-func (e QueryTimeSeriesMetricsRequestFunction) ToPointer() *QueryTimeSeriesMetricsRequestFunction {
+func (e Function) ToPointer() *Function {
 	return &e
 }
 
-func (e *QueryTimeSeriesMetricsRequestFunction) UnmarshalJSON(data []byte) error {
+func (e *Function) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,27 +30,27 @@ func (e *QueryTimeSeriesMetricsRequestFunction) UnmarshalJSON(data []byte) error
 	case "COUNT":
 		fallthrough
 	case "NONE":
-		*e = QueryTimeSeriesMetricsRequestFunction(v)
+		*e = Function(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestFunction: %v", v)
+		return fmt.Errorf("invalid value for Function: %v", v)
 	}
 }
 
-type QueryTimeSeriesMetricsRequestSpaceAggregation string
+type SpaceAggregation string
 
 const (
-	QueryTimeSeriesMetricsRequestSpaceAggregationAvg QueryTimeSeriesMetricsRequestSpaceAggregation = "AVG"
-	QueryTimeSeriesMetricsRequestSpaceAggregationMin QueryTimeSeriesMetricsRequestSpaceAggregation = "MIN"
-	QueryTimeSeriesMetricsRequestSpaceAggregationMax QueryTimeSeriesMetricsRequestSpaceAggregation = "MAX"
-	QueryTimeSeriesMetricsRequestSpaceAggregationSum QueryTimeSeriesMetricsRequestSpaceAggregation = "SUM"
+	SpaceAggregationAvg SpaceAggregation = "AVG"
+	SpaceAggregationMin SpaceAggregation = "MIN"
+	SpaceAggregationMax SpaceAggregation = "MAX"
+	SpaceAggregationSum SpaceAggregation = "SUM"
 )
 
-func (e QueryTimeSeriesMetricsRequestSpaceAggregation) ToPointer() *QueryTimeSeriesMetricsRequestSpaceAggregation {
+func (e SpaceAggregation) ToPointer() *SpaceAggregation {
 	return &e
 }
 
-func (e *QueryTimeSeriesMetricsRequestSpaceAggregation) UnmarshalJSON(data []byte) error {
+func (e *SpaceAggregation) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -63,27 +63,27 @@ func (e *QueryTimeSeriesMetricsRequestSpaceAggregation) UnmarshalJSON(data []byt
 	case "MAX":
 		fallthrough
 	case "SUM":
-		*e = QueryTimeSeriesMetricsRequestSpaceAggregation(v)
+		*e = SpaceAggregation(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestSpaceAggregation: %v", v)
+		return fmt.Errorf("invalid value for SpaceAggregation: %v", v)
 	}
 }
 
-type QueryTimeSeriesMetricsRequestTigrisOperation string
+type TigrisOperation string
 
 const (
-	QueryTimeSeriesMetricsRequestTigrisOperationAll      QueryTimeSeriesMetricsRequestTigrisOperation = "ALL"
-	QueryTimeSeriesMetricsRequestTigrisOperationRead     QueryTimeSeriesMetricsRequestTigrisOperation = "READ"
-	QueryTimeSeriesMetricsRequestTigrisOperationWrite    QueryTimeSeriesMetricsRequestTigrisOperation = "WRITE"
-	QueryTimeSeriesMetricsRequestTigrisOperationMetadata QueryTimeSeriesMetricsRequestTigrisOperation = "METADATA"
+	TigrisOperationAll      TigrisOperation = "ALL"
+	TigrisOperationRead     TigrisOperation = "READ"
+	TigrisOperationWrite    TigrisOperation = "WRITE"
+	TigrisOperationMetadata TigrisOperation = "METADATA"
 )
 
-func (e QueryTimeSeriesMetricsRequestTigrisOperation) ToPointer() *QueryTimeSeriesMetricsRequestTigrisOperation {
+func (e TigrisOperation) ToPointer() *TigrisOperation {
 	return &e
 }
 
-func (e *QueryTimeSeriesMetricsRequestTigrisOperation) UnmarshalJSON(data []byte) error {
+func (e *TigrisOperation) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -96,27 +96,27 @@ func (e *QueryTimeSeriesMetricsRequestTigrisOperation) UnmarshalJSON(data []byte
 	case "WRITE":
 		fallthrough
 	case "METADATA":
-		*e = QueryTimeSeriesMetricsRequestTigrisOperation(v)
+		*e = TigrisOperation(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryTimeSeriesMetricsRequestTigrisOperation: %v", v)
+		return fmt.Errorf("invalid value for TigrisOperation: %v", v)
 	}
 }
 
 // QueryTimeSeriesMetricsRequest - Requests the time series metrics
 type QueryTimeSeriesMetricsRequest struct {
-	AdditionalFunctions []AdditionalFunction                           `json:"additionalFunctions,omitempty"`
-	Branch              *string                                        `json:"branch,omitempty"`
-	Collection          *string                                        `json:"collection,omitempty"`
-	Db                  *string                                        `json:"db,omitempty"`
-	From                *int64                                         `json:"from,omitempty"`
-	Function            *QueryTimeSeriesMetricsRequestFunction         `json:"function,omitempty"`
-	MetricName          *string                                        `json:"metric_name,omitempty"`
-	Quantile            *float32                                       `json:"quantile,omitempty"`
-	SpaceAggregatedBy   []string                                       `json:"space_aggregated_by,omitempty"`
-	SpaceAggregation    *QueryTimeSeriesMetricsRequestSpaceAggregation `json:"space_aggregation,omitempty"`
-	TigrisOperation     *QueryTimeSeriesMetricsRequestTigrisOperation  `json:"tigris_operation,omitempty"`
-	To                  *int64                                         `json:"to,omitempty"`
+	AdditionalFunctions []AdditionalFunction `json:"additionalFunctions,omitempty"`
+	Branch              *string              `json:"branch,omitempty"`
+	Collection          *string              `json:"collection,omitempty"`
+	Db                  *string              `json:"db,omitempty"`
+	From                *int64               `json:"from,omitempty"`
+	Function            *Function            `json:"function,omitempty"`
+	MetricName          *string              `json:"metric_name,omitempty"`
+	Quantile            *float32             `json:"quantile,omitempty"`
+	SpaceAggregatedBy   []string             `json:"space_aggregated_by,omitempty"`
+	SpaceAggregation    *SpaceAggregation    `json:"space_aggregation,omitempty"`
+	TigrisOperation     *TigrisOperation     `json:"tigris_operation,omitempty"`
+	To                  *int64               `json:"to,omitempty"`
 }
 
 func (o *QueryTimeSeriesMetricsRequest) GetAdditionalFunctions() []AdditionalFunction {
@@ -154,7 +154,7 @@ func (o *QueryTimeSeriesMetricsRequest) GetFrom() *int64 {
 	return o.From
 }
 
-func (o *QueryTimeSeriesMetricsRequest) GetFunction() *QueryTimeSeriesMetricsRequestFunction {
+func (o *QueryTimeSeriesMetricsRequest) GetFunction() *Function {
 	if o == nil {
 		return nil
 	}
@@ -182,14 +182,14 @@ func (o *QueryTimeSeriesMetricsRequest) GetSpaceAggregatedBy() []string {
 	return o.SpaceAggregatedBy
 }
 
-func (o *QueryTimeSeriesMetricsRequest) GetSpaceAggregation() *QueryTimeSeriesMetricsRequestSpaceAggregation {
+func (o *QueryTimeSeriesMetricsRequest) GetSpaceAggregation() *SpaceAggregation {
 	if o == nil {
 		return nil
 	}
 	return o.SpaceAggregation
 }
 
-func (o *QueryTimeSeriesMetricsRequest) GetTigrisOperation() *QueryTimeSeriesMetricsRequestTigrisOperation {
+func (o *QueryTimeSeriesMetricsRequest) GetTigrisOperation() *TigrisOperation {
 	if o == nil {
 		return nil
 	}

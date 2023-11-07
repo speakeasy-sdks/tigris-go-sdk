@@ -15,20 +15,20 @@ import (
 	"strings"
 )
 
-// project - Every Tigris projects comes with a transactional document database built on FoundationDB, one of the most resilient and battle-tested open source distributed key-value store. A database is created automatically for you when you create a project.
-type project struct {
+// Project - Every Tigris projects comes with a transactional document database built on FoundationDB, one of the most resilient and battle-tested open source distributed key-value store. A database is created automatically for you when you create a project.
+type Project struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newProject(sdkConfig sdkConfiguration) *project {
-	return &project{
+func newProject(sdkConfig sdkConfiguration) *Project {
+	return &Project{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Create Project
 // Creates a new project. Returns an AlreadyExists error with a status code 409 if the project already exists.
-func (s *project) Create(ctx context.Context, request operations.TigrisCreateProjectRequest) (*operations.TigrisCreateProjectResponse, error) {
+func (s *Project) Create(ctx context.Context, request operations.TigrisCreateProjectRequest) (*operations.TigrisCreateProjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/create", request, nil)
 	if err != nil {
@@ -89,6 +89,10 @@ func (s *project) Create(ctx context.Context, request operations.TigrisCreatePro
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -108,7 +112,7 @@ func (s *project) Create(ctx context.Context, request operations.TigrisCreatePro
 
 // DeleteProject - Delete Project and all resources under project
 // Delete Project deletes all the collections in this project along with all of the documents, and associated metadata for these collections.
-func (s *project) DeleteProject(ctx context.Context, request operations.TigrisDeleteProjectRequest) (*operations.TigrisDeleteProjectResponse, error) {
+func (s *Project) DeleteProject(ctx context.Context, request operations.TigrisDeleteProjectRequest) (*operations.TigrisDeleteProjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/delete", request, nil)
 	if err != nil {
@@ -169,6 +173,10 @@ func (s *project) DeleteProject(ctx context.Context, request operations.TigrisDe
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -188,7 +196,7 @@ func (s *project) DeleteProject(ctx context.Context, request operations.TigrisDe
 
 // List Projects
 // List returns all the projects.
-func (s *project) List(ctx context.Context) (*operations.TigrisListProjectsResponse, error) {
+func (s *Project) List(ctx context.Context) (*operations.TigrisListProjectsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/v1/projects"
 
@@ -236,6 +244,10 @@ func (s *project) List(ctx context.Context) (*operations.TigrisListProjectsRespo
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

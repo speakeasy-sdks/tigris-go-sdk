@@ -1,5 +1,5 @@
 # Database
-(*Database*)
+(*.Database*)
 
 ## Overview
 

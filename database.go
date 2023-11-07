@@ -14,13 +14,13 @@ import (
 	"net/http"
 )
 
-// database - The Database section provide APIs that can be used to interact with the database. A single Database can have one or more collections. A database is created automatically for you when you create a project.
-type database struct {
+// The Database section provide APIs that can be used to interact with the database. A single Database can have one or more collections. A database is created automatically for you when you create a project.
+type Database struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newDatabase(sdkConfig sdkConfiguration) *database {
-	return &database{
+func newDatabase(sdkConfig sdkConfiguration) *Database {
+	return &Database{
 		sdkConfiguration: sdkConfig,
 	}
 }
@@ -30,7 +30,7 @@ func newDatabase(sdkConfig sdkConfiguration) *database {
 //
 //	within a transaction will run with serializable isolation. Tigris offers global transactions,
 //	with ACID properties and strict serializability.
-func (s *database) BeginTransaction(ctx context.Context, request operations.TigrisBeginTransactionRequest) (*operations.TigrisBeginTransactionResponse, error) {
+func (s *Database) BeginTransaction(ctx context.Context, request operations.TigrisBeginTransactionRequest) (*operations.TigrisBeginTransactionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/transactions/begin", request, nil)
 	if err != nil {
@@ -91,6 +91,10 @@ func (s *database) BeginTransaction(ctx context.Context, request operations.Tigr
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -112,7 +116,7 @@ func (s *database) BeginTransaction(ctx context.Context, request operations.Tigr
 // Atomically commit all the changes performed in the context of the transaction. Commit provides all
 //
 //	or nothing semantics by ensuring no partial updates are in the project due to a transaction failure.
-func (s *database) CommitTransaction(ctx context.Context, request operations.TigrisCommitTransactionRequest) (*operations.TigrisCommitTransactionResponse, error) {
+func (s *Database) CommitTransaction(ctx context.Context, request operations.TigrisCommitTransactionRequest) (*operations.TigrisCommitTransactionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/transactions/commit", request, nil)
 	if err != nil {
@@ -173,6 +177,10 @@ func (s *database) CommitTransaction(ctx context.Context, request operations.Tig
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -192,7 +200,7 @@ func (s *database) CommitTransaction(ctx context.Context, request operations.Tig
 
 // CreateBranch - Create a database branch
 // Creates a new database branch, if not already existing.
-func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCreateBranchRequest) (*operations.TigrisCreateBranchResponse, error) {
+func (s *Database) CreateBranch(ctx context.Context, request operations.TigrisCreateBranchRequest) (*operations.TigrisCreateBranchResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/branches/{branch}/create", request, nil)
 	if err != nil {
@@ -253,6 +261,10 @@ func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCr
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -274,7 +286,7 @@ func (s *database) CreateBranch(ctx context.Context, request operations.TigrisCr
 // Deletes a database branch, if exists.
 //
 //	Throws 400 Bad Request if "main" branch is being deleted
-func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDeleteBranchRequest) (*operations.TigrisDeleteBranchResponse, error) {
+func (s *Database) DeleteBranch(ctx context.Context, request operations.TigrisDeleteBranchRequest) (*operations.TigrisDeleteBranchResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/branches/{branch}/delete", request, nil)
 	if err != nil {
@@ -335,6 +347,10 @@ func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDe
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -356,7 +372,7 @@ func (s *database) DeleteBranch(ctx context.Context, request operations.TigrisDe
 // This API returns information related to the project along with all the collections inside the project.
 //
 //	This can be used to retrieve the size of the project or to retrieve schemas, branches and the size of all the collections present in this project.
-func (s *database) Describe(ctx context.Context, request operations.TigrisDescribeDatabaseRequest) (*operations.TigrisDescribeDatabaseResponse, error) {
+func (s *Database) Describe(ctx context.Context, request operations.TigrisDescribeDatabaseRequest) (*operations.TigrisDescribeDatabaseResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/describe", request, nil)
 	if err != nil {
@@ -417,6 +433,10 @@ func (s *database) Describe(ctx context.Context, request operations.TigrisDescri
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -436,7 +456,7 @@ func (s *database) Describe(ctx context.Context, request operations.TigrisDescri
 
 // ListCollections - List Collections
 // List all the collections present in the project passed in the request.
-func (s *database) ListCollections(ctx context.Context, request operations.TigrisListCollectionsRequest) (*operations.TigrisListCollectionsResponse, error) {
+func (s *Database) ListCollections(ctx context.Context, request operations.TigrisListCollectionsRequest) (*operations.TigrisListCollectionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/collections", request, nil)
 	if err != nil {
@@ -491,6 +511,10 @@ func (s *database) ListCollections(ctx context.Context, request operations.Tigri
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -512,7 +536,7 @@ func (s *database) ListCollections(ctx context.Context, request operations.Tigri
 // Rollback transaction discards all the changes
 //
 //	performed in the transaction
-func (s *database) RollbackTransaction(ctx context.Context, request operations.TigrisRollbackTransactionRequest) (*operations.TigrisRollbackTransactionResponse, error) {
+func (s *Database) RollbackTransaction(ctx context.Context, request operations.TigrisRollbackTransactionRequest) (*operations.TigrisRollbackTransactionResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/transactions/rollback", request, nil)
 	if err != nil {
@@ -573,6 +597,10 @@ func (s *database) RollbackTransaction(ctx context.Context, request operations.T
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -592,7 +620,7 @@ func (s *database) RollbackTransaction(ctx context.Context, request operations.T
 
 // TigrisListBranches - List database branches
 // List database branches
-func (s *database) TigrisListBranches(ctx context.Context, request operations.TigrisListBranchesRequest) (*operations.TigrisListBranchesResponse, error) {
+func (s *Database) TigrisListBranches(ctx context.Context, request operations.TigrisListBranchesRequest) (*operations.TigrisListBranchesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/database/branches", request, nil)
 	if err != nil {
@@ -643,6 +671,10 @@ func (s *database) TigrisListBranches(ctx context.Context, request operations.Ti
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

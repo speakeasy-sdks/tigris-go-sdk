@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// The cache section provide APIs that can be used to perform cache operations.
-type cache struct {
+// Cache - The cache section provide APIs that can be used to perform cache operations.
+type Cache struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newCache(sdkConfig sdkConfiguration) *cache {
-	return &cache{
+func newCache(sdkConfig sdkConfiguration) *Cache {
+	return &Cache{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Create - Creates the cache
-func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheRequest) (*operations.CacheCreateCacheResponse, error) {
+func (s *Cache) Create(ctx context.Context, request operations.CacheCreateCacheRequest) (*operations.CacheCreateCacheResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/create", request, nil)
 	if err != nil {
@@ -87,6 +87,10 @@ func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -105,7 +109,7 @@ func (s *cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 }
 
 // Delete - Deletes the cache
-func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheRequest) (*operations.CacheDeleteCacheResponse, error) {
+func (s *Cache) Delete(ctx context.Context, request operations.CacheDeleteCacheRequest) (*operations.CacheDeleteCacheResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/delete", request, nil)
 	if err != nil {
@@ -166,6 +170,10 @@ func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -184,7 +192,7 @@ func (s *cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 }
 
 // DeleteKeys - Deletes an entry from cache
-func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelRequest) (*operations.CacheDelResponse, error) {
+func (s *Cache) DeleteKeys(ctx context.Context, request operations.CacheDelRequest) (*operations.CacheDelResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/delete", request, nil)
 	if err != nil {
@@ -245,6 +253,10 @@ func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -263,7 +275,7 @@ func (s *cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 }
 
 // GetKey - Reads an entry from cache
-func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) (*operations.CacheGetResponse, error) {
+func (s *Cache) GetKey(ctx context.Context, request operations.CacheGetRequest) (*operations.CacheGetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/get", request, nil)
 	if err != nil {
@@ -314,6 +326,10 @@ func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -332,7 +348,7 @@ func (s *cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 }
 
 // GetSetKey - Sets an entry in the cache and returns the previous value if exists
-func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetRequest) (*operations.CacheGetSetResponse, error) {
+func (s *Cache) GetSetKey(ctx context.Context, request operations.CacheGetSetRequest) (*operations.CacheGetSetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/getset", request, nil)
 	if err != nil {
@@ -393,6 +409,10 @@ func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -411,7 +431,7 @@ func (s *cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 }
 
 // List - Lists all the caches for the given project
-func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequest) (*operations.CacheListCachesResponse, error) {
+func (s *Cache) List(ctx context.Context, request operations.CacheListCachesRequest) (*operations.CacheListCachesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/list", request, nil)
 	if err != nil {
@@ -462,6 +482,10 @@ func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequ
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -480,7 +504,7 @@ func (s *cache) List(ctx context.Context, request operations.CacheListCachesRequ
 }
 
 // ListKeys - Lists all the key for this cache
-func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysRequest) (*operations.CacheKeysResponse, error) {
+func (s *Cache) ListKeys(ctx context.Context, request operations.CacheKeysRequest) (*operations.CacheKeysResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/keys", request, nil)
 	if err != nil {
@@ -535,6 +559,10 @@ func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -553,7 +581,7 @@ func (s *cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 }
 
 // SetKey - Sets an entry in the cache
-func (s *cache) SetKey(ctx context.Context, request operations.CacheSetRequest) (*operations.CacheSetResponse, error) {
+func (s *Cache) SetKey(ctx context.Context, request operations.CacheSetRequest) (*operations.CacheSetResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/set", request, nil)
 	if err != nil {
@@ -614,6 +642,10 @@ func (s *cache) SetKey(ctx context.Context, request operations.CacheSetRequest) 
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

@@ -14,19 +14,19 @@ import (
 	"net/http"
 )
 
-// channel - The realtime section provide APIs that can be used realtime operations.
-type channel struct {
+// Channel - The realtime section provide APIs that can be used realtime operations.
+type Channel struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newChannel(sdkConfig sdkConfiguration) *channel {
-	return &channel{
+func newChannel(sdkConfig sdkConfiguration) *Channel {
+	return &Channel{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Get the details about a channel
-func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChannelRequest) (*operations.RealtimeGetRTChannelResponse, error) {
+func (s *Channel) Get(ctx context.Context, request operations.RealtimeGetRTChannelRequest) (*operations.RealtimeGetRTChannelResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}", request, nil)
 	if err != nil {
@@ -77,6 +77,10 @@ func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChann
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -95,7 +99,7 @@ func (s *channel) Get(ctx context.Context, request operations.RealtimeGetRTChann
 }
 
 // GetMessages - Get all messages for a channel
-func (s *channel) GetMessages(ctx context.Context, request operations.RealtimeReadMessagesRequest) (*operations.RealtimeReadMessagesResponse, error) {
+func (s *Channel) GetMessages(ctx context.Context, request operations.RealtimeReadMessagesRequest) (*operations.RealtimeReadMessagesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/messages", request, nil)
 	if err != nil {
@@ -150,6 +154,10 @@ func (s *channel) GetMessages(ctx context.Context, request operations.RealtimeRe
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -168,7 +176,7 @@ func (s *channel) GetMessages(ctx context.Context, request operations.RealtimeRe
 }
 
 // List - Get all channels for your application project
-func (s *channel) List(ctx context.Context, request operations.RealtimeGetRTChannelsRequest) (*operations.RealtimeGetRTChannelsResponse, error) {
+func (s *Channel) List(ctx context.Context, request operations.RealtimeGetRTChannelsRequest) (*operations.RealtimeGetRTChannelsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels", request, nil)
 	if err != nil {
@@ -219,6 +227,10 @@ func (s *channel) List(ctx context.Context, request operations.RealtimeGetRTChan
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -237,7 +249,7 @@ func (s *channel) List(ctx context.Context, request operations.RealtimeGetRTChan
 }
 
 // ListSubscriptions - Get the subscriptions details about a channel
-func (s *channel) ListSubscriptions(ctx context.Context, request operations.RealtimeListSubscriptionsRequest) (*operations.RealtimeListSubscriptionsResponse, error) {
+func (s *Channel) ListSubscriptions(ctx context.Context, request operations.RealtimeListSubscriptionsRequest) (*operations.RealtimeListSubscriptionsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/subscriptions", request, nil)
 	if err != nil {
@@ -292,6 +304,10 @@ func (s *channel) ListSubscriptions(ctx context.Context, request operations.Real
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -310,7 +326,7 @@ func (s *channel) ListSubscriptions(ctx context.Context, request operations.Real
 }
 
 // PushMessages - push messages to a single channel
-func (s *channel) PushMessages(ctx context.Context, request operations.RealtimeMessagesRequest) (*operations.RealtimeMessagesResponse, error) {
+func (s *Channel) PushMessages(ctx context.Context, request operations.RealtimeMessagesRequest) (*operations.RealtimeMessagesResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/messages", request, nil)
 	if err != nil {
@@ -371,6 +387,10 @@ func (s *channel) PushMessages(ctx context.Context, request operations.RealtimeM
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -389,7 +409,7 @@ func (s *channel) PushMessages(ctx context.Context, request operations.RealtimeM
 }
 
 // RealtimePresence - Presence about the channel
-func (s *channel) RealtimePresence(ctx context.Context, request operations.RealtimePresenceRequest) (*operations.RealtimePresenceResponse, error) {
+func (s *Channel) RealtimePresence(ctx context.Context, request operations.RealtimePresenceRequest) (*operations.RealtimePresenceResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/realtime/channels/{channel}/presence", request, nil)
 	if err != nil {
@@ -440,6 +460,10 @@ func (s *channel) RealtimePresence(ctx context.Context, request operations.Realt
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):

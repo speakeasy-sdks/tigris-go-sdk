@@ -5,6 +5,6 @@ ListAppKeysResponse returns one or more visible app keys to user
 
 ## Fields
 
-| Field                                     | Type                                      | Required                                  | Description                               |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| `AppKeys`                                 | [][AppKey](../../models/shared/appkey.md) | :heavy_minus_sign:                        | N/A                                       |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `AppKeys`                                        | [][shared.AppKey](../../models/shared/appkey.md) | :heavy_minus_sign:                               | N/A                                              |

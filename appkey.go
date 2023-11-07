@@ -14,20 +14,20 @@ import (
 	"net/http"
 )
 
-// appKey - The application keys section provide APIs that can be used to manage application keys for your project. A single project can have one or more application keys.
-type appKey struct {
+// AppKey - The application keys section provide APIs that can be used to manage application keys for your project. A single project can have one or more application keys.
+type AppKey struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newAppKey(sdkConfig sdkConfiguration) *appKey {
-	return &appKey{
+func newAppKey(sdkConfig sdkConfiguration) *AppKey {
+	return &AppKey{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Delete - Deletes the app key
 // Delete an app key.
-func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppKeyRequest) (*operations.TigrisDeleteAppKeyResponse, error) {
+func (s *AppKey) Delete(ctx context.Context, request operations.TigrisDeleteAppKeyRequest) (*operations.TigrisDeleteAppKeyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/delete", request, nil)
 	if err != nil {
@@ -88,6 +88,10 @@ func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -107,7 +111,7 @@ func (s *appKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 
 // List all the app keys
 // Lists all app keys visible to requesting actor.
-func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysRequest) (*operations.TigrisListAppKeysResponse, error) {
+func (s *AppKey) List(ctx context.Context, request operations.TigrisListAppKeysRequest) (*operations.TigrisListAppKeysResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys", request, nil)
 	if err != nil {
@@ -158,6 +162,10 @@ func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysR
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -177,7 +185,7 @@ func (s *appKey) List(ctx context.Context, request operations.TigrisListAppKeysR
 
 // Rotate - Rotates the app key secret
 // Endpoint is used to rotate the secret for the app key.
-func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppKeySecretRequest) (*operations.TigrisRotateAppKeySecretResponse, error) {
+func (s *AppKey) Rotate(ctx context.Context, request operations.TigrisRotateAppKeySecretRequest) (*operations.TigrisRotateAppKeySecretResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/rotate", request, nil)
 	if err != nil {
@@ -238,6 +246,10 @@ func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppK
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -257,7 +269,7 @@ func (s *appKey) Rotate(ctx context.Context, request operations.TigrisRotateAppK
 
 // TigrisCreateAppKey - Creates the app key
 // Create an app key.
-func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.TigrisCreateAppKeyRequest) (*operations.TigrisCreateAppKeyResponse, error) {
+func (s *AppKey) TigrisCreateAppKey(ctx context.Context, request operations.TigrisCreateAppKeyRequest) (*operations.TigrisCreateAppKeyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/create", request, nil)
 	if err != nil {
@@ -318,6 +330,10 @@ func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.Tigr
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
@@ -337,7 +353,7 @@ func (s *appKey) TigrisCreateAppKey(ctx context.Context, request operations.Tigr
 
 // Update - Updates the description of the app key
 // Update the description of an app key.
-func (s *appKey) Update(ctx context.Context, request operations.TigrisUpdateAppKeyRequest) (*operations.TigrisUpdateAppKeyResponse, error) {
+func (s *AppKey) Update(ctx context.Context, request operations.TigrisUpdateAppKeyRequest) (*operations.TigrisUpdateAppKeyResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/update", request, nil)
 	if err != nil {
@@ -398,6 +414,10 @@ func (s *appKey) Update(ctx context.Context, request operations.TigrisUpdateAppK
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
