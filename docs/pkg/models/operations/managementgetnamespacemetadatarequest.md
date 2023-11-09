@@ -1,0 +1,9 @@
+# ManagementGetNamespaceMetadataRequest
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `GetNamespaceMetadataRequest`                                                                   | [shared.GetNamespaceMetadataRequest](../../../pkg/models/shared/getnamespacemetadatarequest.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `MetadataKey`                                                                                   | *string*                                                                                        | :heavy_check_mark:                                                                              | N/A                                                                                             |

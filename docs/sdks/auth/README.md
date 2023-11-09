@@ -1,5 +1,5 @@
 # Auth
-(*.Auth*)
+(*Auth*)
 
 ## Overview
 
@@ -53,5 +53,7 @@ func main() {
 
 ### Response
 
-**[*operations.AuthGetAccessTokenResponse](../../models/operations/authgetaccesstokenresponse.md), error**
-
+**[*operations.AuthGetAccessTokenResponse](../../pkg/models/operations/authgetaccesstokenresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

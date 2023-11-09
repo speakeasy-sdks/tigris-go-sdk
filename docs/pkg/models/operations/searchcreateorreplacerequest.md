@@ -1,0 +1,10 @@
+# SearchCreateOrReplaceRequest
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `CreateOrReplaceDocumentRequest`                                                                      | [shared.CreateOrReplaceDocumentRequest](../../../pkg/models/shared/createorreplacedocumentrequest.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `Index`                                                                                               | *string*                                                                                              | :heavy_check_mark:                                                                                    | index name where to create documents.                                                                 |
+| `Project`                                                                                             | *string*                                                                                              | :heavy_check_mark:                                                                                    | Project name whose db is under target to insert documents.                                            |

@@ -1,9 +1,0 @@
-# ManagementInsertNamespaceMetadataRequest
-
-
-## Fields
-
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `InsertNamespaceMetadataRequest`                                                               | [shared.InsertNamespaceMetadataRequest](../../models/shared/insertnamespacemetadatarequest.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `MetadataKey`                                                                                  | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |

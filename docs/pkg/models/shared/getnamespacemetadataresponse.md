@@ -1,0 +1,12 @@
+# GetNamespaceMetadataResponse
+
+Namespace metadata response
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `MetadataKey`                                                                                                | **string*                                                                                                    | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `NamespaceID`                                                                                                | **int64*                                                                                                     | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `Value`                                                                                                      | [*shared.GetNamespaceMetadataResponseValue](../../../pkg/models/shared/getnamespacemetadataresponsevalue.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |

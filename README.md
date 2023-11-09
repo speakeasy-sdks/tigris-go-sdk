@@ -50,11 +50,11 @@ func main() {
 ## Available Resources and Operations
 
 
-### [.Auth](docs/sdks/auth/README.md)
+### [Auth](docs/sdks/auth/README.md)
 
 * [Get](docs/sdks/auth/README.md#get) - Access Token
 
-### [.System](docs/sdks/system/README.md)
+### [System](docs/sdks/system/README.md)
 
 * [GetHealth](docs/sdks/system/README.md#gethealth) - Health Check
 * [GetServerInfo](docs/sdks/system/README.md#getserverinfo) - Information about the server
@@ -62,7 +62,7 @@ func main() {
 * [QueryQuotaLimits](docs/sdks/system/README.md#queryquotalimits) - Queries current namespace quota limits
 * [QueryTimeSeriesMetrics](docs/sdks/system/README.md#querytimeseriesmetrics) - Queries time series metrics
 
-### [.Namespace](docs/sdks/namespace/README.md)
+### [Namespace](docs/sdks/namespace/README.md)
 
 * [Create](docs/sdks/namespace/README.md#create) - Creates a Namespace
 * [Get](docs/sdks/namespace/README.md#get) - Describe the details of all namespaces
@@ -71,19 +71,19 @@ func main() {
 * [List](docs/sdks/namespace/README.md#list) - Lists all Namespaces
 * [UpdateMetadata](docs/sdks/namespace/README.md#updatemetadata) - Updates Namespace Metadata
 
-### [.User](docs/sdks/user/README.md)
+### [User](docs/sdks/user/README.md)
 
 * [GetMetadata](docs/sdks/user/README.md#getmetadata) - Reads the User Metadata
 * [InsertMetadata](docs/sdks/user/README.md#insertmetadata) - Inserts User Metadata
 * [UpdateMetadata](docs/sdks/user/README.md#updatemetadata) - Updates User Metadata
 
-### [.Project](docs/sdks/project/README.md)
+### [Project](docs/sdks/project/README.md)
 
 * [Create](docs/sdks/project/README.md#create) - Create Project
 * [DeleteProject](docs/sdks/project/README.md#deleteproject) - Delete Project and all resources under project
 * [List](docs/sdks/project/README.md#list) - List Projects
 
-### [.AppKey](docs/sdks/appkey/README.md)
+### [AppKey](docs/sdks/appkey/README.md)
 
 * [Delete](docs/sdks/appkey/README.md#delete) - Deletes the app key
 * [List](docs/sdks/appkey/README.md#list) - List all the app keys
@@ -91,7 +91,7 @@ func main() {
 * [TigrisCreateAppKey](docs/sdks/appkey/README.md#tigriscreateappkey) - Creates the app key
 * [Update](docs/sdks/appkey/README.md#update) - Updates the description of the app key
 
-### [.Cache](docs/sdks/cache/README.md)
+### [Cache](docs/sdks/cache/README.md)
 
 * [Create](docs/sdks/cache/README.md#create) - Creates the cache
 * [Delete](docs/sdks/cache/README.md#delete) - Deletes the cache
@@ -102,7 +102,7 @@ func main() {
 * [ListKeys](docs/sdks/cache/README.md#listkeys) - Lists all the key for this cache
 * [SetKey](docs/sdks/cache/README.md#setkey) - Sets an entry in the cache
 
-### [.Database](docs/sdks/database/README.md)
+### [Database](docs/sdks/database/README.md)
 
 * [BeginTransaction](docs/sdks/database/README.md#begintransaction) - Begin a transaction
 * [CommitTransaction](docs/sdks/database/README.md#committransaction) - Commit a Transaction
@@ -113,7 +113,7 @@ func main() {
 * [RollbackTransaction](docs/sdks/database/README.md#rollbacktransaction) - Rollback a transaction
 * [TigrisListBranches](docs/sdks/database/README.md#tigrislistbranches) - List database branches
 
-### [.Collection](docs/sdks/collection/README.md)
+### [Collection](docs/sdks/collection/README.md)
 
 * [Create](docs/sdks/collection/README.md#create) - Create or update a collection
 * [DeleteDocuments](docs/sdks/collection/README.md#deletedocuments) - Delete Documents
@@ -126,7 +126,7 @@ func main() {
 * [SearchDocuments](docs/sdks/collection/README.md#searchdocuments) - Search Documents.
 * [UpdateDocuments](docs/sdks/collection/README.md#updatedocuments) - Update Documents.
 
-### [.Channel](docs/sdks/channel/README.md)
+### [Channel](docs/sdks/channel/README.md)
 
 * [Get](docs/sdks/channel/README.md#get) - Get the details about a channel
 * [GetMessages](docs/sdks/channel/README.md#getmessages) - Get all messages for a channel
@@ -135,7 +135,7 @@ func main() {
 * [PushMessages](docs/sdks/channel/README.md#pushmessages) - push messages to a single channel
 * [RealtimePresence](docs/sdks/channel/README.md#realtimepresence) - Presence about the channel
 
-### [.Search](docs/sdks/search/README.md)
+### [Search](docs/sdks/search/README.md)
 
 * [CreateDocument](docs/sdks/search/README.md#createdocument) - Create a single document
 * [CreateDocuments](docs/sdks/search/README.md#createdocuments) - Create multiple documents
@@ -180,9 +180,43 @@ Here's an example of one such pagination call:
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 
+## Example
+
+```go
+package main
+
+import (
+	"context"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := tigrisgosdk.New(
+		tigrisgosdk.WithSecurity(""),
+	)
+
+	ctx := context.Background()
+	res, err := s.Auth.Get(ctx)
+	if err != nil {
+
+		var e *sdkerrors.SDKError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+	}
+}
+
+```
 <!-- End Error Handling -->
 
 
@@ -299,12 +333,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security scheme globally:
+This SDK supports the following security scheme globally:
 
 | Name         | Type         | Scheme       |
 | ------------ | ------------ | ------------ |
