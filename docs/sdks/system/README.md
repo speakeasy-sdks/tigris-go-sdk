@@ -23,10 +23,10 @@ This endpoint can be used to check the liveness of the server.
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -70,10 +70,10 @@ Provides the information about the server. This information includes returning t
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -117,10 +117,10 @@ Returns current namespace quota limits
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -165,10 +165,10 @@ Returns current namespace quota limits
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -213,10 +213,10 @@ Queries time series metrics
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {

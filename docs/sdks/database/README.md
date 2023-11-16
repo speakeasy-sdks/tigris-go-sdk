@@ -28,11 +28,11 @@ Starts a new transaction and returns a transactional object. All reads/writes pe
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -83,11 +83,11 @@ Atomically commit all the changes performed in the context of the transaction. C
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -135,11 +135,11 @@ Creates a new database branch, if not already existing.
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -189,11 +189,11 @@ Deletes a database branch, if exists.
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -243,11 +243,11 @@ This API returns information related to the project along with all the collectio
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -295,11 +295,11 @@ List all the collections present in the project passed in the request.
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -347,11 +347,11 @@ Rollback transaction discards all the changes
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -399,11 +399,11 @@ List database branches
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {

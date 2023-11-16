@@ -21,11 +21,11 @@ GetUserMetadata inserts the user metadata object
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -75,11 +75,11 @@ insertUserMetadata inserts the user metadata object
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -129,11 +129,11 @@ updateUserMetadata updates the user metadata object
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {

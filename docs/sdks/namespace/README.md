@@ -24,10 +24,10 @@ Creates a new namespace, if it does not exist
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -72,10 +72,10 @@ Get details for all namespaces
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -119,11 +119,11 @@ GetNamespaceMetadata inserts the user metadata object
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -173,11 +173,11 @@ InsertNamespaceMetadata inserts the namespace metadata object
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -227,10 +227,10 @@ List all namespace
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
@@ -274,11 +274,11 @@ UpdateNamespaceMetadata updates the user metadata object
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {

@@ -26,11 +26,11 @@ Creates the cache
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -81,11 +81,11 @@ Deletes the cache
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -134,11 +134,11 @@ Deletes an entry from cache
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -188,11 +188,11 @@ Reads an entry from cache
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -241,11 +241,11 @@ Sets an entry in the cache and returns the previous value if exists
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -295,11 +295,11 @@ Lists all the caches for the given project
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -346,11 +346,11 @@ Lists all the key for this cache
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -398,11 +398,11 @@ Sets an entry in the cache
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {

@@ -24,11 +24,11 @@ Get the details about a channel
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -76,11 +76,11 @@ Get all messages for a channel
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -128,11 +128,11 @@ Get all channels for your application project
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -179,11 +179,11 @@ Get the subscriptions details about a channel
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -231,11 +231,11 @@ push messages to a single channel
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {
@@ -288,11 +288,11 @@ Presence about the channel
 package main
 
 import(
-	"context"
-	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
+	"context"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
+	"log"
 )
 
 func main() {

@@ -21,10 +21,10 @@ Endpoint for receiving access token from Tigris Server. The endpoint requires Gr
 package main
 
 import(
+	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
+	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
-	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 )
 
 func main() {
