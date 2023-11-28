@@ -257,7 +257,6 @@ pkg/utils/utils.go
 /pkg/models/shared/createorupdateindexresponse.go
 /pkg/models/shared/createorupdateindexrequest.go
 /pkg/models/shared/security.go
-USAGE.md
 docs/pkg/models/operations/authgetaccesstokenresponse.md
 docs/pkg/models/operations/healthapihealthresponse.md
 docs/pkg/models/operations/observabilitygetinforesponse.md
@@ -588,4 +587,5 @@ docs/sdks/database/README.md
 docs/sdks/collection/README.md
 docs/sdks/channel/README.md
 docs/sdks/search/README.md
+USAGE.md
 .gitattributes
