@@ -190,7 +190,6 @@ func withSecurity(security interface{}) func(context.Context) (interface{}, erro
 }
 
 // WithSecurity configures the SDK to use the provided security details
-
 func WithSecurity(bearerAuth string) SDKOption {
 	return func(sdk *Tigris) {
 		security := shared.Security{BearerAuth: bearerAuth}
@@ -210,9 +209,9 @@ func New(opts ...SDKOption) *Tigris {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.22.3",
-			GenVersion:        "2.202.2",
-			UserAgent:         "speakeasy-sdk/go 0.22.3 2.202.2 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
+			SDKVersion:        "0.23.0",
+			GenVersion:        "2.213.3",
+			UserAgent:         "speakeasy-sdk/go 0.23.0 2.213.3 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
 		},
 	}
 	for _, opt := range opts {

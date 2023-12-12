@@ -26,7 +26,7 @@ import (
 
 func main() {
 	s := tigrisgosdk.New(
-		tigrisgosdk.WithSecurity(""),
+		tigrisgosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 
 	ctx := context.Background()
@@ -161,6 +161,8 @@ func main() {
 
 <!-- Start Special Types [types] -->
 ## Special Types
+
+
 <!-- End Special Types [types] -->
 
 
@@ -190,7 +192,7 @@ import (
 
 func main() {
 	s := tigrisgosdk.New(
-		tigrisgosdk.WithSecurity(""),
+		tigrisgosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 
 	ctx := context.Background()
@@ -237,7 +239,7 @@ import (
 func main() {
 	s := tigrisgosdk.New(
 		tigrisgosdk.WithServerIndex(1),
-		tigrisgosdk.WithSecurity(""),
+		tigrisgosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 
 	ctx := context.Background()
@@ -270,7 +272,7 @@ import (
 func main() {
 	s := tigrisgosdk.New(
 		tigrisgosdk.WithServerURL("https://api.preview.tigrisdata.cloud"),
-		tigrisgosdk.WithSecurity(""),
+		tigrisgosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 
 	ctx := context.Background()
@@ -343,7 +345,7 @@ import (
 
 func main() {
 	s := tigrisgosdk.New(
-		tigrisgosdk.WithSecurity(""),
+		tigrisgosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 
 	ctx := context.Background()

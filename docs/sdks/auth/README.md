@@ -29,7 +29,7 @@ import(
 
 func main() {
     s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity(""),
+        tigrisgosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
     ctx := context.Background()
