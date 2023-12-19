@@ -70,7 +70,7 @@ func main() {
 **[*operations.TigrisBeginTransactionResponse](../../pkg/models/operations/tigrisbegintransactionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## CommitTransaction
 
@@ -123,7 +123,7 @@ func main() {
 **[*operations.TigrisCommitTransactionResponse](../../pkg/models/operations/tigriscommittransactionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## CreateBranch
 
@@ -176,7 +176,7 @@ func main() {
 **[*operations.TigrisCreateBranchResponse](../../pkg/models/operations/tigriscreatebranchresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteBranch
 
@@ -230,7 +230,7 @@ func main() {
 **[*operations.TigrisDeleteBranchResponse](../../pkg/models/operations/tigrisdeletebranchresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Describe
 
@@ -283,7 +283,7 @@ func main() {
 **[*operations.TigrisDescribeDatabaseResponse](../../pkg/models/operations/tigrisdescribedatabaseresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListCollections
 
@@ -334,7 +334,7 @@ func main() {
 **[*operations.TigrisListCollectionsResponse](../../pkg/models/operations/tigrislistcollectionsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RollbackTransaction
 
@@ -387,7 +387,7 @@ func main() {
 **[*operations.TigrisRollbackTransactionResponse](../../pkg/models/operations/tigrisrollbacktransactionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## TigrisListBranches
 
@@ -438,4 +438,4 @@ func main() {
 **[*operations.TigrisListBranchesResponse](../../pkg/models/operations/tigrislistbranchesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

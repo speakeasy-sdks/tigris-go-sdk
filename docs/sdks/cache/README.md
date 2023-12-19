@@ -69,7 +69,7 @@ func main() {
 **[*operations.CacheCreateCacheResponse](../../pkg/models/operations/cachecreatecacheresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Delete
 
@@ -122,7 +122,7 @@ func main() {
 **[*operations.CacheDeleteCacheResponse](../../pkg/models/operations/cachedeletecacheresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteKeys
 
@@ -176,7 +176,7 @@ func main() {
 **[*operations.CacheDelResponse](../../pkg/models/operations/cachedelresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetKey
 
@@ -229,7 +229,7 @@ func main() {
 **[*operations.CacheGetResponse](../../pkg/models/operations/cachegetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetSetKey
 
@@ -283,7 +283,7 @@ func main() {
 **[*operations.CacheGetSetResponse](../../pkg/models/operations/cachegetsetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## List
 
@@ -334,7 +334,7 @@ func main() {
 **[*operations.CacheListCachesResponse](../../pkg/models/operations/cachelistcachesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListKeys
 
@@ -386,7 +386,7 @@ func main() {
 **[*operations.CacheKeysResponse](../../pkg/models/operations/cachekeysresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## SetKey
 
@@ -440,4 +440,4 @@ func main() {
 **[*operations.CacheSetResponse](../../pkg/models/operations/cachesetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

@@ -64,7 +64,7 @@ func main() {
 **[*operations.RealtimeGetRTChannelResponse](../../pkg/models/operations/realtimegetrtchannelresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetMessages
 
@@ -116,7 +116,7 @@ func main() {
 **[*operations.RealtimeReadMessagesResponse](../../pkg/models/operations/realtimereadmessagesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## List
 
@@ -167,7 +167,7 @@ func main() {
 **[*operations.RealtimeGetRTChannelsResponse](../../pkg/models/operations/realtimegetrtchannelsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListSubscriptions
 
@@ -219,7 +219,7 @@ func main() {
 **[*operations.RealtimeListSubscriptionsResponse](../../pkg/models/operations/realtimelistsubscriptionsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## PushMessages
 
@@ -276,7 +276,7 @@ func main() {
 **[*operations.RealtimeMessagesResponse](../../pkg/models/operations/realtimemessagesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## RealtimePresence
 
@@ -328,4 +328,4 @@ func main() {
 **[*operations.RealtimePresenceResponse](../../pkg/models/operations/realtimepresenceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

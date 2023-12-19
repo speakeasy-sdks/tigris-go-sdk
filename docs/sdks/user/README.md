@@ -63,7 +63,7 @@ func main() {
 **[*operations.ManagementGetUserMetadataResponse](../../pkg/models/operations/managementgetusermetadataresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## InsertMetadata
 
@@ -117,7 +117,7 @@ func main() {
 **[*operations.ManagementInsertUserMetadataResponse](../../pkg/models/operations/managementinsertusermetadataresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateMetadata
 
@@ -171,4 +171,4 @@ func main() {
 **[*operations.ManagementUpdateUserMetadataResponse](../../pkg/models/operations/managementupdateusermetadataresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

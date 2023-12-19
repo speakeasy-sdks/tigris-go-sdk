@@ -58,7 +58,7 @@ func main() {
 **[*operations.HealthAPIHealthResponse](../../pkg/models/operations/healthapihealthresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetServerInfo
 
@@ -105,7 +105,7 @@ func main() {
 **[*operations.ObservabilityGetInfoResponse](../../pkg/models/operations/observabilitygetinforesponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ObservabilityQuotaUsage
 
@@ -153,7 +153,7 @@ func main() {
 **[*operations.ObservabilityQuotaUsageResponse](../../pkg/models/operations/observabilityquotausageresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## QueryQuotaLimits
 
@@ -201,7 +201,7 @@ func main() {
 **[*operations.ObservabilityQuotaLimitsResponse](../../pkg/models/operations/observabilityquotalimitsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## QueryTimeSeriesMetrics
 
@@ -258,4 +258,4 @@ func main() {
 **[*operations.ObservabilityQueryTimeSeriesMetricsResponse](../../pkg/models/operations/observabilityquerytimeseriesmetricsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

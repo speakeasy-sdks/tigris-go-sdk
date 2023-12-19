@@ -75,7 +75,7 @@ func main() {
 **[*operations.SearchCreateByIDResponse](../../pkg/models/operations/searchcreatebyidresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## CreateDocuments
 
@@ -136,7 +136,7 @@ func main() {
 **[*operations.SearchCreateResponse](../../pkg/models/operations/searchcreateresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteDocuments
 
@@ -195,7 +195,7 @@ func main() {
 **[*operations.SearchDeleteResponse](../../pkg/models/operations/searchdeleteresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteIndex
 
@@ -248,7 +248,7 @@ func main() {
 **[*operations.SearchDeleteIndexResponse](../../pkg/models/operations/searchdeleteindexresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## FindDocuments
 
@@ -316,7 +316,7 @@ func main() {
 **[*operations.SearchSearchResponse](../../pkg/models/operations/searchsearchresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetDocuments
 
@@ -372,7 +372,7 @@ func main() {
 **[*operations.SearchGetResponse](../../pkg/models/operations/searchgetresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetIndex
 
@@ -424,7 +424,7 @@ func main() {
 **[*operations.SearchGetIndexResponse](../../pkg/models/operations/searchgetindexresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListIndexes
 
@@ -475,7 +475,7 @@ func main() {
 **[*operations.SearchListIndexesResponse](../../pkg/models/operations/searchlistindexesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## QueryDeleteDocuments
 
@@ -529,7 +529,7 @@ func main() {
 **[*operations.SearchDeleteByQueryResponse](../../pkg/models/operations/searchdeletebyqueryresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ReplaceDocuments
 
@@ -589,7 +589,7 @@ func main() {
 **[*operations.SearchCreateOrReplaceResponse](../../pkg/models/operations/searchcreateorreplaceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateDocuments
 
@@ -649,7 +649,7 @@ func main() {
 **[*operations.SearchUpdateResponse](../../pkg/models/operations/searchupdateresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateIndex
 
@@ -702,4 +702,4 @@ func main() {
 **[*operations.SearchCreateOrUpdateIndexResponse](../../pkg/models/operations/searchcreateorupdateindexresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

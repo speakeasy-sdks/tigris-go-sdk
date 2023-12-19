@@ -76,7 +76,7 @@ func main() {
 **[*operations.TigrisCreateOrUpdateCollectionResponse](../../pkg/models/operations/tigriscreateorupdatecollectionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteDocuments
 
@@ -135,7 +135,7 @@ func main() {
 **[*operations.TigrisDeleteResponse](../../pkg/models/operations/tigrisdeleteresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Describe
 
@@ -190,7 +190,7 @@ func main() {
 **[*operations.TigrisDescribeCollectionResponse](../../pkg/models/operations/tigrisdescribecollectionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Drop
 
@@ -246,7 +246,7 @@ func main() {
 **[*operations.TigrisDropCollectionResponse](../../pkg/models/operations/tigrisdropcollectionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ImportDocuments
 
@@ -317,7 +317,7 @@ func main() {
 **[*operations.TigrisImportResponse](../../pkg/models/operations/tigrisimportresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## InsertDocuments
 
@@ -379,7 +379,7 @@ func main() {
 **[*operations.TigrisInsertResponse](../../pkg/models/operations/tigrisinsertresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ReadDocuments
 
@@ -443,7 +443,7 @@ func main() {
 **[*operations.TigrisReadResponse](../../pkg/models/operations/tigrisreadresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ReplaceDocuments
 
@@ -503,7 +503,7 @@ func main() {
 **[*operations.TigrisReplaceResponse](../../pkg/models/operations/tigrisreplaceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## SearchDocuments
 
@@ -574,7 +574,7 @@ func main() {
 **[*operations.TigrisSearchResponse](../../pkg/models/operations/tigrissearchresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateDocuments
 
@@ -634,4 +634,4 @@ func main() {
 **[*operations.TigrisUpdateResponse](../../pkg/models/operations/tigrisupdateresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

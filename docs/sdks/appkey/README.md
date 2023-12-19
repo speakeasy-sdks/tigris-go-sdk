@@ -63,7 +63,7 @@ func main() {
 **[*operations.TigrisDeleteAppKeyResponse](../../pkg/models/operations/tigrisdeleteappkeyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## List
 
@@ -114,7 +114,7 @@ func main() {
 **[*operations.TigrisListAppKeysResponse](../../pkg/models/operations/tigrislistappkeysresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Rotate
 
@@ -166,7 +166,7 @@ func main() {
 **[*operations.TigrisRotateAppKeySecretResponse](../../pkg/models/operations/tigrisrotateappkeysecretresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## TigrisCreateAppKey
 
@@ -218,7 +218,7 @@ func main() {
 **[*operations.TigrisCreateAppKeyResponse](../../pkg/models/operations/tigriscreateappkeyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Update
 
@@ -270,4 +270,4 @@ func main() {
 **[*operations.TigrisUpdateAppKeyResponse](../../pkg/models/operations/tigrisupdateappkeyresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

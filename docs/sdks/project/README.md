@@ -61,7 +61,7 @@ func main() {
 **[*operations.TigrisCreateProjectResponse](../../pkg/models/operations/tigriscreateprojectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## DeleteProject
 
@@ -113,7 +113,7 @@ func main() {
 **[*operations.TigrisDeleteProjectResponse](../../pkg/models/operations/tigrisdeleteprojectresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## List
 
@@ -160,4 +160,4 @@ func main() {
 **[*operations.TigrisListProjectsResponse](../../pkg/models/operations/tigrislistprojectsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

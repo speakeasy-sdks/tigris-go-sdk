@@ -60,7 +60,7 @@ func main() {
 **[*operations.CreateNamespaceResponse](../../pkg/models/operations/createnamespaceresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Get
 
@@ -107,7 +107,7 @@ func main() {
 **[*operations.ManagementDescribeNamespacesResponse](../../pkg/models/operations/managementdescribenamespacesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## GetMetadata
 
@@ -161,7 +161,7 @@ func main() {
 **[*operations.ManagementGetNamespaceMetadataResponse](../../pkg/models/operations/managementgetnamespacemetadataresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## InsertMetadata
 
@@ -215,7 +215,7 @@ func main() {
 **[*operations.ManagementInsertNamespaceMetadataResponse](../../pkg/models/operations/managementinsertnamespacemetadataresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## List
 
@@ -262,7 +262,7 @@ func main() {
 **[*operations.ManagementListNamespacesResponse](../../pkg/models/operations/managementlistnamespacesresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## UpdateMetadata
 
@@ -316,4 +316,4 @@ func main() {
 **[*operations.ManagementUpdateNamespaceMetadataResponse](../../pkg/models/operations/managementupdatenamespacemetadataresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
