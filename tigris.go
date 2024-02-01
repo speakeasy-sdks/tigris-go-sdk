@@ -197,6 +197,15 @@ func WithSecurity(bearerAuth string) SDKOption {
 	}
 }
 
+// WithSecuritySource configures the SDK to invoke the Security Source function on each method call to determine authentication
+func WithSecuritySource(security func(context.Context) (shared.Security, error)) SDKOption {
+	return func(sdk *Tigris) {
+		sdk.sdkConfiguration.Security = func(ctx context.Context) (interface{}, error) {
+			return security(ctx)
+		}
+	}
+}
+
 func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
 	return func(sdk *Tigris) {
 		sdk.sdkConfiguration.RetryConfig = &retryConfig
@@ -209,9 +218,9 @@ func New(opts ...SDKOption) *Tigris {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.23.3",
-			GenVersion:        "2.237.2",
-			UserAgent:         "speakeasy-sdk/go 0.23.3 2.237.2 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
+			SDKVersion:        "0.23.4",
+			GenVersion:        "2.245.1",
+			UserAgent:         "speakeasy-sdk/go 0.23.4 2.245.1 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
 		},
 	}
 	for _, opt := range opts {
