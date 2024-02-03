@@ -383,3 +383,13 @@ Based on:
 - [go v0.23.4] .
 ### Releases
 - [Go v0.23.4] https://github.com/speakeasy-sdks/tigris-go-sdk/releases/tag/v0.23.4 - .
+
+## 2024-02-03 00:06:43
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 https://prod.speakeasyapi.dev/v1/apis/tigris-api/version/0.0.1/schema/download
+- Speakeasy CLI 1.166.0 (2.248.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v0.24.0] .
+### Releases
+- [Go v0.24.0] https://github.com/speakeasy-sdks/tigris-go-sdk/releases/tag/v0.24.0 - .

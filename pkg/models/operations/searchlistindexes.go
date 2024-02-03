@@ -9,34 +9,34 @@ import (
 
 type SearchListIndexesRequest struct {
 	// Applicable only in case index is backed by Tigris collection. This is the database branch for the above collection. For primary database it can be omitted or "main" can be passed.
-	Branch *string `queryParam:"style=form,explode=true,name=filter.branch"`
+	FilterBranch *string `queryParam:"style=form,explode=true,name=filter.branch"`
 	// Applicable only in case index is backed by Tigris collection.
-	Collection *string `queryParam:"style=form,explode=true,name=filter.collection"`
+	FilterCollection *string `queryParam:"style=form,explode=true,name=filter.collection"`
 	// An index can be either managed by user explicitly then the type is set as "user" or the index is backed by Tigris collection. In case it is backed by Tigris collection the type is "tigris".
-	Type *string `queryParam:"style=form,explode=true,name=filter.type"`
+	FilterType *string `queryParam:"style=form,explode=true,name=filter.type"`
 	// Tigris project name.
 	Project string `pathParam:"style=simple,explode=false,name=project"`
 }
 
-func (o *SearchListIndexesRequest) GetBranch() *string {
+func (o *SearchListIndexesRequest) GetFilterBranch() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Branch
+	return o.FilterBranch
 }
 
-func (o *SearchListIndexesRequest) GetCollection() *string {
+func (o *SearchListIndexesRequest) GetFilterCollection() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Collection
+	return o.FilterCollection
 }
 
-func (o *SearchListIndexesRequest) GetType() *string {
+func (o *SearchListIndexesRequest) GetFilterType() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Type
+	return o.FilterType
 }
 
 func (o *SearchListIndexesRequest) GetProject() string {
