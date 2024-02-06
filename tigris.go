@@ -219,8 +219,8 @@ func New(opts ...SDKOption) *Tigris {
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
 			SDKVersion:        "0.24.0",
-			GenVersion:        "2.248.6",
-			UserAgent:         "speakeasy-sdk/go 0.24.0 2.248.6 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
+			GenVersion:        "2.250.2",
+			UserAgent:         "speakeasy-sdk/go 0.24.0 2.250.2 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
 		},
 	}
 	for _, opt := range opts {
