@@ -35,9 +35,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.GetMetadata(ctx, operations.ManagementGetUserMetadataRequest{
-        GetUserMetadataRequest: shared.GetUserMetadataRequest{
-            Value: &shared.GetUserMetadataRequestValue{},
-        },
+        GetUserMetadataRequest: shared.GetUserMetadataRequest{},
         MetadataKey: "string",
     })
     if err != nil {
@@ -89,9 +87,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.InsertMetadata(ctx, operations.ManagementInsertUserMetadataRequest{
-        InsertUserMetadataRequest: shared.InsertUserMetadataRequest{
-            Value: &shared.InsertUserMetadataRequestValue{},
-        },
+        InsertUserMetadataRequest: shared.InsertUserMetadataRequest{},
         MetadataKey: "string",
     })
     if err != nil {
@@ -143,9 +139,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.User.UpdateMetadata(ctx, operations.ManagementUpdateUserMetadataRequest{
-        UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{
-            Value: &shared.UpdateUserMetadataRequestValue{},
-        },
+        UpdateUserMetadataRequest: shared.UpdateUserMetadataRequest{},
         MetadataKey: "string",
     })
     if err != nil {

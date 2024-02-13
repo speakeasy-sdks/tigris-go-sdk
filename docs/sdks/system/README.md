@@ -225,16 +225,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.System.QueryTimeSeriesMetrics(ctx, shared.QueryTimeSeriesMetricsRequest{
-        AdditionalFunctions: []shared.AdditionalFunction{
-            shared.AdditionalFunction{
-                Rollup: &shared.RollupFunction{},
-            },
-        },
-        SpaceAggregatedBy: []string{
-            "string",
-        },
-    })
+    res, err := s.System.QueryTimeSeriesMetrics(ctx, shared.QueryTimeSeriesMetricsRequest{})
     if err != nil {
         log.Fatal(err)
     }

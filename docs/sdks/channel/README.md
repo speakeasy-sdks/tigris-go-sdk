@@ -245,11 +245,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.PushMessages(ctx, operations.RealtimeMessagesRequest{
-        MessagesRequest: shared.MessagesRequest{
-            Messages: []shared.Message{
-                shared.Message{},
-            },
-        },
+        MessagesRequest: shared.MessagesRequest{},
         Channel: "string",
         Project: "string",
     })

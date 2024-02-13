@@ -40,9 +40,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
-        CreateCacheRequest: shared.CreateCacheRequest{
-            Options: &shared.CreateCacheOptions{},
-        },
+        CreateCacheRequest: shared.CreateCacheRequest{},
         Name: "string",
         Project: "string",
     })

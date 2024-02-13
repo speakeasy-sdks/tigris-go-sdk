@@ -105,11 +105,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.CreateDocuments(ctx, operations.SearchCreateRequest{
-        CreateDocumentRequest: shared.CreateDocumentRequest{
-            Documents: []string{
-                "string",
-            },
-        },
+        CreateDocumentRequest: shared.CreateDocumentRequest{},
         Index: "string",
         Project: "string",
     })
@@ -164,11 +160,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.DeleteDocuments(ctx, operations.SearchDeleteRequest{
-        DeleteDocumentRequest: shared.DeleteDocumentRequest{
-            Ids: []string{
-                "string",
-            },
-        },
+        DeleteDocumentRequest: shared.DeleteDocumentRequest{},
         Index: "string",
         Project: "string",
     })
@@ -278,18 +270,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.FindDocuments(ctx, operations.SearchSearchRequest{
-        SearchIndexRequest: shared.SearchIndexRequest{
-            Collation: &shared.Collation{},
-            ExcludeFields: []string{
-                "string",
-            },
-            IncludeFields: []string{
-                "string",
-            },
-            SearchFields: []string{
-                "string",
-            },
-        },
+        SearchIndexRequest: shared.SearchIndexRequest{},
         Index: "string",
         Project: "string",
     })
@@ -343,9 +324,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.GetDocuments(ctx, operations.SearchGetRequest{
-        Ids: []string{
-            "string",
-        },
         Index: "string",
         Project: "string",
     })
@@ -558,11 +536,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.ReplaceDocuments(ctx, operations.SearchCreateOrReplaceRequest{
-        CreateOrReplaceDocumentRequest: shared.CreateOrReplaceDocumentRequest{
-            Documents: []string{
-                "string",
-            },
-        },
+        CreateOrReplaceDocumentRequest: shared.CreateOrReplaceDocumentRequest{},
         Index: "string",
         Project: "string",
     })
@@ -618,11 +592,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.UpdateDocuments(ctx, operations.SearchUpdateRequest{
-        UpdateDocumentRequest: shared.UpdateDocumentRequest{
-            Documents: []string{
-                "string",
-            },
-        },
+        UpdateDocumentRequest: shared.UpdateDocumentRequest{},
         Index: "string",
         Project: "string",
     })

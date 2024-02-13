@@ -133,9 +133,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Namespace.GetMetadata(ctx, operations.ManagementGetNamespaceMetadataRequest{
-        GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{
-            Value: &shared.Value{},
-        },
+        GetNamespaceMetadataRequest: shared.GetNamespaceMetadataRequest{},
         MetadataKey: "string",
     })
     if err != nil {
@@ -187,9 +185,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Namespace.InsertMetadata(ctx, operations.ManagementInsertNamespaceMetadataRequest{
-        InsertNamespaceMetadataRequest: shared.InsertNamespaceMetadataRequest{
-            Value: &shared.InsertNamespaceMetadataRequestValue{},
-        },
+        InsertNamespaceMetadataRequest: shared.InsertNamespaceMetadataRequest{},
         MetadataKey: "string",
     })
     if err != nil {
@@ -288,9 +284,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Namespace.UpdateMetadata(ctx, operations.ManagementUpdateNamespaceMetadataRequest{
-        UpdateNamespaceMetadataRequest: shared.UpdateNamespaceMetadataRequest{
-            Value: &shared.UpdateNamespaceMetadataRequestValue{},
-        },
+        UpdateNamespaceMetadataRequest: shared.UpdateNamespaceMetadataRequest{},
         MetadataKey: "string",
     })
     if err != nil {

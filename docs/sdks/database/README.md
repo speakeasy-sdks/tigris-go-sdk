@@ -42,9 +42,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.BeginTransaction(ctx, operations.TigrisBeginTransactionRequest{
-        BeginTransactionRequest: shared.BeginTransactionRequest{
-            Options: &shared.TransactionOptions{},
-        },
+        BeginTransactionRequest: shared.BeginTransactionRequest{},
         Project: "string",
     })
     if err != nil {
