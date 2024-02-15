@@ -38,8 +38,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.Get(ctx, operations.RealtimeGetRTChannelRequest{
-        Channel: "string",
-        Project: "string",
+        Channel: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -90,8 +90,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.GetMessages(ctx, operations.RealtimeReadMessagesRequest{
-        Channel: "string",
-        Project: "string",
+        Channel: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -142,7 +142,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.List(ctx, operations.RealtimeGetRTChannelsRequest{
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -193,8 +193,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.ListSubscriptions(ctx, operations.RealtimeListSubscriptionsRequest{
-        Channel: "string",
-        Project: "string",
+        Channel: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -246,8 +246,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Channel.PushMessages(ctx, operations.RealtimeMessagesRequest{
         MessagesRequest: shared.MessagesRequest{},
-        Channel: "string",
-        Project: "string",
+        Channel: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -298,8 +298,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Channel.RealtimePresence(ctx, operations.RealtimePresenceRequest{
-        Channel: "string",
-        Project: "string",
+        Channel: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)

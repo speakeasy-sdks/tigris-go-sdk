@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/speakeasy-sdks/tigris-go-sdk/internal/hooks"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
@@ -28,37 +29,54 @@ func newUser(sdkConfig sdkConfiguration) *User {
 // GetMetadata - Reads the User Metadata
 // GetUserMetadata inserts the user metadata object
 func (s *User) GetMetadata(ctx context.Context, request operations.ManagementGetUserMetadataRequest) (*operations.ManagementGetUserMetadataResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Management_GetUserMetadata"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/get", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/get", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "GetUserMetadataRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -75,6 +93,7 @@ func (s *User) GetMetadata(ctx context.Context, request operations.ManagementGet
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -112,37 +131,54 @@ func (s *User) GetMetadata(ctx context.Context, request operations.ManagementGet
 // InsertMetadata - Inserts User Metadata
 // insertUserMetadata inserts the user metadata object
 func (s *User) InsertMetadata(ctx context.Context, request operations.ManagementInsertUserMetadataRequest) (*operations.ManagementInsertUserMetadataResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Management_InsertUserMetadata"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/insert", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/insert", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "InsertUserMetadataRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -159,6 +195,7 @@ func (s *User) InsertMetadata(ctx context.Context, request operations.Management
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -196,37 +233,54 @@ func (s *User) InsertMetadata(ctx context.Context, request operations.Management
 // UpdateMetadata - Updates User Metadata
 // updateUserMetadata updates the user metadata object
 func (s *User) UpdateMetadata(ctx context.Context, request operations.ManagementUpdateUserMetadataRequest) (*operations.ManagementUpdateUserMetadataResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Management_UpdateUserMetadata"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/update", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/management/users/metadata/{metadataKey}/update", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateUserMetadataRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -243,6 +297,7 @@ func (s *User) UpdateMetadata(ctx context.Context, request operations.Management
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {

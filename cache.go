@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/speakeasy-sdks/tigris-go-sdk/internal/hooks"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
@@ -27,37 +28,54 @@ func newCache(sdkConfig sdkConfiguration) *Cache {
 
 // Create - Creates the cache
 func (s *Cache) Create(ctx context.Context, request operations.CacheCreateCacheRequest) (*operations.CacheCreateCacheResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Cache_CreateCache"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/create", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/create", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateCacheRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -74,6 +92,7 @@ func (s *Cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -110,37 +129,54 @@ func (s *Cache) Create(ctx context.Context, request operations.CacheCreateCacheR
 
 // Delete - Deletes the cache
 func (s *Cache) Delete(ctx context.Context, request operations.CacheDeleteCacheRequest) (*operations.CacheDeleteCacheResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Cache_DeleteCache"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/delete", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/delete", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DeleteCacheRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "DELETE", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "DELETE", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -157,6 +193,7 @@ func (s *Cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -193,37 +230,54 @@ func (s *Cache) Delete(ctx context.Context, request operations.CacheDeleteCacheR
 
 // DeleteKeys - Deletes an entry from cache
 func (s *Cache) DeleteKeys(ctx context.Context, request operations.CacheDelRequest) (*operations.CacheDelResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Cache_Del"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/delete", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/delete", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DelRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "DELETE", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "DELETE", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -240,6 +294,7 @@ func (s *Cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -276,27 +331,48 @@ func (s *Cache) DeleteKeys(ctx context.Context, request operations.CacheDelReque
 
 // GetKey - Reads an entry from cache
 func (s *Cache) GetKey(ctx context.Context, request operations.CacheGetRequest) (*operations.CacheGetResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Cache_Get"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/get", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/get", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -313,6 +389,7 @@ func (s *Cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -349,37 +426,54 @@ func (s *Cache) GetKey(ctx context.Context, request operations.CacheGetRequest) 
 
 // GetSetKey - Sets an entry in the cache and returns the previous value if exists
 func (s *Cache) GetSetKey(ctx context.Context, request operations.CacheGetSetRequest) (*operations.CacheGetSetResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Cache_GetSet"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/getset", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/getset", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "GetSetRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -396,6 +490,7 @@ func (s *Cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -432,27 +527,48 @@ func (s *Cache) GetSetKey(ctx context.Context, request operations.CacheGetSetReq
 
 // List - Lists all the caches for the given project
 func (s *Cache) List(ctx context.Context, request operations.CacheListCachesRequest) (*operations.CacheListCachesResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Cache_ListCaches"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/list", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/list", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -469,6 +585,7 @@ func (s *Cache) List(ctx context.Context, request operations.CacheListCachesRequ
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -505,18 +622,20 @@ func (s *Cache) List(ctx context.Context, request operations.CacheListCachesRequ
 
 // ListKeys - Lists all the key for this cache
 func (s *Cache) ListKeys(ctx context.Context, request operations.CacheKeysRequest) (*operations.CacheKeysResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Cache_Keys"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/keys", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/keys", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
@@ -524,12 +643,31 @@ func (s *Cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -546,6 +684,7 @@ func (s *Cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -582,37 +721,54 @@ func (s *Cache) ListKeys(ctx context.Context, request operations.CacheKeysReques
 
 // SetKey - Sets an entry in the cache
 func (s *Cache) SetKey(ctx context.Context, request operations.CacheSetRequest) (*operations.CacheSetResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Cache_Set"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/set", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/caches/{name}/{key}/set", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "SetRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -629,6 +785,7 @@ func (s *Cache) SetKey(ctx context.Context, request operations.CacheSetRequest) 
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {

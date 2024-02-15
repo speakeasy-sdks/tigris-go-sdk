@@ -48,9 +48,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.CreateDocument(ctx, operations.SearchCreateByIDRequest{
         CreateByIDRequest: shared.CreateByIDRequest{},
-        ID: "<ID>",
-        Index: "string",
-        Project: "string",
+        ID: "<id>",
+        Index: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -106,8 +106,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.CreateDocuments(ctx, operations.SearchCreateRequest{
         CreateDocumentRequest: shared.CreateDocumentRequest{},
-        Index: "string",
-        Project: "string",
+        Index: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -161,8 +161,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.DeleteDocuments(ctx, operations.SearchDeleteRequest{
         DeleteDocumentRequest: shared.DeleteDocumentRequest{},
-        Index: "string",
-        Project: "string",
+        Index: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -214,8 +214,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.DeleteIndex(ctx, operations.SearchDeleteIndexRequest{
         DeleteIndexRequest: shared.DeleteIndexRequest{},
-        Name: "string",
-        Project: "string",
+        Name: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -271,8 +271,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.FindDocuments(ctx, operations.SearchSearchRequest{
         SearchIndexRequest: shared.SearchIndexRequest{},
-        Index: "string",
-        Project: "string",
+        Index: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -324,8 +324,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.GetDocuments(ctx, operations.SearchGetRequest{
-        Index: "string",
-        Project: "string",
+        Index: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -376,8 +376,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.GetIndex(ctx, operations.SearchGetIndexRequest{
-        Name: "string",
-        Project: "string",
+        Name: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -428,7 +428,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Search.ListIndexes(ctx, operations.SearchListIndexesRequest{
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -481,8 +481,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.QueryDeleteDocuments(ctx, operations.SearchDeleteByQueryRequest{
         DeleteByQueryRequest: shared.DeleteByQueryRequest{},
-        Index: "string",
-        Project: "string",
+        Index: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -537,8 +537,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.ReplaceDocuments(ctx, operations.SearchCreateOrReplaceRequest{
         CreateOrReplaceDocumentRequest: shared.CreateOrReplaceDocumentRequest{},
-        Index: "string",
-        Project: "string",
+        Index: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -593,8 +593,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.UpdateDocuments(ctx, operations.SearchUpdateRequest{
         UpdateDocumentRequest: shared.UpdateDocumentRequest{},
-        Index: "string",
-        Project: "string",
+        Index: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -646,8 +646,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Search.UpdateIndex(ctx, operations.SearchCreateOrUpdateIndexRequest{
         CreateOrUpdateIndexRequest: shared.CreateOrUpdateIndexRequest{},
-        Name: "string",
-        Project: "string",
+        Name: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)

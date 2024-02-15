@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/speakeasy-sdks/tigris-go-sdk/internal/hooks"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
@@ -28,37 +29,54 @@ func newAppKey(sdkConfig sdkConfiguration) *AppKey {
 // Delete - Deletes the app key
 // Delete an app key.
 func (s *AppKey) Delete(ctx context.Context, request operations.TigrisDeleteAppKeyRequest) (*operations.TigrisDeleteAppKeyResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Tigris_DeleteAppKey"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/delete", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/delete", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "DeleteAppKeyRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "DELETE", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "DELETE", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -75,6 +93,7 @@ func (s *AppKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -112,27 +131,48 @@ func (s *AppKey) Delete(ctx context.Context, request operations.TigrisDeleteAppK
 // List all the app keys
 // Lists all app keys visible to requesting actor.
 func (s *AppKey) List(ctx context.Context, request operations.TigrisListAppKeysRequest) (*operations.TigrisListAppKeysResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Tigris_ListAppKeys"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -149,6 +189,7 @@ func (s *AppKey) List(ctx context.Context, request operations.TigrisListAppKeysR
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -186,37 +227,54 @@ func (s *AppKey) List(ctx context.Context, request operations.TigrisListAppKeysR
 // Rotate - Rotates the app key secret
 // Endpoint is used to rotate the secret for the app key.
 func (s *AppKey) Rotate(ctx context.Context, request operations.TigrisRotateAppKeySecretRequest) (*operations.TigrisRotateAppKeySecretResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Tigris_RotateAppKeySecret"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/rotate", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/rotate", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RotateAppKeyRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -233,6 +291,7 @@ func (s *AppKey) Rotate(ctx context.Context, request operations.TigrisRotateAppK
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -270,37 +329,54 @@ func (s *AppKey) Rotate(ctx context.Context, request operations.TigrisRotateAppK
 // TigrisCreateAppKey - Creates the app key
 // Create an app key.
 func (s *AppKey) TigrisCreateAppKey(ctx context.Context, request operations.TigrisCreateAppKeyRequest) (*operations.TigrisCreateAppKeyResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Tigris_CreateAppKey"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/create", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/create", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAppKeyRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -317,6 +393,7 @@ func (s *AppKey) TigrisCreateAppKey(ctx context.Context, request operations.Tigr
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -354,37 +431,54 @@ func (s *AppKey) TigrisCreateAppKey(ctx context.Context, request operations.Tigr
 // Update - Updates the description of the app key
 // Update the description of an app key.
 func (s *AppKey) Update(ctx context.Context, request operations.TigrisUpdateAppKeyRequest) (*operations.TigrisUpdateAppKeyResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Tigris_UpdateAppKey"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/update", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/projects/{project}/apps/keys/update", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAppKeyRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -401,6 +495,7 @@ func (s *AppKey) Update(ctx context.Context, request operations.TigrisUpdateAppK
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {

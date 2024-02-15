@@ -6,13 +6,14 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/speakeasy-sdks/tigris-go-sdk/internal/hooks"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/operations"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"io"
 	"net/http"
-	"strings"
+	"net/url"
 )
 
 // System - The Observability section has APIs that provides full visibility into the health, metrics, and monitoring of the Server.
@@ -29,24 +30,48 @@ func newSystem(sdkConfig sdkConfiguration) *System {
 // GetHealth - Health Check
 // This endpoint can be used to check the liveness of the server.
 func (s *System) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResponse, error) {
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/health"
+	hookCtx := hooks.HookContext{OperationID: "HealthAPI_Health"}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	opURL, err := url.JoinPath(baseURL, "/v1/health")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -63,6 +88,7 @@ func (s *System) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResp
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -100,24 +126,48 @@ func (s *System) GetHealth(ctx context.Context) (*operations.HealthAPIHealthResp
 // GetServerInfo - Information about the server
 // Provides the information about the server. This information includes returning the server version, etc.
 func (s *System) GetServerInfo(ctx context.Context) (*operations.ObservabilityGetInfoResponse, error) {
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/info"
+	hookCtx := hooks.HookContext{OperationID: "Observability_GetInfo"}
 
-	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	opURL, err := url.JoinPath(baseURL, "/v1/observability/info")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "GET", opURL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -134,6 +184,7 @@ func (s *System) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -171,34 +222,54 @@ func (s *System) GetServerInfo(ctx context.Context) (*operations.ObservabilityGe
 // ObservabilityQuotaUsage - Queries current namespace quota usage
 // Returns current namespace quota limits
 func (s *System) ObservabilityQuotaUsage(ctx context.Context, request shared.QuotaUsageRequest) (*operations.ObservabilityQuotaUsageResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Observability_QuotaUsage"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/usage"
+	opURL, err := url.JoinPath(baseURL, "/v1/observability/quota/usage")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -215,6 +286,7 @@ func (s *System) ObservabilityQuotaUsage(ctx context.Context, request shared.Quo
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -252,34 +324,54 @@ func (s *System) ObservabilityQuotaUsage(ctx context.Context, request shared.Quo
 // QueryQuotaLimits - Queries current namespace quota limits
 // Returns current namespace quota limits
 func (s *System) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimitsRequest) (*operations.ObservabilityQuotaLimitsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Observability_QuotaLimits"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/quota/limits"
+	opURL, err := url.JoinPath(baseURL, "/v1/observability/quota/limits")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -296,6 +388,7 @@ func (s *System) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimit
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -333,34 +426,54 @@ func (s *System) QueryQuotaLimits(ctx context.Context, request shared.QuotaLimit
 // QueryTimeSeriesMetrics - Queries time series metrics
 // Queries time series metrics
 func (s *System) QueryTimeSeriesMetrics(ctx context.Context, request shared.QueryTimeSeriesMetricsRequest) (*operations.ObservabilityQueryTimeSeriesMetricsResponse, error) {
+	hookCtx := hooks.HookContext{OperationID: "Observability_QueryTimeSeriesMetrics"}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/v1/observability/metrics/timeseries/query"
+	opURL, err := url.JoinPath(baseURL, "/v1/observability/metrics/timeseries/query")
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
+		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, "POST", opURL, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", s.sdkConfiguration.UserAgent)
-
+	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
 	client := s.sdkConfiguration.SecurityClient
 
-	httpRes, err := client.Do(req)
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
+		return nil, err
 	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
+
+	httpRes, err := client.Do(req)
+	if err != nil || httpRes == nil {
+		if err != nil {
+			err = fmt.Errorf("error sending request: %w", err)
+		} else {
+			err = fmt.Errorf("error sending request: no response")
+		}
+
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		return nil, err
+	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	contentType := httpRes.Header.Get("Content-Type")
@@ -377,6 +490,7 @@ func (s *System) QueryTimeSeriesMetrics(ctx context.Context, request shared.Quer
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {

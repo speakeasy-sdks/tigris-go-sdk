@@ -5,6 +5,7 @@ package tigrisgosdk
 import (
 	"context"
 	"fmt"
+	"github.com/speakeasy-sdks/tigris-go-sdk/internal/hooks"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/utils"
 	"net/http"
@@ -54,6 +55,7 @@ type sdkConfiguration struct {
 	GenVersion        string
 	UserAgent         string
 	RetryConfig       *utils.RetryConfig
+	Hooks             *hooks.Hooks
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -218,14 +220,17 @@ func New(opts ...SDKOption) *Tigris {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.24.1",
-			GenVersion:        "2.253.0",
-			UserAgent:         "speakeasy-sdk/go 0.24.1 2.253.0 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
+			SDKVersion:        "0.25.0",
+			GenVersion:        "2.258.0",
+			UserAgent:         "speakeasy-sdk/go 0.25.0 2.258.0 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
+			Hooks:             hooks.New(),
 		},
 	}
 	for _, opt := range opts {
 		opt(sdk)
 	}
+
+	sdk.sdkConfiguration.DefaultClient = sdk.sdkConfiguration.Hooks.ClientInit(sdk.sdkConfiguration.DefaultClient)
 
 	// Use WithClient to override the default client if you would like to customize the timeout
 	if sdk.sdkConfiguration.DefaultClient == nil {

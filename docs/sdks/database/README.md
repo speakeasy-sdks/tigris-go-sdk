@@ -43,7 +43,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.BeginTransaction(ctx, operations.TigrisBeginTransactionRequest{
         BeginTransactionRequest: shared.BeginTransactionRequest{},
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -96,7 +96,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.CommitTransaction(ctx, operations.TigrisCommitTransactionRequest{
         CommitTransactionRequest: shared.CommitTransactionRequest{},
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -148,8 +148,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.CreateBranch(ctx, operations.TigrisCreateBranchRequest{
         CreateBranchRequest: shared.CreateBranchRequest{},
-        Branch: "string",
-        Project: "string",
+        Branch: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -202,8 +202,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.DeleteBranch(ctx, operations.TigrisDeleteBranchRequest{
         DeleteBranchRequest: shared.DeleteBranchRequest{},
-        Branch: "string",
-        Project: "string",
+        Branch: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -256,7 +256,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.Describe(ctx, operations.TigrisDescribeDatabaseRequest{
         DescribeDatabaseRequest: shared.DescribeDatabaseRequest{},
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -307,7 +307,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.ListCollections(ctx, operations.TigrisListCollectionsRequest{
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -360,7 +360,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Database.RollbackTransaction(ctx, operations.TigrisRollbackTransactionRequest{
         RollbackTransactionRequest: shared.RollbackTransactionRequest{},
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -411,7 +411,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Database.TigrisListBranches(ctx, operations.TigrisListBranchesRequest{
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)

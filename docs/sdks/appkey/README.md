@@ -38,7 +38,7 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Delete(ctx, operations.TigrisDeleteAppKeyRequest{
         DeleteAppKeyRequest: shared.DeleteAppKeyRequest{},
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -89,7 +89,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.AppKey.List(ctx, operations.TigrisListAppKeysRequest{
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -141,7 +141,7 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Rotate(ctx, operations.TigrisRotateAppKeySecretRequest{
         RotateAppKeyRequest: shared.RotateAppKeyRequest{},
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -193,7 +193,7 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.TigrisCreateAppKey(ctx, operations.TigrisCreateAppKeyRequest{
         CreateAppKeyRequest: shared.CreateAppKeyRequest{},
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -245,7 +245,7 @@ func main() {
     ctx := context.Background()
     res, err := s.AppKey.Update(ctx, operations.TigrisUpdateAppKeyRequest{
         UpdateAppKeyRequest: shared.UpdateAppKeyRequest{},
-        Project: "string",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)

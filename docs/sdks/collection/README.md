@@ -47,8 +47,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.Create(ctx, operations.TigrisCreateOrUpdateCollectionRequest{
         CreateOrUpdateCollectionRequest: shared.CreateOrUpdateCollectionRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -100,8 +100,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.DeleteDocuments(ctx, operations.TigrisDeleteRequest{
         DeleteRequest: shared.DeleteRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -153,8 +153,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.Describe(ctx, operations.TigrisDescribeCollectionRequest{
         DescribeCollectionRequest: shared.DescribeCollectionRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -207,8 +207,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.Drop(ctx, operations.TigrisDropCollectionRequest{
         DropCollectionRequest: shared.DropCollectionRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -265,8 +265,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.ImportDocuments(ctx, operations.TigrisImportRequest{
         ImportRequest: shared.ImportRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -320,8 +320,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.InsertDocuments(ctx, operations.TigrisInsertRequest{
         InsertRequest: shared.InsertRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -378,8 +378,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.ReadDocuments(ctx, operations.TigrisReadRequest{
         ReadRequest: shared.ReadRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -431,8 +431,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.ReplaceDocuments(ctx, operations.TigrisReplaceRequest{
         ReplaceRequest: shared.ReplaceRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -487,8 +487,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.SearchDocuments(ctx, operations.TigrisSearchRequest{
         SearchRequest: shared.SearchRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -540,8 +540,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Collection.UpdateDocuments(ctx, operations.TigrisUpdateRequest{
         UpdateRequest: shared.UpdateRequest{},
-        Collection: "string",
-        Project: "string",
+        Collection: "<value>",
+        Project: "<value>",
     })
     if err != nil {
         log.Fatal(err)

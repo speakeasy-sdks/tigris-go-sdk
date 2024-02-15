@@ -32,8 +32,8 @@ func main() {
 	ctx := context.Background()
 	res, err := s.Cache.Create(ctx, operations.CacheCreateCacheRequest{
 		CreateCacheRequest: shared.CreateCacheRequest{},
-		Name:               "string",
-		Project:            "string",
+		Name:               "<value>",
+		Project:            "<value>",
 	})
 	if err != nil {
 		log.Fatal(err)
