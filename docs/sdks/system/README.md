@@ -23,16 +23,13 @@ This endpoint can be used to check the liveness of the server.
 package main
 
 import(
-	"github.com/speakeasy-sdks/tigris-go-sdk/pkg/models/shared"
 	tigrisgosdk "github.com/speakeasy-sdks/tigris-go-sdk"
 	"context"
 	"log"
 )
 
 func main() {
-    s := tigrisgosdk.New(
-        tigrisgosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
-    )
+    s := tigrisgosdk.New()
 
     ctx := context.Background()
     res, err := s.System.GetHealth(ctx)
