@@ -53,7 +53,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateOrUpdateCollectionResponse != nil {
         // handle response
     }
@@ -106,7 +105,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteResponse != nil {
         // handle response
     }
@@ -159,7 +157,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DescribeCollectionResponse != nil {
         // handle response
     }
@@ -213,7 +210,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DropCollectionResponse != nil {
         // handle response
     }
@@ -271,7 +267,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ImportResponse != nil {
         // handle response
     }
@@ -326,7 +321,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.InsertResponse != nil {
         // handle response
     }
@@ -384,7 +378,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.StreamingReadResponse != nil {
         // handle response
     }
@@ -437,7 +430,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ReplaceResponse != nil {
         // handle response
     }
@@ -493,7 +485,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.StreamingSearchResponse != nil {
         // handle response
     }
@@ -546,7 +537,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.UpdateResponse != nil {
         // handle response
     }

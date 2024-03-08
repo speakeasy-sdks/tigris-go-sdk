@@ -39,12 +39,12 @@ func (o *SearchUpdateRequest) GetProject() string {
 type SearchUpdateResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	// Default error response
+	Status *shared.Status
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Default error response
-	Status *shared.Status
 	// OK
 	UpdateDocumentResponse *shared.UpdateDocumentResponse
 }
@@ -54,6 +54,13 @@ func (o *SearchUpdateResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *SearchUpdateResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
 }
 
 func (o *SearchUpdateResponse) GetStatusCode() int {
@@ -68,13 +75,6 @@ func (o *SearchUpdateResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *SearchUpdateResponse) GetStatus() *shared.Status {
-	if o == nil {
-		return nil
-	}
-	return o.Status
 }
 
 func (o *SearchUpdateResponse) GetUpdateDocumentResponse() *shared.UpdateDocumentResponse {

@@ -48,7 +48,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.BeginTransactionResponse != nil {
         // handle response
     }
@@ -101,7 +100,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CommitTransactionResponse != nil {
         // handle response
     }
@@ -154,7 +152,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateBranchResponse != nil {
         // handle response
     }
@@ -208,7 +205,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteBranchResponse != nil {
         // handle response
     }
@@ -261,7 +257,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DescribeDatabaseResponse != nil {
         // handle response
     }
@@ -312,7 +307,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListCollectionsResponse != nil {
         // handle response
     }
@@ -365,7 +359,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.RollbackTransactionResponse != nil {
         // handle response
     }
@@ -416,7 +409,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListBranchesResponse != nil {
         // handle response
     }

@@ -41,7 +41,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateProjectResponse != nil {
         // handle response
     }
@@ -93,7 +92,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteProjectResponse != nil {
         // handle response
     }
@@ -141,7 +139,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListProjectsResponse != nil {
         // handle response
     }

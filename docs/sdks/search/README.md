@@ -55,7 +55,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateByIDResponse != nil {
         // handle response
     }
@@ -112,7 +111,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateDocumentResponse != nil {
         // handle response
     }
@@ -167,7 +165,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteDocumentResponse != nil {
         // handle response
     }
@@ -220,7 +217,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteIndexResponse != nil {
         // handle response
     }
@@ -277,7 +273,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SearchIndexResponse != nil {
         // handle response
     }
@@ -330,7 +325,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetDocumentResponse != nil {
         // handle response
     }
@@ -382,7 +376,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetIndexResponse != nil {
         // handle response
     }
@@ -433,7 +426,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListIndexesResponse != nil {
         // handle response
     }
@@ -487,7 +479,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteByQueryResponse != nil {
         // handle response
     }
@@ -543,7 +534,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateOrReplaceDocumentResponse != nil {
         // handle response
     }
@@ -599,7 +589,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.UpdateDocumentResponse != nil {
         // handle response
     }
@@ -652,7 +641,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateOrUpdateIndexResponse != nil {
         // handle response
     }

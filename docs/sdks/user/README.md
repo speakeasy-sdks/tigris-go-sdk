@@ -41,7 +41,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetUserMetadataResponse != nil {
         // handle response
     }
@@ -93,7 +92,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.InsertUserMetadataResponse != nil {
         // handle response
     }
@@ -145,7 +143,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.UpdateUserMetadataResponse != nil {
         // handle response
     }

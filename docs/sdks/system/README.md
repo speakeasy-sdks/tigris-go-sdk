@@ -36,7 +36,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.HealthCheckResponse != nil {
         // handle response
     }
@@ -83,7 +82,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetInfoResponse != nil {
         // handle response
     }
@@ -130,7 +128,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.QuotaUsageResponse != nil {
         // handle response
     }
@@ -178,7 +175,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.QuotaLimitsResponse != nil {
         // handle response
     }
@@ -226,7 +222,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.QueryTimeSeriesMetricsResponse != nil {
         // handle response
     }

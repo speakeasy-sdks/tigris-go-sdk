@@ -29,12 +29,12 @@ func (o *ManagementUpdateNamespaceMetadataRequest) GetMetadataKey() string {
 type ManagementUpdateNamespaceMetadataResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	// Default error response
+	Status *shared.Status
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Default error response
-	Status *shared.Status
 	// OK
 	UpdateNamespaceMetadataResponse *shared.UpdateNamespaceMetadataResponse
 }
@@ -44,6 +44,13 @@ func (o *ManagementUpdateNamespaceMetadataResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *ManagementUpdateNamespaceMetadataResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
 }
 
 func (o *ManagementUpdateNamespaceMetadataResponse) GetStatusCode() int {
@@ -58,13 +65,6 @@ func (o *ManagementUpdateNamespaceMetadataResponse) GetRawResponse() *http.Respo
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *ManagementUpdateNamespaceMetadataResponse) GetStatus() *shared.Status {
-	if o == nil {
-		return nil
-	}
-	return o.Status
 }
 
 func (o *ManagementUpdateNamespaceMetadataResponse) GetUpdateNamespaceMetadataResponse() *shared.UpdateNamespaceMetadataResponse {

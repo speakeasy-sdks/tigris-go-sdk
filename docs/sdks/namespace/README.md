@@ -40,7 +40,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateNamespaceResponse != nil {
         // handle response
     }
@@ -88,7 +87,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DescribeNamespacesResponse != nil {
         // handle response
     }
@@ -139,7 +137,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetNamespaceMetadataResponse != nil {
         // handle response
     }
@@ -191,7 +188,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.InsertNamespaceMetadataResponse != nil {
         // handle response
     }
@@ -239,7 +235,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListNamespacesResponse != nil {
         // handle response
     }
@@ -290,7 +285,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.UpdateNamespaceMetadataResponse != nil {
         // handle response
     }

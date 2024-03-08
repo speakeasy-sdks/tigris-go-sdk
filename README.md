@@ -38,7 +38,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.CreateCacheResponse != nil {
 		// handle response
 	}
@@ -245,7 +244,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.GetAccessTokenResponse != nil {
 		// handle response
 	}
@@ -278,7 +276,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.GetAccessTokenResponse != nil {
 		// handle response
 	}
@@ -351,7 +348,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.GetAccessTokenResponse != nil {
 		// handle response
 	}

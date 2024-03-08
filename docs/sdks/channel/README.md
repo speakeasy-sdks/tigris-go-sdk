@@ -44,7 +44,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetRTChannelResponse != nil {
         // handle response
     }
@@ -96,7 +95,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ReadMessagesResponse != nil {
         // handle response
     }
@@ -147,7 +145,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetRTChannelsResponse != nil {
         // handle response
     }
@@ -199,7 +196,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListSubscriptionResponse != nil {
         // handle response
     }
@@ -252,7 +248,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.MessagesResponse != nil {
         // handle response
     }
@@ -304,7 +299,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.PresenceResponse != nil {
         // handle response
     }

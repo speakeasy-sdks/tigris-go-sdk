@@ -39,12 +39,12 @@ func (o *TigrisUpdateRequest) GetProject() string {
 type TigrisUpdateResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
+	// Default error response
+	Status *shared.Status
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Default error response
-	Status *shared.Status
 	// OK
 	UpdateResponse *shared.UpdateResponse
 }
@@ -54,6 +54,13 @@ func (o *TigrisUpdateResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
+}
+
+func (o *TigrisUpdateResponse) GetStatus() *shared.Status {
+	if o == nil {
+		return nil
+	}
+	return o.Status
 }
 
 func (o *TigrisUpdateResponse) GetStatusCode() int {
@@ -68,13 +75,6 @@ func (o *TigrisUpdateResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *TigrisUpdateResponse) GetStatus() *shared.Status {
-	if o == nil {
-		return nil
-	}
-	return o.Status
 }
 
 func (o *TigrisUpdateResponse) GetUpdateResponse() *shared.UpdateResponse {

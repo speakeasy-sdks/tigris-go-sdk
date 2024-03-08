@@ -43,7 +43,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteAppKeyResponse != nil {
         // handle response
     }
@@ -94,7 +93,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListAppKeysResponse != nil {
         // handle response
     }
@@ -146,7 +144,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.RotateAppKeyResponse != nil {
         // handle response
     }
@@ -198,7 +195,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateAppKeyResponse != nil {
         // handle response
     }
@@ -250,7 +246,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.UpdateAppKeyResponse != nil {
         // handle response
     }

@@ -47,7 +47,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CreateCacheResponse != nil {
         // handle response
     }
@@ -100,7 +99,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteCacheResponse != nil {
         // handle response
     }
@@ -154,7 +152,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DelResponse != nil {
         // handle response
     }
@@ -207,7 +204,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetResponse != nil {
         // handle response
     }
@@ -261,7 +257,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetSetResponse != nil {
         // handle response
     }
@@ -312,7 +307,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListCachesResponse != nil {
         // handle response
     }
@@ -364,7 +358,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.KeysResponse != nil {
         // handle response
     }
@@ -418,7 +411,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SetResponse != nil {
         // handle response
     }
