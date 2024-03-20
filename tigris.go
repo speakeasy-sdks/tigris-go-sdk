@@ -219,9 +219,9 @@ func New(opts ...SDKOption) *Tigris {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.26.1",
-			GenVersion:        "2.280.6",
-			UserAgent:         "speakeasy-sdk/go 0.26.1 2.280.6 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
+			SDKVersion:        "0.26.2",
+			GenVersion:        "2.283.1",
+			UserAgent:         "speakeasy-sdk/go 0.26.2 2.283.1 0.0.1 github.com/speakeasy-sdks/tigris-go-sdk",
 			Hooks:             hooks.New(),
 		},
 	}
