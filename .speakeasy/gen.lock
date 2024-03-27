@@ -3,17 +3,17 @@ id: 4e0d6d2a-1689-4ff6-8b68-61acdb4dfae8
 management:
   docChecksum: db7bd8f69518c551928aef7eb16008e2
   docVersion: 0.0.1
-  speakeasyVersion: 1.213.0
-  generationVersion: 2.283.1
-  releaseVersion: 0.26.2
-  configChecksum: 5e0a08cd1d52e933edd5699d1be6ae11
+  speakeasyVersion: 1.227.0
+  generationVersion: 2.291.0
+  releaseVersion: 0.26.3
+  configChecksum: 8cfeb9144fcf92c16d8d09cdb2221a5c
   repoURL: https://github.com/speakeasy-sdks/tigris-go-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/tigris-go-sdk
   published: true
 features:
   go:
-    core: 3.4.4
+    core: 3.4.5
     examples: 2.81.3
     globalSecurity: 2.82.9
     globalServerURLs: 2.82.2
